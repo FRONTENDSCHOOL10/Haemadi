@@ -4,7 +4,8 @@ import style from './SVGIcon.module.css';
 
 SVGIcon.propTypes = {
   name: string.isRequired,
-  size: number,
+  width: number,
+  height: number,
 };
 
 function SVGIcon({ name, width = 33, height }) {
