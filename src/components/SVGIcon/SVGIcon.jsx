@@ -7,10 +7,14 @@ SVGIcon.propTypes = {
   size: number,
 };
 
-function SVGIcon({ name, size = 33 }) {
+function SVGIcon({ name, width = 33, height }) {
   return (
-    <svg width={size} height={size} className={style.svg}>
-      <use href={`${icons}#${name}`} />
+    <svg>
+      <use
+        width={width}
+        height={height ? height : width}
+        href={`${icons}#${name}`}
+      />
     </svg>
   );
 }
