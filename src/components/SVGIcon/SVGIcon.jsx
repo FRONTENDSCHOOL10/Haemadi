@@ -10,7 +10,7 @@ SVGIcon.propTypes = {
 
 function SVGIcon({ name, width = 33, height }) {
   return (
-    <svg>
+    <svg width={width} height={height ? height : width}>
       <use
         width={width}
         height={height ? height : width}
