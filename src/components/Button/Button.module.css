@@ -1,0 +1,27 @@
+/* 공통 버튼 스타일 */
+.button {
+  width: 253px;
+  height: 57px;
+  border: none;
+  border-radius: 28.5px;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.11);
+  padding: 0;
+}
+
+/* variant에 따른 스타일링 */
+.buttonWhite {
+  background-color: var(--transparent-white);
+  color: var(--transparent-blue);
+}
+
+.buttonGray {
+  background-color: var(--transparent-gray);
+  color: var(--transparent-white);
+}
+
+.buttonBlue {
+  background-color: var(--transparent-blue);
+  color: var(--transparent-white);
+}
