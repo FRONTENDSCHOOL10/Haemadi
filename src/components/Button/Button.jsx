@@ -1,26 +1,33 @@
-import styles from './Button.module.css';
 import PropTypes from 'prop-types';
 
-
-const Button = ({ children, variant = 'buttonWhite', ...props }) => {
-    const classNames = `${styles.button} ${styles[variant]}`;
-
-    return (
-        <button className={classNames} {...props}>
-            {children}
-        </button>
-    );
-};
-
-Button.propTypes = {
-  children: PropTypes.node.isRequired, 
-  variant: PropTypes.oneOf(['buttonWhite', 'buttonGray', 'buttonBlue']), 
-};
+import styles from './Button.module.css';
 
 // 기본 props 정의
 Button.defaultProps = {
-  variant: 'buttonWhite', 
+  type: 'normal',
+  state: 'default',
 };
 
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['normal', 'angled', 'stroke']),
+  state: PropTypes.oneOf(['default', 'primary', 'disabled']),
+  onClick: PropTypes.func,
+};
+
+function Button({ children, type = 'normal', state = 'default', onClick }) {
+  const classNames = `${styles[type]} ${styles[state]}`;
+
+  return (
+    <button
+      className={classNames}
+      onClick={onClick}
+      disabled={state === 'disabled'}
+      aria-disabled={state === 'disabled'}
+    >
+      <span>{children}</span>
+    </button>
+  );
+}
 
 export default Button;

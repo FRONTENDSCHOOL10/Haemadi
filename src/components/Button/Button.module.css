@@ -1,27 +1,86 @@
-/* 공통 버튼 스타일 */
-.button {
+.normal {
   width: 253px;
   height: 57px;
   border: none;
   border-radius: 28.5px;
   font-size: 20px;
   font-weight: 700;
+  line-height: normal;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.11);
-  padding: 0;
+  opacity: 0.9;
 }
 
-/* variant에 따른 스타일링 */
-.buttonWhite {
-  background-color: var(--transparent-white);
-  color: var(--transparent-blue);
+.angled {
+  width: 310px;
+  height: 57px;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.11);
 }
 
-.buttonGray {
-  background-color: var(--transparent-gray);
-  color: var(--transparent-white);
+.stroke {
+  width: 345px;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.11);
 }
 
-.buttonBlue {
-  background-color: var(--transparent-blue);
-  color: var(--transparent-white);
+.stroke.default {
+  border: 1.5px solid var(--primary);
+}
+
+.default {
+  background-color: var(--white);
+  color: var(--tertiay);
+  opacity: 0.9;
+}
+
+.disabled {
+  background-color: #c6c5c9;
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.primary {
+  background-color: var(--secondary);
+  color: var(--white);
+  opacity: 0.9;
+}
+
+button {
+  position: relative; /* ::after 가상 요소를 버튼 위에 배치하기 위해 필요 */
+  overflow: hidden; /* ::after 요소가 버튼 밖으로 나가지 않도록 설정 */
+  font-size: 16px;
+  transition: color 0.3s ease; /* 텍스트 색상이 변하지 않도록 설정 */
+}
+
+.default::after,
+.primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* 검정색 반투명 오버레이 */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* ::after가 클릭 이벤트를 방해하지 않도록 설정 */
+}
+
+button:hover::after {
+  opacity: 1; /* 호버 시 오버레이가 보이도록 설정 */
+}
+
+button span {
+  position: relative; /* 텍스트가 오버레이 위에 위치하게 하기 위해 설정 */
+  z-index: 1; /* 텍스트를 오버레이 위로 배치 */
+  color: inherit; /* 부모 요소의 색상을 상속 */
 }
