@@ -1,4 +1,5 @@
 :root {
+  /* 색상 변수 */
   --white: #ffffff;
   --black: #2e2e2e;
   --primary: #2e7fb9;
@@ -11,6 +12,7 @@
   --button_gray: #c6c5c9;
   --placeholder_gray: #cccbcf;
 
+  /* 텍스트 크기 변수 */
   --text-3xl: 60px;
   --text-xxl: 55px;
   --text-xl: 24px;
