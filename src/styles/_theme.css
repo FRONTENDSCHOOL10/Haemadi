@@ -1,3 +1,24 @@
 :root {
+  /* 색상 변수 */
+  --white: #ffffff;
+  --black: #2e2e2e;
+  --primary: #2e7fb9;
+  --secondary: #1771b2;
+  --tertiay: #1f6496;
+  --title_gray: #2e2e2e;
+  --text_gray: #565656;
+  --date_gray: #6d6d6d;
+  --skipText_gray: #787878;
+  --button_gray: #c6c5c9;
+  --placeholder_gray: #cccbcf;
 
+  /* 텍스트 크기 변수 */
+  --text-3xl: 60px;
+  --text-xxl: 55px;
+  --text-xl: 24px;
+  --text-l: 20px;
+  --text-m: 18px;
+  --text-s: 16px;
+  --text-xs: 14px;
+  --text-xxs: 12px;
 }
