@@ -1,6 +1,7 @@
-import icons from '/sprites.svg';
-import { string, number } from 'prop-types';
 import style from './SVGIcon.module.css';
+import { number, string } from 'prop-types';
+import { memo } from 'react';
+import icons from '/sprites.svg';
 
 SVGIcon.propTypes = {
   name: string.isRequired,
@@ -31,6 +32,11 @@ function SVGIcon({ name, width = 33, height, color }) {
   height={icons.shell_tired_block.height}
   color={icons.shell_tired_block.color}
 />
+
+또는
+
+const shell = icons.shell_tired_block;
+<SVGIcon {...shell} />
 */
 
-export default SVGIcon;
+export default memo(SVGIcon);
