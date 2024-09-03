@@ -9,6 +9,7 @@ Button.defaultProps = {
   state: 'default',
 };
 
+// props type 정의
 Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['normal', 'angled', 'stroke']),
@@ -16,6 +17,7 @@ Button.propTypes = {
   onClick: func,
 };
 
+// Button Component
 function Button({ children, type = 'normal', state = 'default', onClick }) {
   const classNames = `${styles[type]} ${styles[state]}`;
 
