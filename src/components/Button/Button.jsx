@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import { memo } from 'react';
+import { node, oneOf, func } from 'prop-types';
 
 import styles from './Button.module.css';
 
@@ -9,10 +10,10 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['normal', 'angled', 'stroke']),
-  state: PropTypes.oneOf(['default', 'primary', 'disabled']),
-  onClick: PropTypes.func,
+  children: node.isRequired,
+  type: oneOf(['normal', 'angled', 'stroke']),
+  state: oneOf(['default', 'primary', 'disabled']),
+  onClick: func,
 };
 
 function Button({ children, type = 'normal', state = 'default', onClick }) {
@@ -30,4 +31,4 @@ function Button({ children, type = 'normal', state = 'default', onClick }) {
   );
 }
 
-export default Button;
+export default memo(Button);
