@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { bool } from 'prop-types';
+import { number, string, bool, oneOfType } from 'prop-types';
 
 import styles from './BackButton.module.css';
 import icons from '@/icons';
@@ -8,15 +8,16 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 
 BackButton.propTypes = {
   darkMode: bool,
+  navigateTo: oneOfType([number, string]).isRequired,
 };
 
-function BackButton({ darkMode = false }) {
+function BackButton({ darkMode = false, navigateTo }) {
   const navigate = useNavigate();
 
   const iconStyle = icons[`goBack${darkMode ? '_darkBg' : ''}`];
 
-  const goBack = () => {
-    navigate(-1); // 이전 페이지로 이동
+  const handleNavigation = () => {
+    navigate(navigateTo); // props로 받은 navigateTo 값으로 이동
   };
 
   return (
@@ -24,7 +25,7 @@ function BackButton({ darkMode = false }) {
       className={styles.backButton}
       type="button"
       aria-label="뒤로가기"
-      onClick={goBack}
+      onClick={handleNavigation}
     >
       <SVGIcon {...iconStyle} />
     </button>
