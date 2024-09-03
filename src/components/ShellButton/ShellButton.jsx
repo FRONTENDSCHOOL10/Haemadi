@@ -4,18 +4,7 @@ import { bool, func } from 'prop-types';
 import { memo, useState } from 'react';
 import SVGIcon from '../SVGIcon/SVGIcon';
 import style from './ShellButton.module.css';
-
-// button의 aria-label
-const emotionLabel = {
-  angry: '화남',
-  glad: '기쁨',
-  happy: '행복',
-  panic: '당황',
-  anxiety: '불안',
-  sad: '슬픔',
-  normal: '평범',
-  tired: '지침',
-};
+import { EMOTION_LABEL } from '@/constants';
 
 ShellButton.propTypes = {
   emotion: emotionType.isRequired,
@@ -30,7 +19,7 @@ function ShellButton({ emotion, block = false, onClick }) {
 
     return (
       <button
-        aria-label={`일기 보기 (${emotionLabel[emotion]})`}
+        aria-label={`일기 보기 (${EMOTION_LABEL[emotion]})`}
         type="button"
         className={style.shellButton}
         onClick={onClick}
@@ -49,7 +38,7 @@ function ShellButton({ emotion, block = false, onClick }) {
 
     return (
       <button
-        aria-label={`일기 작성하기 (${emotionLabel[emotion]})`}
+        aria-label={`일기 작성하기 (${EMOTION_LABEL[emotion]})`}
         type="button"
         className={style.shellButton}
         onMouseEnter={handleMouseEnter}
