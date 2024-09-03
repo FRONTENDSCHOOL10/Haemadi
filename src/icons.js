@@ -54,6 +54,15 @@ const icons = {
   shell_sad_block: {name:'shell_sad_block', width: 33, height: null, color: null},
   shell_normal_block: {name:'shell_normal_block', width: 33, height: null, color: null},
   shell_tired_block: {name:'shell_tired_block', width: 33, height: null, color: null},
+
+  shell_angry_hovered: {name:'shell_angry_hovered', width: 33, height: null, color: null},
+  shell_glad_hovered: {name:'shell_glad_hovered', width: 33, height: null, color: null},
+  shell_happy_hovered: {name:'shell_happy_hovered', width: 33, height: null, color: null},
+  shell_panic_hovered: {name:'shell_panic_hovered', width: 33, height: null, color: null},
+  shell_anxiety_hovered: {name:'shell_anxiety_hovered', width: 33, height: null, color: null},
+  shell_sad_hovered: {name:'shell_sad_hovered', width: 33, height: null, color: null},
+  shell_normal_hovered: {name:'shell_normal_hovered', width: 33, height: null, color: null},
+  shell_tired_hovered: {name:'shell_tired_hovered', width: 33, height: null, color: null},
 };
 
 export default icons;
