@@ -3,12 +3,6 @@ import { node, oneOf, func } from 'prop-types';
 
 import styles from './Button.module.css';
 
-// 기본 props 정의
-Button.defaultProps = {
-  type: 'normal',
-  state: 'default',
-};
-
 // props type 정의
 Button.propTypes = {
   children: node.isRequired,
