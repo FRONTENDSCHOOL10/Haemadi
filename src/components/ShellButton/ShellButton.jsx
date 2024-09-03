@@ -1,5 +1,6 @@
+import { emotionType } from '@/@types';
 import icons from '@/icons';
-import { bool, func, oneOf } from 'prop-types';
+import { bool, func } from 'prop-types';
 import { memo, useState } from 'react';
 import SVGIcon from '../SVGIcon/SVGIcon';
 import style from './ShellButton.module.css';
@@ -17,16 +18,7 @@ const emotionLabel = {
 };
 
 ShellButton.propTypes = {
-  emotion: oneOf([
-    'angry',
-    'glad',
-    'happy',
-    'panic',
-    'anxiety',
-    'sad',
-    'normal',
-    'tired',
-  ]).isRequired,
+  emotion: emotionType.isRequired,
   block: bool,
   onClick: func,
 };
