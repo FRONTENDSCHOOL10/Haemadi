@@ -2,6 +2,7 @@
 @import './_theme.css';
 @import './_base.css';
 @import './_utils.css';
+@import './_reset.css';
 
 body {
   font-family: 'NanumSquare', sans-serif;
