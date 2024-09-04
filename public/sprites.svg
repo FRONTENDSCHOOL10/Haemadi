@@ -27,7 +27,7 @@
     </symbol>
 
 
-    <symbol id="musicNote" width="17" height="25" fill="none" viewBox="0 0 17 25">
+    <symbol id="music" width="17" height="25" fill="none" viewBox="0 0 17 25">
       <path fill="currentColor" d="M8.5 0v14.653a5.749 5.749 0 0 0-2.833-.764C2.536 13.889 0 16.375 0 19.444 0 22.514 2.536 25 5.667 25c3.13 0 5.666-2.486 5.666-5.556V5.556H17V0H8.5Z"/>
     </symbol>
 
