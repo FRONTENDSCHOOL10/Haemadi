@@ -6,6 +6,8 @@ body {
   overflow-x: inherit;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+
+  font-family: 'NanumSquare', sans-serif;
 }
 *,
 *::before,
@@ -150,7 +152,7 @@ summary {
   outline: 0;
 }
 :focus-visible {
-  outline: 2.5px solid var(--focus, #0869dfc0);
+  outline: 2.5px solid var(--focus, #66d6ea);
   outline-offset: 0.5px;
   border-radius: 2px;
 }
