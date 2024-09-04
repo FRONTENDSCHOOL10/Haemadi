@@ -12,15 +12,34 @@ Button.propTypes = {
 };
 
 // Button Component
-function Button({ children, type = 'normal', state = 'default', onClick }) {
+function Button({
+  children,
+  type = 'normal',
+  state = 'default',
+  onClick,
+  ...restProps
+}) {
   const classNames = `${styles[type]} ${styles[state]}`;
+
+  const handleClick = (event) => {
+    if (state === 'disabled') {
+      // 클릭을 막음
+      event.preventDefault();
+      return;
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
 
   return (
     <button
+      type="button"
       className={classNames}
-      onClick={onClick}
-      disabled={state === 'disabled'}
       aria-disabled={state === 'disabled'}
+      onClick={handleClick}
+      {...restProps}
     >
       <span>{children}</span>
     </button>
