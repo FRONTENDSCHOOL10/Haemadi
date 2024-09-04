@@ -55,6 +55,9 @@ export async function readDiaries(userId) {
 /** @type {(diaryId: string, expandFields?: string) => Promise<any>} */
 export async function readDiaryOne(diaryId, expandFields) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}${expandFields ? `?expand=${expandFields}` : ''}`;
+/** @type {(diaryId: string) => Promise<any>} */
+export async function readDiaryOne(diaryId) {
+  const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}`;
   const response = await fetch(REQUEST_URL);
 
   if (!response.ok) {
@@ -71,6 +74,7 @@ export async function readDiaryOne(diaryId, expandFields) {
 
 // 사용예시) updateDiary({id:'99wgwkwynupzi1u', emotion: 'angry'})
 /** @type { (editDiary: { id: string, message?: string, emotion?: emotionType, replyId?: string }) => Promise<any>} */
+/** @type { (editDiary: { id: string, message?: string, emotion?: emotionType, userId?: string, replyId?: string }) => Promise<any>} */
 export async function updateDiary(editDiary) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${editDiary.id}`;
   const body = JSON.stringify(editDiary);
