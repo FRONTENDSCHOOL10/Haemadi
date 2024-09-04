@@ -19,3 +19,5 @@ export const EMOTION_LABEL = {
   normal: '평범',
   tired: '지침',
 };
+
+export const DESKTOP = { query: '(min-width: 640px)' };
