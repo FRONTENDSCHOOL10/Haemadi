@@ -7,14 +7,14 @@ import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 
 BackButton.propTypes = {
-  darkMode: bool,
+  isColored: bool,
   navigateTo: oneOfType([number, string]).isRequired,
 };
 
-function BackButton({ darkMode = false, navigateTo }) {
+function BackButton({ isColored = false, navigateTo }) {
   const navigate = useNavigate();
 
-  const iconStyle = icons[`goBack${darkMode ? '_darkBg' : ''}`];
+  const iconStyle = icons[`goBack${isColored ? '_darkBg' : ''}`];
 
   const handleNavigation = () => {
     navigate(navigateTo); // props로 받은 navigateTo 값으로 이동
