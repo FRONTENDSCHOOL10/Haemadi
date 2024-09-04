@@ -8,19 +8,23 @@ Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['normal', 'angled', 'stroke']),
   state: oneOf(['default', 'primary', 'disabled']),
-  onClick: func,
 };
 
 // Button Component
-function Button({ children, type = 'normal', state = 'default', onClick }) {
+function Button({
+  children,
+  type = 'normal',
+  state = 'default',
+  ...restProps
+}) {
   const classNames = `${styles[type]} ${styles[state]}`;
 
   return (
     <button
       className={classNames}
-      onClick={onClick}
       disabled={state === 'disabled'}
       aria-disabled={state === 'disabled'}
+      {...restProps}
     >
       <span>{children}</span>
     </button>
