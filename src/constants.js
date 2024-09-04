@@ -19,3 +19,12 @@ export const EMOTION_LABEL = {
   normal: '평범',
   tired: '지침',
 };
+
+export const CONTENT_TYPES = ['music', 'quotes', 'book', 'video'];
+
+export const CONTENT_TYPE_LABEL = {
+  music: '노래',
+  quotes: '명언',
+  book: '책',
+  video: '영상',
+};
