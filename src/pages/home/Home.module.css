@@ -1,0 +1,12 @@
+.shellList {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+  }
+}
