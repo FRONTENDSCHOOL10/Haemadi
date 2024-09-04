@@ -98,8 +98,22 @@
     </symbol>
 
 
-    <symbol id="plus" width="33" height="33" fill="none" viewBox="0 0 33 33">
-      <path fill="currentColor" fill-rule="evenodd" d="M33 16.5C33 25.613 25.613 33 16.5 33S0 25.613 0 16.5 7.387 0 16.5 0 33 7.387 33 16.5ZM15 7.977c0-.678.55-1.227 1.228-1.227h.546C17.45 6.75 18 7.3 18 7.977V15h7.02c.679 0 1.228.55 1.228 1.227v.546c0 .678-.55 1.227-1.227 1.227H18v7.023c0 .678-.55 1.227-1.227 1.227h-.546c-.678 0-1.227-.55-1.227-1.227V18H7.976c-.677 0-1.227-.55-1.227-1.227v-.546A1.23 1.23 0 0 1 7.976 15h7.025V7.977Z" clip-rule="evenodd"/>
+    <symbol id="plus" width="45" height="45" fill="none" viewBox="0 0 45 45">
+      <g filter="url(#filterPlus)">
+        <path fill="currentColor" fill-rule="evenodd" d="M39 20.5C39 29.613 31.613 37 22.5 37S6 29.613 6 20.5 13.387 4 22.5 4 39 11.387 39 20.5Zm-18-8.523c0-.678.55-1.227 1.228-1.227h.546c.677 0 1.227.55 1.227 1.227V19h7.02c.679 0 1.228.55 1.228 1.227v.546c0 .678-.55 1.227-1.227 1.227H24v7.023c0 .678-.55 1.227-1.227 1.227h-.546c-.678 0-1.227-.55-1.227-1.227V22h-7.025c-.677 0-1.227-.55-1.227-1.227v-.546c0-.678.55-1.227 1.227-1.227H21v-7.023Z" clip-rule="evenodd"/>
+      </g>
+      <defs>
+        <filter id="filterPlus" width="45" height="45" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+          <feOffset dy="2"/>
+          <feGaussianBlur stdDeviation="3"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.21 0"/>
+          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_532_174"/>
+          <feBlend in="SourceGraphic" in2="effect1_dropShadow_532_174" result="shape"/>
+        </filter>
+      </defs>
     </symbol>
 
 

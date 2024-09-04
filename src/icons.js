@@ -1,3 +1,4 @@
+/* prettier-ignore */
 const icons = {
   bottles: { name: 'bottles', width: 24, height: 29, color: '#062648' },
   statistics: { name: 'statistics', width: 30, height: null, color: '#062648' },
@@ -20,7 +21,7 @@ const icons = {
   leftDir: { name: 'leftDir', width: 10, height: 18, color: '#4F4F4F' },
   rightDir: { name: 'rightDir', width: 10, height: 18, color: '#4F4F4F' },
   plus: { name: 'plus', width: 33, height: null, color: '#fff' },
-  plus_pc: { name: 'plus', width: 33, height: null, color: '#56483B' },
+  plus_pc: { name: 'plus', width: 61, height: null, color: '#56483B' },
   goBack: { name: 'goBack', width: 17, height: 24, color: '#2D7EB8' },
   goBack_darkBg: { name: 'goBack', width: 17, height: 24, color: '#FFFFFF' },
   navBottle: { name: 'navBottle', width: 32, height: 48, color: '#56483B80' },
