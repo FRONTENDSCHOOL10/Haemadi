@@ -54,10 +54,13 @@
   opacity: 0.9;
 }
 
+.disabled[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
 button {
   position: relative; /* ::after 가상 요소를 버튼 위에 배치하기 위해 필요 */
   overflow: hidden; /* ::after 요소가 버튼 밖으로 나가지 않도록 설정 */
-  font-size: 16px;
 }
 
 .default::after,
