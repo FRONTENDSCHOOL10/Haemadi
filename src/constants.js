@@ -21,3 +21,11 @@ export const EMOTION_LABEL = {
 };
 
 export const DESKTOP = { query: '(min-width: 640px)' };
+export const CONTENTS = ['music', 'quotes', 'book', 'video'];
+
+export const CONTENT_LABEL = {
+  music: '노래',
+  quotes: '명언',
+  book: '책',
+  video: '영상',
+};
