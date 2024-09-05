@@ -1,7 +1,19 @@
 
 .gnbContainer {
-  width: 290px;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 271px;
+}
+
+.iconWrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+}
+
+.iconText {
+  font-size: var(--text-xxs);
+  margin-top: 8px;
+  font-weight: 700;
 }

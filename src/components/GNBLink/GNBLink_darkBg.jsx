@@ -9,19 +9,19 @@ GNBLink_darkBg.propTypes = {
   initialSelected: string,
 };
 
-function GNBLink_darkBg({ initialSelected = 'navBottle' }) { // initialSelected 아이콘 변경 시 selected 상태 변경
+function GNBLink_darkBg({ initialSelected = 'navBottle' }) {
   const [selectedIcon, setSelectedIcon] = useState(initialSelected);
 
-  const handleIconClick = (event, iconName) => {
+  const handleIconClick = (iconName) => {
     setSelectedIcon(iconName);
   };
 
-  const bottleIcon = icons.navBottle;
-  const bottleIconSelected = icons.navBottle_selected;
-  const musicIcon = icons.navMusic;
-  const musicIconSelected = icons.navMusic_selected;
-  const personIcon = icons.navPerson;
-  const personIconSelected = icons.navPerson_selected;
+  const getIconProps = (iconName) => ({
+    ...(selectedIcon === iconName ? icons[`${iconName}_darkBg`] : icons[iconName]),
+    color: selectedIcon === iconName ? '#FBE517' : '#ffffff', //아이콘 색상에 따라 수정해주세요
+  });
+
+  const getTextColor = (iconName) => selectedIcon === iconName ? '#FBE517' : 'black'; //폰트 색상에 따라 수정해주세요
 
   return (
     <nav className={style.gnbContainer}>
@@ -33,11 +33,10 @@ function GNBLink_darkBg({ initialSelected = 'navBottle' }) { // initialSelected 
         }
         aria-label="플레이리스트로 이동하기"
       >
-        <SVGIcon
-          {...(selectedIcon === 'navMusic' ? musicIconSelected : musicIcon)}
-          color="#ffffff"
-          aria-hidden="true"
-        />
+        <div className={style.iconWrapper}>
+          <SVGIcon {...getIconProps('navMusic')} aria-hidden="true" />
+          <span className={style.iconText} style={{ color: getTextColor('navMusic') }}>플레이리스트</span>
+        </div>
       </NavLink>
       <NavLink
         to="/home"
@@ -47,11 +46,10 @@ function GNBLink_darkBg({ initialSelected = 'navBottle' }) { // initialSelected 
         }
         aria-label="메인 홈으로 이동하기"
       >
-        <SVGIcon
-          {...(selectedIcon === 'navBottle' ? bottleIconSelected : bottleIcon)}
-          color="#ffffff"
-          aria-hidden="true"
-        />
+        <div className={style.iconWrapper}>
+          <SVGIcon {...getIconProps('navBottle')} aria-hidden="true" />
+          <span className={style.iconText} style={{ color: getTextColor('navBottle') }}>홈</span>
+        </div>
       </NavLink>
       <NavLink
         to="/my"
@@ -61,14 +59,15 @@ function GNBLink_darkBg({ initialSelected = 'navBottle' }) { // initialSelected 
         }
         aria-label="내 정보로 이동하기"
       >
-        <SVGIcon
-          {...(selectedIcon === 'navPerson' ? personIconSelected : personIcon)}
-          color="#ffffff"
-          aria-hidden="true"
-        />
+        <div className={style.iconWrapper}>
+          <SVGIcon {...getIconProps('navPerson')} aria-hidden="true" />
+          <span className={style.iconText} style={{ color: getTextColor('navPerson') }}>내 정보</span>
+        </div>
       </NavLink>
     </nav>
   );
 }
 
 export default memo(GNBLink_darkBg);
+
+// 사용 시 <GNBLink_darkBg initialSelected='navBottle'/>로 써주세요~
