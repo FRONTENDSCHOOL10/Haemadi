@@ -1,15 +1,15 @@
-import style from './GNBLink.module.css';
+import style from './GNBLink_darkBg.module.css';
 import icons from '@/icons';
 import { memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { string } from 'prop-types';
 import SVGIcon from '../SVGIcon/SVGIcon';
 
-GNBLink.propTypes = {
+GNBLink_darkBg.propTypes = {
   initialSelected: string,
 };
 
-function GNBLink({ initialSelected = 'navBottle' }) { // initialSelected 아이콘 변경 시 selected 상태 변경
+function GNBLink_darkBg({ initialSelected = 'navBottle' }) { // initialSelected 아이콘 변경 시 selected 상태 변경
   const [selectedIcon, setSelectedIcon] = useState(initialSelected);
 
   const handleIconClick = (event, iconName) => {
@@ -35,6 +35,7 @@ function GNBLink({ initialSelected = 'navBottle' }) { // initialSelected 아이�
       >
         <SVGIcon
           {...(selectedIcon === 'navMusic' ? musicIconSelected : musicIcon)}
+          color="#ffffff"
           aria-hidden="true"
         />
       </NavLink>
@@ -48,6 +49,7 @@ function GNBLink({ initialSelected = 'navBottle' }) { // initialSelected 아이�
       >
         <SVGIcon
           {...(selectedIcon === 'navBottle' ? bottleIconSelected : bottleIcon)}
+          color="#ffffff"
           aria-hidden="true"
         />
       </NavLink>
@@ -61,6 +63,7 @@ function GNBLink({ initialSelected = 'navBottle' }) { // initialSelected 아이�
       >
         <SVGIcon
           {...(selectedIcon === 'navPerson' ? personIconSelected : personIcon)}
+          color="#ffffff"
           aria-hidden="true"
         />
       </NavLink>
@@ -68,7 +71,4 @@ function GNBLink({ initialSelected = 'navBottle' }) { // initialSelected 아이�
   );
 }
 
-export default memo(GNBLink);
-
-// 사용 시 <GNBLink initialSelected="navBottle" />로 사용하면 됩니다.
-//초기 아이콘 selected 상태 변경 시 12번줄 IconName도 같이 변경해야 합니다
+export default memo(GNBLink_darkBg);
