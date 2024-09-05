@@ -11,7 +11,13 @@ const PlusButton = forwardRef(function _PlusButton({ onClick }, ref) {
   const plusIcon = icons[`plus${desktop ? '_pc' : ''}`];
 
   return (
-    <button ref={ref} className={style.plusButton} onClick={onClick}>
+    <button
+      title="일기 작성하기"
+      aria-label="일기 작성하기"
+      ref={ref}
+      className={style.plusButton}
+      onClick={onClick}
+    >
       <SVGIcon {...plusIcon} />
     </button>
   );
