@@ -1,3 +1,5 @@
+import { emotionType } from '@/@types';
+
 const ENDPOINT = import.meta.env.VITE_PB_URL;
 const REQUEST_OPTIONS = {
   headers: {
@@ -5,6 +7,7 @@ const REQUEST_OPTIONS = {
   },
 };
 
+// 사용예시) createDiary({messag: 'asdf', emotion: 'sad', userId: 'nxorcbf2dujhxfu'})
 /** @type {(newDiary: { message: string, emotion: emotionType, userId: string, replyId?: string }) => Promise<any>} */
 export async function createDiary(newDiary) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records`;
@@ -29,6 +32,7 @@ export async function createDiary(newDiary) {
   return responseData;
 }
 
+// 사용예시) readDiaries('nxorcbf2dujhxfu')
 /** @type {(userId: string) => Promise<any>} */
 export async function readDiaries(userId) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records?filter=(userId='${userId}')&sort=created`;
@@ -46,9 +50,11 @@ export async function readDiaries(userId) {
   return responseData;
 }
 
-/** @type {(diaryId: string) => Promise<any>} */
-export async function readDiaryOne(diaryId) {
-  const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}`;
+// 사용예시) const data = await readDiaryOne('99wgwkwynupzi1u', 'replyId, userId');
+//         const { typeOfContent } = data.expand.replyId;
+/** @type {(diaryId: string, expandFields?: string) => Promise<any>} */
+export async function readDiaryOne(diaryId, expandFields) {
+  const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}${expandFields ? `?expand=${expandFields}` : ''}`;
   const response = await fetch(REQUEST_URL);
 
   if (!response.ok) {
@@ -63,7 +69,8 @@ export async function readDiaryOne(diaryId) {
   return responseData;
 }
 
-/** @type { (editDiary: { id: string, message?: string, emotion?: emotionType, userId?: string, replyId?: string }) => Promise<any>} */
+// 사용예시) updateDiary({id:'99wgwkwynupzi1u', emotion: 'angry'})
+/** @type { (editDiary: { id: string, message?: string, emotion?: emotionType, replyId?: string }) => Promise<any>} */
 export async function updateDiary(editDiary) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${editDiary.id}`;
   const body = JSON.stringify(editDiary);
@@ -86,6 +93,7 @@ export async function updateDiary(editDiary) {
   return responseData;
 }
 
+// 사용예시) deleteDiary('99wgwkwynupzi1u')
 /** @type {(diaryId: string) => Promise<any>} */
 export async function deleteDiary(diaryId) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}`;
