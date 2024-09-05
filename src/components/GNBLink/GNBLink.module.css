@@ -1,0 +1,18 @@
+
+.gnbContainer {
+  width: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gnbItem {
+}
+
+.gnbItem.active {
+  color: red; /* 예시 활성화 색상 */
+}
+
+.gnbItem.pending {
+  color: gray; /* 예시 대기 중 색상 */
+}
