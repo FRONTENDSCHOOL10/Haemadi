@@ -1,0 +1,42 @@
+.radioCard {
+  background-color: var(--white, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 127px;
+  height: 127px;
+  border-radius: 18px;
+  box-shadow: 1.881px 2.822px 10.348px 1.881px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+
+  span {
+    margin-top: 10px;
+    font-size: var(--text-xs, 14px);
+  }
+}
+
+.radioInput {
+  appearance: none;
+  position: absolute;
+}
+.radioInput:checked + .radioCard {
+  background-color: var(--primary, #2e7fb9);
+  color: #ffffff;
+}
+
+.radioInput:focus {
+  outline: none;
+}
+.radioInput:focus + .radioCard {
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
+}
+
+/* 
+브라우저 호환성 이슈로 사용하지 않고 useEffect에서 처리
+.radioCard:has(input[type='radio']:checked) {
+  background-color: #2d7eb9;
+  color: #ffffff;
+}
+*/
