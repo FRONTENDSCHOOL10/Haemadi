@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { number, string, oneOf, oneOfType } from 'prop-types';
 
 import styles from './OtherSettingPage.module.css';
@@ -28,26 +28,16 @@ const OtherSettingPageList = {
 };
 
 function OtherSettingPage({ type = 'announcement', navigateTo = '/error' }) {
-  const navigate = useNavigate();
-
   const iconStyle = icons[type];
 
-  const handleNavigation = () => {
-    navigate(navigateTo); // props로 받은 navigateTo 값으로 이동
-  };
-
   return (
-    <button
-      className={styles.settingButton}
-      type="button"
-      onClick={handleNavigation}
-    >
+    <Link className={styles.settingButton} to={navigateTo}>
       <div className={styles.settingTitle}>
         <SVGIcon {...iconStyle} />
         <span>{OtherSettingPageList[type]}</span>
       </div>
       <SVGIcon {...icons.nextArrow} />
-    </button>
+    </Link>
   );
 }
 
