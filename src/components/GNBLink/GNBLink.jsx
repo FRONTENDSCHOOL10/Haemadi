@@ -1,7 +1,6 @@
 import style from './GNBLink.module.css';
 import icons from '@/icons';
 import { memo, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { string } from 'prop-types';
 import SVGIcon from '../SVGIcon/SVGIcon';
 
@@ -9,14 +8,13 @@ GNBLink.propTypes = {
   initialSelected: string,
 };
 
-function GNBLink({ initialSelected = 'navBottle' }) {
+function GNBLink({ initialSelected = 'navMusic' }) {
   const [selectedIcon, setSelectedIcon] = useState(initialSelected);
 
   const handleIconClick = (iconName) => {
-    setSelectedIcon(iconName);
+    setSelectedIcon(iconName); // 아이콘 선택 상태 업데이트
   };
 
-  // 아이콘들을 가져옵니다
   const bottleIcon = icons.navBottle;
   const bottleIconSelected = icons.navBottle_selected;
   const musicIcon = icons.navMusic;
@@ -26,39 +24,30 @@ function GNBLink({ initialSelected = 'navBottle' }) {
 
   return (
     <nav className={style.gnbContainer}>
-      <NavLink
-        to="/bottle"
-        onClick={() => handleIconClick('navBottle')}
-        className={({ isActive, isPending }) => 
-          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
-        }
-      >
-        <SVGIcon
-          {...(selectedIcon === 'navBottle' ? bottleIconSelected : bottleIcon)}
-        />
-      </NavLink>
-      <NavLink
-        to="/music"
+      <div
         onClick={() => handleIconClick('navMusic')}
-        className={({ isActive, isPending }) => 
-          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
-        }
+        className={style.gnbItem}
       >
         <SVGIcon
           {...(selectedIcon === 'navMusic' ? musicIconSelected : musicIcon)}
         />
-      </NavLink>
-      <NavLink
-        to="/person"
+      </div>
+      <div
+        onClick={() => handleIconClick('navBottle')}
+        className={style.gnbItem}
+      >
+        <SVGIcon
+          {...(selectedIcon === 'navBottle' ? bottleIconSelected : bottleIcon)}
+        />
+      </div>
+      <div
         onClick={() => handleIconClick('navPerson')}
-        className={({ isActive, isPending }) => 
-          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
-        }
+        className={style.gnbItem}
       >
         <SVGIcon
           {...(selectedIcon === 'navPerson' ? personIconSelected : personIcon)}
         />
-      </NavLink>
+      </div>
     </nav>
   );
 }
