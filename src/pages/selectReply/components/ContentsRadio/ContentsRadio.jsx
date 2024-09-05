@@ -3,7 +3,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import { CONTENT_LABEL } from '@/constants';
 import icons from '@/icons';
 import { bool, func } from 'prop-types';
-import { memo, useEffect, useId, useState } from 'react';
+import { memo, useId } from 'react';
 import style from './ContentsRadio.module.css';
 
 ContentsRadio.propTypes = {
@@ -13,12 +13,8 @@ ContentsRadio.propTypes = {
 };
 
 function ContentsRadio({ content, selected, onSelect }) {
-  const [icon, setIcon] = useState(() => icons[content]);
+  const icon = icons[`${content}${selected ? '_selected' : ''}`];
   const radioInputId = useId();
-
-  useEffect(() => {
-    setIcon(icons[`${content}${selected ? '_selected' : ''}`]);
-  }, [content, selected]);
 
   const onChange = () => {
     onSelect(content);
