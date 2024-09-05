@@ -1,6 +1,7 @@
 import style from './GNBLink.module.css';
 import icons from '@/icons';
 import { memo, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { string } from 'prop-types';
 import SVGIcon from '../SVGIcon/SVGIcon';
 
@@ -11,7 +12,7 @@ GNBLink.propTypes = {
 function GNBLink({ initialSelected = 'navMusic' }) {
   const [selectedIcon, setSelectedIcon] = useState(initialSelected);
 
-  const handleIconClick = (iconName) => {
+  const handleIconClick = (event, iconName) => {
     setSelectedIcon(iconName); // 아이콘 선택 상태 업데이트
   };
 
@@ -24,30 +25,39 @@ function GNBLink({ initialSelected = 'navMusic' }) {
 
   return (
     <nav className={style.gnbContainer}>
-      <div
+      <NavLink
+        to="/music"
         onClick={() => handleIconClick('navMusic')}
-        className={style.gnbItem}
+        className={({ isActive, isPending }) => 
+          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
+        }
       >
         <SVGIcon
           {...(selectedIcon === 'navMusic' ? musicIconSelected : musicIcon)}
         />
-      </div>
-      <div
+      </NavLink>
+      <NavLink
+        to="/home"
         onClick={() => handleIconClick('navBottle')}
-        className={style.gnbItem}
+        className={({ isActive, isPending }) => 
+          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
+        }
       >
         <SVGIcon
           {...(selectedIcon === 'navBottle' ? bottleIconSelected : bottleIcon)}
         />
-      </div>
-      <div
+      </NavLink>
+      <NavLink
+        to="/my"
         onClick={() => handleIconClick('navPerson')}
-        className={style.gnbItem}
+        className={({ isActive, isPending }) => 
+          `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
+        }
       >
         <SVGIcon
           {...(selectedIcon === 'navPerson' ? personIconSelected : personIcon)}
         />
-      </div>
+      </NavLink>
     </nav>
   );
 }
