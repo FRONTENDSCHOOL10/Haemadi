@@ -15,7 +15,7 @@ OtherSettingPage.propTypes = {
     'information',
     'version',
   ]),
-  navigateTo: oneOfType([number, string]),
+  navigateTo: oneOfType([number, string]).isRequired,
 };
 
 const OtherSettingPageList = {
@@ -27,7 +27,7 @@ const OtherSettingPageList = {
   version: '버전정보(1.00)',
 };
 
-function OtherSettingPage({ type = 'announcement', navigateTo = -1 }) {
+function OtherSettingPage({ type = 'announcement', navigateTo }) {
   const navigate = useNavigate();
 
   const iconStyle = icons[type];
