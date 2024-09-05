@@ -46,7 +46,7 @@ function OtherSettingPage({ type = 'announcement', navigateTo = -1 }) {
         <SVGIcon {...iconStyle} />
         <span>{OtherSettingPageList[type]}</span>
       </div>
-      <SVGIcon {...icons.rightDir} />
+      <SVGIcon {...icons.nextArrow} />
     </button>
   );
 }

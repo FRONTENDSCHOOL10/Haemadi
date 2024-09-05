@@ -19,6 +19,7 @@ const icons = {
   camera: { name: 'camera', width: 39, height: 33, color: '#fff' },
   leftDir: { name: 'leftDir', width: 10, height: 18, color: '#4F4F4F' },
   rightDir: { name: 'rightDir', width: 10, height: 18, color: '#4F4F4F' },
+  nextArrow: {name: 'nextArrow', width: 9, height: 16, color: '#A7A7A7'},
   plus: { name: 'plus', width: 33, height: null, color: '#fff' },
   plus_pc: { name: 'plus', width: 33, height: null, color: '#56483B' },
   goBack: { name: 'goBack', width: 17, height: 24, color: '#2D7EB8' },
