@@ -1,18 +1,18 @@
+import { contentType } from '@/@types';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import { CONTENT_TYPE_LABEL, CONTENT_TYPES } from '@/constants';
+import { CONTENT_LABEL } from '@/constants';
 import icons from '@/icons';
-import { bool, func, oneOf } from 'prop-types';
-import { memo, useEffect, useState } from 'react';
-import style from './ContentTypeRadio.module.css';
-import { useId } from 'react';
+import { bool, func } from 'prop-types';
+import { memo, useEffect, useId, useState } from 'react';
+import style from './ContentsRadio.module.css';
 
-ContentTypeRadio.propTypes = {
-  contentType: oneOf(CONTENT_TYPES).isRequired,
+ContentsRadio.propTypes = {
+  contentType: contentType.isRequired,
   selected: bool.isRequired,
   onSelect: func,
 };
 
-function ContentTypeRadio({ contentType, selected, onSelect }) {
+function ContentsRadio({ contentType, selected, onSelect }) {
   const [content, setContent] = useState(() => icons[contentType]);
   const radioInputId = useId();
 
@@ -36,10 +36,10 @@ function ContentTypeRadio({ contentType, selected, onSelect }) {
       />
       <label className={style.radioCard} htmlFor={radioInputId}>
         <SVGIcon {...content} />
-        <span>{CONTENT_TYPE_LABEL[contentType]}</span>
+        <span>{CONTENT_LABEL[contentType]}</span>
       </label>
     </>
   );
 }
 
-export default memo(ContentTypeRadio);
+export default memo(ContentsRadio);

@@ -20,9 +20,9 @@ export const EMOTION_LABEL = {
   tired: '지침',
 };
 
-export const CONTENT_TYPES = ['music', 'quotes', 'book', 'video'];
+export const CONTENTS = ['music', 'quotes', 'book', 'video'];
 
-export const CONTENT_TYPE_LABEL = {
+export const CONTENT_LABEL = {
   music: '노래',
   quotes: '명언',
   book: '책',
