@@ -1,14 +1,15 @@
 .skipButton {
+  width: 70px;
+
   color: var(--white, #ffffff);
-  border-bottom: 1.5px solid var(--white, #ffffff);
   background-color: transparent;
 
   font-size: 17px;
   font-weight: 700;
   line-height: normal;
+  text-decoration: underline;
 }
 
 .skipButton_colored {
   color: #a5a5a5;
-  border-bottom: 1.5px solid #a5a5a5;
 }
