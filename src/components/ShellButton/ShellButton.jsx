@@ -1,10 +1,10 @@
 import { emotionType } from '@/@types';
+import { EMOTION_LABEL } from '@/constants';
 import icons from '@/icons';
 import { bool, func } from 'prop-types';
 import { memo, useState } from 'react';
 import SVGIcon from '../SVGIcon/SVGIcon';
 import style from './ShellButton.module.css';
-import { EMOTION_LABEL } from '@/constants';
 
 ShellButton.propTypes = {
   emotion: emotionType.isRequired,
@@ -13,42 +13,37 @@ ShellButton.propTypes = {
 };
 
 function ShellButton({ emotion, block = false, onClick }) {
-  // 캘린더 전용
-  if (block) {
-    const shell = icons[`shell_${emotion}_block`];
+  const [hovered, setHovered] = useState(false);
 
-    return (
-      <button
-        aria-label={`일기 보기 (${EMOTION_LABEL[emotion]})`}
-        type="button"
-        className={style.shellButton}
-        onClick={onClick}
-      >
-        <SVGIcon {...shell} />
-      </button>
-    );
-  }
-  // 일기쓰기 버튼
-  else {
-    const [hovered, setHovered] = useState(false);
-    const shell = icons[`shell_${emotion}${hovered ? '_hovered' : ''}`];
+  // 캘린더 전용 / 일기 쓰기
+  const shell = block
+    ? icons[`shell_${emotion}_block`]
+    : icons[`shell_${emotion}${hovered ? '_hovered' : ''}`];
 
-    const handleMouseEnter = () => setHovered(true);
-    const handleMouseLeave = () => setHovered(false);
+  const handleMouseEnter = () => setHovered(true);
+  const handleMouseLeave = () => setHovered(false);
 
-    return (
-      <button
-        aria-label={`일기 작성하기 (${EMOTION_LABEL[emotion]})`}
-        type="button"
-        className={style.shellButton}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={onClick}
-      >
-        <SVGIcon {...shell} />
-      </button>
-    );
-  }
+  return (
+    <button
+      title={
+        block
+          ? `일기 보기 (${EMOTION_LABEL[emotion]})`
+          : `일기 작성하기 (${EMOTION_LABEL[emotion]})`
+      }
+      aria-label={
+        block
+          ? `일기 보기 (${EMOTION_LABEL[emotion]})`
+          : `일기 작성하기 (${EMOTION_LABEL[emotion]})`
+      }
+      type="button"
+      className={style.shellButton}
+      onMouseEnter={block ? undefined : handleMouseEnter}
+      onMouseLeave={block ? undefined : handleMouseLeave}
+      onClick={onClick}
+    >
+      <SVGIcon {...shell} />
+    </button>
+  );
 }
 
 export default memo(ShellButton);

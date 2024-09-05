@@ -1,4 +1,3 @@
-import style from './SVGIcon.module.css';
 import { number, string } from 'prop-types';
 import { memo } from 'react';
 import icons from '/sprites.svg';
@@ -10,8 +9,13 @@ SVGIcon.propTypes = {
   color: string,
 };
 
-function SVGIcon({ name, width = 33, height, color }) {
-  height = height ? height : width;
+function SVGIcon({
+  name,
+  width = 33,
+  height: initialHeight,
+  color = '#062648',
+}) {
+  const height = initialHeight ?? width;
   return (
     <svg
       width={width}
