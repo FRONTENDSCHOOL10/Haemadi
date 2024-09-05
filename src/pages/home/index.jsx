@@ -1,38 +1,49 @@
 import ShellButton from '@/components/ShellButton/ShellButton';
-import { EMOTION_LABEL, EMOTIONS } from '@/constants';
+import { DESKTOP, EMOTION_LABEL, EMOTIONS } from '@/constants';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import PlusButton from './components/PlusButton/PlusButton';
 import style from './Home.module.css';
 
+// PlusButton에 애니메이션을 주기 위함
 const MotionPlusButton = motion(PlusButton);
 
 function Home() {
+  const desktop = useMediaQuery(DESKTOP);
   const [spreadShells, setSpreadShells] = useState(false);
 
-  const handleClickPlus = () => {
-    setSpreadShells(!spreadShells);
-  };
+  const handleClickPlus = useCallback(() => {
+    setSpreadShells((prevSpreadShells) => !prevSpreadShells);
+  }, []);
 
+  // 스타일 수정 필요
   return (
-    <div>
+    <div className={style.pageContainer}>
       <MotionPlusButton
         onClick={handleClickPlus}
-        animate={{ rotate: spreadShells ? 45 : 0 }}
+        animate={
+          spreadShells ? { rotate: 45, translateY: '-90px' } : { rotate: 0 }
+        }
         transition={{ duration: 0.3 }}
       />
 
-      <ul
+      <motion.ul
         className={style.shellList}
-        style={spreadShells ? {} : { display: 'none' }}
+        animate={
+          spreadShells
+            ? { opacity: 1, display: 'flex' }
+            : { opacity: 0, display: 'none' }
+        }
+        transition={{ duration: 0.3 }}
       >
         {EMOTIONS.map((emotion, index) => (
           <li key={index}>
             <ShellButton emotion={emotion} />
-            <span>{EMOTION_LABEL[emotion]}</span>
+            {desktop && <span>{EMOTION_LABEL[emotion]}</span>}
           </li>
         ))}
-      </ul>
+      </motion.ul>
     </div>
   );
 }
