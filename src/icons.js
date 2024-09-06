@@ -22,7 +22,7 @@ const icons = {
   rightDir: { name: 'rightDir', width: 10, height: 18, color: '#4F4F4F' },
   nextArrow: {name: 'nextArrow', width: 9, height: 16, color: '#A7A7A7'},
   plus: { name: 'plus', width: 33, height: null, color: '#fff' },
-  plus_pc: { name: 'plus', width: 33, height: null, color: '#56483B' },
+  plus_pc: { name: 'plus', width: 61, height: null, color: '#56483B' },
   goBack: { name: 'goBack', width: 17, height: 24, color: '#2D7EB8' },
   goBack_darkBg: { name: 'goBack', width: 17, height: 24, color: '#FFFFFF' },
   navBottle: { name: 'navBottle', width: 32, height: 48, color: '#56483B80' },
