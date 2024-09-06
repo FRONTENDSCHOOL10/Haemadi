@@ -41,6 +41,8 @@ function KeywordList() {
             <input
               className={styles['appearance-none']}
               type="checkbox"
+              name="KeywordsOfInterest"
+              value={element}
               id={uniqueId}
               checked={isChecked}
               onChange={() => handleCheckboxChange(element)}
