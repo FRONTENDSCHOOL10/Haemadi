@@ -9,10 +9,10 @@ GNBLink.propTypes = {
   GNBLink_darkBg: PropTypes.bool,
 };
 
-function GNBLink({ GNBLink_darkBg = false }) {
-  const desktop = useMediaQuery({ query: '(min-width: 640px)' });
+function GNBLink({ GNBLink_darkBg = true }) { //dark 모드 활성화 시 = true / 비활성화 시 = false로 사용 가능
+  const Desktop = useMediaQuery({ query: '(min-width: 640px)' });
 
-  const [activeLink, setActiveLink] = useState(null); // 현재 선택된 링크를 관리
+  const [activeLink, setActiveLink] = useState(null);
 
   const navItems = [
     {
@@ -41,26 +41,25 @@ function GNBLink({ GNBLink_darkBg = false }) {
   return (
     <nav
       className={style.gnbContainer}
-      style={{ flexDirection: desktop ? 'row' : 'column' }}
+      style={{ flexDirection: Desktop ? 'row' : 'column' }}
     >
       {navItems.map((item, index) => (
         <div
           key={item.to}
-          role="button" // div 요소에 버튼 역할 부여
+          role="button"
           className={`${style.gnbItem} ${activeLink === index ? style.active : ''}`}
           aria-label={item.ariaLabel}
-          onClick={() => setActiveLink(index)} // 클릭 시 활성화된 링크 인덱스 설정
+          onClick={() => setActiveLink(index)}
           style={{ cursor: 'pointer' }}
         >
           <div className={style.iconWrapper}>
             <SVGIcon {...(activeLink === index ? item.selectedIcon : item.icon)} />
-            {/* 텍스트는 640px 미만일 때만 표시 */}
-            {!desktop && (
+            {!Desktop && (
               <span
                 className={style.iconText}
-                style={{ color: activeLink === index ? '#FBE517' : '#56483B' }}
+                style={{ color: activeLink === index ? '#FBE517' : '#fff' }}
               >
-                {item.label} {/* 텍스트 출력 */}
+                {item.label}
               </span>
             )}
           </div>
