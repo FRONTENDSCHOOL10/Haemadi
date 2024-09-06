@@ -5,6 +5,7 @@ import GNBLink from '@/components/GNBLink/GNBLink';
 function RootLayout() {
   return (
     <div className={style.component}>
+      <GNBLink />
       <Outlet />
     </div>
   );
