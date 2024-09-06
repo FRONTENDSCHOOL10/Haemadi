@@ -13,7 +13,7 @@ function InterestBadge({ list }) {
       {list.length > 0 ? (
         <ul className={styles.keywordList}>
           {list.map((element, index) => (
-            <li className={styles.keyword} key={index}>
+            <li className={styles.keyword} key={`${element}-${index}`}>
               {element}
             </li>
           ))}
