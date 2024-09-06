@@ -34,8 +34,8 @@ const icons = {
   navPerson: { name: 'navPerson', width: 39, height: 41, color: '#56483B80' },
   navPerson_selected: { name: 'navPerson', width: 39, height: 41, color: '#56483B' },
   navPerson_darkBg: { name: 'navPerson', width: 39, height: 41, color: '#FBE517' },
-  glassBottle: { name: 'glassBottle', width: 217, height: 349, color: '#4651B4' },
-  glassBottle_selected: { name: 'glassBottle', width: 217, height: 349, color: '#6F94EA' },
+  glassBottle: { name: 'glassBottle', width: 168, height: 299, color: '#4651B4'},
+  glassBottle_selected: { name: 'glassBottle', width: 168, height: 299, color: '#6F94EA'},
   setting: { name: 'setting', width: 46, height: 44, color: '#062648' },
   check: { name: 'check', width: 27, height: 20, color: '#2D7EB8' },
 
