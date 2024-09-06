@@ -46,9 +46,6 @@ function GNBLink({ GNBLink_darkBg = false }) { //darkBg활성화 시 true, 비�
         <NavLink
           key={item.to}
           to={item.to}
-          className={({ isActive, isPending }) =>
-            `${style.gnbItem} ${isPending ? style.pending : isActive ? style.active : ''}`
-          }
           aria-label={item.ariaLabel}
         >
           {({ isActive }) => (
@@ -60,7 +57,7 @@ function GNBLink({ GNBLink_darkBg = false }) { //darkBg활성화 시 true, 비�
                   className={style.iconText}
                   style={{ color: isActive ? '#FBE517' : '#fff' }} //텍스트 컬러 변경은 여기입니다
                 >
-                  {item.label} {/* 텍스트 출력 */}
+                  {item.label}
                 </span>
               )}
             </div>
