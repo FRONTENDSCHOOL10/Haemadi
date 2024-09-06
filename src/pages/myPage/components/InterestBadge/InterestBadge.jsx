@@ -1,14 +1,28 @@
 import { memo } from 'react';
+import { arrayOf, string } from 'prop-types';
+
 import styles from './InterestBadge.module.css';
 
+InterestBadge.propTypes = {
+  list: arrayOf(string).isRequired,
+};
 
-function InterestBadge({list}) {
-
+function InterestBadge({ list }) {
   return (
-   {list.map((element)=>{
-
-   })}
+    <>
+      {list.length > 0 ? (
+        <ul className={styles.keywordList}>
+          {list.map((element, index) => (
+            <li className={styles.keyword} key={index}>
+              {element}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <span className={styles.nothing}>관심사가 없습니다.</span>
+      )}
+    </>
   );
-}s
+}
 
 export default memo(InterestBadge);
