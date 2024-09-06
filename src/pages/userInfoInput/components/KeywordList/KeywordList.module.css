@@ -22,7 +22,7 @@ li {
   border-radius: 37px;
 
   color: var(--secondary, #1771b2);
-  font-size: 14px;
+  font-size: var(--text-xs, 14px);
   font-weight: 700;
   line-height: normal;
 }
