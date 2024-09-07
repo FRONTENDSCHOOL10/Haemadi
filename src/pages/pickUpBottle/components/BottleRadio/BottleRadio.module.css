@@ -4,6 +4,7 @@
   overflow: visible;
 
   span {
+    margin-top: 15px;
     color: var(--white, #fff);
     font-size: var(--text-l, 20px);
   }
