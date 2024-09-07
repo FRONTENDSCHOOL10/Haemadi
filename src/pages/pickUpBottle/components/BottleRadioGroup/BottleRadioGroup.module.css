@@ -9,16 +9,17 @@
 }
 
 .swiperButton {
+  background-color: transparent;
   position: absolute;
   top: 42%;
-  cursor: pointer;
-  background-color: transparent;
+  padding: 24px;
   z-index: 10;
+  cursor: pointer;
 }
 
 .swiperButtonPrev {
-  left: 24px;
+  left: 0;
 }
 .swiperButtonNext {
-  right: 24px;
+  right: 0;
 }
