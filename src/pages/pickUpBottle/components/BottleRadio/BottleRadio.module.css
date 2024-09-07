@@ -2,6 +2,11 @@
   display: flex;
   flex-flow: column nowrap;
   overflow: visible;
+
+  span {
+    color: var(--white, #fff);
+    font-size: var(--text-l, 20px);
+  }
 }
 
 .radioInput {

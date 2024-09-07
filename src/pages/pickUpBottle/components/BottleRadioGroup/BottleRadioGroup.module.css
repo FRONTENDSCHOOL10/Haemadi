@@ -3,10 +3,8 @@
   gap: 20px;
 
   li {
-    color: var(--white, #fff);
     display: flex;
     flex-flow: column nowrap;
-    font-size: var(--text-l, 20px);
   }
 }
 
