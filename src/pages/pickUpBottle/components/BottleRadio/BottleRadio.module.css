@@ -1,0 +1,24 @@
+.radioCard {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: visible;
+}
+
+.radioInput {
+  appearance: none;
+  position: absolute;
+}
+
+.radioInput:focus {
+  outline: none;
+}
+.radioInput:focus + .radioCard {
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
+}
+
+@media (min-width: 960px) {
+  .radioIcon {
+    filter: drop-shadow(-11px -1px 24.1px rgba(255, 255, 255, 0.3));
+  }
+}
