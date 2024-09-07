@@ -36,8 +36,11 @@ const icons = {
   navPerson_darkBg: { name: 'navPerson', width: 39, height: 41, color: '#FBE517' },
   glassBottle: { name: 'glassBottle', width: 168, height: 299, color: '#4651B4'},
   glassBottle_selected: { name: 'glassBottle', width: 168, height: 299, color: '#6F94EA'},
+  glassBottle_mobile: { name: 'glassBottle', width: 148, height: 264, color: '#2A348E'},
   setting: { name: 'setting', width: 46, height: 44, color: '#062648' },
   check: { name: 'check', width: 27, height: 20, color: '#2D7EB8' },
+  leftArrow: { name: 'leftArrow', width: 25, height: 42, color: '#ffffff' },
+  rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
 
   shell_angry: { name: 'shell_angry', width: 33, height: null, color: null },
   shell_glad: { name: 'shell_glad', width: 33, height: null, color: null },

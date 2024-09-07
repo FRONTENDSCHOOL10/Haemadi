@@ -649,5 +649,17 @@
     </symbol>
 
 
+    <symbol id="leftArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
+      <path fill="currentColor" d="M23.349 4.535A2.5 2.5 0 1 0 19.813 1l3.536 3.535ZM19.813 1 2 18.813l3.536 3.536L23.349 4.535 19.813 1Z"/>
+      <path fill="currentColor" d="M20.465 40.786A2.5 2.5 0 0 0 24 37.25l-3.535 3.536ZM24 37.25 3.782 17.032.246 20.567l20.218 20.219L24 37.25Z"/>
+    </symbol>
+
+    
+    <symbol id="rightArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
+      <path fill="currentColor" d="M1.651 37.715a2.5 2.5 0 1 0 3.536 3.535L1.65 37.715Zm3.536 3.535L23 23.437 19.464 19.9 1.651 37.715l3.536 3.535Z"/>
+      <path fill="currentColor" d="M4.535 1.464A2.5 2.5 0 0 0 1 5l3.535-3.536ZM1 5l20.218 20.218 3.536-3.536L4.535 1.464 1 5Z"/>
+    </symbol>
+
+
   </defs>
 </svg>
