@@ -38,6 +38,7 @@ const icons = {
   glassBottle_selected: { name: 'glassBottle', width: 217, height: 349, color: '#6F94EA' },
   setting: { name: 'setting', width: 46, height: 44, color: '#062648' },
   check: { name: 'check', width: 27, height: 20, color: '#2D7EB8' },
+  musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
 
   shell_angry: { name: 'shell_angry', width: 33, height: null, color: null },
   shell_glad: { name: 'shell_glad', width: 33, height: null, color: null },

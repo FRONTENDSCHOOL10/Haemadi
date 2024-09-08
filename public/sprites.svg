@@ -98,6 +98,29 @@
     </symbol>
 
 
+    <symbol id="musicPlay" width="50" height="50" fill="none" viewBox="0 -6 50 50">
+      <g filter="url(#filtermusicPlay)">
+        <circle cx="25" cy="23" r="19" fill="white"/>
+        <circle cx="25" cy="23" r="18.5" stroke="#1771B2"/>
+      </g>
+      <path d="M21 30.9282L33 24L21 17.0718L21 30.9282Z" fill="#1771B2" stroke="#1771B2"/>
+      <defs>
+        <filter id="filtermusicPlay" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dy="2"/>
+          <feGaussianBlur stdDeviation="3"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0"/>
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_106_717"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_106_717" result="shape"/>
+        </filter>
+      </defs>
+    </symbol>
+
+    
+
+
     <symbol id="camera" width="39" height="33" fill="none" viewBox="0 0 39 33">
       <path fill="currentColor" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
         stroke-width="2"
