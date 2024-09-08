@@ -1,0 +1,35 @@
+.musicReply {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+
+  width: 324px;
+  height: 74px;
+
+  border: 1px solid var(--secondary, #1771b2);
+  border-radius: 37px;
+
+  .songInfo {
+    display: flex;
+    gap: 14px;
+  }
+
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: 999px;
+  }
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    line-height: normal;
+  }
+
+  button {
+    background-color: transparent;
+  }
+}
