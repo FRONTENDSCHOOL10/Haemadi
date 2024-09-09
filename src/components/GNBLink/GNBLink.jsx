@@ -7,31 +7,31 @@ import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types'; 
 
 GNBLink.propTypes = {
-  GNBLink_darkBg: PropTypes.bool,
+  darkBg: PropTypes.bool,
 };
 
-function GNBLink({ GNBLink_darkBg = false }) { //darkBg활성화 시 true, 비활성화 시 false로 사용
+function GNBLink({ darkBg = false }) {
   const desktop = useMediaQuery({ query: '(min-width: 640px)' });
 
   const navItems = [
     {
       to: '/music',
-      icon: GNBLink_darkBg ? icons.navMusic_darkBg : icons.navMusic,
-      selectedIcon: GNBLink_darkBg ? icons.navMusic_darkBg : icons.navMusic_selected,
+      icon: darkBg ? icons.navMusic_darkBg : icons.navMusic,
+      selectedIcon: darkBg ? icons.navMusic_darkBg_selected : icons.navMusic_selected,
       ariaLabel: '플레이리스트로 이동하기',
       label: '플레이리스트',
     },
     {
       to: '/home',
-      icon: GNBLink_darkBg ? icons.navBottle_darkBg : icons.navBottle,
-      selectedIcon: GNBLink_darkBg ? icons.navBottle_darkBg : icons.navBottle_selected,
+      icon: darkBg ? icons.navBottle_darkBg : icons.navBottle,
+      selectedIcon: darkBg ? icons.navBottle_darkBg_selected : icons.navBottle_selected,
       ariaLabel: '메인 홈으로 이동하기',
       label: '메인 홈',
     },
     {
       to: '/my',
-      icon: GNBLink_darkBg ? icons.navPerson_darkBg : icons.navPerson,
-      selectedIcon: GNBLink_darkBg ? icons.navPerson_darkBg : icons.navPerson_selected,
+      icon: darkBg ? icons.navPerson_darkBg : icons.navPerson,
+      selectedIcon: darkBg ? icons.navPerson_darkBg_selected : icons.navPerson_selected,
       ariaLabel: '내 정보로 이동하기',
       label: '내 정보',
     },
@@ -42,28 +42,31 @@ function GNBLink({ GNBLink_darkBg = false }) { //darkBg활성화 시 true, 비�
       className={style.gnbContainer}
       style={{ flexDirection: desktop ? 'row' : 'column' }}
     >
-      {navItems.map((item) => (
-        <NavLink
-          key={item.to}
-          to={item.to}
-          aria-label={item.ariaLabel}
-        >
-          {({ isActive }) => (
-            <div className={style.iconWrapper}>
-              <SVGIcon {...(isActive ? item.selectedIcon : item.icon)} />
-              {/* 텍스트는 640px 미만일 때만 표시 */}
-              {!desktop && (
-                <span
-                  className={style.iconText}
-                  style={{ color: isActive ? '#FBE517' : '#fff' }} //텍스트 컬러 변경은 여기입니다
-                >
-                  {item.label}
-                </span>
+      <ul className={style.iconList}>
+        {navItems.map((item) => (
+          <li key={item.to}>
+            <NavLink
+              to={item.to}
+              aria-label={item.ariaLabel}
+              className={({ isActive }) =>
+                `${style.iconWrapper} ${isActive ? style.active : ''}`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <SVGIcon {...(isActive ? item.selectedIcon : item.icon)} />
+                  <span
+                    className={style.iconText}
+                    style={{ color: isActive ? '#FBE517' : '#56483B' }} // 텍스트 컬러 변경은 여기입니다
+                  >
+                    {item.label}
+                  </span>
+                </>
               )}
-            </div>
-          )}
-        </NavLink>
-      ))}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }
