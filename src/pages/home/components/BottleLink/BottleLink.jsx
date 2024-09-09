@@ -11,23 +11,28 @@ BottleLink.propTypes = {
 
 function BottleLink({ type }) {
   const desktop = useMediaStore((store) => store.desktop);
-  let bottleImg, linkLabel, linkTo, imgStyle;
 
-  if (type === 'pickUpBottle') {
-    linkTo = '/pick-up-bottle';
-    linkLabel = '유리병 건지기 (답장할 일기 선택)';
-    bottleImg = bottleLink_pickUp;
-    imgStyle = desktop
-      ? { width: '182px', height: '102px' }
-      : { width: '130px', height: '73px' };
-  } else if (type === 'mailBox') {
-    linkTo = '/mail-box';
-    linkLabel = '유리병 편지함 (받은 답장 확인)';
-    bottleImg = bottleLink_mailBox;
-    imgStyle = desktop
-      ? { width: '283px', height: '172px' }
-      : { width: '171px', height: '104px' };
-  }
+  const typeConfigs = {
+    pickUpBottle: {
+      linkTo: '/pick-up-bottle',
+      linkLabel: '유리병 건지기 (답장할 일기 선택)',
+      bottleImg: bottleLink_pickUp,
+      desktopSize: { width: '182px', height: '102px' },
+      mobileSize: { width: '130px', height: '73px' },
+    },
+    mailBox: {
+      linkTo: '/mail-box',
+      linkLabel: '유리병 편지함 (받은 답장 확인)',
+      bottleImg: bottleLink_mailBox,
+      desktopSize: { width: '283px', height: '172px' },
+      mobileSize: { width: '171px', height: '104px' },
+    },
+  };
+
+  const { linkTo, linkLabel, bottleImg, desktopSize, mobileSize } =
+    typeConfigs[type];
+
+  const imgStyle = desktop ? desktopSize : mobileSize;
 
   return (
     <>
