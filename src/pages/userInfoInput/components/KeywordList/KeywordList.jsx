@@ -1,19 +1,7 @@
 import { memo, useId, useState } from 'react';
-import styles from './KeywordList.module.css';
 
-const keywords = [
-  '💓 사랑',
-  '👊🏻 우정',
-  '👨‍👩‍👦‍👦 가정',
-  '📚 학업',
-  '🏫 학교',
-  '💪🏻 건강',
-  '📝 취업',
-  '🏢 직장',
-  '💵 돈',
-  '😴 수면',
-  '😮‍💨 자존감',
-];
+import styles from './KeywordList.module.css';
+import { INTERESTS_KEYWORDS } from '@/constants';
 
 function KeywordList() {
   const [selectedKeywords, setSelectedKeywords] = useState([]);
@@ -32,7 +20,7 @@ function KeywordList() {
 
   return (
     <ul className={styles.keywordList}>
-      {keywords.map((element, index) => {
+      {INTERESTS_KEYWORDS.map((element, index) => {
         const uniqueId = useId();
         const isChecked = selectedKeywords.includes(element);
 
