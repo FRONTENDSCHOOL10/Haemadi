@@ -3,7 +3,7 @@ import icons from '@/icons';
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import SVGIcon from '../SVGIcon/SVGIcon';
-import { useMideaStore } from 'react-responsive';
+import { useMediaStore } from '@/stores/mediaStore';
 import PropTypes from 'prop-types'; 
 
 GNBLink.propTypes = {
@@ -11,7 +11,7 @@ GNBLink.propTypes = {
 };
 
 function GNBLink({ darkBg = false }) {
-  const desktop = useMideaStore(store => store.desktop);
+  const desktop = useMediaStore(store => store.desktop);
 
   const navItems = [
     {
