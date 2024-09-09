@@ -1,0 +1,25 @@
+.groupWrapper {
+  display: flex;
+  gap: 20px;
+
+  li {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
+.swiperButton {
+  background-color: transparent;
+  position: absolute;
+  top: 42%;
+  padding: 24px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.swiperButtonPrev {
+  left: 0;
+}
+.swiperButtonNext {
+  right: 0;
+}

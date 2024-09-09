@@ -98,6 +98,29 @@
     </symbol>
 
 
+    <symbol id="musicPlay" width="50" height="50" fill="none" viewBox="0 -6 50 50">
+      <g filter="url(#filtermusicPlay)">
+        <circle cx="25" cy="23" r="19" fill="white"/>
+        <circle cx="25" cy="23" r="18.5" stroke="#1771B2"/>
+      </g>
+      <path d="M21 30.9282L33 24L21 17.0718L21 30.9282Z" fill="#1771B2" stroke="#1771B2"/>
+      <defs>
+        <filter id="filtermusicPlay" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset dy="2"/>
+          <feGaussianBlur stdDeviation="3"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0"/>
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_106_717"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_106_717" result="shape"/>
+        </filter>
+      </defs>
+    </symbol>
+
+    
+
+
     <symbol id="camera" width="39" height="33" fill="none" viewBox="0 0 39 33">
       <path fill="currentColor" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
         stroke-width="2"
@@ -187,44 +210,33 @@
     </symbol>
 
 
-    <symbol id="glassBottle" width="217" height="349" fill="none" viewBox="0 0 217 349">
+    <symbol id="glassBottle" width="168" height="299" fill="none" viewBox="0 0 168 299">
       <g filter="url(#filterGlassBottle)">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M162.544 39.51a8.488 8.488 0 0 0-7.744 5.354l-.859 2.166c-1.467 3.697-.149 7.808 2.952 10.02-10.826 24.444-28.565 62.721-34.168 64.303-21.278 5.829-33.557 16.745-40.544 34.55-4.272 10.91-20.104 49.352-33.304 81.402l-.002.004-.001.004a60683.74 60683.74 0 0 0-7.978 19.376c-4.658 11.445-9.421 31.051 3.176 45.677l.847.847c3.281 3.392 7.092 6.147 11.22 8.373 5.365 2.723 12.239 5.824 16.082 6.49 3.647 1.878 9.425 3.847 14.251 5.244 4.449 1.272 9.214 1.802 13.874 1.59h1.165c19.169-1.908 29.125-19.496 33.573-31.045 4.092-10.683 8.947-23.385 13.842-36.193 10.689-27.965 21.572-56.438 25.131-65.522 6.99-17.8 5.614-34.117-5.93-52.976-3.013-4.951 10.199-44.844 19.041-70.079 3.856.64 7.77-1.463 9.269-5.24l.86-2.168a8.464 8.464 0 0 0-1.28-8.441l6.845-8.762c1.273-1.589.849-4.026-.848-4.661l-17.076-6.78v-.107a2.368 2.368 0 0 0-.821-.157l-16.68-6.623c-1.697-.636-3.712.742-3.924 2.86l-.969 10.494Z"
-          clip-rule="evenodd" />
+        <path fill="currentColor" fill-rule="evenodd" d="M126.544 13.51a8.488 8.488 0 0 0-7.744 5.353l-.859 2.167c-1.467 3.697-.149 7.808 2.952 10.02-10.826 24.444-28.565 62.721-34.168 64.303-21.278 5.829-33.557 16.745-40.544 34.55-4.272 10.91-20.104 49.351-33.304 81.402l-.002.004-.001.004a60683.74 60683.74 0 0 0-7.978 19.376c-4.658 11.445-9.421 31.051 3.176 45.677l.847.847c3.281 3.392 7.092 6.147 11.22 8.373 5.365 2.723 12.239 5.824 16.082 6.49 3.648 1.878 9.425 3.847 14.251 5.244 4.448 1.272 9.214 1.802 13.874 1.59h1.165c19.17-1.908 29.125-19.496 33.573-31.045 4.092-10.683 8.947-23.385 13.842-36.193 10.689-27.965 21.572-56.438 25.131-65.522 6.99-17.8 5.614-34.117-5.93-52.976-3.013-4.951 10.199-44.844 19.041-70.079 3.856.64 7.77-1.463 9.269-5.24l.86-2.168a8.464 8.464 0 0 0-1.28-8.441l6.845-8.762c1.273-1.589.849-4.026-.848-4.661l-17.076-6.78v-.107a2.367 2.367 0 0 0-.821-.157L131.437.156c-1.697-.636-3.712.742-3.924 2.86l-.969 10.494Z" clip-rule="evenodd"/>
       </g>
       <defs>
-        <filter id="filterGlassBottle" width="215.802" height="347.155" x=".9" y=".9"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="-11" dy="-1" />
-          <feGaussianBlur stdDeviation="12.05" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
-          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_285_712" />
-          <feBlend in="SourceGraphic" in2="effect1_dropShadow_285_712" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="5" dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend in2="shape" result="effect2_innerShadow_285_712" />
+        <filter id="filterGlassBottle" width="171.602" height="302.955" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+          <feOffset dx="5" dy="4"/>
+          <feGaussianBlur stdDeviation="2"/>
+          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+          <feBlend in2="shape" result="effect1_innerShadow_285_712"/>
         </filter>
       </defs>
     </symbol>
 
 
     <symbol id="setting" width="46" height="44" fill="none" viewBox="0 0 46 44">
-      <mask id="a" width="46" height="44" x="0" y="0" maskUnits="userSpaceOnUse"
+      <mask id="maskSetting" width="46" height="44" x="0" y="0" maskUnits="userSpaceOnUse"
         style="mask-type:luminance">
         <path fill="#ffffff"
           d="M16.181 43.554a22.65 22.65 0 0 1-9.85-6.008A6.797 6.797 0 0 0 .46 26.4 22.758 22.758 0 0 1 0 21.837c0-2.367.363-4.651 1.038-6.797h.095a6.796 6.796 0 0 0 6.1-9.798A22.62 22.62 0 0 1 16.598 0a6.797 6.797 0 0 0 9.611 2.71A6.797 6.797 0 0 0 28.715 0a22.62 22.62 0 0 1 9.365 5.242 6.797 6.797 0 0 0 6.195 9.798c.69 2.2 1.04 4.492 1.038 6.797 0 1.564-.16 3.09-.46 4.566a6.797 6.797 0 0 0-5.87 11.144 22.65 22.65 0 0 1-9.852 6.007 6.8 6.8 0 0 0-12.95 0Z" />
         <path fill="#000000" d="M22.656 29.768a7.93 7.93 0 1 0 0-15.86 7.93 7.93 0 0 0 0 15.86Z" />
       </mask>
-      <g mask="url(#a)">
+      <g mask="url(#maskSetting)">
         <path fill="#062648" d="M-4.537-5.347H49.84v54.375H-4.538V-5.347Z" />
       </g>
     </symbol>
@@ -657,6 +669,18 @@
         d="M13.624 16.602a5.29 5.29 0 0 1 .499-1.289m4.043-2.586c.3-.045.748-.112 1.37-.051" />
       <path fill="#000" fill-opacity=".4"
         d="M21.599 32.104C19.932 34.4 18 31.758 18 30.025c-7.401 0-11.479-.866-12.85-1.559C2.583 27.427.013 24.83 1.555 22.75c-3.084-4.157-.856-6.755.514-7.795C.835 10.798 3.953 8.2 5.666 7.68c1.233-4.988 5.825-5.023 7.71-4.677C14.916-.634 18.171.232 19.542.925c2.878-2.079 5.653-.173 6.681 1.04 6.168-.52 5.424 10.05 4.626 12.47-.514 1.56-1.028 3.638-1.028 4.678.857 0 2.502.383 3.084 1.559.514 1.039-1.2 2.251-2.056 2.598-5.08 3.082-7.315 6.163-9.186 8.743l-.065.09Z" />
+    </symbol>
+
+
+    <symbol id="leftArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
+      <path fill="currentColor" d="M23.349 4.535A2.5 2.5 0 1 0 19.813 1l3.536 3.535ZM19.813 1 2 18.813l3.536 3.536L23.349 4.535 19.813 1Z"/>
+      <path fill="currentColor" d="M20.465 40.786A2.5 2.5 0 0 0 24 37.25l-3.535 3.536ZM24 37.25 3.782 17.032.246 20.567l20.218 20.219L24 37.25Z"/>
+    </symbol>
+
+    
+    <symbol id="rightArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
+      <path fill="currentColor" d="M1.651 37.715a2.5 2.5 0 1 0 3.536 3.535L1.65 37.715Zm3.536 3.535L23 23.437 19.464 19.9 1.651 37.715l3.536 3.535Z"/>
+      <path fill="currentColor" d="M4.535 1.464A2.5 2.5 0 0 0 1 5l3.535-3.536ZM1 5l20.218 20.218 3.536-3.536L4.535 1.464 1 5Z"/>
     </symbol>
 
 

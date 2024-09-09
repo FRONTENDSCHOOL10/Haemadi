@@ -1,8 +1,8 @@
 import ShellButton from '@/components/ShellButton/ShellButton';
-import { DESKTOP, EMOTION_LABEL, EMOTIONS } from '@/constants';
+import { EMOTION_LABEL, EMOTIONS } from '@/constants';
+import { useMediaStore } from '@/stores/mediaStore';
 import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import PlusButton from './components/PlusButton/PlusButton';
 import style from './Home.module.css';
 
@@ -10,7 +10,7 @@ import style from './Home.module.css';
 const MotionPlusButton = motion(PlusButton);
 
 function Home() {
-  const desktop = useMediaQuery(DESKTOP);
+  const desktop = useMediaStore((store) => store.desktop);
   const [spreadShells, setSpreadShells] = useState(false);
 
   const handleClickPlus = useCallback(() => {
