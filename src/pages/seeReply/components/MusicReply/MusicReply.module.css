@@ -27,6 +27,17 @@
     align-items: start;
 
     line-height: normal;
+    .musicTitle {
+      font-size: var(--text-s, 16px);
+      font-weight: 700;
+      color: var(--black), #2e2e2e;
+    }
+
+    .musicArtist {
+      font-size: var(--text-xxs, 12px);
+      font-weight: 400;
+      color: var(--text_gray), #565656;
+    }
   }
 
   button {
