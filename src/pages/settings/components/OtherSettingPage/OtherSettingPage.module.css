@@ -1,0 +1,21 @@
+.settingButton {
+  width: 308px;
+  height: 22px;
+
+  background-color: transparent;
+  color: var(--black, #2e2e2e);
+
+  font-size: 15px;
+  font-weight: 700;
+  line-height: normal;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settingTitle {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
