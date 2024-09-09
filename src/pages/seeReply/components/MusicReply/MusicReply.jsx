@@ -1,38 +1,36 @@
 import { memo } from 'react';
-import { func, bool } from 'prop-types';
+import { func, string } from 'prop-types';
 
 import styles from './MusicReply.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 
 MusicReply.propTypes = {
+  imgSrc: string.isRequired,
+  musicTitle: string.isRequired,
+  musicArtist: string.isRequired,
   onClick: func,
 };
 
-function MusicReply({ onClick, ...restProps }) {
-  //   const classNames =
-  // `${styles.skipButton} ${colored ? styles.skipButton_colored : ''}`.trim();
-
+function MusicReply({
+  imgSrc,
+  musicTitle,
+  musicArtist,
+  onClick,
+  ...restProps
+}) {
   return (
     <div className={styles.musicReply}>
       <div className={styles.songInfo}>
-        <img
-          src="https://lh3.googleusercontent.com/Sk-qk0u9mZ1QWBDazMJdzLWVic1TSa7TWZYC8_-FUtkUDyy0Vg61zHZlJs88ejYy3o60GRbmSDTOUm8w=w544-h544-l90-rj"
-          alt="뉴진스"
-        />
+        <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} />
 
         <div className={styles.textWrapper}>
-          <span>Hot Sweet</span>
-          <span>NewJeans</span>
+          <span className={styles.musicTitle}>{musicTitle}</span>
+          <span className={styles.musicArtist}>{musicArtist}</span>
         </div>
       </div>
 
-      <button
-        //   className={classNames}
-        type="button"
-        onClick={onClick}
-        {...restProps}
-      >
+      <button type="button" onClick={onClick} {...restProps}>
         <SVGIcon {...icons.musicPlay} yPos={6} />
       </button>
     </div>
