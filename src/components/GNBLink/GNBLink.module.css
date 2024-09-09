@@ -1,0 +1,55 @@
+.gnbContainer {
+  width: 290px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.iconText {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .gnbContainer {
+    width: 66px;
+    height: 271px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .iconList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .iconList li {
+    margin-top: 4px;
+  }
+  
+  .iconWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .iconText {
+    display: block;
+    font-size: var(--text-xxs);
+    margin-top: 2px;
+    font-weight: 700;
+  }
+  
+}
