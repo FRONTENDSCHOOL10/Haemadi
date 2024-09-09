@@ -40,9 +40,7 @@ function BottleRadioGroup() {
     if (diff >= 2) return { scale: 0.5, color: '#737DD480' }; // currentIndex와 2이상 차이
   };
 
-  // desktop에서는 ordered list / mobile에서는 swiper 렌더링
-  return desktop ? (
-    // desktop에서 렌더링
+  const renderDesktopView = () => (
     <ol className={styles.groupWrapper}>
       {bottleLabel.map((labelText, index) => (
         <li key={index}>
@@ -56,8 +54,9 @@ function BottleRadioGroup() {
         </li>
       ))}
     </ol>
-  ) : (
-    // mobile에서 렌더링
+  );
+
+  const renderMobilView = () => (
     <Swiper
       slidesPerView={4}
       spaceBetween={-20}
@@ -103,6 +102,9 @@ function BottleRadioGroup() {
       </button>
     </Swiper>
   );
+
+  // desktop에서는 ordered list / mobile에서는 swiper 렌더링
+  return desktop ? renderDesktopView() : renderMobilView();
 }
 
 export default BottleRadioGroup;
