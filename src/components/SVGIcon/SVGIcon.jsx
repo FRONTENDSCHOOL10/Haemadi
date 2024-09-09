@@ -7,6 +7,8 @@ SVGIcon.propTypes = {
   width: number,
   height: number,
   color: string,
+  xPos: number,
+  yPos: number,
 };
 
 function SVGIcon({
@@ -14,14 +16,19 @@ function SVGIcon({
   width = 33,
   height: initialHeight,
   color = '#062648',
+  xPos = 0,
+  yPos = 0,
+  ...restProps
 }) {
   const height = initialHeight ?? width;
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`${xPos} ${yPos} ${width} ${height}`}
       style={{ color }}
+      aria-hidden={true}
+      {...restProps}
     >
       <use width={width} height={height} href={`${icons}#${name}`} />
     </svg>

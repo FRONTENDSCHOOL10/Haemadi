@@ -31,6 +31,7 @@
     "react-modal": "^3.16.1",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.26.1",
+    "swiper": "^11.1.12",
     "use-immer": "^0.10.0",
     "zustand": "^4.5.5"
   }
