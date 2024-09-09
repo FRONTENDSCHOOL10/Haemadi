@@ -35,9 +35,9 @@
     height: 100%;
   }
   
-  /* .iconList li {
+  .iconList li {
     margin-top: 4px;
-  } */
+  }
   
   .iconWrapper {
     display: flex;
