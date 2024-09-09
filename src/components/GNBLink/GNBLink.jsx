@@ -1,37 +1,46 @@
-import style from './GNBLink.module.css';
 import icons from '@/icons';
+import { useMediaStore } from '@/stores/mediaStore';
+import { bool } from 'prop-types';
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import SVGIcon from '../SVGIcon/SVGIcon';
-import { useMediaStore } from '@/stores/mediaStore';
-import PropTypes from 'prop-types'; 
+import styles from './GNBLink.module.css';
 
 GNBLink.propTypes = {
-  darkBg: PropTypes.bool,
+  darkBg: bool,
 };
 
 function GNBLink({ darkBg = false }) {
-  const desktop = useMediaStore(store => store.desktop);
+  const desktop = useMediaStore((store) => store.desktop);
 
   const navItems = [
     {
       to: '/music',
-      icon: darkBg ? icons.navMusic_darkBg : icons.navMusic,
-      selectedIcon: darkBg ? icons.navMusic_darkBg_selected : icons.navMusic_selected,
+      icon: darkBg && desktop ? icons.navMusic_darkBg : icons.navMusic,
+      selectedIcon:
+        darkBg && desktop
+          ? icons.navMusic_darkBg_selected
+          : icons.navMusic_selected,
       ariaLabel: '플레이리스트로 이동하기',
       label: '플레이리스트',
     },
     {
-      to: '/home',
-      icon: darkBg ? icons.navBottle_darkBg : icons.navBottle,
-      selectedIcon: darkBg ? icons.navBottle_darkBg_selected : icons.navBottle_selected,
+      to: '/',
+      icon: darkBg && desktop ? icons.navBottle_darkBg : icons.navBottle,
+      selectedIcon:
+        darkBg && desktop
+          ? icons.navBottle_darkBg_selected
+          : icons.navBottle_selected,
       ariaLabel: '메인 홈으로 이동하기',
       label: '메인 홈',
     },
     {
       to: '/my',
-      icon: darkBg ? icons.navPerson_darkBg : icons.navPerson,
-      selectedIcon: darkBg ? icons.navPerson_darkBg_selected : icons.navPerson_selected,
+      icon: darkBg && desktop ? icons.navPerson_darkBg : icons.navPerson,
+      selectedIcon:
+        darkBg && desktop
+          ? icons.navPerson_darkBg_selected
+          : icons.navPerson_selected,
       ariaLabel: '내 정보로 이동하기',
       label: '내 정보',
     },
@@ -39,25 +48,31 @@ function GNBLink({ darkBg = false }) {
 
   return (
     <nav
-      className={style.gnbContainer}
+      className={styles.gnbContainer}
       style={{ flexDirection: desktop ? 'row' : 'column' }}
     >
-      <ul className={style.iconList}>
+      <ul className={styles.iconList}>
         {navItems.map((item) => (
           <li key={item.to}>
             <NavLink
               to={item.to}
               aria-label={item.ariaLabel}
               className={({ isActive }) =>
-                `${style.iconWrapper} ${isActive ? style.active : ''}`
+                `${styles.iconWrapper} ${isActive ? styles.active : ''}`
               }
             >
               {({ isActive }) => (
                 <>
                   <SVGIcon {...(isActive ? item.selectedIcon : item.icon)} />
                   <span
-                    className={style.iconText}
-                    style={{ color: isActive ? '#FBE517' : '#56483B' }} // 텍스트 컬러 변경은 여기입니다
+                    className={styles.iconText}
+                    style={{
+                      color: darkBg
+                        ? isActive
+                          ? '#FBE517'
+                          : '#ffffff'
+                        : '#56483B',
+                    }} // 텍스트 컬러 변경은 여기입니다
                   >
                     {item.label}
                   </span>
