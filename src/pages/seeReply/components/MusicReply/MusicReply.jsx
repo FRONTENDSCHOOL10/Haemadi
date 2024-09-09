@@ -30,7 +30,12 @@ function MusicReply({
         </div>
       </div>
 
-      <button type="button" onClick={onClick} {...restProps}>
+      <button
+        type="button"
+        aria-label="음악 재생"
+        onClick={onClick}
+        {...restProps}
+      >
         <SVGIcon {...icons.musicPlay} yPos={6} />
       </button>
     </div>
