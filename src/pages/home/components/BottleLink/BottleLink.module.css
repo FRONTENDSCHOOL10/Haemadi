@@ -1,0 +1,54 @@
+.bottleLink {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.notification {
+  background-color: var(--white, #ffffff);
+  color: var(--black, #2e2e2e);
+  position: relative;
+  width: fit-content;
+  margin-bottom: 8px;
+  padding: 11px 31px;
+  border-radius: 11px;
+  font-size: var(--text-xxs, 12px);
+  line-height: 19px;
+  text-align: center;
+}
+.notification::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  right: 67px;
+  border-top: 8px solid white;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 0px solid transparent;
+}
+
+@media (min-width: 640px) {
+  .notification {
+    margin-bottom: 18px;
+    padding: 17px 45px;
+    font-size: var(--text-l, 20px);
+    line-height: 30px;
+  }
+
+  .notification::after {
+    content: '';
+    position: absolute;
+    top: 93px;
+    right: 105px;
+    border-top: 14px solid white;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 0px solid transparent;
+  }
+}
