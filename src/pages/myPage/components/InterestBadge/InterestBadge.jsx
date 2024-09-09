@@ -1,18 +1,19 @@
 import { memo } from 'react';
-import { arrayOf, string } from 'prop-types';
+import { oneOf } from 'prop-types';
 
 import styles from './InterestBadge.module.css';
+import { INTERESTS_KEYWORDS } from '@/constants';
 
 InterestBadge.propTypes = {
-  list: arrayOf(string).isRequired,
+  keywordList: oneOf(INTERESTS_KEYWORDS).isRequired,
 };
 
-function InterestBadge({ list }) {
+function InterestBadge({ keywordList }) {
   return (
     <>
-      {list.length > 0 ? (
+      {keywordList.length > 0 ? (
         <ul className={styles.keywordList}>
-          {list.map((element, index) => (
+          {keywordList.map((element, index) => (
             <li className={styles.keyword} key={`${element}-${index}`}>
               {element}
             </li>
