@@ -20,7 +20,6 @@ export const EMOTION_LABEL = {
   tired: '지침',
 };
 
-export const DESKTOP = { query: '(min-width: 640px)' };
 export const CONTENTS = ['music', 'quotes', 'book', 'video'];
 
 export const CONTENT_LABEL = {
