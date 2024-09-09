@@ -3,14 +3,14 @@ import { useMediaStore } from '@/stores/mediaStore';
 import { bool } from 'prop-types';
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import SVGIcon from '../SVGIcon/SVGIcon';
-import styles from './GNBLink.module.css';
+import SVGIcon from '../../components/SVGIcon/SVGIcon';
+import styles from './GlobalNav.module.css';
 
-GNBLink.propTypes = {
+GlobalNav.propTypes = {
   darkBg: bool,
 };
 
-function GNBLink({ darkBg = false }) {
+function GlobalNav({ darkBg = false }) {
   const desktop = useMediaStore((store) => store.desktop);
 
   const navItems = [
@@ -86,4 +86,4 @@ function GNBLink({ darkBg = false }) {
   );
 }
 
-export default memo(GNBLink);
+export default memo(GlobalNav);
