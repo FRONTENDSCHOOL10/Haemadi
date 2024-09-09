@@ -29,3 +29,17 @@ export const CONTENT_LABEL = {
   book: '책',
   video: '영상',
 };
+
+export const INTERESTS_KEYWORDS = [
+  '💓 사랑',
+  '👊🏻 우정',
+  '👨‍👩‍👦‍👦 가정',
+  '📚 학업',
+  '🏫 학교',
+  '💪🏻 건강',
+  '📝 취업',
+  '🏢 직장',
+  '💵 돈',
+  '😴 수면',
+  '😮‍💨 자존감',
+];
