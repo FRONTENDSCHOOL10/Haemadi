@@ -41,6 +41,7 @@ const icons = {
   check: { name: 'check', width: 27, height: 20, color: '#2D7EB8' },
   leftArrow: { name: 'leftArrow', width: 25, height: 42, color: '#ffffff' },
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
+  musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
 
   shell_angry: { name: 'shell_angry', width: 33, height: null, color: null },
   shell_glad: { name: 'shell_glad', width: 33, height: null, color: null },
