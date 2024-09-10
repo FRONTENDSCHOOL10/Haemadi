@@ -1,0 +1,11 @@
+.genderWrapper {
+  width: 253px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+
+  li {
+    width: 253px;
+    height: 57px;
+  }
+}
