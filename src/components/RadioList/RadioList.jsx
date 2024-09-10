@@ -23,6 +23,7 @@ const RADIO_VALUES = {
     '31세 이상',
     '비공개',
   ],
+  gender: ['남', '여', '비공개'],
 };
 
 RadioList.propTypes = {

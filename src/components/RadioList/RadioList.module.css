@@ -21,6 +21,15 @@
   }
 }
 
+.genderWrapper {
+  width: 253px;
+  gap: 16px;
+
+  li {
+    width: 253px;
+  }
+}
+
 @media (min-width: 640px) {
   .radioList {
     justify-content: center;
