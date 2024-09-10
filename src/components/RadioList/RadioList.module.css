@@ -1,0 +1,17 @@
+.emotionWrapper {
+  width: 357px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  li {
+    height: 43px;
+  }
+}
+
+@media (min-width: 640px) {
+  .emotionWrapper {
+    width: 479px;
+    justify-content: center;
+  }
+}
