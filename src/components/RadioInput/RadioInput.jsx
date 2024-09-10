@@ -14,7 +14,7 @@ RadioInput.propTypes = {
 // RadioInput Component
 function RadioInput({ children, groupName, type = 'emotion', onChange }) {
   const radioInputId = useId();
-  const classNames = `${styles[type]}`;
+  const classNames = `${styles.radioStyles} ${styles[type]}`.trim();
 
   const handleChange = () => onChange?.(children);
 
