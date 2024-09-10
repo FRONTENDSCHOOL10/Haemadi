@@ -63,3 +63,5 @@ const NickName = ({ initialNickname }) => {
     </form>
   );
 };
+
+export default memo(NickName);
