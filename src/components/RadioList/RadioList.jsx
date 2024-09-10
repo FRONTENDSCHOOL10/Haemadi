@@ -24,6 +24,12 @@ const RADIO_VALUES = {
     '비공개',
   ],
   gender: ['남', '여', '비공개'],
+  experience: [
+    '하루도 빠짐 없이 작성한다.',
+    '가끔 생각나면 작성한다.',
+    '거의 작성하지 않는다',
+    '한번도 작성해보지 않았다.',
+  ],
 };
 
 RadioList.propTypes = {

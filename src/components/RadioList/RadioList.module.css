@@ -6,28 +6,21 @@
 .emotionWrapper {
   width: 357px;
   gap: 9px;
-
-  li {
-    height: 43px;
-  }
 }
 
 .ageWrapper {
   width: 356px;
   gap: 14px;
-
-  li {
-    width: 168px;
-  }
 }
 
 .genderWrapper {
   width: 253px;
   gap: 16px;
+}
 
-  li {
-    width: 253px;
-  }
+.experienceWrapper {
+  width: 253px;
+  gap: 16px;
 }
 
 @media (min-width: 640px) {
