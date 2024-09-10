@@ -81,3 +81,7 @@ input:focus + .emotion {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }
+
+input:focus {
+  outline: none;
+}
