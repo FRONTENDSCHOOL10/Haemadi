@@ -38,6 +38,28 @@ const NickName = ({ initialNickname }) => {
   };
 
   return (
-    <form className={styles.form}></form>
+    <form className={styles.form}>
+      <label htmlFor="nickname" className={styles.label}>
+        닉네임
+      </label>
+      <div className={styles.inputWrapper}>
+        <input
+          type="text"
+          id="nickname"
+          value={nickname}
+          placeholder="닉네임을 작성해주세요"
+          className={styles.input}
+          onChange={handleChange}
+          onFocus={() => setIsEditing(true)}
+          onBlur={() => setIsEditing(false)}
+        />
+        {nickname && (
+          <button type="button" className={styles.clearButton} onClick={handleClear}>
+            <img src="/path-to-x-icon.png" alt="Clear" />
+          </button>
+        )}
+      </div>
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+    </form>
   );
 };
