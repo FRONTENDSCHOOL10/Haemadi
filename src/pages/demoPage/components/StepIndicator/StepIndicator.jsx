@@ -2,15 +2,17 @@ import { oneOf } from 'prop-types';
 import { memo } from 'react';
 import styles from './StepIndicator.module.css';
 
+const STEP_RANGE = [1, 2, 3];
+
 StepIndicator.propTypes = {
-  step: oneOf([1, 2, 3]).isRequired,
+  step: oneOf(STEP_RANGE).isRequired,
 };
 
 function StepIndicator({ step }) {
   return (
     <nav aria-label="스텝">
       <ol className={styles.stepIndicator}>
-        {[1, 2, 3].map((item) => (
+        {STEP_RANGE.map((item) => (
           <li
             key={item}
             aria-current={step === item ? 'step' : undefined}
