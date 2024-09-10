@@ -16,11 +16,7 @@ function RadioInput({ children, groupName, type = 'emotion', onChange }) {
   const radioInputId = useId();
   const classNames = `${styles[type]}`;
 
-  const handleChange = () => {
-    if (onChange) {
-      onChange(children);
-    }
-  };
+  const handleChange = () => onChange?.(children);
 
   return (
     <>
