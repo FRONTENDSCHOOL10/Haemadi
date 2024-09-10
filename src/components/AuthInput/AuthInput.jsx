@@ -7,15 +7,17 @@ AuthInput.propTypes = {
 };
 
 function AuthInput({ name = 'username', placeholder, ...restProps }) {
+  const isUserName = name === 'username';
+
   return (
     <input
-      type={name === 'username' ? 'text' : 'password'}
+      type={isUserName ? 'text' : 'password'}
       className={styles.authInput}
       placeholder={placeholder}
       name={name}
-      minLength={name === 'username' ? 4 : 8}
+      minLength={isUserName ? 4 : 8}
       maxLength={20}
-      autoFocus={name === 'username'}
+      autoFocus={isUserName}
       {...restProps}
     />
   );
