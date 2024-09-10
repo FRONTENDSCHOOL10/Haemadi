@@ -1,0 +1,20 @@
+.authInput {
+  width: 100%;
+  max-width: 552px;
+  padding: 18px 14px;
+  border: 1px solid var(--button_gray, #c6c5c9);
+  border-radius: 10px;
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+}
+
+.authInput::placeholder {
+  color: var(--placeholder_gray, #cccbcf);
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .authInput {
+    padding: 18px 22px;
+  }
+}
