@@ -45,7 +45,7 @@ const routes = [
         element: <SettingsPage />,
       },
       {
-        path: 'my/settings/userInfoInput',
+        path: 'my/settings/userInfoInput/:grogress',
         element: <UserInfoInputPage />,
       },
       {
@@ -91,7 +91,7 @@ const routes = [
     ],
   },
   {
-    path: '/demo',
+    path: '/demo/:step',
     element: <DemoPage />,
   },
   {
