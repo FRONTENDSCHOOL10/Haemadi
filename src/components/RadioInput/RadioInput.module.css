@@ -40,7 +40,8 @@
   line-height: normal;
 }
 
-.gender {
+.gender,
+.experience {
   width: 253px;
   height: 57px;
 
@@ -54,22 +55,12 @@
   line-height: normal;
 }
 
-input[type='radio']:checked + .gender {
+input[type='radio']:checked + label {
   background-color: var(--secondary, #1771b2);
   color: var(--white, #fff);
 }
-input[type='radio']:checked + .age {
-  background-color: var(--primary, #2e7fb9);
-  color: var(--white, #fff);
-}
-input[type='radio']:checked + .emotion {
-  background-color: var(--primary, #2e7fb9);
-  color: var(--white, #fff);
-}
 
-input:focus + .gender,
-input:focus + .age,
-input:focus + .emotion {
+input:focus + label {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }
