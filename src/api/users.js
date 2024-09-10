@@ -7,7 +7,7 @@ const REQUEST_OPTIONS = {
 
 // username 중복일 때 처리 필요
 /** @type {(userName: string, password: string, passwordConfirm: string) => Promise<any>} */
-export async function signUp(username, password, passwordConfirm) {
+export async function userSignUp(username, password, passwordConfirm) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/users/records`;
 
   const newUser = { username, password, passwordConfirm };
@@ -32,7 +32,7 @@ export async function signUp(username, password, passwordConfirm) {
 }
 
 /** @type {(username: string, password: string) => Promise<any>} */
-export async function signIn(username, password) {
+export async function userSignIn(username, password) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/users/auth-with-password`;
 
   const body = JSON.stringify({ username, password });
