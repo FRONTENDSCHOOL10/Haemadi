@@ -1,8 +1,5 @@
-import { Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { RouterProvider } from 'react-router-dom';
-import Loading from './components/Loading/Loading';
-import router from './router';
+import AppRouter from './router';
 import { useDesktopDetector } from './stores/mediaStore';
 
 function App() {
@@ -10,9 +7,7 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Suspense fallback={<Loading />}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <AppRouter />
     </HelmetProvider>
   );
 }

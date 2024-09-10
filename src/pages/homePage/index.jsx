@@ -4,12 +4,12 @@ import { useMediaStore } from '@/stores/mediaStore';
 import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import PlusButton from './components/PlusButton/PlusButton';
-import style from './Home.module.css';
+import styles from './HomePage.module.css';
 
 // PlusButton에 애니메이션을 주기 위함
 const MotionPlusButton = motion(PlusButton);
 
-function Home() {
+function HomePage() {
   const desktop = useMediaStore((store) => store.desktop);
   const [spreadShells, setSpreadShells] = useState(false);
 
@@ -19,7 +19,7 @@ function Home() {
 
   // 스타일 수정 필요
   return (
-    <div className={style.pageContainer}>
+    <div className={styles.pageContainer}>
       <MotionPlusButton
         onClick={handleClickPlus}
         animate={
@@ -29,7 +29,7 @@ function Home() {
       />
 
       <motion.ul
-        className={style.shellList}
+        className={styles.shellList}
         animate={
           spreadShells
             ? { opacity: 1, display: 'flex' }
@@ -48,4 +48,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
