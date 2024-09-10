@@ -1,7 +1,10 @@
-.emotionWrapper {
-  width: 357px;
+.radioList {
   display: flex;
   flex-wrap: wrap;
+}
+
+.emotionWrapper {
+  width: 357px;
   gap: 9px;
 
   li {
@@ -9,9 +12,20 @@
   }
 }
 
+.ageWrapper {
+  width: 356px;
+  gap: 14px;
+
+  li {
+    width: 168px;
+  }
+}
+
 @media (min-width: 640px) {
+  .radioList {
+    justify-content: center;
+  }
   .emotionWrapper {
     width: 479px;
-    justify-content: center;
   }
 }
