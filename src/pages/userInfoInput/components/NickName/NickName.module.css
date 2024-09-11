@@ -12,14 +12,13 @@
 
 .input {
   padding: 8px;
-  font-size: var();
-  border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);;
-  width: 360px;
 }
 
-.clearButton {
-
-}
+/* .clearButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+} */
 
 .clearButton img {
   width: 16px;
@@ -30,4 +29,22 @@
   color: red;
   font-size: 12px;
   margin-top: 4px;
+}
+
+@media (max-width: 639px) {
+  .input {
+    font-size: var(--text-s);
+    border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
+    width: 360px;
+    color: var(--tertiay); 
+  }
+}
+
+@media (min-width: 640px) {
+  .input {
+    font-size: var(--text-l);
+    width: 522px; 
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
+    color:  var(--white);
+  }
 }

@@ -2,13 +2,15 @@ import styles from './NickName.module.css';
 import PropTypes from 'prop-types';
 import React, { useState, memo } from 'react';
 import icons from '@/icons';
+import { useMediaStore } from '@/stores/mediaStore';
 
 // 컴포넌트 선언
 const NickName = ({ initialNickname }) => {
   const [nickname, setNickname] = useState(initialNickname);
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const desktop = useMediaStore((store) => store.desktop);
+  
   // 닉네임 유효성 검사 (공백 포함 4~9 글자, 특수문자 포함 불가)
   const validateNickname = (name) => {
     const regex = /^[가-힣a-zA-Z0-9 ]{4,9}$/;
