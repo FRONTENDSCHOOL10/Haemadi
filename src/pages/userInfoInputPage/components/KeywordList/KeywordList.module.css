@@ -11,34 +11,6 @@ li {
   grid-column: span 2; /* 가로로 2개의 열을 차지 */
 }
 
-.keyword {
-  display: inline-block;
-  width: 100%;
-  height: 40px;
-  padding: 9px 12px;
-
-  background-color: var(--white, #fff);
-  border: 1px solid var(--secondary, #1771b2);
-  border-radius: 37px;
-
-  color: var(--secondary, #1771b2);
-  font-size: var(--text-xs, 14px);
-  font-weight: 700;
-  line-height: normal;
-}
-
-input[type='checkbox']:checked + .keyword {
-  background-color: var(--secondary, #1771b2);
-  color: #b9d4e8;
-}
-
-.appearance-none {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  z-index: 1;
-}
-
 @media (min-width: 640px) {
   li:nth-child(10) {
     grid-column: 2 / span 2;
