@@ -32,11 +32,11 @@ export async function createDiary(newDiary) {
 }
 
 // 사용예시) readDiaries('nxorcbf2dujhxfu')
-/** @type {(userId: string) => Promise<any>} */
-export async function readDiaries(userId) {
+/** @type {(userId: string, signal?: AbortSignal) => Promise<any>} */
+export async function readDiaries(userId, signal) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records?filter=(userId='${userId}')&sort=created`;
 
-  const response = await fetch(REQUEST_URL);
+  const response = await fetch(REQUEST_URL, { signal });
 
   if (!response.ok) {
     throw new Response(
@@ -50,13 +50,13 @@ export async function readDiaries(userId) {
   return responseData;
 }
 
-// 사용예시) const data = await readDiaryOne('99wgwkwynupzi1u', 'replyId, userId');
+// 사용예시) const data = await readDiaryOne('99wgwkwynupzi1u');
 //         const { typeOfContent } = data.expand.replyId;
-/** @type {(diaryId: string, expandFields?: string) => Promise<any>} */
-export async function readDiaryOne(diaryId, expandFields) {
-  const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}${expandFields ? `?expand=${expandFields}` : ''}`;
+/** @type {(diaryId: string, expandFields?: string, signal?: AbortSignal) => Promise<any>} */
+export async function readDiaryOne(diaryId, signal) {
+  const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${diaryId}?expand=replyId`;
 
-  const response = await fetch(REQUEST_URL);
+  const response = await fetch(REQUEST_URL, { signal });
 
   if (!response.ok) {
     throw new Response(
