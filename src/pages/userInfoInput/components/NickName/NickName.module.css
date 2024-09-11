@@ -16,11 +16,12 @@
   padding: 8px;
 }
 
-/* .clearButton {
+.clearButton {
   position: absolute;
   right: 10px;
   top: 50%;
-} */
+  transform: translateY(-50%);
+}
 
 .clearButton img {
   width: 16px;
