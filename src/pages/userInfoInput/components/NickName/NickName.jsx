@@ -53,10 +53,7 @@ const NickName = ({ initialNickname }) => {
             onClick={handleClear}
             aria-label="닉네임 지우기"
           >
-            {/* SVG sprite 사용 */}
-            <svg className={styles.icon}>
-              <use href="/path-to-sprite.svg#icon-clear" />
-            </svg>
+            <SVGIcon {...icons.remove} />
           </button>
         )}
       </div>
@@ -64,6 +61,7 @@ const NickName = ({ initialNickname }) => {
     </form>
   );
 };
+
 
 // PropTypes 설정
 NickName.propTypes = {

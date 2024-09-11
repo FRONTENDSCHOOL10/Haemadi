@@ -1,6 +1,5 @@
 .form {
   display: flex;
-  flex-direction: column;
 }
 
 .label {
@@ -13,21 +12,13 @@
 
 .input {
   padding: 8px;
-  padding-right: 30px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
+  font-size: var();
+  border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);;
+  width: 360px;
 }
 
 .clearButton {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
+
 }
 
 .clearButton img {
