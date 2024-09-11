@@ -1,5 +1,13 @@
 import { useId, memo } from 'react';
+import { func, string } from 'prop-types';
+
 import styles from './KeywordInput.module.css';
+
+KeywordInput.propTypes = {
+  element: string.isRequired,
+  onChange: func.isRequired,
+  isChecked: func.isRequired,
+};
 
 function KeywordInput({ element, onChange, isChecked }) {
   const uniqueId = useId();

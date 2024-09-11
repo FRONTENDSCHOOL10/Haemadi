@@ -1,4 +1,4 @@
-import { memo, useId, useState } from 'react';
+import { memo, useState } from 'react';
 
 import styles from './KeywordList.module.css';
 import { INTERESTS_KEYWORDS } from '@/constants';
@@ -30,7 +30,7 @@ function KeywordList() {
               element={element}
               isChecked={isChecked}
               onChange={handleCheckboxChange}
-            />
+            ></KeywordInput>
           </li>
         );
       })}
