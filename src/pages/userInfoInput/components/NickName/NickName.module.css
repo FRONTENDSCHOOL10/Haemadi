@@ -1,6 +1,7 @@
 .form {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  width: 360px;
 }
 
 .label {
@@ -9,23 +10,25 @@
 
 .inputWrapper {
   position: relative;
+  display: flex;
   margin-bottom: 8px;
 }
 
 .input {
   padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .clearButton {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  z-index: 1;
 }
 
-.clearButton img {
-  width: 16px;
-  height: 16px;
+.clearButton svg {
+  fill: currentColor;
 }
 
 .error {
@@ -38,16 +41,41 @@
   .input {
     font-size: var(--text-s);
     border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
-    width: 360px;
     color: var(--tertiay); 
+    text-align: left;
+  }
+
+  .clearButton {
+    left: 341px;
+    top: 25%;
+  }
+
+  .clearButton svg {
+    color: inherit;
   }
 }
 
 @media (min-width: 640px) {
+
+  .form {
+    width: 522px; 
+  }
+
   .input {
     font-size: var(--text-l);
-    width: 522px; 
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
-    color: var(--black);
+    /* border-bottom: 1.5px solid #000; */
+    color: var(--black); 
+    /* 나중에 black white로 수정해야함 */
+    text-align: center;
+  }
+
+  .clearButton {
+    left: 504px;
+    top: 30%;
+  }
+
+  .clearButton svg {
+    color: var(--white);
   }
 }
