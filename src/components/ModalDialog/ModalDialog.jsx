@@ -6,7 +6,7 @@ ModalDialog.propTypes = {
   children: node.isRequired,
   isOpen: bool.isRequired,
   closeModal: func.isRequired,
-  submitModal: func,
+  confirmModal: func,
   contentLabel: string,
 };
 
@@ -14,7 +14,7 @@ function ModalDialog({
   children,
   isOpen,
   closeModal,
-  submitModal,
+  confirmModal,
   contentLabel,
 }) {
   return (
@@ -28,7 +28,7 @@ function ModalDialog({
       {children}
       <div className={style.buttonWrapper}>
         <button onClick={closeModal}>아니오</button>
-        <button onClick={submitModal}>예</button>
+        <button onClick={confirmModal}>예</button>
       </div>
     </ReactModal>
   );
@@ -43,15 +43,15 @@ const [modalOpen, setModalOpen] = useState(false);
 
 const openModal = () => setModalOpen(true);
 const closeModal = () => setModalOpen(false);
-const submitModal = () => console.log('submit');
+const confirmModal = () => console.log('confirm');
 
 return (
 <>
-  <button onClick={openModal}>asdf</button>
+  <button type="button" onClick={openModal}>asdf</button>
   <ModalDialog
     isOpen={modalOpen}
     closeModal={closeModal}
-    submitModal={submitModal}
+    confirmModal={confirmModal}
     contentLabel="변경 사항 저장되지 않음에 대한 확인"
   >
     <h2>정말 돌아가시나요?</h2>

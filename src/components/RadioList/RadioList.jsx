@@ -37,7 +37,7 @@ RadioList.propTypes = {
 };
 
 function RadioList({ type }) {
-  const [selected, setSelected] = useState('');
+  const [, setSelected] = useState('');
 
   const classNames = `${styles.radioList} ${styles[type + 'Wrapper']}`;
 
