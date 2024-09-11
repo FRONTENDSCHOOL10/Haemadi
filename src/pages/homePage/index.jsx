@@ -20,8 +20,10 @@ function HomePage() {
   // 스타일 수정 필요
   return (
     <div className={styles.pageContainer}>
+      {/* activated를 전달하면 framer-motion을 사용하지 않고 css로 애니메이션이 가능하지만 다른 애니메이션도 추가할 것을 고려하여 남겨둠 */}
       <MotionPlusButton
         onClick={handleClickPlus}
+        activated={spreadShells}
         animate={
           spreadShells ? { rotate: 45, translateY: '-90px' } : { rotate: 0 }
         }

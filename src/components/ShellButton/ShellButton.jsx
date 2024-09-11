@@ -12,33 +12,27 @@ ShellButton.propTypes = {
   onClick: func,
 };
 
-function ShellButton({ emotion, block = false, onClick }) {
+function ShellButton({ emotion, block = false, onClick = undefined }) {
   const [hovered, setHovered] = useState(false);
+  const label = `일기 ${block ? '보기' : '작성하기'} (${EMOTION_LABEL[emotion]})`;
 
-  // 캘린더 전용 / 일기 쓰기
   const shell = block
-    ? icons[`shell_${emotion}_block`]
-    : icons[`shell_${emotion}${hovered ? '_hovered' : ''}`];
+    ? // 캘린더용
+      icons[`shell_${emotion}_block`]
+    : // 일기 작성하기용
+      icons[`shell_${emotion}${hovered ? '_hovered' : ''}`];
 
   const handleMouseEnter = () => setHovered(true);
   const handleMouseLeave = () => setHovered(false);
 
   return (
     <button
-      title={
-        block
-          ? `일기 보기 (${EMOTION_LABEL[emotion]})`
-          : `일기 작성하기 (${EMOTION_LABEL[emotion]})`
-      }
-      aria-label={
-        block
-          ? `일기 보기 (${EMOTION_LABEL[emotion]})`
-          : `일기 작성하기 (${EMOTION_LABEL[emotion]})`
-      }
+      title={label}
+      aria-label={label}
       type="button"
       className={style.shellButton}
-      onMouseEnter={block ? undefined : handleMouseEnter}
-      onMouseLeave={block ? undefined : handleMouseLeave}
+      onMouseEnter={!block ? handleMouseEnter : undefined}
+      onMouseLeave={!block ? handleMouseLeave : undefined}
       onClick={onClick}
     >
       <SVGIcon {...shell} />

@@ -21,7 +21,6 @@ function GlobalNav({ darkBg = false }) {
         darkBg && desktop
           ? icons.navMusic_darkBg_selected
           : icons.navMusic_selected,
-      ariaLabel: '플레이리스트로 이동하기',
       label: '플레이리스트',
     },
     {
@@ -31,7 +30,6 @@ function GlobalNav({ darkBg = false }) {
         darkBg && desktop
           ? icons.navBottle_darkBg_selected
           : icons.navBottle_selected,
-      ariaLabel: '메인 홈으로 이동하기',
       label: '메인 홈',
     },
     {
@@ -41,7 +39,6 @@ function GlobalNav({ darkBg = false }) {
         darkBg && desktop
           ? icons.navPerson_darkBg_selected
           : icons.navPerson_selected,
-      ariaLabel: '내 정보로 이동하기',
       label: '내 정보',
     },
   ];
@@ -56,7 +53,7 @@ function GlobalNav({ darkBg = false }) {
           <li key={item.to}>
             <NavLink
               to={item.to}
-              aria-label={item.ariaLabel}
+              aria-label={item.label}
               className={({ isActive }) =>
                 `${styles.iconWrapper} ${isActive ? styles.active : ''}`
               }

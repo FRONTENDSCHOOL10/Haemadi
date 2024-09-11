@@ -1,10 +1,13 @@
-import { memo, useId, useState } from 'react';
+import { memo, useState } from 'react';
 
 import styles from './KeywordList.module.css';
 import { INTERESTS_KEYWORDS } from '@/constants';
+import KeywordInput from '../KeywordInput/KeywordInput';
 
 function KeywordList() {
   const [selectedKeywords, setSelectedKeywords] = useState([]);
+
+  const isChecked = (element) => selectedKeywords.includes(element);
 
   const handleCheckboxChange = (keyword) => {
     if (selectedKeywords.includes(keyword)) {
@@ -21,23 +24,13 @@ function KeywordList() {
   return (
     <ul className={styles.keywordList}>
       {INTERESTS_KEYWORDS.map((element, index) => {
-        const uniqueId = useId();
-        const isChecked = selectedKeywords.includes(element);
-
         return (
           <li key={index}>
-            <input
-              className={styles['appearance-none']}
-              type="checkbox"
-              name="KeywordsOfInterest"
-              value={element}
-              id={uniqueId}
-              checked={isChecked}
-              onChange={() => handleCheckboxChange(element)}
-            />
-            <label className={styles.keyword} htmlFor={uniqueId}>
-              {element}
-            </label>
+            <KeywordInput
+              element={element}
+              isChecked={isChecked}
+              onChange={handleCheckboxChange}
+            ></KeywordInput>
           </li>
         );
       })}
