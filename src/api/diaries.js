@@ -1,5 +1,3 @@
-import { emotionType } from '@/@types';
-
 const ENDPOINT = import.meta.env.VITE_PB_URL;
 const REQUEST_OPTIONS = {
   headers: {
@@ -8,7 +6,7 @@ const REQUEST_OPTIONS = {
 };
 
 // 사용예시) createDiary({messag: 'asdf', emotion: 'sad', userId: 'nxorcbf2dujhxfu'})
-/** @type {(newDiary: { message: string, emotion: emotionType, userId: string, replyId?: string }) => Promise<any>} */
+/** @type {(newDiary: { message: string, emotion: 'angry' | 'glad' | 'happy' | 'panic' | 'anxiety' | 'sad' | 'normal' | 'tired', userId: string, replyId?: string }) => Promise<any>} */
 export async function createDiary(newDiary) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records`;
   const body = JSON.stringify(newDiary);
@@ -71,7 +69,7 @@ export async function readDiaryOne(diaryId, signal) {
 }
 
 // 사용예시) updateDiary({id:'99wgwkwynupzi1u', emotion: 'angry'})
-/** @type { (editDiary: { id: string, message?: string, emotion?: emotionType, userId?: string, replyId?: string }) => Promise<any>} */
+/** @type { (editDiary: { id: string, message?: string, emotion?: 'angry' | 'glad' | 'happy' | 'panic' | 'anxiety' | 'sad' | 'normal' | 'tired', userId?: string, replyId?: string }) => Promise<any>} */
 export async function updateDiary(editDiary) {
   const REQUEST_URL = `${ENDPOINT}/api/collections/diaries/records/${editDiary.id}`;
   const body = JSON.stringify(editDiary);
