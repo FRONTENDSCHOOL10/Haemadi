@@ -46,6 +46,14 @@ const icons = {
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
   musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
 
+  remove: { name: 'remove', width: 18, height: 18, color: '#1F6496' },
+  step_forward: { name: 'step_forward', width: 15, height: 21, color: '#2E2E2E' },
+  step_backward: { name: 'step_backward', width: 15, height: 21, color: '#2E2E2E' },
+  pause: { name: 'pause', width: 16, height: 19, color: '#2E2E2E' },
+  heart: { name: 'heart', width: 22, height: 20, color: '#2E2E2E' },
+  play: { name: 'play', width: 13, height: 20, color: '#2E2E2E' },
+  musiclist: { name: 'musiclist', width: 20, height: 19, color: '#2E2E2E' },
+
   shell_angry: { name: 'shell_angry', width: 33, height: null, color: null },
   shell_glad: { name: 'shell_glad', width: 33, height: null, color: null },
   shell_happy: { name: 'shell_happy', width: 33, height: null, color: null },
