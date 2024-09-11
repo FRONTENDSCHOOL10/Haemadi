@@ -1,17 +1,10 @@
 import styles from './NickName.module.css';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { useMediaStore } from '@/stores/mediaStore';
-import { memo } from 'react';
+import React, { useState, memo } from 'react';
+import icons from '@/icons';
 
-// PropTypes 정의
-NickName.propTypes = {
-  initialNickname: PropTypes.string,
-};
-
-// PropTypes 설정
+// 컴포넌트 선언
 const NickName = ({ initialNickname }) => {
-  // State 관리
   const [nickname, setNickname] = useState(initialNickname);
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -54,14 +47,27 @@ const NickName = ({ initialNickname }) => {
           onBlur={() => setIsEditing(false)}
         />
         {nickname && (
-          <button type="button" className={styles.clearButton} onClick={handleClear}>
-            <img src="/path-to-x-icon.png" alt="Clear" />
+          <button
+            type="button"
+            className={styles.clearButton}
+            onClick={handleClear}
+            aria-label="닉네임 지우기"
+          >
+            {/* SVG sprite 사용 */}
+            <svg className={styles.icon}>
+              <use href="/path-to-sprite.svg#icon-clear" />
+            </svg>
           </button>
         )}
       </div>
       {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </form>
   );
+};
+
+// PropTypes 설정
+NickName.propTypes = {
+  initialNickname: PropTypes.string,
 };
 
 export default memo(NickName);
