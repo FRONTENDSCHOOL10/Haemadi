@@ -8,12 +8,7 @@ function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
-  // 분과 초가 한 자릿수일 경우 0을 붙여줌
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  const formattedSeconds =
-    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
-
-  return `${formattedMinutes}:${formattedSeconds}`;
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
 PlayTime.propTypes = {
@@ -23,7 +18,7 @@ PlayTime.propTypes = {
 
 function PlayTime({ time = 0, colored = false }) {
   const classNames =
-    `${styles.timer} ${colored ? styles.timer_colored : ''}`.trim();
+    `${styles.timer} ${colored && styles.timer_colored}`.trim();
   return <span className={classNames}>{formatTime(time)}</span>;
 }
 
