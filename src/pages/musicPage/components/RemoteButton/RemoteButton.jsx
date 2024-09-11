@@ -31,6 +31,7 @@ function RemoteButton({ type, onClick, ...restProps }) {
     <button
       className={styles.remoteButton}
       type="button"
+      title={TYPE_LIST[type]}
       aria-label={TYPE_LIST[type]}
       onClick={onClick}
       {...restProps}
