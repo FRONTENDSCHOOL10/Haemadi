@@ -1,0 +1,9 @@
+.timer {
+  color: #ababab;
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+}
+
+.timer_colored {
+  color: var(--secondary, #1771b2);
+}
