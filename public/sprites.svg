@@ -32,7 +32,8 @@
 
 
     <symbol id="music" width="17" height="25" fill="none" viewBox="0 0 17 25">
-      <path fill="currentColor" d="M8.5 0v14.653a5.749 5.749 0 0 0-2.833-.764C2.536 13.889 0 16.375 0 19.444 0 22.514 2.536 25 5.667 25c3.13 0 5.666-2.486 5.666-5.556V5.556H17V0H8.5Z"/>
+      <path fill="currentColor"
+        d="M8.5 0v14.653a5.749 5.749 0 0 0-2.833-.764C2.536 13.889 0 16.375 0 19.444 0 22.514 2.536 25 5.667 25c3.13 0 5.666-2.486 5.666-5.556V5.556H17V0H8.5Z" />
 
     </symbol>
 
@@ -100,25 +101,62 @@
 
     <symbol id="musicPlay" width="50" height="50" fill="none" viewBox="0 -6 50 50">
       <g filter="url(#filtermusicPlay)">
-        <circle cx="25" cy="23" r="19" fill="white"/>
-        <circle cx="25" cy="23" r="18.5" stroke="#1771B2"/>
+        <circle cx="25" cy="23" r="19" fill="white" />
+        <circle cx="25" cy="23" r="18.5" stroke="#1771B2" />
       </g>
-      <path d="M21 30.9282L33 24L21 17.0718L21 30.9282Z" fill="#1771B2" stroke="#1771B2"/>
+      <path d="M21 30.9282L33 24L21 17.0718L21 30.9282Z" fill="#1771B2" stroke="#1771B2" />
       <defs>
-        <filter id="filtermusicPlay" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dy="2"/>
-          <feGaussianBlur stdDeviation="3"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0"/>
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_106_717"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_106_717" result="shape"/>
+        <filter id="filtermusicPlay" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix in="SourceAlpha" type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="3" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_106_717" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_106_717" result="shape" />
         </filter>
       </defs>
     </symbol>
 
-    
+
+    <symbol id="remove" width="18" height="18" fill="none" viewBox="0 0 18 18">
+      <rect width="3.21" height="22.059" fill="currentColor" rx="1.605"
+        transform="rotate(44.995 7.8 18.833)" />
+      <rect width="3.21" height="22.059" fill="currentColor" rx="1.605"
+        transform="rotate(135.005 5.77 11.526)" />
+    </symbol>
+    <symbol id="step_forward" width="15" height="21" fill="none" viewBox="0 0 15 21">
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+        d="M1 4.09c0-1.665 1.914-2.601 3.228-1.58l8.242 6.411a2 2 0 0 1 0 3.158l-8.242 6.41C2.914 19.511 1 18.575 1 16.911V4.089ZM13.5 2v17" />
+    </symbol>
+    <symbol id="step_backward" width="15" height="21" fill="none" viewBox="0 0 15 21">
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+        d="M13.5 4.09c0-1.665-1.914-2.601-3.228-1.58L2.03 8.922a2 2 0 0 0 0 3.158l8.242 6.41c1.314 1.022 3.228.086 3.228-1.578V4.089ZM1 2v17" />
+    </symbol>
+    <symbol id="pause" width="16" height="19" fill="none" viewBox="0 0 16 19">
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+        d="M1 1.817A1 1 0 0 1 2.535.972l12.131 7.683a1 1 0 0 1 0 1.69l-12.13 7.683A1 1 0 0 1 1 17.183V1.817Z" />
+    </symbol>
+    <symbol id="heart" width="22" height="20" fill="none" viewBox="0 0 22 20">
+      <path stroke="#2E2E2E" stroke-linejoin="round" stroke-width="1.3"
+        d="M6 1c-1.375 0-2.6.607-3.525 1.557A5.37 5.37 0 0 0 1 6.28c0 1.45.575 2.743 1.475 3.72L11 19l8.525-9A5.37 5.37 0 0 0 21 6.279c0-1.452-.575-2.745-1.475-3.722C18.625 1.607 17.4 1 16 1c-1.375 0-2.6.607-3.525 1.557 0 0-.975.943-1.475 1.443-.5-.5-1.475-1.443-1.475-1.443C8.625 1.607 7.4 1 6 1Z" />
+    </symbol>
+    <symbol id="play" width="13" height="20" fill="none" viewBox="0 0 13 20">
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-width="1.7"
+        d="M1 1v17.674M11.612 1v17.674" />
+    </symbol>
+    <symbol id="musiclist" width="20" height="19" fill="none" viewBox="0 0 20 19">
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+        d="M5 2.883h6.5m-6.5 6h6.5m-6.5 6h1.7" />
+      <path stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"
+        d="M1 2.883h.01m-.01 6h.01m-.01 6h.01" />
+      <path fill="#2E2E2E" fill-rule="evenodd"
+        d="M14.393.242a.881.881 0 0 1 1.258.044c.823.898 1.927 2.348 2.676 3.36a5.432 5.432 0 0 1 1.056 3.237.883.883 0 0 1-1.766 0c0-.794-.246-1.56-.71-2.187-.305-.412-.66-.885-1.024-1.355v11.542a.887.887 0 0 1-.016.166 3.358 3.358 0 0 1-3.344 3.565 3.358 3.358 0 0 1-3.35-3.366c0-1.858 1.5-3.365 3.35-3.365.577 0 1.12.146 1.594.405V.883a.878.878 0 0 1 .276-.641Zm-1.87 16.606c.867 0 1.584-.708 1.584-1.6 0-.89-.717-1.6-1.584-1.6-.867 0-1.584.71-1.584 1.6 0 .892.717 1.6 1.584 1.6Z"
+        clip-rule="evenodd" />
+    </symbol>
 
 
     <symbol id="camera" width="39" height="33" fill="none" viewBox="0 0 39 33">
@@ -149,18 +187,22 @@
 
     <symbol id="plus" width="45" height="45" fill="none" viewBox="0 0 45 45">
       <g filter="url(#filterPlus)">
-        <path fill="currentColor" fill-rule="evenodd" d="M39 20.5C39 29.613 31.613 37 22.5 37S6 29.613 6 20.5 13.387 4 22.5 4 39 11.387 39 20.5Zm-18-8.523c0-.678.55-1.227 1.228-1.227h.546c.677 0 1.227.55 1.227 1.227V19h7.02c.679 0 1.228.55 1.228 1.227v.546c0 .678-.55 1.227-1.227 1.227H24v7.023c0 .678-.55 1.227-1.227 1.227h-.546c-.678 0-1.227-.55-1.227-1.227V22h-7.025c-.677 0-1.227-.55-1.227-1.227v-.546c0-.678.55-1.227 1.227-1.227H21v-7.023Z" clip-rule="evenodd"/>
+        <path fill="currentColor" fill-rule="evenodd"
+          d="M39 20.5C39 29.613 31.613 37 22.5 37S6 29.613 6 20.5 13.387 4 22.5 4 39 11.387 39 20.5Zm-18-8.523c0-.678.55-1.227 1.228-1.227h.546c.677 0 1.227.55 1.227 1.227V19h7.02c.679 0 1.228.55 1.228 1.227v.546c0 .678-.55 1.227-1.227 1.227H24v7.023c0 .678-.55 1.227-1.227 1.227h-.546c-.678 0-1.227-.55-1.227-1.227V22h-7.025c-.677 0-1.227-.55-1.227-1.227v-.546c0-.678.55-1.227 1.227-1.227H21v-7.023Z"
+          clip-rule="evenodd" />
       </g>
       <defs>
-        <filter id="filterPlus" width="45" height="45" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-          <feOffset dy="2"/>
-          <feGaussianBlur stdDeviation="3"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.21 0"/>
-          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_532_174"/>
-          <feBlend in="SourceGraphic" in2="effect1_dropShadow_532_174" result="shape"/>
+        <filter id="filterPlus" width="45" height="45" x="0" y="0"
+          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix in="SourceAlpha" result="hardAlpha"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="3" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.21 0" />
+          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_532_174" />
+          <feBlend in="SourceGraphic" in2="effect1_dropShadow_532_174" result="shape" />
         </filter>
       </defs>
     </symbol>
@@ -212,18 +254,22 @@
 
     <symbol id="glassBottle" width="168" height="299" fill="none" viewBox="0 0 168 299">
       <g filter="url(#filterGlassBottle)">
-        <path fill="currentColor" fill-rule="evenodd" d="M126.544 13.51a8.488 8.488 0 0 0-7.744 5.353l-.859 2.167c-1.467 3.697-.149 7.808 2.952 10.02-10.826 24.444-28.565 62.721-34.168 64.303-21.278 5.829-33.557 16.745-40.544 34.55-4.272 10.91-20.104 49.351-33.304 81.402l-.002.004-.001.004a60683.74 60683.74 0 0 0-7.978 19.376c-4.658 11.445-9.421 31.051 3.176 45.677l.847.847c3.281 3.392 7.092 6.147 11.22 8.373 5.365 2.723 12.239 5.824 16.082 6.49 3.648 1.878 9.425 3.847 14.251 5.244 4.448 1.272 9.214 1.802 13.874 1.59h1.165c19.17-1.908 29.125-19.496 33.573-31.045 4.092-10.683 8.947-23.385 13.842-36.193 10.689-27.965 21.572-56.438 25.131-65.522 6.99-17.8 5.614-34.117-5.93-52.976-3.013-4.951 10.199-44.844 19.041-70.079 3.856.64 7.77-1.463 9.269-5.24l.86-2.168a8.464 8.464 0 0 0-1.28-8.441l6.845-8.762c1.273-1.589.849-4.026-.848-4.661l-17.076-6.78v-.107a2.367 2.367 0 0 0-.821-.157L131.437.156c-1.697-.636-3.712.742-3.924 2.86l-.969 10.494Z" clip-rule="evenodd"/>
+        <path fill="currentColor" fill-rule="evenodd"
+          d="M126.544 13.51a8.488 8.488 0 0 0-7.744 5.353l-.859 2.167c-1.467 3.697-.149 7.808 2.952 10.02-10.826 24.444-28.565 62.721-34.168 64.303-21.278 5.829-33.557 16.745-40.544 34.55-4.272 10.91-20.104 49.351-33.304 81.402l-.002.004-.001.004a60683.74 60683.74 0 0 0-7.978 19.376c-4.658 11.445-9.421 31.051 3.176 45.677l.847.847c3.281 3.392 7.092 6.147 11.22 8.373 5.365 2.723 12.239 5.824 16.082 6.49 3.648 1.878 9.425 3.847 14.251 5.244 4.448 1.272 9.214 1.802 13.874 1.59h1.165c19.17-1.908 29.125-19.496 33.573-31.045 4.092-10.683 8.947-23.385 13.842-36.193 10.689-27.965 21.572-56.438 25.131-65.522 6.99-17.8 5.614-34.117-5.93-52.976-3.013-4.951 10.199-44.844 19.041-70.079 3.856.64 7.77-1.463 9.269-5.24l.86-2.168a8.464 8.464 0 0 0-1.28-8.441l6.845-8.762c1.273-1.589.849-4.026-.848-4.661l-17.076-6.78v-.107a2.367 2.367 0 0 0-.821-.157L131.437.156c-1.697-.636-3.712.742-3.924 2.86l-.969 10.494Z"
+          clip-rule="evenodd" />
       </g>
       <defs>
-        <filter id="filterGlassBottle" width="171.602" height="302.955" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-          <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-          <feOffset dx="5" dy="4"/>
-          <feGaussianBlur stdDeviation="2"/>
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-          <feBlend in2="shape" result="effect1_innerShadow_285_712"/>
+        <filter id="filterGlassBottle" width="171.602" height="302.955" x="0" y="0"
+          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix in="SourceAlpha" result="hardAlpha"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+          <feOffset dx="5" dy="4" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
+          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+          <feBlend in2="shape" result="effect1_innerShadow_285_712" />
         </filter>
       </defs>
     </symbol>
@@ -673,14 +719,18 @@
 
 
     <symbol id="leftArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
-      <path fill="currentColor" d="M23.349 4.535A2.5 2.5 0 1 0 19.813 1l3.536 3.535ZM19.813 1 2 18.813l3.536 3.536L23.349 4.535 19.813 1Z"/>
-      <path fill="currentColor" d="M20.465 40.786A2.5 2.5 0 0 0 24 37.25l-3.535 3.536ZM24 37.25 3.782 17.032.246 20.567l20.218 20.219L24 37.25Z"/>
+      <path fill="currentColor"
+        d="M23.349 4.535A2.5 2.5 0 1 0 19.813 1l3.536 3.535ZM19.813 1 2 18.813l3.536 3.536L23.349 4.535 19.813 1Z" />
+      <path fill="currentColor"
+        d="M20.465 40.786A2.5 2.5 0 0 0 24 37.25l-3.535 3.536ZM24 37.25 3.782 17.032.246 20.567l20.218 20.219L24 37.25Z" />
     </symbol>
 
-    
+
     <symbol id="rightArrow" width="25" height="42" fill="none" viewBox="0 0 25 42">
-      <path fill="currentColor" d="M1.651 37.715a2.5 2.5 0 1 0 3.536 3.535L1.65 37.715Zm3.536 3.535L23 23.437 19.464 19.9 1.651 37.715l3.536 3.535Z"/>
-      <path fill="currentColor" d="M4.535 1.464A2.5 2.5 0 0 0 1 5l3.535-3.536ZM1 5l20.218 20.218 3.536-3.536L4.535 1.464 1 5Z"/>
+      <path fill="currentColor"
+        d="M1.651 37.715a2.5 2.5 0 1 0 3.536 3.535L1.65 37.715Zm3.536 3.535L23 23.437 19.464 19.9 1.651 37.715l3.536 3.535Z" />
+      <path fill="currentColor"
+        d="M4.535 1.464A2.5 2.5 0 0 0 1 5l3.535-3.536ZM1 5l20.218 20.218 3.536-3.536L4.535 1.464 1 5Z" />
     </symbol>
 
 
