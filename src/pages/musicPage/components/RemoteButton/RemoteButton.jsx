@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { func, string, oneOf } from 'prop-types';
+import { func, oneOf } from 'prop-types';
 
 import styles from './RemoteIcon.module.css';
 import icons from '@/icons';
@@ -14,7 +14,7 @@ const TYPE_LIST = {
   pause: '음악 재생하기',
 };
 
-RemoteIcon.propTypes = {
+RemoteButton.propTypes = {
   type: oneOf([
     'musiclist',
     'step_forward',
@@ -26,10 +26,10 @@ RemoteIcon.propTypes = {
   onClick: func,
 };
 
-function RemoteIcon({ type, onClick, ...restProps }) {
+function RemoteButton({ type, onClick, ...restProps }) {
   return (
     <button
-      className={styles.remoteIcon}
+      className={styles.remoteButton}
       type="button"
       aria-label={TYPE_LIST[type]}
       onClick={onClick}
@@ -40,4 +40,4 @@ function RemoteIcon({ type, onClick, ...restProps }) {
   );
 }
 
-export default memo(RemoteIcon);
+export default memo(RemoteButton);
