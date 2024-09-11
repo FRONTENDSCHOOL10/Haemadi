@@ -1,8 +1,9 @@
-import globals from 'globals';
+import { fixupPluginRules } from '@eslint/compat';
 import pluginJs from '@eslint/js';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginReactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
 
 // Flat Config (ESLint v9+)
 export default [
@@ -14,7 +15,7 @@ export default [
     // 사용할 ESLint 플러그인들
     plugins: {
       react: pluginReact,
-      'react-hooks': pluginReactHooks,
+      'react-hooks': fixupPluginRules(pluginReactHooks),
       'react-refresh': pluginReactRefresh,
     },
   },

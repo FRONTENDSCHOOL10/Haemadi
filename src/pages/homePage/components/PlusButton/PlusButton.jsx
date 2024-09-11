@@ -1,20 +1,25 @@
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
-import { func } from 'prop-types';
+import { bool, func } from 'prop-types';
 import { forwardRef, memo } from 'react';
 import style from './PlusButton.module.css';
 
 // 부모의 상태와 관련된 애니메이션으로 framer-motion 사용을 위해 forwardRef 사용
-// export 부분에서 forwardRef 안쓰고 이렇게 쓰니까 propTypes 사용 가능
-const PlusButton = forwardRef(function _PlusButton({ onClick }, ref) {
+// forwardRef를 export 부분에서 안쓰고 함수 선언부를 감싸니까 propTypes 사용 가능
+const PlusButton = forwardRef(function _PlusButton(
+  { activated, onClick },
+  ref
+) {
   const desktop = useMediaStore((store) => store.desktop);
   const plusIcon = icons[`plus${desktop ? '_pc' : ''}`];
+  const label = activated ? '감정 선택 취소' : '작성할 일기의 감정 선택';
 
   return (
     <button
-      title="일기 작성하기"
-      aria-label="일기 작성하기"
+      type="button"
+      title={label}
+      aria-label={label}
       ref={ref}
       className={style.plusButton}
       onClick={onClick}
@@ -26,6 +31,7 @@ const PlusButton = forwardRef(function _PlusButton({ onClick }, ref) {
 
 PlusButton.propTypes = {
   onClick: func,
+  activated: bool,
 };
 
 // 개발자 도구 탭의 Components에 표시될 이름 (안쓰면 _PlusButton으로 나옴)
