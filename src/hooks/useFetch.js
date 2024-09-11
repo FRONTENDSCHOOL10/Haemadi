@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useImmer } from 'use-immer';
 
 // 사용 예시
-// const ENDPOINT = `${import.meta.env.VITE_PB_URL}/api/collections/diaries/records/${diaryId}`;
+// const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}`;
 // const { status, error, data } = useFetch(ENDPOINT, 'replyId');
 /** @type {(url: string, expandFields: string) => { status: 'pending' | 'loading' | 'success' | 'error', error: null | Error, data }} */
 function useFetch(url, expandFields) {

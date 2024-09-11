@@ -1,4 +1,5 @@
-const ENDPOINT = import.meta.env.VITE_PB_URL;
+import { BASE_URL } from './pbconfig';
+
 const REQUEST_OPTIONS = {
   headers: {
     'Content-Type': 'application/json',
@@ -8,7 +9,7 @@ const REQUEST_OPTIONS = {
 // username 중복일 때 처리 필요
 /** @type {(userName: string, password: string, passwordConfirm: string) => Promise<any>} */
 export async function userSignUp(username, password, passwordConfirm) {
-  const REQUEST_URL = `${ENDPOINT}/api/collections/users/records`;
+  const REQUEST_URL = `${BASE_URL}/api/collections/users/records`;
 
   const newUser = { username, password, passwordConfirm };
   const body = JSON.stringify(newUser);
@@ -33,7 +34,7 @@ export async function userSignUp(username, password, passwordConfirm) {
 
 /** @type {(username: string, password: string) => Promise<any>} */
 export async function userSignIn(username, password) {
-  const REQUEST_URL = `${ENDPOINT}/api/collections/users/auth-with-password`;
+  const REQUEST_URL = `${BASE_URL}/api/collections/users/auth-with-password`;
 
   const body = JSON.stringify({ username, password });
 
