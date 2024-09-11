@@ -1,5 +1,6 @@
 .form {
   display: flex;
+  flex-direction: column; 
 }
 
 .label {
@@ -8,6 +9,7 @@
 
 .inputWrapper {
   position: relative;
+  margin-bottom: 8px;
 }
 
 .input {
@@ -45,6 +47,6 @@
     font-size: var(--text-l);
     width: 522px; 
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
-    color:  var(--white);
+    color: var(--black);
   }
 }
