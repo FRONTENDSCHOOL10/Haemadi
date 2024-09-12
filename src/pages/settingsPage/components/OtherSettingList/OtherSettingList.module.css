@@ -20,7 +20,7 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 640px) {
   .otherSettingWrapper {
     width: 606px;
   }
