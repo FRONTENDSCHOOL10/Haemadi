@@ -8,7 +8,7 @@ import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
 
 const LINK_URL = {
-  bottles: './calender',
+  bottles: './calendar',
   statistics: './statistics',
 };
 
