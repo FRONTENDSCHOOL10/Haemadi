@@ -4,10 +4,10 @@ import { useImmer } from 'use-immer';
 // 사용 예시
 // const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}`;
 // const { status, error, data } = useFetch(ENDPOINT, 'replyId');
-/** @type {(url: string, expandFields: string) => { status: 'pending' | 'loading' | 'success' | 'error', error: null | Error, data }} */
+/** @type {(url: string, expandFields: string) => { status: 'loading' | 'success' | 'error', error: null | Error, data }} */
 function useFetch(url, expandFields) {
   const [state, setState] = useImmer({
-    status: 'pending',
+    status: 'loading',
     error: null,
     data: null,
   });
@@ -16,10 +16,6 @@ function useFetch(url, expandFields) {
     const abortController = new AbortController();
 
     async function fetchData() {
-      setState((draft) => {
-        draft.status = 'loading';
-      });
-
       const REQUEST_URL = `${url}${expandFields ? `?expand=${expandFields}` : ''}`;
 
       try {
