@@ -2,6 +2,27 @@
   width: 100%;
   height: 55%;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #bfdfff;
+    border-radius: 9999px;
+  }
+
+  span {
+    color: var(--white, #fff);
+    font-size: var(--text-m, 18px);
+    font-weight: 800;
+    line-height: 23px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .myPage {
@@ -45,6 +66,17 @@
 }
 
 @media (min-width: 640px) {
+  .userProfile {
+    img {
+      width: 230px;
+      height: 230px;
+    }
+
+    span {
+      font-size: 28px;
+    }
+  }
+
   .menu {
     justify-content: center;
   }

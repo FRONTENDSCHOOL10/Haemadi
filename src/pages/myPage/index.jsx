@@ -7,6 +7,8 @@ import { useMediaStore } from '@/stores/mediaStore';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';
 
+import defaultProfile from '/background/default_Profile.png';
+
 function MyPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const iconSize = !desktop ? { width: 35, height: 35 } : {};
@@ -18,9 +20,12 @@ function MyPage() {
         <Link className={styles.setting} to="./settings" aria-label="설정">
           <SVGIcon {...icons.setting} {...iconSize} />
         </Link>
+        <img src={defaultProfile} alt="기본 프로필" />
+        <span>고된 하루를 보낸 토끼</span>
       </div>
       <div className={styles.menu}>
         <div className={styles.LinkWrapper}>
+          <h2 className="sr-only">나의 정보 보기</h2>
           <LinkButton type="bottles">나의 기록</LinkButton>
           <LinkButton type="statistics">나의 섬 통계</LinkButton>
         </div>
