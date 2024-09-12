@@ -80,26 +80,25 @@
 }
 
 @media (min-width: 640px) {
-  .userProfile {
-    img {
-      width: 230px;
-      height: 230px;
+  .myPage {
+    .userProfile {
+      gap: 28px;
+      img {
+        width: 230px;
+        height: 230px;
+      }
+
+      span {
+        font-size: 28px;
+      }
     }
 
-    span {
-      font-size: 28px;
-    }
-  }
-
-  .menu {
-    justify-content: center;
-
-    .LinkWrapper {
-    }
-
-    .interestWrapper {
-      h2 {
-        font-size: var(--text-l, 20px);
+    .menu {
+      justify-content: center;
+      .interestWrapper {
+        h2 {
+          font-size: var(--text-l, 20px);
+        }
       }
     }
   }
