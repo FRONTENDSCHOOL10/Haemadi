@@ -3,22 +3,16 @@ import { Link } from 'react-router-dom';
 import { number, string, oneOf, oneOfType } from 'prop-types';
 
 import styles from './OtherSettingButton.module.css';
-import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
+import { OtherSetting_PAGES } from '@/constants';
 
 OtherSettingButton.propTypes = {
-  type: oneOf([
-    'announcement',
-    'headset',
-    'question',
-    'list',
-    'information',
-    'version',
-  ]),
+  type: oneOf(OtherSetting_PAGES),
   navigateTo: oneOfType([number, string]),
 };
 
-const OtherSettingPageList = {
+const OtherSetting_PageList = {
   announcement: '공지사항',
   headset: '문의하기',
   question: '자주 묻는 질문',
@@ -34,7 +28,7 @@ function OtherSettingButton({ type = 'announcement', navigateTo = '/error' }) {
     <Link className={styles.settingButton} to={navigateTo}>
       <div className={styles.settingTitle}>
         <SVGIcon {...iconStyle} />
-        <span>{OtherSettingPageList[type]}</span>
+        <span>{OtherSetting_PageList[type]}</span>
       </div>
       <SVGIcon {...icons.nextArrow} />
     </Link>
