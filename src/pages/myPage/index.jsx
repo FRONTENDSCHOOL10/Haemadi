@@ -20,6 +20,7 @@ function MyPage() {
         <Link className={styles.setting} to="./settings" aria-label="설정">
           <SVGIcon {...icons.setting} {...iconSize} />
         </Link>
+        {/* 추후 로그인된 사용자 정보 가져오기 */}
         <img src={defaultProfile} alt="기본 프로필" />
         <span>고된 하루를 보낸 토끼</span>
       </div>
