@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
 
   span {
     color: var(--black, #2e2e2e);
