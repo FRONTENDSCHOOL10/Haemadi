@@ -18,6 +18,7 @@
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
+  color: var(--placeholder_gray);
 }
 
 .clearButton {
@@ -27,10 +28,6 @@
   background: none;
   z-index: 1;
 
-}
-
-.clearButton svg {
-  fill: currentColor;
 }
 
 .error {
@@ -43,7 +40,7 @@
   .input {
     font-size: var(--text-s);
     border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
-    /* color: var(--tertiay);  */
+    color: var(--tertiay); 
     text-align: left;
   }
 
@@ -66,7 +63,6 @@
   .input {
     font-size: var(--text-l);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
-    /* border-bottom: 1.5px solid #000; */
     color: var(--black); 
     /* 나중에 black white로 수정해야함 */
     text-align: center;

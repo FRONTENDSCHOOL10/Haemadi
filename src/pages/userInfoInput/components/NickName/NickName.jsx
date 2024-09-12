@@ -7,7 +7,7 @@ import { useMediaStore } from '@/stores/mediaStore';
 
 const NickName = ({ initialNickname }) => {
   const [nickname, setNickname] = useState(initialNickname || '');
-  const [setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const isDesktop = useMediaStore((store) => store.desktop);
 
@@ -15,13 +15,22 @@ const NickName = ({ initialNickname }) => {
   const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const { name, value } = e.target;
+    console.log("Input name:", name);
     if (validateNickname(value)) {
       setNickname(value);
       setErrorMessage('');
     } else {
       setErrorMessage('닉네임은 공백 포함 4~9 글자이며, 특수 문자는 포함될 수 없습니다.');
     }
+  };
+
+  const handleFocus = () => {
+    setIsEditing(true);
+  };
+
+  const handleBlur = () => {
+    setIsEditing(false);
   };
 
   const handleClear = () => {
@@ -35,12 +44,13 @@ const NickName = ({ initialNickname }) => {
         <input
           type="text"
           id="nickname"
-          value={nickname}
+          name="nickname"
+          defaultValue={nickname}
           placeholder="닉네임을 작성해주세요"
           className={styles.input}
           onChange={handleChange}
-          onFocus={() => setIsEditing(true)}
-          onBlur={() => setIsEditing(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <button
           type="button"
@@ -59,7 +69,6 @@ const NickName = ({ initialNickname }) => {
   );
 };
 
-// PropTypes 설정
 NickName.propTypes = {
   initialNickname: PropTypes.string,
 };
