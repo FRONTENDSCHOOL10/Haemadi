@@ -2,11 +2,11 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { number, string, oneOf, oneOfType } from 'prop-types';
 
-import styles from './OtherSettingPage.module.css';
+import styles from './OtherSettingButton.module.css';
 import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 
-OtherSettingPage.propTypes = {
+OtherSettingButton.propTypes = {
   type: oneOf([
     'announcement',
     'headset',
@@ -27,7 +27,7 @@ const OtherSettingPageList = {
   version: '버전정보(1.00)',
 };
 
-function OtherSettingPage({ type = 'announcement', navigateTo = '/error' }) {
+function OtherSettingButton({ type = 'announcement', navigateTo = '/error' }) {
   const iconStyle = icons[type];
 
   return (
@@ -41,4 +41,4 @@ function OtherSettingPage({ type = 'announcement', navigateTo = '/error' }) {
   );
 }
 
-export default memo(OtherSettingPage);
+export default memo(OtherSettingButton);
