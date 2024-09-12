@@ -5,17 +5,14 @@ import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import { useMediaStore } from '@/stores/mediaStore';
 
-// 컴포넌트 선언
 const NickName = ({ initialNickname }) => {
   const [nickname, setNickname] = useState(initialNickname || '');
-  const [isEditing, setIsEditing] = useState(false);
+  const [setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const isDesktop = useMediaStore((store) => store.desktop);
 
-  // 닉네임 유효성 검사 (공백 포함 4~9 글자, 특수문자 포함 불가)
-  const validateNickname = (name) => {
-    const regex = /^[가-힣a-zA-Z0-9 ]{4,9}$/;
-    return regex.test(name);
-  };
+  // 닉네임 유효성 검사
+  const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -34,9 +31,6 @@ const NickName = ({ initialNickname }) => {
 
   return (
     <form className={styles.form}>
-      <label htmlFor="nickname" className={styles.label}>
-        닉네임
-      </label>
       <div className={styles.inputWrapper}>
         <input
           type="text"
@@ -54,14 +48,16 @@ const NickName = ({ initialNickname }) => {
           onClick={handleClear}
           aria-label="닉네임 지우기"
         >
-          <SVGIcon {...icons.remove} />
+          <SVGIcon 
+            {...icons.remove} 
+            color={isDesktop ? '#000' : icons.remove.color} 
+          />
         </button>
       </div>
       {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </form>
   );
 };
-
 
 // PropTypes 설정
 NickName.propTypes = {

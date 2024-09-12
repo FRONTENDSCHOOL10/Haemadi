@@ -24,7 +24,9 @@
   position: absolute;
   width: 18px;
   height: 18px;
+  background: none;
   z-index: 1;
+
 }
 
 .clearButton svg {
@@ -41,7 +43,7 @@
   .input {
     font-size: var(--text-s);
     border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
-    color: var(--tertiay); 
+    /* color: var(--tertiay);  */
     text-align: left;
   }
 
