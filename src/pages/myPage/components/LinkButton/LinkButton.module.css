@@ -11,3 +11,11 @@
     line-height: normal;
   }
 }
+
+@media (min-width: 640px) {
+  .linkButton {
+    span {
+      font-size: var(--text-s, 16px);
+    }
+  }
+}

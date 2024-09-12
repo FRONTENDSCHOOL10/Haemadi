@@ -28,6 +28,7 @@ function MyPage() {
         <div className={styles.LinkWrapper}>
           <h2 className="sr-only">나의 정보 보기</h2>
           <LinkButton type="bottles">나의 기록</LinkButton>
+          <hr />
           <LinkButton type="statistics">나의 섬 통계</LinkButton>
         </div>
         <div className={styles.interestWrapper}>

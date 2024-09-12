@@ -1,30 +1,3 @@
-.userProfile {
-  width: 100%;
-  height: 55%;
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-
-  img {
-    width: 150px;
-    height: 150px;
-    border: 1px solid #bfdfff;
-    border-radius: 9999px;
-  }
-
-  span {
-    color: var(--white, #fff);
-    font-size: var(--text-m, 18px);
-    font-weight: 800;
-    line-height: 23px;
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  }
-}
-
 .myPage {
   background-image: url('/background/background01.png');
   background-size: cover;
@@ -36,6 +9,33 @@
     position: absolute;
     top: 5%;
     right: 3%;
+  }
+
+  .userProfile {
+    width: 100%;
+    height: 55%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      width: 150px;
+      height: 150px;
+      border: 1px solid #bfdfff;
+      border-radius: 9999px;
+    }
+
+    span {
+      color: var(--white, #fff);
+      font-size: var(--text-m, 18px);
+      font-weight: 800;
+      line-height: 23px;
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    }
   }
 
   .menu {
@@ -51,8 +51,15 @@
 
   .LinkWrapper {
     display: flex;
-    gap: 148px;
+    align-items: center;
+    gap: 74px;
     padding: 50px;
+
+    hr {
+      background-color: var(--button_gray);
+      width: 1px;
+      height: 94px;
+    }
   }
 
   .interestWrapper {
@@ -62,6 +69,13 @@
     justify-content: center;
     gap: 30px;
     padding: 30px;
+
+    h2 {
+      color: var(--black, #2e2e2e);
+      font-size: var(--text-s, 16px);
+      font-weight: 800;
+      line-height: normal;
+    }
   }
 }
 
@@ -79,5 +93,14 @@
 
   .menu {
     justify-content: center;
+
+    .LinkWrapper {
+    }
+
+    .interestWrapper {
+      h2 {
+        font-size: var(--text-l, 20px);
+      }
+    }
   }
 }
