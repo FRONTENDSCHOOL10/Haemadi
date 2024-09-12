@@ -1,0 +1,12 @@
+.linkButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    color: var(--black, #2e2e2e);
+    font-size: var(--text-xxs, 12px);
+    font-weight: 700;
+    line-height: normal;
+  }
+}
