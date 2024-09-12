@@ -1,5 +1,75 @@
-function CalenderPage() {
-  return <></>;
+import { BASE_URL } from '@/api/pbconfig';
+import BackButton from '@/components/BackButton/BackButton';
+import useFetch from '@/hooks/useFetch';
+import { isSameDay } from 'date-fns';
+import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Calendar from './Calendar/Calendar';
+import CalendarModal from './CalendarModal/CalendarModal';
+import styles from './CalendarPage.module.css';
+
+function CalendarPage() {
+  const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // 로그인 기능 구현 후 userId 변경 필요
+  // 현재 로그인한 유저의 일기들을 불러옴
+  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?filter=(userId='nxorcbf2dujhxfu')&`;
+  const { status, error, data } = useFetch(ENDPOINT);
+
+  // 불러온 일기들의 created 값을 Date 형식으로 변환
+  const diaries = data?.items.map((diary) => ({
+    ...diary,
+    created: new Date(diary.created),
+  }));
+
+  // 불러온 일기 목록 중 달력에서 클릭한 일기를 찾음
+  const selectedDiary = diaries?.find((diary) =>
+    isSameDay(selectedDate, diary.created)
+  );
+
+  // 조개 버튼 클릭 (날짜 선택 + 모달창 열림)
+  const handleShellClick = useCallback((date) => {
+    setSelectedDate(date);
+    setModalOpen(true);
+  }, []);
+  // 모달창 닫기 (날짜 선택 해제 + 모달창 닫힘)
+  const closeModal = useCallback(() => {
+    setSelectedDate(null);
+    setModalOpen(false);
+  }, []);
+  // 모달창에서 go버튼 누름 (해당 일기의 viewDiaryPage로 이동)
+  const confirmModal = useCallback(() => {
+    navigate(`/my/view-diary/${selectedDiary?.id}`);
+  }, [navigate, selectedDiary]);
+
+  return (
+    <>
+      <header className={styles.header}>
+        <BackButton style={{ position: 'absolute', left: 0 }} />
+        <h1>나의 기록</h1>
+      </header>
+      {status === 'loading' && <div>loading...</div>}
+      {status === 'error' && <div>{error.message}</div>}
+      {status === 'success' && (
+        <main className={styles.main}>
+          <Calendar
+            diaries={diaries}
+            selectedDate={selectedDate}
+            onShellClick={handleShellClick}
+          />
+
+          <CalendarModal
+            diaryData={selectedDiary}
+            modalOpen={modalOpen}
+            closeModal={closeModal}
+            confirmModal={confirmModal}
+          />
+        </main>
+      )}
+    </>
+  );
 }
 
-export default CalenderPage;
+export default CalendarPage;
