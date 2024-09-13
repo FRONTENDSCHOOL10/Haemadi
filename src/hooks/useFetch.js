@@ -7,7 +7,7 @@ import { useImmer } from 'use-immer';
 /** @type {(url: string, expandFields: string) => { status: 'loading' | 'success' | 'error', error: null | Error, data }} */
 function useFetch(url, expandFields) {
   const [state, setState] = useImmer({
-    status: 'loading',
+    status: 'pending',
     error: null,
     data: null,
   });
@@ -16,6 +16,10 @@ function useFetch(url, expandFields) {
     const abortController = new AbortController();
 
     async function fetchData() {
+      setState((draft) => {
+        draft.status = 'loading';
+      });
+
       const REQUEST_URL = `${url}${expandFields ? `?expand=${expandFields}` : ''}`;
 
       try {
