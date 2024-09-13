@@ -2,8 +2,8 @@ import { useMediaStore } from '@/stores/mediaStore';
 import { oneOf } from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './BottleLink.module.css';
-import bottleLink_mailBox from '/home/bottleLink_mailBox.png';
-import bottleLink_pickUp from '/home/bottleLink_pickUp.png';
+import bottleLink_mailBox from '/homePage/bottleLink_mailBox.png';
+import bottleLink_pickUp from '/homePage/bottleLink_pickUp.png';
 
 BottleLink.propTypes = {
   type: oneOf(['pickUpBottle', 'mailBox']).isRequired,
