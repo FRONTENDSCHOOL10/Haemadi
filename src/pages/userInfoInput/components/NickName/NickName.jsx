@@ -47,6 +47,7 @@ function NickName({ initialNickname }) {
           onBlur={handleBlur}
           key={inputKey} 
           maxLength={9}
+          aria-required="true"
         />
         <button
           type="button"
