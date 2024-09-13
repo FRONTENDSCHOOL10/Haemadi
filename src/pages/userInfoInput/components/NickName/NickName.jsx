@@ -8,34 +8,24 @@ import { useMediaStore } from '@/stores/mediaStore';
 const NickName = ({ initialNickname }) => {
   const [nickname, setNickname] = useState(initialNickname || '');
   const [isEditing, setIsEditing] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [inputKey, setInputKey] = useState(0); // Key for resetting input
   const isDesktop = useMediaStore((store) => store.desktop);
 
   // 닉네임 유효성 검사
   const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log("Input name:", name);
+    const { value } = e.target;
     if (validateNickname(value)) {
       setNickname(value);
-      setErrorMessage('');
-    } else {
-      setErrorMessage('닉네임은 공백 포함 4~9 글자이며, 특수 문자는 포함될 수 없습니다.');
     }
   };
 
-  const handleFocus = () => {
-    setIsEditing(true);
-  };
-
-  const handleBlur = () => {
-    setIsEditing(false);
-  };
-
+  const handleFocus = () => setIsEditing(true);
+  const handleBlur = () => setIsEditing(false);
   const handleClear = () => {
     setNickname('');
-    setErrorMessage('');
+    setInputKey(prevKey => prevKey + 1); // Update key to reset input
   };
 
   return (
@@ -51,6 +41,7 @@ const NickName = ({ initialNickname }) => {
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          key={inputKey} // Use key to force re-render
         />
         <button
           type="button"
@@ -64,7 +55,6 @@ const NickName = ({ initialNickname }) => {
           />
         </button>
       </div>
-      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </form>
   );
 };
