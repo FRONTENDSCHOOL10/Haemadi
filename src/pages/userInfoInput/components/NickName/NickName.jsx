@@ -5,27 +5,31 @@ import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import { useMediaStore } from '@/stores/mediaStore';
 
-const NickName = ({ initialNickname }) => {
+function NickName({ initialNickname }) {
   const [nickname, setNickname] = useState(initialNickname || '');
   const [isEditing, setIsEditing] = useState(false);
-  const [inputKey, setInputKey] = useState(0); // Key for resetting input
+  const [inputKey, setInputKey] = useState(0);
   const isDesktop = useMediaStore((store) => store.desktop);
 
-  // 닉네임 유효성 검사
+  // 닉네임 유효성 검사 함수
   const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
 
-  const handleChange = (e) => {
-    const { value } = e.target;
+  const handleChange = (event) => {
+    const { value } = event.target;
     if (validateNickname(value)) {
       setNickname(value);
     }
   };
 
   const handleFocus = () => setIsEditing(true);
+
+
   const handleBlur = () => setIsEditing(false);
+
+
   const handleClear = () => {
     setNickname('');
-    setInputKey(prevKey => prevKey + 1); // Update key to reset input
+    setInputKey((prevKey) => prevKey + 1); 
   };
 
   return (
@@ -41,7 +45,8 @@ const NickName = ({ initialNickname }) => {
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          key={inputKey} // Use key to force re-render
+          key={inputKey} 
+          maxLength={9}
         />
         <button
           type="button"
@@ -51,13 +56,13 @@ const NickName = ({ initialNickname }) => {
         >
           <SVGIcon 
             {...icons.remove} 
-            color={isDesktop ? '#000' : icons.remove.color} 
+            color={isDesktop ? '#000' : icons.remove.color} /* 사용 시 #fff로 변경해주세요*/
           />
         </button>
       </div>
     </form>
   );
-};
+}
 
 NickName.propTypes = {
   initialNickname: PropTypes.string,

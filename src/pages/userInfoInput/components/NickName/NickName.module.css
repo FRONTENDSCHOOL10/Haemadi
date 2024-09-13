@@ -30,12 +30,6 @@
 
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
 @media (max-width: 639px) {
   .input {
     font-size: var(--text-s);
@@ -63,8 +57,7 @@
   .input {
     font-size: var(--text-l);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
-    color: var(--black); 
-    /* 나중에 black white로 수정해야함 */
+    color: var(--black); /* 사용 시 #fff로 변경해주세요*/
     text-align: center;
   }
 
