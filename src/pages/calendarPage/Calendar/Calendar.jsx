@@ -103,13 +103,23 @@ function Calendar({ diaries, selectedDate, onShellClick }) {
     <div className={styles.calendar}>
       {/* < 2024.09 > */}
       <div className={styles.calendarHeader}>
-        <button type="button" onClick={handlePrevMonthButtonClick}>
+        <button
+          type="button"
+          onClick={handlePrevMonthButtonClick}
+          aria-label="이전 달 달력 보기"
+          title="이전 달 달력 보기"
+        >
           <SVGIcon {...icons.leftDir} />
         </button>
-        <h3>
+        <h2>
           {currentYear}.{String(currentMonth + 1).padStart(2, '0')}
-        </h3>
-        <button type="button" onClick={handleNextMonthButtonClick}>
+        </h2>
+        <button
+          type="button"
+          onClick={handleNextMonthButtonClick}
+          aria-label="다음 달 달력 보기"
+          title="다음 달 달력 보기"
+        >
           <SVGIcon {...icons.rightDir} />
         </button>
       </div>
