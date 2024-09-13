@@ -3,7 +3,7 @@ import ShellButton from '@/components/ShellButton/ShellButton';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { createCalendarList } from '@/utils';
-import { isSameDay, isSameMonth } from 'date-fns';
+import { compareAsc, isSameDay, isSameMonth } from 'date-fns';
 import { addMonths } from 'date-fns/addMonths';
 import { subMonths } from 'date-fns/subMonths';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -28,6 +28,29 @@ const variants = {
   }),
 };
 
+function assignDiariesToCalendar(calendarList, diaries) {
+  let diaryIndex = diaries.length - 1;
+
+  for (let weekIndex = calendarList.length - 1; weekIndex >= 0; weekIndex--) {
+    const week = calendarList[weekIndex];
+
+    for (let dayIndex = week.length - 1; dayIndex >= 0; dayIndex--) {
+      const day = week[dayIndex];
+
+      if (diaryIndex >= 0 && isSameDay(day.date, diaries[diaryIndex].created)) {
+        day.diary = diaries[diaryIndex];
+      }
+
+      while (
+        diaryIndex >= 0 &&
+        compareAsc(day.date, diaries[diaryIndex].created) < 0
+      ) {
+        diaryIndex--;
+      }
+    }
+  }
+}
+
 Calendar.propTypes = {
   diaries: arrayOf(
     shape({ emotion: emotionType, message: string, created: object })
@@ -46,9 +69,12 @@ function Calendar({ diaries, selectedDate, onShellClick }) {
       date,
       key: date.getTime(),
       // props로 받은 diaries 목록 중 각 날짜에 해당하는 diary를 찾아서 할당
-      diary: diaries.find((diary) => isSameDay(date, diary.created)),
+      diary: null,
     }))
   );
+
+  // diaries 배열을 역순으로 순회하면서 각 날짜에 해당하는 diary를 할당
+  assignDiariesToCalendar(calendarList, diaries);
 
   // 현재 보고있는 달력의 년,월
   const currentYear = calendarDate.getFullYear();

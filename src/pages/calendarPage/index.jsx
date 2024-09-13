@@ -15,7 +15,7 @@ function CalendarPage() {
 
   // 로그인 기능 구현 후 userId 변경 필요
   // 현재 로그인한 유저의 일기들을 불러옴
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?filter=(userId='nxorcbf2dujhxfu')&`;
+  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=(userId='nxorcbf2dujhxfu')`;
   const { status, error, data } = useFetch(ENDPOINT);
 
   // 불러온 일기들의 created 값을 Date 형식으로 변환
