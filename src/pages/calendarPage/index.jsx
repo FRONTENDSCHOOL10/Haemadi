@@ -44,6 +44,8 @@ function CalendarPage() {
     navigate(`/my/view-diary/${selectedDiary?.id}`);
   }, [navigate, selectedDiary]);
 
+  if (status === 'error') return <div>{error.message}</div>;
+
   return (
     <>
       <header className={styles.header}>
@@ -51,7 +53,6 @@ function CalendarPage() {
         <h1>나의 기록</h1>
       </header>
       {status === 'loading' && <div>loading...</div>}
-      {status === 'error' && <div>{error.message}</div>}
       {status === 'success' && (
         <main className={styles.main}>
           <Calendar
