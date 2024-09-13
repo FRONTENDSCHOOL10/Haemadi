@@ -37,7 +37,6 @@ export async function userSignIn(username, password) {
   const REQUEST_URL = `${BASE_URL}/api/collections/users/auth-with-password`;
 
   const body = JSON.stringify({ identity: username, password });
-  console.log(body);
 
   const response = await fetch(REQUEST_URL, {
     method: 'POST',

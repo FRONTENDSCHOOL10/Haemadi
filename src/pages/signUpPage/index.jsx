@@ -5,7 +5,7 @@ import styles from './signUpPage.module.css';
 import BackButton from '@/components/BackButton/BackButton';
 import AuthInput from '@/components/AuthInput/AuthInput';
 import Button from '@/components/Button/Button';
-import { userSignUp } from '@/api/users';
+import { userSignIn, userSignUp } from '@/api/users';
 
 function SignUpPage() {
   const [values, setValues] = useState({
@@ -55,12 +55,6 @@ function SignUpPage() {
     e.preventDefault();
     const { username, password, passwordConfirm } = values;
 
-    // 비밀번호 일치 여부 확인
-    if (password !== passwordConfirm) {
-      console.log('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-
     // 입력 값 유효성 검사
     if (!validateInput('username', username)) {
       console.log('아이디가 유효하지 않습니다.');
@@ -72,17 +66,32 @@ function SignUpPage() {
       return;
     }
 
-    // 서버에 정보 저장
-    userSignUp(username, password, passwordConfirm)
-      .then((responseData) => {
-        // 서버에서 오류가 없고 새로운 유저가 생성된 경우 navigate 실행
-        //캐싱
-        navigate('/my/settings/userInfoInput/1');
-      })
-      .catch((error) => {
-        // 서버 오류가 있을 경우 에러를 처리 (예: 사용자에게 알림)
-        console.error('Sign-up failed:', error);
+    // 비밀번호 일치 여부 확인
+    if (password !== passwordConfirm) {
+      console.log('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    // 서버에 정보 저장 및 로그인 처리
+    try {
+      const signUpResponse = await userSignUp(
+        'ma2582m',
+        'bb4479woghks!',
+        'bb4479woghks!'
+      );
+      const signInResponse = await userSignIn(username, password);
+
+      // 로그인 성공 시 토큰과 사용자 ID를 로컬 스토리지에 저장
+      localStorage.setItem('auth', {
+        token: signInResponse.token,
+        userId: signInResponse.record.id,
       });
+
+      // 사용자 정보를 입력하는 페이지로 이동
+      navigate('/my/settings/userInfoInput/1');
+    } catch (error) {
+      console.error('회원가입 또는 로그인 실패:', error);
+    }
   }
 
   return (
