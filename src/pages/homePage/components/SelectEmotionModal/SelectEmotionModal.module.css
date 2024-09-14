@@ -1,12 +1,3 @@
-/* .modalContent {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-} */
-
 /* 모달 뒷배경 */
 .modalOverlay {
   backdrop-filter: blur(2px);
@@ -28,14 +19,12 @@
   /* 정렬 */
   display: flex;
   justify-content: center;
-  /* align-items: flex-end; */
   text-align: center;
   /* 창 크기 */
   width: 100%;
   height: 50%;
 
   h2 {
-    /* margin-bottom: 47vh; */
     margin-top: 3vh;
     text-align: center;
     font-weight: 700;
@@ -49,7 +38,6 @@
     h2 {
       margin-top: 0;
       font-size: 28px;
-      /* margin-bottom: 21vh; */
     }
   }
 }
@@ -65,13 +53,7 @@
 
   li {
     position: absolute;
-    /* translate: -50% -50%; */
     display: none;
-
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap; */
 
     span {
       color: var(--white, #ffffff);
