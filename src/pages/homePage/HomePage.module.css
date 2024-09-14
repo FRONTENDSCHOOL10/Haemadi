@@ -2,21 +2,36 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  position: relative;
 }
 
-.shellList {
-  display: none;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  max-width: 1000px;
+.buttonWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 9px;
+  position: absolute;
+  bottom: 15vh;
+  right: 50vw;
+  translate: 50% 50%;
 
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap;
+  .plusButtonLabel {
+    color: #56483b;
+    text-align: center;
+    font-size: var(--text-l, 20px);
+    font-weight: 700;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .buttonWrapper {
+    bottom: calc(7.5vh - 32px);
+    translate: 50% 0;
   }
 }

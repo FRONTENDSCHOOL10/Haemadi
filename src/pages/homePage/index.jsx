@@ -1,54 +1,67 @@
-import ShellButton from '@/components/ShellButton/ShellButton';
-import { EMOTION_LABEL, EMOTIONS } from '@/constants';
-import { useMediaStore } from '@/stores/mediaStore';
-import { useSunsetDetector } from '@/stores/sunStore';
+import { useSunsetDetector, useSunStore } from '@/stores/sunStore';
 import { motion } from 'framer-motion';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import PlusButton from './components/PlusButton/PlusButton';
+import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
 import styles from './HomePage.module.css';
-
-// PlusButton에 애니메이션을 주기 위함
-const MotionPlusButton = motion(PlusButton);
 
 function HomePage() {
   useSunsetDetector(); // 홈 화면을 열 때마다 sunset 상태 변경
-  const desktop = useMediaStore((store) => store.desktop);
+  const sunset = useSunStore((store) => store.sunset);
+  const desktop = useMediaQuery({ query: '(min-width: 1024px)' });
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const [spreadShells, setSpreadShells] = useState(false);
-
-  const handleClickPlus = useCallback(() => {
-    setSpreadShells((prevSpreadShells) => !prevSpreadShells);
+  const openModal = useCallback(() => {
+    setModalOpen(true);
+  }, []);
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
   }, []);
 
-  // 스타일 수정 필요
-  return (
-    <div className={styles.pageContainer}>
-      {/* activated를 전달하면 framer-motion을 사용하지 않고 css로 애니메이션이 가능하지만 다른 애니메이션도 추가할 것을 고려하여 남겨둠 */}
-      <MotionPlusButton
-        onClick={handleClickPlus}
-        activated={spreadShells}
-        animate={
-          spreadShells ? { rotate: 45, translateY: '-90px' } : { rotate: 0 }
-        }
-        transition={{ duration: 0.3 }}
-      />
+  // 모달 창 열렸을 때 바깥 쪽 스크롤 방지
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [modalOpen]);
 
-      <motion.ul
-        className={styles.shellList}
-        animate={
-          spreadShells
-            ? { opacity: 1, display: 'flex' }
-            : { opacity: 0, display: 'none' }
-        }
-        transition={{ duration: 0.3 }}
+  return (
+    <div
+      className={styles.pageContainer}
+      style={{
+        backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.png)`,
+      }}
+    >
+      <motion.div
+        className={styles.buttonWrapper}
+        animate={modalOpen ? { opacity: 0 } : { opacity: 1 }}
+        transition={{
+          delay: modalOpen ? 0 : 1,
+          duration: 0,
+        }}
+        style={modalOpen ? { display: 'none' } : {}}
       >
-        {EMOTIONS.map((emotion, index) => (
-          <li key={index}>
-            <ShellButton emotion={emotion} />
-            {desktop && <span>{EMOTION_LABEL[emotion]}</span>}
-          </li>
-        ))}
-      </motion.ul>
+        <PlusButton
+          desktop={desktop}
+          onClick={openModal}
+          activated={modalOpen}
+        />
+        <span
+          className={`${styles.plusButtonLabel}${!desktop ? ' sr-only' : ''}`}
+        >
+          일기 쓰기
+        </span>
+      </motion.div>
+
+      <SelectEmotionModal
+        modalOpen={modalOpen}
+        desktop={desktop}
+        closeModal={closeModal}
+      />
     </div>
   );
 }
