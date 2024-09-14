@@ -5,9 +5,11 @@ import styles from './signUpPage.module.css';
 import BackButton from '@/components/BackButton/BackButton';
 import AuthInput from '@/components/AuthInput/AuthInput';
 import Button from '@/components/Button/Button';
+import { useMediaStore } from '@/stores/mediaStore';
 import { userSignIn, userSignUp } from '@/api/users';
 
 function SignUpPage() {
+  const desktop = useMediaStore((store) => store.desktop);
   const [values, setValues] = useState({
     username: '',
     password: '',
@@ -50,8 +52,7 @@ function SignUpPage() {
       [name]: value,
     }));
   }, []);
-
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { username, password, passwordConfirm } = values;
 
@@ -74,11 +75,7 @@ function SignUpPage() {
 
     // 서버에 정보 저장 및 로그인 처리
     try {
-      const signUpResponse = await userSignUp(
-        'ma2582m',
-        'bb4479woghks!',
-        'bb4479woghks!'
-      );
+      await userSignUp(username, password, passwordConfirm);
       const signInResponse = await userSignIn(username, password);
 
       // 로그인 성공 시 토큰과 사용자 ID를 로컬 스토리지에 저장
@@ -92,48 +89,54 @@ function SignUpPage() {
     } catch (error) {
       console.error('회원가입 또는 로그인 실패:', error);
     }
-  }
+  };
 
   return (
-    <>
-      <BackButton />
-      <h1>회원가입</h1>
-      <form>
-        <label htmlFor="username">아이디</label>
-        <AuthInput
-          id="username"
-          name="username"
-          placeholder="아이디 (영문, 숫자 포함 4자 이상)"
-          onChange={handleChange}
-          value={values.username}
-        />
-        <label htmlFor="password">비밀번호</label>
-        <AuthInput
-          id="password"
-          name="password"
-          placeholder="비밀번호 (영문, 숫자, 특수문자 조합 8~20자리)"
-          onChange={handleChange}
-          value={values.password}
-        />
-        <label className="sr-only" htmlFor="passwordConfirm">
-          비밀번호 확인
-        </label>
-        <AuthInput
-          id="passwordConfirm"
-          name="passwordConfirm"
-          placeholder="비밀번호 재입력"
-          onChange={handleChange}
-          value={values.passwordConfirm}
-        />
+    <div className={styles.signupPage}>
+      <div className={styles.titleWrapper}>
+        <BackButton color={desktop ? 'white' : 'black'} />
+        <h1>회원가입</h1>
+      </div>
+      <form className={styles.formWrapper}>
+        <div className={styles.idWrapper}>
+          <label htmlFor="username">아이디</label>
+          <AuthInput
+            id="username"
+            name="username"
+            placeholder="아이디 (영문, 숫자 포함 4자 이상)"
+            onChange={handleChange}
+            value={values.username}
+          />
+        </div>
+        <div className={styles.passwordWrapper}>
+          <label htmlFor="password">비밀번호</label>
+          <AuthInput
+            id="password"
+            name="password"
+            placeholder="비밀번호 (영문, 숫자, 특수문자 조합 8~20자리)"
+            onChange={handleChange}
+            value={values.password}
+          />
+          <label className="sr-only" htmlFor="passwordConfirm">
+            비밀번호 확인
+          </label>
+          <AuthInput
+            id="passwordConfirm"
+            name="passwordConfirm"
+            placeholder="비밀번호 재입력"
+            onChange={handleChange}
+            value={values.passwordConfirm}
+          />
+        </div>
         <Button
           type="stroke"
-          state={buttonState ? 'default' : 'disabled'}
+          state={!buttonState ? 'disabled' : desktop ? 'default' : 'primary'}
           onClick={handleSubmit}
         >
           가입하기
         </Button>
       </form>
-    </>
+    </div>
   );
 }
 
