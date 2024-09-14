@@ -1,7 +1,7 @@
 import { emotionType } from '@/@types';
 import { EMOTION_LABEL } from '@/constants';
 import icons from '@/icons';
-import { bool, func } from 'prop-types';
+import { bool, func, number } from 'prop-types';
 import { memo, useState } from 'react';
 import SVGIcon from '../SVGIcon/SVGIcon';
 import style from './ShellButton.module.css';
@@ -10,9 +10,15 @@ ShellButton.propTypes = {
   emotion: emotionType.isRequired,
   block: bool,
   onClick: func,
+  size: number,
 };
 
-function ShellButton({ emotion, block = false, onClick = undefined }) {
+function ShellButton({
+  emotion,
+  block = false,
+  onClick = undefined,
+  size = 33,
+}) {
   const [hovered, setHovered] = useState(false);
   const label = `일기 ${block ? '보기' : '작성하기'} (${EMOTION_LABEL[emotion]})`;
 
@@ -35,7 +41,7 @@ function ShellButton({ emotion, block = false, onClick = undefined }) {
       onMouseLeave={!block ? handleMouseLeave : undefined}
       onClick={onClick}
     >
-      <SVGIcon {...shell} />
+      <SVGIcon {...shell} width={size} />
     </button>
   );
 }
