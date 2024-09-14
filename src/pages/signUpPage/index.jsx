@@ -33,7 +33,6 @@ function SignUpPage() {
   }, [values]);
 
   const navigate = useNavigate();
-  // const toast = useToaster();
 
   const validateInput = useCallback((name, value) => {
     // 아이디 및 비밀번호 유효성 검사 정규 표현식
