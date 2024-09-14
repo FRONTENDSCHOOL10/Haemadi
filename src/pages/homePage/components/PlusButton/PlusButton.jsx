@@ -1,47 +1,35 @@
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
-import { useMediaStore } from '@/stores/mediaStore';
 import { bool, func } from 'prop-types';
 import { forwardRef, memo } from 'react';
-import styles from './PlusButton.module.css';
-import { useId } from 'react';
+import style from './PlusButton.module.css';
 
 // 부모의 상태와 관련된 애니메이션으로 framer-motion 사용을 위해 forwardRef 사용
 // forwardRef를 export 부분에서 안쓰고 함수 선언부를 감싸니까 propTypes 사용 가능
 const PlusButton = forwardRef(function _PlusButton(
-  { activated, onClick, ...restProps },
+  { desktop = false, activated, onClick, ...restProps },
   ref
 ) {
-  const desktop = useMediaStore((store) => store.desktop);
   const plusIcon = icons[`plus${desktop ? '_pc' : ''}`];
-  const label = activated ? '감정 선택 취소' : '일기 쓰기'; // 클릭 상태에 따라 aria-label 변경
-  const buttonLabelId = useId();
+  const label = activated ? '감정 선택 취소' : '작성할 일기의 감정 선택';
 
   return (
-    <>
-      <button
-        type="button"
-        title={label}
-        aria-labelledby={buttonLabelId}
-        ref={ref}
-        className={styles.plusButton}
-        onClick={onClick}
-        {...restProps}
-      >
-        <SVGIcon {...plusIcon} />
-      </button>
-      <span
-        id={buttonLabelId}
-        // 모바일에서와 activated일 때 숨김 (sr-only)
-        className={`${styles.buttonLabel}${!desktop || activated ? ' sr-only' : ''}`}
-      >
-        {label}
-      </span>
-    </>
+    <button
+      type="button"
+      title={label}
+      aria-label={label}
+      ref={ref}
+      className={style.plusButton}
+      onClick={onClick}
+      {...restProps}
+    >
+      <SVGIcon {...plusIcon} />
+    </button>
   );
 });
 
 PlusButton.propTypes = {
+  desktop: bool,
   onClick: func,
   activated: bool,
 };

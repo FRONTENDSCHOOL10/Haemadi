@@ -5,12 +5,3 @@
   align-items: center;
   filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.21));
 }
-
-.buttonLabel {
-  margin-top: 9px;
-  color: #56483b;
-  text-align: center;
-  font-size: var(--text-l, 20px);
-  font-weight: 700;
-  letter-spacing: -0.6px;
-}
