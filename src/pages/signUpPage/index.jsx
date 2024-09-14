@@ -35,11 +35,11 @@ function SignUpPage() {
   const navigate = useNavigate();
   // const toast = useToaster();
 
-  // 아이디 및 비밀번호 유효성 검사 정규 표현식
-  const ID_REGEX = /^[a-zA-Z0-9]{4,20}$/;
-  const PW_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
-
   const validateInput = useCallback((name, value) => {
+    // 아이디 및 비밀번호 유효성 검사 정규 표현식
+    const ID_REGEX = /^[a-zA-Z0-9]{4,20}$/;
+    const PW_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
+
     if (name === 'username') return ID_REGEX.test(value);
     if (name === 'password') return PW_REGEX.test(value);
     return true;
