@@ -51,8 +51,10 @@ function SignUpPage() {
       [name]: value,
     }));
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const { username, password, passwordConfirm } = values;
 
     // 입력 값 유효성 검사
@@ -75,13 +77,7 @@ function SignUpPage() {
     // 서버에 정보 저장 및 로그인 처리
     try {
       await userSignUp(username, password, passwordConfirm);
-      const signInResponse = await userSignIn(username, password);
-
-      // 로그인 성공 시 토큰과 사용자 ID를 로컬 스토리지에 저장
-      localStorage.setItem('auth', {
-        token: signInResponse.token,
-        userId: signInResponse.record.id,
-      });
+      await userSignIn(username, password);
 
       // 사용자 정보를 입력하는 페이지로 이동
       navigate('/my/settings/userInfoInput/1');
