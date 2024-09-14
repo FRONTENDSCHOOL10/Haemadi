@@ -1,7 +1,7 @@
 export const EMOTIONS = [
+  'happy',
   'angry',
   'glad',
-  'happy',
   'panic',
   'anxiety',
   'sad',
@@ -10,14 +10,14 @@ export const EMOTIONS = [
 ];
 
 export const EMOTION_LABEL = {
-  angry: '화남',
-  glad: '기쁨',
-  happy: '행복',
-  panic: '당황',
-  anxiety: '불안',
-  sad: '슬픔',
-  normal: '평범',
-  tired: '지침',
+  happy: '행복해요',
+  angry: '화나요',
+  glad: '기뻐요',
+  panic: '황당해요',
+  anxiety: '별로에요',
+  sad: '슬퍼요',
+  normal: '그저그래요',
+  tired: '피곤해요',
 };
 
 export const CONTENTS = ['music', 'quotes', 'book', 'video'];
