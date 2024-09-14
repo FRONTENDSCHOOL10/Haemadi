@@ -1,5 +1,5 @@
 .myPage {
-  background-image: url('/background/background01.png');
+  background-image: url('../../assets/background/background01.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

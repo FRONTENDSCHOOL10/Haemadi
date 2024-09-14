@@ -7,7 +7,7 @@ import { useMediaStore } from '@/stores/mediaStore';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';
 
-import defaultProfile from '/background/default_Profile.png';
+import defaultProfile from '../../assets/default_Profile.png';
 
 function MyPage() {
   const desktop = useMediaStore((store) => store.desktop);
