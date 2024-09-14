@@ -7,7 +7,7 @@ import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 
 BackButton.propTypes = {
-  colored: oneOf(['blue', 'white', 'black']),
+  color: oneOf(['blue', 'white', 'black']),
   navigateTo: oneOfType([number, string]),
 };
 
