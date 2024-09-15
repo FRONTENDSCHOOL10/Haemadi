@@ -1,13 +1,23 @@
+.componentWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
 .bottleLink {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   width: fit-content;
+  background-color: transparent;
 
   img {
     object-fit: cover;
   }
+}
+.bottleLink:disabled {
+  cursor: not-allowed;
 }
 
 .notification {
@@ -21,12 +31,14 @@
   font-size: var(--text-xxs, 12px);
   line-height: 19px;
   text-align: center;
+  white-space: pre-line;
 }
 .notification::after {
   content: '';
   position: absolute;
   top: 60px;
-  right: 67px;
+  right: 50%;
+  translate: 50% 0;
   border-top: 8px solid white;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
@@ -34,6 +46,25 @@
 }
 
 @media (min-width: 640px) {
+  .notification {
+    margin-bottom: 18px;
+    padding: 14px 38px;
+    font-size: var(--text-s, 16px);
+    line-height: 24px;
+  }
+
+  .notification::after {
+    content: '';
+    position: absolute;
+    top: 76px;
+    border-top: 14px solid white;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 0px solid transparent;
+  }
+}
+
+@media (min-width: 1024px) {
   .notification {
     margin-bottom: 18px;
     padding: 17px 45px;
@@ -45,7 +76,6 @@
     content: '';
     position: absolute;
     top: 93px;
-    right: 105px;
     border-top: 14px solid white;
     border-left: 9px solid transparent;
     border-right: 9px solid transparent;
