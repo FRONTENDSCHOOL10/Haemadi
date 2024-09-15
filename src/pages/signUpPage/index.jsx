@@ -7,9 +7,12 @@ import AuthInput from '@/components/AuthInput/AuthInput';
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
 import { userSignIn, userSignUp } from '@/api/users';
+import { useToaster } from '@/stores/ToasterStore';
 
 function SignUpPage() {
   const desktop = useMediaStore((store) => store.desktop);
+  const toast = useToaster();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     username: '',
     password: '',
@@ -31,8 +34,6 @@ function SignUpPage() {
       setButtonState(false);
     }
   }, [values]);
-
-  const navigate = useNavigate();
 
   const validateInput = useCallback((name, value) => {
     // 아이디 및 비밀번호 유효성 검사 정규 표현식
@@ -59,18 +60,18 @@ function SignUpPage() {
 
     // 입력 값 유효성 검사
     if (!validateInput('username', username)) {
-      console.log('아이디가 유효하지 않습니다.');
+      toast('warn', '아이디가 유효하지 않습니다.');
       return;
     }
 
     if (!validateInput('password', password)) {
-      console.log('비밀번호가 유효하지 않습니다.');
+      toast('warn', '비밀번호가 유효하지 않습니다.');
       return;
     }
 
     // 비밀번호 일치 여부 확인
     if (password !== passwordConfirm) {
-      console.log('비밀번호가 일치하지 않습니다.');
+      toast('warn', '비밀번호가 일치하지 않습니다.');
       return;
     }
 
