@@ -3,6 +3,7 @@ import { useSunsetDetector, useSunStore } from '@/stores/sunStore';
 import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import BottleLink from './components/BottleLink/BottleLink';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
 import styles from './HomePage.module.css';
@@ -30,6 +31,9 @@ function HomePage() {
         backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.png)`,
       }}
     >
+      <BottleLink type={'pickUpBottle'} className={styles.bottleLink} />
+      <BottleLink type={'letterBox'} className={styles.bottleLink} />
+
       <motion.div
         className={styles.buttonWrapper}
         animate={modalOpen ? { opacity: 0 } : { opacity: 1 }}

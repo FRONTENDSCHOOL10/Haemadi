@@ -35,3 +35,33 @@
     translate: 50% 0;
   }
 }
+
+/* 유리병 버튼 디자인 */
+.bottleLink:first-child {
+  position: absolute;
+  left: 5.4vw;
+  bottom: 37.5vh;
+}
+.bottleLink:nth-child(2) {
+  position: absolute;
+  right: 6vw;
+  bottom: 21vh;
+}
+
+@media (min-width: 640px) {
+  .bottleLink:first-child {
+    left: calc(50vw - 300px);
+  }
+  .bottleLink:nth-child(2) {
+    right: calc(50vw - 300px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottleLink:first-child {
+    left: calc(50vw - 380px);
+  }
+  .bottleLink:nth-child(2) {
+    right: calc(50vw - 380px);
+  }
+}
