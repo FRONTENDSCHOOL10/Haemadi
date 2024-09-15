@@ -1,6 +1,7 @@
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 import { useSunsetDetector, useSunStore } from '@/stores/sunStore';
 import { motion } from 'framer-motion';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
@@ -11,23 +12,16 @@ function HomePage() {
   const sunset = useSunStore((store) => store.sunset);
   const desktop = useMediaQuery({ query: '(min-width: 1024px)' });
   const [modalOpen, setModalOpen] = useState(false);
+  const { lockScroll, openScroll } = useBodyScrollLock(); // 모달창 열었을 때 외부 스크롤 방지
 
   const openModal = useCallback(() => {
     setModalOpen(true);
-  }, []);
+    lockScroll();
+  }, [lockScroll]);
   const closeModal = useCallback(() => {
     setModalOpen(false);
-  }, []);
-
-  // 모달 창 열렸을 때 바깥 쪽 스크롤 방지
-  useEffect(() => {
-    if (modalOpen) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [modalOpen]);
+    openScroll();
+  }, [openScroll]);
 
   return (
     <div
