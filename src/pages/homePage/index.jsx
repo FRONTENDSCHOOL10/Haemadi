@@ -31,8 +31,8 @@ function HomePage() {
         backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.png)`,
       }}
     >
-      <BottleLink type={'pickUpBottle'} className={styles.bottleLink} />
-      <BottleLink type={'letterBox'} className={styles.bottleLink} />
+      <BottleLink type={'pickUpBottle'} className={styles.bottleLinkLeft} />
+      <BottleLink type={'letterBox'} className={styles.bottleLinkRight} />
 
       <motion.div
         className={styles.buttonWrapper}
