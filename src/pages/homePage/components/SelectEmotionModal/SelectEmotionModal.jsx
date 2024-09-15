@@ -4,6 +4,7 @@ import { useSunStore } from '@/stores/sunStore';
 import { AnimatePresence, motion } from 'framer-motion';
 import { bool, func } from 'prop-types';
 import { memo, useEffect, useId, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PlusButton from '../PlusButton/PlusButton';
 import styles from './SelectEmotionModal.module.css';
 
@@ -29,6 +30,7 @@ SelectEmotionModal.propTypes = {
 const MotionPlusButton = motion(PlusButton);
 
 function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
+  const navigate = useNavigate();
   const sunset = useSunStore((store) => store.sunset);
   const modalRef = useRef(null);
   const lastFocusedElement = useRef(null);
@@ -98,6 +100,10 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
       closeModal();
     }
   };
+
+  // 조개 버튼 클릭 시 일기 작성 페이지로 이동
+  const handleShellClick = (emotion) => () =>
+    navigate(`/write-diary/${emotion}`);
 
   // 조개버튼 각각의 애니메이션 설정값을 반환하는 함수
   const liAnimateConfig = (index) =>
@@ -187,7 +193,11 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
                   }}
                 >
                   {/* 조개 버튼 */}
-                  <ShellButton emotion={emotion} size={desktop ? 90 : 70} />
+                  <ShellButton
+                    onClick={handleShellClick(emotion)}
+                    emotion={emotion}
+                    size={desktop ? 90 : 70}
+                  />
                   {/* 뷰포트 가로 1024px 이상에서만 텍스트 표시 */}
                   {desktop && <span>{EMOTION_LABEL[emotion]}</span>}
                 </motion.li>
