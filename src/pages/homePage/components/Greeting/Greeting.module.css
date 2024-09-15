@@ -1,0 +1,59 @@
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  .greetingButton {
+    background-color: #ffffffd9;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.11));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 69px;
+    height: 69px;
+    border-radius: 9999px;
+  }
+
+  .greetingMessage {
+    background: #ffffffd9;
+    color: var(--black, #2e2e2e);
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.11));
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 14px;
+    border: 0.5px solid #e2e2e2;
+    border-radius: 11px;
+    font-size: var(--text-xxs, 12px);
+    line-height: 19px;
+    white-space: pre-line;
+  }
+
+  @media (min-width: 640px) {
+    .greetingMessage {
+      padding: 14px 16px;
+      font-size: var(--text-s, 16px);
+      line-height: 21px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .greetingMessage {
+      padding: 16px 20px;
+      font-size: var(--text-l, 20px);
+      line-height: 23px;
+    }
+  }
+
+  .greetingMessage::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    translate: -105% -50%;
+    border-top: 6px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 8px solid #ffffffd9;
+    border-bottom: 6px solid transparent;
+  }
+}

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import BottleLink from './components/BottleLink/BottleLink';
+import Greeting from './components/Greeting/Greeting';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
 import styles from './HomePage.module.css';
@@ -14,6 +15,10 @@ function HomePage() {
   const desktop = useMediaQuery({ query: '(min-width: 1024px)' });
   const [modalOpen, setModalOpen] = useState(false);
   const { lockScroll, openScroll } = useBodyScrollLock(); // 모달창 열었을 때 외부 스크롤 방지
+  const [greetingOpen, setGreetingOpen] = useState(true);
+
+  const handleGreetingButtonClick = () =>
+    setGreetingOpen((prevValue) => !prevValue);
 
   const openModal = useCallback(() => {
     setModalOpen(true);
@@ -31,6 +36,12 @@ function HomePage() {
         backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.png)`,
       }}
     >
+      <Greeting
+        greetingOpen={greetingOpen}
+        onButtonClick={handleGreetingButtonClick}
+        style={{ margin: '4.5vh 0 0 4.4vw' }}
+      />
+
       <BottleLink type={'pickUpBottle'} className={styles.bottleLinkLeft} />
       <BottleLink type={'letterBox'} className={styles.bottleLinkRight} />
 
