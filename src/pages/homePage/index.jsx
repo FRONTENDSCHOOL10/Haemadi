@@ -36,6 +36,8 @@ function HomePage() {
         backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.png)`,
       }}
     >
+      <h1 className="sr-only">홈 페이지</h1>
+
       <Greeting
         greetingOpen={greetingOpen}
         onButtonClick={handleGreetingButtonClick}
