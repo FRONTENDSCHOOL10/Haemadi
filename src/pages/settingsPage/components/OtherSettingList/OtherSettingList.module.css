@@ -8,7 +8,6 @@
     color: var(--black, #2e2e2e);
     font-size: var(--text-s, 16px);
     font-weight: 700;
-    line-height: normal;
     margin-bottom: 15px;
   }
 
