@@ -8,9 +8,9 @@ StepIndicator.propTypes = {
   step: oneOf(STEP_RANGE).isRequired,
 };
 
-function StepIndicator({ step }) {
+function StepIndicator({ step, ...restProps }) {
   return (
-    <nav aria-label="스텝">
+    <nav aria-label="스텝" {...restProps}>
       <ol className={styles.stepIndicator}>
         {STEP_RANGE.map((item) => (
           <li
