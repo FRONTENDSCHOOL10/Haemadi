@@ -2,7 +2,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
 import PropTypes from 'prop-types';
-import { memo, useState } from 'react';
+import { memo, useId, useState } from 'react';
 import styles from './NickName.module.css';
 
 function NickName({ initialNickname }) {
@@ -10,6 +10,8 @@ function NickName({ initialNickname }) {
   const [editing, setIsEditing] = useState(false);
   const [inputKey, setInputKey] = useState(0);
   const desktop = useMediaStore((store) => store.desktop);
+
+  const id = useId();
 
   // 닉네임 유효성 검사 함수
   const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
@@ -29,9 +31,12 @@ function NickName({ initialNickname }) {
   return (
     <form className={styles.form}>
       <div className={styles.inputWrapper}>
+        <label htmlFor={id} className='${styles.label} sr-only'>
+          사용자 닉네임 입력창
+        </label>
         <input
           type="text"
-          id="nickname"
+          id={id}
           name="nickname"
           defaultValue={nickname}
           placeholder="닉네임을 작성해주세요"

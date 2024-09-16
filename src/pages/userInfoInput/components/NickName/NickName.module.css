@@ -4,10 +4,6 @@
   width: 360px;
 }
 
-.label {
-  display: none;
-}
-
 .inputWrapper {
   position: relative;
   display: flex;
