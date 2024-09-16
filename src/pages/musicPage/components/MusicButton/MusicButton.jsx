@@ -21,8 +21,8 @@ function MusicButton({
     <button
       className={styles.musicButton}
       type="button"
-      title="선택한 음악 듣기"
-      aria-label="선택한 음악 듣기"
+      title={`${musicTitle} 음악 듣기`}
+      aria-label={`${musicTitle} 음악 듣기`}
       onClick={onClick}
       {...restProps}
     >
