@@ -25,40 +25,39 @@ function NickName({ initialNickname }) {
 
   const handleFocus = () => setIsEditing(true);
 
-
   const handleBlur = () => setIsEditing(false);
 
   return (
     <form className={styles.form}>
-      <div className={styles.inputWrapper}>
-        <label htmlFor={id} className='${styles.label} sr-only'>
-          사용자 닉네임 입력창
-        </label>
-        <input
-          type="text"
-          id={id}
-          name="nickname"
-          defaultValue={nickname}
-          placeholder="닉네임을 작성해주세요"
-          className={styles.input}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          key={inputKey} 
-          maxLength={9}
-          aria-required="true"
+      <label htmlFor={id} className="${styles.label} sr-only">
+        사용자 닉네임 입력창
+      </label>
+      <input
+        type="text"
+        id={id}
+        name="nickname"
+        defaultValue={nickname}
+        placeholder="닉네임을 작성해주세요"
+        className={styles.input}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        key={inputKey}
+        maxLength={9}
+        aria-required="true"
+      />
+      <button
+        type="reset"
+        className={styles.clearButton}
+        aria-label="닉네임 지우기"
+      >
+        <SVGIcon
+          {...icons.remove}
+          color={
+            desktop ? '#000' : icons.remove.color
+          } /* 사용 시 #fff로 변경해주세요*/
         />
-        <button
-          type="reset"
-          className={styles.clearButton}
-          aria-label="닉네임 지우기"
-        >
-          <SVGIcon 
-            {...icons.remove} 
-            color={desktop ? '#000' : icons.remove.color} /* 사용 시 #fff로 변경해주세요*/
-          />
-        </button>
-      </div>
+      </button>
     </form>
   );
 }

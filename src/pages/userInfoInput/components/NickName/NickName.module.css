@@ -1,19 +1,18 @@
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 360px;
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
   margin-bottom: 8px;
 }
 
 .input {
   padding: 8px;
   width: 100%;
-  color: var(--placeholder_gray);
+  color: var(--placeholder_gray, #cccbcf);
+  font-size: var(--text-s, 16px);
+  border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
+  text-align: left;
 }
 
 .clearButton {
@@ -22,37 +21,23 @@
   height: 18px;
   background: none;
   z-index: 1;
-
+  left: 341px;
+  top: 25%;
 }
 
-@media (max-width: 639px) {
-  .input {
-    font-size: var(--text-s);
-    border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
-    color: var(--tertiay); 
-    text-align: left;
-  }
-
-  .clearButton {
-    left: 341px;
-    top: 25%;
-  }
-
-  .clearButton svg {
-    color: inherit;
-  }
+.clearButton svg {
+  color: inherit;
 }
 
 @media (min-width: 640px) {
-
   .form {
-    width: 522px; 
+    width: 522px;
   }
 
   .input {
-    font-size: var(--text-l);
+    font-size: var(--text-l, 20px);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.50);
-    color: var(--black); /* 사용 시 #fff로 변경해주세요*/
+    color: var(--black, #2e2e2e);
     text-align: center;
   }
 
@@ -62,6 +47,6 @@
   }
 
   .clearButton svg {
-    color: var(--white);
+    color: var(--white, #fff);
   }
 }
