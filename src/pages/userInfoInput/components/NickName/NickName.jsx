@@ -1,15 +1,15 @@
-import styles from './NickName.module.css';
-import PropTypes from 'prop-types';
-import React, { useState, memo } from 'react';
-import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
+import PropTypes from 'prop-types';
+import { memo, useState } from 'react';
+import styles from './NickName.module.css';
 
 function NickName({ initialNickname }) {
   const [nickname, setNickname] = useState(initialNickname || '');
-  const [isEditing, setIsEditing] = useState(false);
+  const [editing, setIsEditing] = useState(false);
   const [inputKey, setInputKey] = useState(0);
-  const isDesktop = useMediaStore((store) => store.desktop);
+  const desktop = useMediaStore((store) => store.desktop);
 
   // 닉네임 유효성 검사 함수
   const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
@@ -25,12 +25,6 @@ function NickName({ initialNickname }) {
 
 
   const handleBlur = () => setIsEditing(false);
-
-
-  const handleClear = () => {
-    setNickname('');
-    setInputKey((prevKey) => prevKey + 1); 
-  };
 
   return (
     <form className={styles.form}>
@@ -50,14 +44,13 @@ function NickName({ initialNickname }) {
           aria-required="true"
         />
         <button
-          type="button"
+          type="reset"
           className={styles.clearButton}
-          onClick={handleClear}
           aria-label="닉네임 지우기"
         >
           <SVGIcon 
             {...icons.remove} 
-            color={isDesktop ? '#000' : icons.remove.color} /* 사용 시 #fff로 변경해주세요*/
+            color={desktop ? '#000' : icons.remove.color} /* 사용 시 #fff로 변경해주세요*/
           />
         </button>
       </div>
