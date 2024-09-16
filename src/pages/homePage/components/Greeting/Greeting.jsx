@@ -15,6 +15,7 @@ function Greeting({ greetingOpen = true, onButtonClick, ...restProps }) {
         type="button"
         className={styles.greetingButton}
         onClick={onButtonClick}
+        aria-label={`인사 메세지 ${greetingOpen ? '닫기' : '열기'}`}
       >
         <SVGIcon {...icons.shell_glad} width={58} />
       </button>
