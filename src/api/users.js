@@ -63,8 +63,6 @@ export async function getUserData(token) {
 
   const response = await fetch(REQUEST_URL, {
     method: 'POST',
-    body: JSON.stringify({}),
-    ...REQUEST_OPTIONS,
     headers: {
       ...REQUEST_OPTIONS.headers,
       Authorization: `Bearer ${token}`,
