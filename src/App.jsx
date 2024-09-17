@@ -18,7 +18,23 @@ function App() {
 
   return (
     <HelmetProvider>
-      {showSplash ? <SplashPage /> : <AppRouter />}
+      {showSplash ? (
+        <>
+          <SplashPage />
+          {/* 로딩 시작 알림 */}
+          <div role="alert" aria-live="assertive" className="sr-only">
+            곧 콘텐츠가 로드됩니다.
+          </div>
+        </>
+      ) : (
+        <>
+          <AppRouter />
+          {/* 로딩 완료 알림 */}
+          <div aria-live="assertive" className="sr-only">
+            콘텐츠가 로드되었습니다.
+          </div>
+        </>
+      )}
     </HelmetProvider>
   );
 }
