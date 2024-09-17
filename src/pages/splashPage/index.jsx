@@ -1,5 +1,7 @@
+import styles from './SplashPage.module.css';
+
 function SplashPage() {
-  return <></>;
+  return <div className={styles.splashPage}></div>;
 }
 
 export default SplashPage;
