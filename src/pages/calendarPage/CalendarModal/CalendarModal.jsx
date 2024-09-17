@@ -40,8 +40,8 @@ function CalendarModal({
       // 모달 창 안의 첫 focusable 요소로 focus 이동
       firstElement.focus();
 
-      // tab(또는 shift + tab)키 눌렀을 때 모달 창을 벗어나지 않도록 설정
-      const handleTabKeyPress = (event) => {
+      const handleKeyPress = (event) => {
+        // tab(또는 shift + tab)키 눌렀을 때 모달 창을 벗어나지 않도록 설정
         if (event.key === 'Tab') {
           if (event.shiftKey && document.activeElement === firstElement) {
             event.preventDefault();
@@ -54,23 +54,18 @@ function CalendarModal({
             firstElement.focus();
           }
         }
-      };
-
-      // ESC 키로 모달 창을 닫을 수 있음
-      const handleEscapeKeyPress = (event) => {
+        // ESC 키로 모달 창을 닫을 수 있음
         if (event.key === 'Escape') {
           closeModal(false);
         }
       };
 
       // 모달 창에 tab, esc 키 이벤트 구독 추가
-      modalElement.addEventListener('keydown', handleTabKeyPress);
-      modalElement.addEventListener('keydown', handleEscapeKeyPress);
+      modalElement.addEventListener('keydown', handleKeyPress);
 
       return () => {
         // 이벤트 구독 제거
-        modalElement.removeEventListener('keydown', handleTabKeyPress);
-        modalElement.removeEventListener('keydown', handleEscapeKeyPress);
+        modalElement.removeEventListener('keydown', handleKeyPress);
       };
     } else if (lastFocusedElement.current) {
       // 모달이 닫힐 때 포커스를 이전에 있었던 요소로 이동
