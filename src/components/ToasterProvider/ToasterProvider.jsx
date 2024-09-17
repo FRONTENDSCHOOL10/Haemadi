@@ -1,4 +1,3 @@
-import React from 'react';
 import { oneOf, string, func, node } from 'prop-types';
 
 import styles from './ToasterProvider.module.css';
@@ -32,7 +31,7 @@ function Toast({ type, message, onClick }) {
       className={className}
       onClick={onClick}
     >
-      {icon &&  <SVGIcon className={styles.Icon} {...icon} color='#fff' />}
+      {icon && <SVGIcon className={styles.Icon} {...icon} color="#fff" />}
       {message}
     </div>
   );
