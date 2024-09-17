@@ -4,7 +4,7 @@ import { getDaysInMonth } from 'date-fns/getDaysInMonth';
 import { startOfMonth } from 'date-fns/startOfMonth';
 import { subMonths } from 'date-fns/subMonths';
 
-const CALENDER_LENGTH = 35;
+const CALENDAR_LENGTH = 35;
 const DAY_OF_WEEK = 7;
 const DayEnum = {
   sunday: 0,
@@ -48,7 +48,7 @@ const getCurrentMonthDate = (date) => {
 
 /** @type {(currentDayLength: number, prevDayLength: number) => number} */
 const getNextDayCount = (currentDayLength, prevDayLength) => {
-  return CALENDER_LENGTH - currentDayLength - prevDayLength;
+  return CALENDAR_LENGTH - currentDayLength - prevDayLength;
 };
 
 /** @type {(date: Date, length: number) => Date[]} */
