@@ -89,11 +89,17 @@ export function checkTokenExpiration() {
 
     if (currentTime >= expirationTime) {
       logoutUser();
+      return true;
     }
+
+    return token;
   }
+
+  return false;
 }
 
 /* 사용 예시 */
 /* window.onload = () => {
-  checkTokenExpiration(); // 페이지 로드 시 토큰 유효성 검사
+  const isTokenValid = checkTokenExpiration(); // 페이지 로드 시 토큰 유효성 검사
+  if (!isTokenValid) {}
 }; */
