@@ -46,6 +46,7 @@ const icons = {
   leftArrow: { name: 'leftArrow', width: 25, height: 42, color: '#ffffff' },
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
   musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
+  go: { name: 'go', width: 13, height: 15, color: '#1771B2' },
 
   remove: { name: 'remove', width: 18, height: 18, color: '#1F6496' },
   step_forward: { name: 'step_forward', width: 15, height: 21, color: '#2E2E2E' },

@@ -2,23 +2,17 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { number, string, oneOf, oneOfType } from 'prop-types';
 
-import styles from './OtherSettingPage.module.css';
-import icons from '@/icons';
+import styles from './OtherSettingButton.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
+import { OtherSetting_PAGES } from '@/constants';
 
-OtherSettingPage.propTypes = {
-  type: oneOf([
-    'announcement',
-    'headset',
-    'question',
-    'list',
-    'information',
-    'version',
-  ]),
+OtherSettingButton.propTypes = {
+  type: oneOf(OtherSetting_PAGES),
   navigateTo: oneOfType([number, string]),
 };
 
-const OtherSettingPageList = {
+const OtherSetting_PageList = {
   announcement: '공지사항',
   headset: '문의하기',
   question: '자주 묻는 질문',
@@ -27,18 +21,18 @@ const OtherSettingPageList = {
   version: '버전정보(1.00)',
 };
 
-function OtherSettingPage({ type = 'announcement', navigateTo = '/error' }) {
+function OtherSettingButton({ type = 'announcement', navigateTo = '/error' }) {
   const iconStyle = icons[type];
 
   return (
     <Link className={styles.settingButton} to={navigateTo}>
       <div className={styles.settingTitle}>
         <SVGIcon {...iconStyle} />
-        <span>{OtherSettingPageList[type]}</span>
+        <span>{OtherSetting_PageList[type]}</span>
       </div>
       <SVGIcon {...icons.nextArrow} />
     </Link>
   );
 }
 
-export default memo(OtherSettingPage);
+export default memo(OtherSettingButton);

@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84vw;
+  margin-block: 7vh 61px;
+  margin-inline: 8vw;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asdf {
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 640px) {
+  .header {
+    width: 70vw;
+    margin-block: 10vh 90px;
+    margin-inline: 15vw;
+  }
+}

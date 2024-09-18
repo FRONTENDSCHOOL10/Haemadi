@@ -1,4 +1,5 @@
 import { bool, func, node, string } from 'prop-types';
+import { memo } from 'react';
 import ReactModal from 'react-modal';
 import style from './ModalDialog.module.css';
 
@@ -34,7 +35,7 @@ function ModalDialog({
   );
 }
 
-export default ModalDialog;
+export default memo(ModalDialog);
 
 /*
 사용 예시
