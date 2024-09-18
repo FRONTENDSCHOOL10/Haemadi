@@ -97,7 +97,7 @@ function SignUpPage() {
         <BackButton color={desktop ? 'white' : 'black'} />
         <h1>회원가입</h1>
       </div>
-      <form className={styles.formWrapper}>
+      <form className={styles.formWrapper} onSubmit={handleSubmit}>
         <div className={styles.idWrapper}>
           <label htmlFor="username">아이디</label>
           <AuthInput
@@ -131,7 +131,7 @@ function SignUpPage() {
         <Button
           type="stroke"
           state={!buttonState ? 'disabled' : desktop ? 'default' : 'primary'}
-          onClick={handleSubmit}
+          role="submit"
         >
           가입하기
         </Button>
