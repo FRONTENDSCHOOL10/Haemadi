@@ -8,6 +8,7 @@ import Step2Content from './components/StepContents/Step2Content';
 import Step2to2Content from './components/StepContents/Step2to2Content';
 import Step3Content from './components/StepContents/Step3Content';
 import StepIndicator from './components/StepIndicator/StepIndicator';
+import { setStorage } from '@/utils/storage';
 
 function DemoPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -57,6 +58,7 @@ function DemoPage() {
         navigate('/demo/3');
         break;
       case '3':
+        setStorage('completeDemo', true);
         navigate('/auth');
         break;
     }
