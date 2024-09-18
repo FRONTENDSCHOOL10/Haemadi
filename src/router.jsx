@@ -20,7 +20,6 @@ const StatisticsPage = lazy(() => import('./pages/statisticsPage'));
 const UserInfoInputPage = lazy(() => import('./pages/userInfoInputPage'));
 const ViewDiaryPage = lazy(() => import('./pages/viewDiaryPage'));
 const ViewLetterPage = lazy(() => import('./pages/viewLetterpage'));
-const ViewReplyPage = lazy(() => import('./pages/viewReply'));
 const WriteDiaryPage = lazy(() => import('./pages/writeDiaryPage'));
 
 const routes = [
@@ -83,10 +82,6 @@ const routes = [
       {
         path: 'letter-box',
         element: <LetterBoxPage />,
-      },
-      {
-        path: 'letter-box/view-reply/:replyId',
-        element: <ViewReplyPage />,
       },
     ],
   },
