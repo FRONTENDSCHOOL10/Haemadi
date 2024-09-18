@@ -24,7 +24,7 @@ function DemoPage() {
     setButtonState(step !== '2' || selectedEmotion ? 'default' : 'disabled');
   }, [step, selectedEmotion]);
   useEffect(() => {
-    setSelectedEmotion(null);
+    if (step === '2') setSelectedEmotion(null);
   }, [step]);
 
   let content;
