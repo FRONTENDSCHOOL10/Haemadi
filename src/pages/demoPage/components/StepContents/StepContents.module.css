@@ -26,7 +26,6 @@
 
   p {
     margin-bottom: 25px;
-    white-space: pre-line;
     font-size: var(--text-xs, 14px);
     font-weight: 700;
     line-height: 25.5px; /* 182.143% */
@@ -83,6 +82,7 @@
 
     p {
       text-align: center;
+      white-space: pre-line;
       font-size: 26px;
       font-weight: 700;
       line-height: 25.5px; /* 98.077% */
