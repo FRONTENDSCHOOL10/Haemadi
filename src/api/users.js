@@ -92,7 +92,7 @@ export function checkTokenExpiration() {
       return true;
     }
 
-    return token;
+    return false;
   }
 
   return false;
