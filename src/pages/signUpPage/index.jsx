@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useImmer } from 'use-immer';
 
 import styles from './signUpPage.module.css';
 import BackButton from '@/components/BackButton/BackButton';
@@ -13,7 +14,7 @@ function SignUpPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const toast = useToaster();
   const navigate = useNavigate();
-  const [values, setValues] = useState({
+  const [values, setValues] = useImmer({
     username: '',
     password: '',
     passwordConfirm: '',
@@ -45,13 +46,16 @@ function SignUpPage() {
     return true;
   }, []);
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
-  }, []);
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+
+      setValues((draft) => {
+        draft[name] = value;
+      });
+    },
+    [setValues]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
