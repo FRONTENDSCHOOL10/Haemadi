@@ -2,10 +2,10 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
 import PropTypes from 'prop-types';
-import { memo, useId, useState, useCallback } from 'react';
-import styles from './NickName.module.css';
+import { memo, useId, useState } from 'react';
+import styles from './NickNameInput.module.css';
 
-function NickName({ initialNickname }) {
+function NickNameInput({ initialNickname }) {
   const [nickname, setNickname] = useState(initialNickname || '');
   const desktop = useMediaStore((store) => store.desktop);
 
@@ -53,8 +53,8 @@ function NickName({ initialNickname }) {
   );
 }
 
-NickName.propTypes = {
+NickNameInput.propTypes = {
   initialNickname: PropTypes.string,
 };
 
-export default memo(NickName);
+export default memo(NickNameInput);
