@@ -5,7 +5,7 @@ import useFetch from '@/hooks/useFetch';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
 import { formatDate } from '@/utils/formatDate';
-import { useEffect, useMemo, useState } from 'react';
+import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import BookReply from './components/BookReply/BookReply';
 import MusicReply from './components/MusicReply/MusicReply';
@@ -16,40 +16,28 @@ import styles from './ViewDiaryPage.module.css';
 function ViewDiaryPage() {
   const { diaryId } = useParams();
   const desktop = useMediaStore((store) => store.desktop);
-  const [formattedDate1, setFormattedDate1] = useState('');
-  const [formattedDate2, setFormattedDate2] = useState('');
 
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId,userId`;
   const { status, error, data } = useFetch(ENDPOINT);
 
-  // 날짜 포맷팅
-  useEffect(() => {
-    if (data) {
-      const createdDate = new Date(data.created);
-
-      const formatted1 = formatDate(createdDate, 1); // 2024-09-18 형식
-      setFormattedDate1(formatted1);
-      const formatted2 = formatDate(createdDate, 2); // 24.09.18 (Wed) 형식
-      setFormattedDate2(formatted2);
-    }
-  }, [data]);
-
-  // data에서 구조분해할당 및 useMemo로 data가 변경될 때만 재계산
-  const diaryData = useMemo(() => {
-    if (!data) return null;
-
-    const { emotion, message, expand } = data;
-
-    return { emotion, message, reply: expand?.replyId, user: expand?.userId };
-  }, [data]);
-
+  // 상황별, 조건부 처리
   if (status === 'loading') return <div>로딩중...</div>;
   if (status === 'error') return <div>{error.message}</div>;
-
   if (!data) return null;
 
-  // data에서 구조분해할당
-  const { emotion, message, reply, user } = diaryData;
+  /* --------------------------- data가 존재할 경우, 코드 실행 -------------------------- */
+
+  // data 반응성 상태에 파생된 상태
+  const { created, emotion, message, expand } = data;
+
+  // [1] data 반응성 상태에 파생된 상태
+  const reply = expand?.replyId;
+  const user = expand?.userId;
+
+  // data 반응성 상태에 파생된 상태 (날짜 포맷팅)
+  const createdDate = new Date(created);
+  const formattedDate1 = formatDate(createdDate, 1); // 2024-09-18 형식
+  const formattedDate2 = formatDate(createdDate, 2); // 24.09.18 (Wed) 형식
 
   return (
     <div className={styles.page}>
@@ -92,7 +80,7 @@ function ViewDiaryPage() {
   );
 }
 
-export default ViewDiaryPage;
+export default memo(ViewDiaryPage);
 
 // ai 답장일 경우 typeOfContent에 따라 4가지 중 알맞은 컨텐츠 렌더링
 function renderReplyContent(content, typeOfContent) {
