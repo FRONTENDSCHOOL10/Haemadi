@@ -20,8 +20,9 @@ function ViewDiaryPage() {
   const [formattedDate1, setFormattedDate1] = useState('');
   const [formattedDate2, setFormattedDate2] = useState('');
 
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId`;
+  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId,userId`;
   const { status, error, data } = useFetch(ENDPOINT);
+  console.log(data);
 
   // 날짜 포맷팅
   useEffect(() => {
@@ -39,22 +40,18 @@ function ViewDiaryPage() {
   const diaryData = useMemo(() => {
     if (!data) return null;
 
-    const {
-      emotion,
-      message,
-      expand: { replyId },
-    } = data;
-    const { message: replyMessage, replier, typeOfContent, content } = replyId;
+    const { emotion, message, expand } = data;
 
-    return { emotion, message, replyMessage, replier, typeOfContent, content };
+    return { emotion, message, reply: expand?.replyId, user: expand?.userId };
   }, [data]);
 
-  if (status === 'pending' || status === 'loading') return <Loading />;
+  if (status === 'loading') return <div>로딩중...</div>;
   if (status === 'error') return <div>{error.message}</div>;
 
+  if (!data) return null;
+
   // data에서 구조분해할당
-  const { emotion, message, replyMessage, replier, typeOfContent, content } =
-    diaryData;
+  const { emotion, message, reply, user } = diaryData;
 
   return (
     <div className={styles.page}>
@@ -66,9 +63,7 @@ function ViewDiaryPage() {
             left: desktop ? '15.625vw' : '36px',
           }}
         />
-        <h1>
-          {replier === 'ai' ? 'Ai 마디' : '익명의 유저'}에게 받은 답장이에요
-        </h1>
+        <h1>{user.nickName}님이 작성하신 일기에요</h1>
         {desktop && <time dateTime={formattedDate1}>{formattedDate2}</time>}
       </header>
 
@@ -86,16 +81,18 @@ function ViewDiaryPage() {
           <p>{message}</p>
         </section>
 
-        <section className={styles.reply}>
-          <h2>언제나 멋진 존재인 당신에게</h2>
-          <p>{replyMessage}</p>
-          {replier === 'ai' && (
-            <>
-              <h2>당신에게 추천하는 노래</h2>
-              {renderReplyContent(content, typeOfContent)}
-            </>
-          )}
-        </section>
+        {reply && (
+          <section className={styles.reply}>
+            <h2>언제나 멋진 존재인 당신에게</h2>
+            <p>{reply.message}</p>
+            {reply.replier === 'ai' && (
+              <>
+                <h2>당신에게 추천하는 노래</h2>
+                {renderReplyContent(reply.content, reply.typeOfContent)}
+              </>
+            )}
+          </section>
+        )}
       </main>
     </div>
   );
