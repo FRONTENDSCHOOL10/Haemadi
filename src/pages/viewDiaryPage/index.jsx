@@ -1,6 +1,5 @@
 import { BASE_URL } from '@/api/pbconfig';
 import BackButton from '@/components/BackButton/BackButton';
-import Loading from '@/components/Loading/Loading';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import useFetch from '@/hooks/useFetch';
 import icons from '@/icons';
@@ -84,12 +83,8 @@ function ViewDiaryPage() {
           <section className={styles.reply}>
             <h2>언제나 멋진 존재인 당신에게</h2>
             <p>{reply.message}</p>
-            {reply.replier === 'ai' && (
-              <>
-                <h2>당신에게 추천하는 노래</h2>
-                {renderReplyContent(reply.content, reply.typeOfContent)}
-              </>
-            )}
+            {reply.replier === 'ai' &&
+              renderReplyContent(reply.content, reply.typeOfContent)}
           </section>
         )}
       </main>
@@ -104,30 +99,44 @@ function renderReplyContent(content, typeOfContent) {
   switch (typeOfContent) {
     case 'music':
       return (
-        <MusicReply
-          imgSrc={content.imgSrc}
-          musicTitle={content.musicTitle}
-          musicArtist={content.musicArtist}
-        />
+        <>
+          <h2>당신에게 추천하는 노래</h2>
+          <MusicReply
+            imgSrc={content.imgSrc}
+            musicTitle={content.musicTitle}
+            musicArtist={content.musicArtist}
+          />
+        </>
       );
     case 'quotes':
-      return <QuotesReply quotes={content.quotes} author={content.author} />;
+      return (
+        <>
+          <h2>당신에게 추천하는 명언</h2>
+          <QuotesReply quotes={content.quotes} author={content.author} />
+        </>
+      );
     case 'book':
       return (
-        <BookReply
-          imgSrc={content.imgSrc}
-          bookTitle={content.bookTitle}
-          author={content.author}
-          publisher={content.publisher}
-        />
+        <>
+          <h2>당신에게 추천하는 책</h2>
+          <BookReply
+            imgSrc={content.imgSrc}
+            bookTitle={content.bookTitle}
+            author={content.author}
+            publisher={content.publisher}
+          />
+        </>
       );
     case 'video':
       return (
-        <VideoReply
-          imgSrc={content.imgSrc}
-          videoTitle={content.videoTitle}
-          hashTags={content.hashTags}
-        />
+        <>
+          <h2>당신에게 추천하는 영상</h2>
+          <VideoReply
+            imgSrc={content.imgSrc}
+            videoTitle={content.videoTitle}
+            hashTags={content.hashTags}
+          />
+        </>
       );
 
     default:
