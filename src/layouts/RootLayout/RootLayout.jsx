@@ -1,11 +1,10 @@
 import { useAuthStore } from '@/stores/authStore';
 import { useMediaStore } from '@/stores/mediaStore';
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { getStorage } from '@/utils';
+import { memo, useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import GlobalNav from '../GlobalNav/GlobalNav';
 import style from './RootLayout.module.css';
-import { memo } from 'react';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function RootLayout() {
   const navigate = useNavigate();
@@ -15,8 +14,11 @@ function RootLayout() {
   const fetchUserInfo = useAuthStore((store) => store.fetchUserInfo);
 
   useEffect(() => {
-    // 토큰이 유효하지 않으면 auth 페이지로 이동
-    if (!validateToken()) navigate('/auth');
+    // 토큰이 유효하지 않으면 demo | auth 페이지로 이동
+    if (!validateToken()) {
+      if (!getStorage('demoComplete')) navigate('/demo/1');
+      else navigate('/auth');
+    }
     fetchUserInfo().then((res) => console.log(res));
   }, [navigate, validateToken, fetchUserInfo]);
 
