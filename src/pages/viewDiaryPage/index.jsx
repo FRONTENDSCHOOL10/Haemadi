@@ -22,7 +22,6 @@ function ViewDiaryPage() {
 
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId,userId`;
   const { status, error, data } = useFetch(ENDPOINT);
-  console.log(data);
 
   // 날짜 포맷팅
   useEffect(() => {
