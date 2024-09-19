@@ -4,10 +4,9 @@ import styles from './myPage.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
+import UserProfile from './components/UserProfile/UserProfile';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';
-
-import defaultProfile from '../../assets/default_Profile.png';
 
 function MyPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -20,9 +19,7 @@ function MyPage() {
         <Link className={styles.setting} to="./settings" aria-label="설정">
           <SVGIcon {...icons.setting} {...iconSize} />
         </Link>
-        {/* 추후 로그인된 사용자 정보 가져오기 */}
-        <img src={defaultProfile} alt="기본 프로필" />
-        <span>고된 하루를 보낸 토끼</span>
+        <UserProfile />
       </div>
       <div className={styles.menu}>
         <div className={styles.LinkWrapper}>
