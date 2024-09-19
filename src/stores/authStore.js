@@ -36,7 +36,7 @@ export const useAuthStore = create(
         // 유저 정보 요청
         fetchUserInfo: async () => {
           const token = get().token;
-          if (token) {
+          if (get().validateToken(token)) {
             const userInfo = await getUserData(token);
             return userInfo;
           }
