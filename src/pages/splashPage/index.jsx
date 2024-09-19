@@ -5,7 +5,7 @@ function SplashPage() {
   const portal = document.getElementById('portal');
   return createPortal(
     <div className={styles.splashPage}>
-      <span className="sr-only">Splash Screen</span>
+      <h1 className="sr-only">Splash Screen</h1>
     </div>,
     portal
   );
