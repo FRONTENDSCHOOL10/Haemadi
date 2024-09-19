@@ -26,7 +26,7 @@ function SVGIcon({
       width={width}
       height={height}
       viewBox={`${xPos} ${yPos} ${width} ${height}`}
-      style={{ color }}
+      style={{ minWidth: width, minHeight: height, color }}
       aria-hidden={true}
       {...restProps}
     >
