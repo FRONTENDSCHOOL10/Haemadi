@@ -1,11 +1,24 @@
+import { useAuthStore } from '@/stores/authStore';
 import { useMediaStore } from '@/stores/mediaStore';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import GlobalNav from '../GlobalNav/GlobalNav';
 import style from './RootLayout.module.css';
+import { memo } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function RootLayout() {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const desktop = useMediaStore((store) => store.desktop);
+  const validateToken = useAuthStore((store) => store.validateToken);
+  const fetchUserInfo = useAuthStore((store) => store.fetchUserInfo);
+
+  useEffect(() => {
+    // 토큰이 유효하지 않으면 auth 페이지로 이동
+    if (!validateToken()) navigate('/auth');
+    fetchUserInfo().then((res) => console.log(res));
+  }, [navigate, validateToken, fetchUserInfo]);
 
   const renderMobileNav = pathname === '/' || pathname === '/my';
 
@@ -31,4 +44,4 @@ function RootLayout() {
   );
 }
 
-export default RootLayout;
+export default memo(RootLayout);
