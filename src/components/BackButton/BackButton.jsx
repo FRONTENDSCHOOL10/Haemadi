@@ -11,7 +11,7 @@ BackButton.propTypes = {
   navigateTo: oneOfType([number, string]),
 };
 
-function BackButton({ colored = false, navigateTo = -1 }) {
+function BackButton({ colored = false, navigateTo = -1, ...restProps }) {
   const navigate = useNavigate();
 
   const iconStyle = icons[`goBack${colored ? '_darkBg' : ''}`];
@@ -26,6 +26,7 @@ function BackButton({ colored = false, navigateTo = -1 }) {
       type="button"
       aria-label="뒤로가기"
       onClick={handleNavigation}
+      {...restProps}
     >
       <SVGIcon {...iconStyle} />
     </button>

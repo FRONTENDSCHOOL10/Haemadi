@@ -1,0 +1,62 @@
+/* 모달 뒷배경 */
+.modalOverlay {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContent {
+  background-color: var(--white, #ffffff);
+  /* 화면 가운데 배치 */
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  /* 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  /* 창 크기 */
+  width: 100%;
+  max-width: 478px;
+  padding: 35px 45px;
+  border-radius: 45px 45px 0 0;
+  box-shadow: 0px -6px 22px 0px rgba(0, 0, 0, 0.14);
+
+  .textWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--black, #2e2e2e);
+    font-size: var(--text-xs, 14px);
+    line-height: 24px;
+    width: 242px;
+
+    h2 {
+      font-weight: 700;
+    }
+
+    /* 내용 */
+    p {
+      font-weight: 400;
+      height: 48px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    display: flex;
+    margin-left: 10px;
+  }
+}
