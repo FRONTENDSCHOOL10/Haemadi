@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import SplashPage from './pages/splashPage';
 import AppRouter from './router';
 import { useDesktopDetector } from './stores/mediaStore';
+import ToasterProvider from '@/components/ToasterProvider/ToasterProvider';
 
 function App() {
   useDesktopDetector(); // 640px 기준으로 desktop 상태관리
@@ -28,7 +29,9 @@ function App() {
         </>
       ) : (
         <>
-          <AppRouter />
+          <ToasterProvider>
+            <AppRouter />
+          </ToasterProvider>
           {/* 로딩 완료 알림 */}
           <div aria-live="assertive" className="sr-only">
             콘텐츠가 로드되었습니다.
