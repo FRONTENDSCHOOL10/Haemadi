@@ -7,8 +7,6 @@ import styles from './NickName.module.css';
 
 function NickName({ initialNickname }) {
   const [nickname, setNickname] = useState(initialNickname || '');
-  const [editing, setIsEditing] = useState(false);
-  const [inputKey, setInputKey] = useState(0);
   const desktop = useMediaStore((store) => store.desktop);
 
   const id = useId();
@@ -23,9 +21,6 @@ function NickName({ initialNickname }) {
     }
   };
 
-  const handleFocus = useCallback(() => setIsEditing(true), []);
-  const handleBlur = useCallback(() => setIsEditing(false), []);
-
   return (
     <form className={styles.form}>
       <label htmlFor={id} className="${styles.label} sr-only">
@@ -39,9 +34,6 @@ function NickName({ initialNickname }) {
         placeholder="닉네임을 작성해주세요"
         className={styles.input}
         onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        key={inputKey}
         maxLength={9}
         aria-required="true"
       />

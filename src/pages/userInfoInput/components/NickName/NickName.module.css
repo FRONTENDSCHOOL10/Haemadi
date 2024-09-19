@@ -9,10 +9,16 @@
 .input {
   padding: 8px;
   width: 100%;
-  color: var(--placeholder_gray, #cccbcf);
+  color: var(--tertiay, #1F6496);
   font-size: var(--text-s, 16px);
+  font-weight: bold;
   border-bottom: 1.5px solid rgba(126, 153, 189, 0.50);
   text-align: left;
+}
+
+.input::placeholder {
+  color: var(--placeholder_gray, #cccbcf);
+  font-weight: 400;
 }
 
 .clearButton {
