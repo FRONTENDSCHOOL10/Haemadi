@@ -15,16 +15,6 @@ function checkTokenExpiration(token) {
   return currentTime > expirationTime;
 }
 
-/**
- * @typedef {Object} AuthStore
- * @property {string|null} token - JWT 토큰
- * @property {(token: string) => void} loginUser - 유저 로그인 시 토큰 저장
- * @property {() => void} logoutUser - 유저 로그아웃 시 토큰 삭제
- * @property {() => boolean} validateToken - 토큰이 유효한지 검사
- * @property {() => Promise<Object|null>} fetchUserInfo - 토큰이 유효하다면 유저정보 요청
- */
-
-/** @type {() => AuthStore} */
 export const useAuthStore = create(
   devtools(
     persist(
