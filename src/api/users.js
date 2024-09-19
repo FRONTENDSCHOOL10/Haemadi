@@ -57,7 +57,7 @@ export async function userSignIn(username, password) {
   return responseData;
 }
 
-/** @type {(token: string) => Promise<any>} */
+/** @type {(token: string) => Promise<UserData>} */
 export async function getUserData(token) {
   const REQUEST_URL = `${BASE_URL}/api/collections/users/auth-refresh`;
 
@@ -96,6 +96,10 @@ export function checkTokenExpiration() {
   }
 
   return false;
+}
+
+export function getUserProfileImg(data) {
+  return `${BASE_URL}/api/files/${data.collectionId}/${data.id}/${data.profileImage}`;
 }
 
 /* 사용 예시 */
