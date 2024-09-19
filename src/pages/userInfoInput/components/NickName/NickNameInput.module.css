@@ -1,4 +1,4 @@
-.form {
+.nickWrap {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 }
 
 @media (min-width: 640px) {
-  .form {
+  .nickWrap {
     width: 522px;
   }
 
