@@ -1,0 +1,99 @@
+.signupPage {
+  position: relative;
+  padding-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.titleWrapper {
+  display: flex;
+  gap: 115px;
+
+  width: 345px;
+  margin-bottom: 18px;
+
+  h1 {
+    color: var(--black, #2e2e2e);
+    font-size: var(--text-xl, 24px);
+    font-weight: 800;
+    line-height: 150%;
+    letter-spacing: -0.72px;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  label {
+    display: block;
+    color: var(--black, #2e2e2e);
+    font-size: var(----text-l, 20px);
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.6px;
+
+    margin-bottom: 12px;
+  }
+}
+
+.idWrapper,
+.passwordWrapper {
+  width: 345px;
+}
+
+.passwordWrapper {
+  margin-top: 53px;
+  margin-bottom: 86px;
+  input[name='password'] {
+    margin-bottom: 9px;
+  }
+}
+
+@media (min-width: 640px) {
+  .signupPage {
+    padding-top: 154px;
+
+    background-image: url('../../assets/background/background02.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .signupPage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 12, 33, 0.3);
+    backdrop-filter: blur(13px);
+    z-index: 1; /* 블러 레이어가 콘텐츠 뒤에 위치하도록 설정 */
+  }
+
+  .titleWrapper,
+  .formWrapper {
+    z-index: 2; /* 블러 레이어 위에 콘텐츠가 오도록 설정 */
+  }
+
+  .titleWrapper {
+    width: 552px;
+    gap: 220px;
+    h1 {
+      color: var(--white, #fff);
+    }
+  }
+  .formWrapper label {
+    color: var(--white, #fff);
+  }
+
+  .idWrapper,
+  .passwordWrapper {
+    width: 552px;
+  }
+}
