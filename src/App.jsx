@@ -1,21 +1,13 @@
-import { useEffect, useState } from 'react';
+import ToasterProvider from '@/components/ToasterProvider/ToasterProvider';
 import { HelmetProvider } from 'react-helmet-async';
+import useIsMounted from './hooks/useIsMounted';
 import SplashPage from './pages/splashPage';
 import AppRouter from './router';
 import { useDesktopDetector } from './stores/mediaStore';
-import ToasterProvider from '@/components/ToasterProvider/ToasterProvider';
 
 function App() {
   useDesktopDetector(); // 640px 기준으로 desktop 상태관리
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    const splashTimer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2000);
-
-    return () => clearTimeout(splashTimer);
-  }, []);
+  const showSplash = !useIsMounted(2000);
 
   return (
     <HelmetProvider>
