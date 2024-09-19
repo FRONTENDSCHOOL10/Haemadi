@@ -1,13 +1,12 @@
-import { useCallback, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
+import { bool } from 'prop-types';
+import { memo, useCallback, useState } from 'react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BottleRadio from '../BottleRadio/BottleRadio';
-
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import icons from '@/icons';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import styles from './BottleRadioGroup.module.css';
 
 const bottleLabel = [
@@ -18,8 +17,11 @@ const bottleLabel = [
   '다섯 번째 편지',
 ];
 
-function BottleRadioGroup() {
-  const desktop = useMediaQuery({ query: '(min-width: 960px)' }); // 640px -> 이 컴포넌트만 중단점 다름
+BottleRadioGroup.propTypes = {
+  desktop: bool,
+};
+
+function BottleRadioGroup({ desktop }) {
   const [currentIndex, setCurrentIndex] = useState(() => !desktop && 0); // 모바일에서만 페이지 진입 시 첫 번째 유리병이 선택된 상태
 
   // 유리병 선택 시 상태 변경
@@ -37,7 +39,7 @@ function BottleRadioGroup() {
     const diff = Math.abs(currentIndex - index);
     if (diff === 0) return { scale: 1, color: '#2A348E' }; // currentIndex
     if (diff === 1) return { scale: 0.8, color: '#4651B4B3' }; // currentIndex와 1 차이
-    if (diff >= 2) return { scale: 0.5, color: '#737DD480' }; // currentIndex와 2이상 차이
+    if (diff >= 2) return { scale: 0.6, color: '#737DD480' }; // currentIndex와 2이상 차이
   };
 
   const renderDesktopView = () => (
@@ -59,7 +61,6 @@ function BottleRadioGroup() {
   const renderMobilView = () => (
     <Swiper
       slidesPerView={4}
-      spaceBetween={-20}
       centeredSlides={true}
       onSlideChange={handleSlideChange}
       modules={[Navigation]}
@@ -67,6 +68,7 @@ function BottleRadioGroup() {
         nextEl: `.${styles.swiperButtonNext}`,
         prevEl: `.${styles.swiperButtonPrev}`,
       }}
+      style={{ width: '100%', maxWidth: '430px', overflow: 'visible' }}
     >
       {bottleLabel.map((labelText, index) => (
         <SwiperSlide
@@ -107,4 +109,4 @@ function BottleRadioGroup() {
   return desktop ? renderDesktopView() : renderMobilView();
 }
 
-export default BottleRadioGroup;
+export default memo(BottleRadioGroup);
