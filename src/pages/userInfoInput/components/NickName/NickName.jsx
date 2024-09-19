@@ -2,7 +2,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
 import PropTypes from 'prop-types';
-import { memo, useId, useState } from 'react';
+import { memo, useId, useState, useCallback } from 'react';
 import styles from './NickName.module.css';
 
 function NickName({ initialNickname }) {
@@ -23,9 +23,8 @@ function NickName({ initialNickname }) {
     }
   };
 
-  const handleFocus = () => setIsEditing(true);
-
-  const handleBlur = () => setIsEditing(false);
+  const handleFocus = useCallback(() => setIsEditing(true), []);
+  const handleBlur = useCallback(() => setIsEditing(false), []);
 
   return (
     <form className={styles.form}>
