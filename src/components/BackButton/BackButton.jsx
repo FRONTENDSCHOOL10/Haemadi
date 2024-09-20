@@ -11,8 +11,7 @@ BackButton.propTypes = {
   navigateTo: oneOfType([number, string]),
 };
 
-
-function BackButton({ colored = false, navigateTo = -1, ...restProps }) {
+function BackButton({ color = 'blue', navigateTo = -1, ...restProps }) {
   const navigate = useNavigate();
 
   const iconStyle = icons[`goBack_${color}`];
