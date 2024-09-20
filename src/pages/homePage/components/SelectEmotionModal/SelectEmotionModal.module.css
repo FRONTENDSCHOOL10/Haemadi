@@ -44,7 +44,6 @@
 
 .shellList {
   display: flex;
-  max-width: 1000px;
   position: absolute;
   bottom: 0;
   right: 0;
