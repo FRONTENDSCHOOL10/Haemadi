@@ -294,7 +294,7 @@
 
 
     <symbol id="check" width="27" height="20" fill="none" viewBox="0 0 27 20">
-      <path stroke="#2D7EB8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
         d="M2 10.274 9.49 18 25 2" />
     </symbol>
 
