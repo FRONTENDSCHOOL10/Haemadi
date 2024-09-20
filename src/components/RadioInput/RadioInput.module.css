@@ -60,7 +60,7 @@ input[type='radio']:checked + label {
   color: var(--white, #fff);
 }
 
-input:focus + label {
+input:focus-visible + label {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }

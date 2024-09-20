@@ -1,5 +1,5 @@
-function SendLetterpage() {
+function SendLetterPage() {
   return <></>;
 }
 
-export default SendLetterpage;
+export default SendLetterPage;

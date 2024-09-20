@@ -1,10 +1,10 @@
+import { number, oneOf, oneOfType, string } from 'prop-types';
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { number, string, oneOf, oneOfType } from 'prop-types';
 
-import styles from './BackButton.module.css';
-import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
+import styles from './BackButton.module.css';
 
 BackButton.propTypes = {
   color: oneOf(['blue', 'white', 'black']),

@@ -1,0 +1,34 @@
+.component {
+  max-width: 633px;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+
+  img {
+    width: 139px;
+    height: 80px;
+  }
+
+  figcaption {
+    strong {
+      font-size: var(--text-xs, 14px);
+      font-weight: 500;
+      line-height: 20px; /* 153.846% */
+      margin-bottom: 2px;
+      word-break: keep-all;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* 최대 2줄까지 허용 */
+      line-clamp: 2; /* 표준 속성 */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    ul {
+      color: #858585;
+      display: flex;
+      font-size: var(--text-xxs, 12px);
+    }
+  }
+}
