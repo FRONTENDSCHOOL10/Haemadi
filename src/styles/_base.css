@@ -156,3 +156,10 @@ summary {
   outline-offset: 0.5px;
   border-radius: 2px;
 }
+
+@font-face {
+  font-family: 'KoreanHBRG'; /* 원하는 폰트 이름 */
+  src: url('/font/a해바라기.ttf') format('truetype'); /* TTF 폰트 경로 */
+  font-weight: normal;
+  font-style: normal;
+}
