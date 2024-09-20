@@ -1,5 +1,6 @@
 import { useAuthStore } from '@/stores/authStore';
 import { BASE_URL } from './pbconfig';
+import { func } from 'prop-types';
 
 const REQUEST_OPTIONS = {
   headers: {
@@ -72,4 +73,8 @@ export async function getUserData(token) {
   const responseData = await handleResponse(response);
 
   return responseData.record;
+}
+
+export function getUserProfileImg(data) {
+  return `${BASE_URL}/api/files/${data.collectionId}/${data.id}/${data.profileImage}`;
 }
