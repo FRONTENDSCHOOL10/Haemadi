@@ -1,0 +1,64 @@
+/* 모달 뒷배경 */
+.modalOverlay {
+  backdrop-filter: blur(2px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+/* 모달 창 */
+.modalContent {
+  background-color: transparent;
+  /* 화면 가운데 배치 */
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  translate: 50% 0;
+  /* 정렬 */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* 창 크기 */
+  width: 100%;
+  height: 50%;
+
+  h2 {
+    margin-top: 3vh;
+    text-align: center;
+    font-weight: 700;
+    font-size: var(--text-m, 18px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .modalContent {
+    height: 25%;
+    h2 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+  }
+}
+
+.shellList {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+
+  li {
+    position: absolute;
+    display: none;
+
+    span {
+      color: var(--white, #ffffff);
+      margin-top: 10px;
+      text-align: center;
+      font-size: var(--text-xs, 14px);
+    }
+  }
+}

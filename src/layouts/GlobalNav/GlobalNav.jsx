@@ -44,25 +44,16 @@ function GlobalNav({ darkBg = false }) {
   ];
 
   return (
-    <nav
-      className={styles.gnbContainer}
-      style={{ flexDirection: desktop ? 'row' : 'column' }}
-    >
+    <nav className={styles.gnbContainer}>
       <ul className={styles.iconList}>
         {navItems.map((item) => (
           <li key={item.to}>
-            <NavLink
-              to={item.to}
-              aria-label={item.label}
-              className={({ isActive }) =>
-                `${styles.iconWrapper} ${isActive ? styles.active : ''}`
-              }
-            >
+            <NavLink to={item.to} className={styles.iconWrapper}>
               {({ isActive }) => (
                 <>
                   <SVGIcon {...(isActive ? item.selectedIcon : item.icon)} />
                   <span
-                    className={styles.iconText}
+                    className={desktop ? styles.iconText : 'sr-only'}
                     style={{
                       color: darkBg
                         ? isActive
