@@ -1,0 +1,23 @@
+.component {
+  max-width: 633px;
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+
+  img {
+    width: 65px;
+    height: 97px;
+  }
+
+  figcaption {
+    strong {
+      color: #4f4f4f;
+      font-size: var(--text-xs, 14px);
+      font-weight: 500;
+    }
+    span {
+      color: #858585;
+      font-size: var(--text-xxs, 12px);
+    }
+  }
+}

@@ -36,7 +36,7 @@ function MusicReply({
         onClick={onClick}
         {...restProps}
       >
-        <SVGIcon {...icons.musicPlay} yPos={6} />
+        <SVGIcon {...icons.musicPlay} yPos={2} />
       </button>
     </div>
   );

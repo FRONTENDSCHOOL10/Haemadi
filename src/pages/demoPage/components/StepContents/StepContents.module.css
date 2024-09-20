@@ -1,0 +1,121 @@
+.step1Content {
+  margin-top: 21.5vh;
+
+  h1 {
+    color: var(--white, #fff);
+    white-space: pre-line;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 145.28%; /* 37.773px */
+  }
+}
+
+.step2Content {
+  color: var(--white, #fff);
+  margin: 7.5vh 8vw;
+
+  h1 {
+    margin-bottom: 19px;
+    white-space: pre-line;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 150%; /* 39px */
+    letter-spacing: -0.78px;
+  }
+
+  p {
+    margin-bottom: 25px;
+    font-size: var(--text-xs, 14px);
+    font-weight: 700;
+    line-height: 25.5px; /* 182.143% */
+    letter-spacing: -0.42px;
+  }
+}
+
+.step3Content {
+  color: var(--white, #fff);
+  margin: 8.2vh 8.4vw;
+
+  h1 {
+    margin-bottom: 60px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.78px;
+  }
+
+  p {
+    white-space: pre-line;
+    font-size: var(--text-xs, 14px);
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: -0.42px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 640px) {
+  .step1Content {
+    margin-top: 18vh;
+
+    h1 {
+      font-size: var(--text-3xl, 60px);
+      font-weight: 800;
+      line-height: 145.28%; /* 87.168px */
+    }
+  }
+
+  .step2Content {
+    margin-top: 14vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    h1 {
+      font-size: var(--text-3xl, 60px);
+      text-align: center;
+      font-weight: 800;
+      line-height: 150%; /* 90px */
+      letter-spacing: -1.8px;
+      margin-bottom: 76px;
+    }
+
+    p {
+      text-align: center;
+      white-space: pre-line;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 25.5px; /* 98.077% */
+      letter-spacing: -0.78px;
+      margin-bottom: 18px;
+    }
+  }
+
+  .step2to2Content {
+    p {
+      margin-bottom: 40px;
+    }
+  }
+
+  .step3Content {
+    margin-top: 26vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    h1 {
+      font-size: var(--text-3xl, 60px);
+      font-weight: 800;
+      letter-spacing: -1.8px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 31px; /* 140.909% */
+      text-align: center;
+      margin-bottom: 74px;
+    }
+  }
+}

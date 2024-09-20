@@ -4,7 +4,7 @@
   align-items: center;
   padding: 15px;
 
-  width: 324px;
+  max-width: 324px;
   height: 74px;
 
   border: 1px solid var(--secondary, #1771b2);

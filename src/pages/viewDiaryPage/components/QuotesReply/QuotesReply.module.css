@@ -1,0 +1,9 @@
+.component {
+  max-width: 633px;
+  color: var(--text_gray, #565656);
+  font-size: var(--text-xs, 14px);
+  line-height: 26px; /* 187.726% */
+  letter-spacing: -0.277px;
+  white-space: pre-line;
+  word-break: keep-all;
+}
