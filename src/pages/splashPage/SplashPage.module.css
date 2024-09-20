@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #303b90;
-  background-image: url('/splash.png');
+  background-image: url('/splash.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -24,6 +24,6 @@
 
 @media (aspect-ratio > 1) {
   .splashPage {
-    background-image: url('/splash_desktop.png');
+    background-image: url('/splash_desktop.webp');
   }
 }

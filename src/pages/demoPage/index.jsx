@@ -65,7 +65,7 @@ function DemoPage() {
     <div
       className={styles.pageContainer}
       style={{
-        backgroundImage: `url(/demoPage/demoPage_step${step.slice(0, 1)}Bg.png)`,
+        backgroundImage: `url(/demoPage/demoPage_step${step.slice(0, 1)}Bg.webp)`,
         backgroundPositionX: !desktop && step.slice(0, 1) === '2' ? '80%' : '',
       }}
     >
