@@ -33,7 +33,7 @@ function HomePage() {
     <div
       className={styles.pageContainer}
       style={{
-        backgroundImage: `url(/homePage/homePage_${sunset ? 'dark' : ''}Bg.webp)`,
+        backgroundImage: `url(/bgImages/homePage_${sunset ? 'dark' : ''}Bg.webp)`,
       }}
     >
       <h1 className="sr-only">홈 페이지</h1>
