@@ -22,10 +22,7 @@ export const useAuthStore = create(
         token: null,
         userInfo: null,
         // 유저 로그인
-        loginUser: async (token) => {
-          set({ token });
-          await get().fetchUserInfo();
-        },
+        loginUser: (token, userInfo) => set({ token, userInfo }),
         // 유저 로그아웃
         logoutUser: () => set({ token: null, userInfo: null }),
         // 유저 정보 업데이트

@@ -52,7 +52,9 @@ export async function userSignIn(username, password) {
   const responseData = await handleResponse(response);
 
   // 로그인 성공 시 토큰을 로컬 스토리지에 저장
-  await useAuthStore.getState().loginUser(responseData.token);
+  await useAuthStore
+    .getState()
+    .loginUser(responseData.token, responseData.record);
 
   return responseData;
 }
