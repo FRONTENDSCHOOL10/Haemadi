@@ -10,17 +10,19 @@ function RootLayout() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const desktop = useMediaStore((store) => store.desktop);
-  const validateToken = useAuthStore((store) => store.validateToken);
-  const fetchUserInfo = useAuthStore((store) => store.fetchUserInfo);
+  const { checkSignIn, fetchUserInfo } = useAuthStore((store) => ({
+    checkSignIn: store.checkSignIn,
+    fetchUserInfo: store.fetchUserInfo,
+  }));
 
   useEffect(() => {
-    // 토큰이 유효하지 않으면 demo | auth 페이지로 이동
-    if (!validateToken()) {
-      if (!getStorage('demoComplete')) navigate('/demo/1');
+    // 로그인 되어있지 않으면 (토큰 유효성 검사 포함) demo | auth 페이지로 이동
+    if (!checkSignIn()) {
+      if (!getStorage('completeDemo')) navigate('/demo/1');
       else navigate('/auth');
     }
-    fetchUserInfo().then((res) => console.log(res));
-  }, [navigate, validateToken, fetchUserInfo]);
+    fetchUserInfo();
+  }, [navigate, checkSignIn, fetchUserInfo]);
 
   const renderMobileNav = pathname === '/' || pathname === '/my';
 

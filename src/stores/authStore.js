@@ -20,10 +20,14 @@ export const useAuthStore = create(
     persist(
       (set, get) => ({
         token: null,
+        userInfo: null,
         // 유저 로그인
-        loginUser: (token) => set({ token }),
+        loginUser: async (token) => {
+          set({ token });
+          await get().fetchUserInfo();
+        },
         // 유저 로그아웃
-        logoutUser: () => set({ token: null }),
+        logoutUser: () => set({ token: null, userInfo: null }),
         // 토큰 유효성 검사
         validateToken: () => {
           const token = get().token;
@@ -35,19 +39,31 @@ export const useAuthStore = create(
         },
         // 유저 정보 요청
         fetchUserInfo: async () => {
+          if (!get().validateToken()) return null;
+
           const token = get().token;
-          if (get().validateToken(token)) {
+          try {
             const userInfo = await getUserData(token);
+            set({ userInfo });
             return userInfo;
+          } catch (error) {
+            console.error('Failed to fetch user info:', error);
+            return null;
           }
-          return null;
+        },
+        // 현재 인증 상태 확인 (토큰 유효성 검사 포함)
+        checkSignIn: () => {
+          return get().validateToken() && get().userInfo;
         },
       }),
 
       {
         name: 'authStore', // 로컬스토리지에 저장될 키 이름
         storage: createJSONStorage(() => localStorage), // 사용할 스토리지 선택
-        partialize: (store) => ({ token: store.token }), // 로컬스토리지에 저장할 상태만 선택
+        partialize: (store) => ({
+          token: store.token,
+          userInfo: store.userInfo,
+        }), // 로컬스토리지에 저장할 상태만 선택
       }
     ),
 
