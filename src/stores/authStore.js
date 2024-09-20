@@ -28,6 +28,8 @@ export const useAuthStore = create(
         },
         // 유저 로그아웃
         logoutUser: () => set({ token: null, userInfo: null }),
+        // 유저 정보 업데이트
+        updateUserInfo: (newUserInfo) => set({ userInfo: newUserInfo }),
         // 토큰 유효성 검사
         validateToken: () => {
           const token = get().token;
