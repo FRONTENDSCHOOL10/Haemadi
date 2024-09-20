@@ -48,7 +48,7 @@ function BottleRadio({
           color={desktop ? icon.color : bottleColor} // mobile에서 swiper에서의 유리병 위치에 따라 색상 변경
         />
         {/* desktop에서만 "n 번째 유리병" 텍스트 보여줌 */}
-        {desktop ? <span>{labelText}</span> : null}{' '}
+        <span className={desktop ? '' : 'sr-only'}>{labelText}</span>
       </label>
     </>
   );
