@@ -4,7 +4,7 @@
 }
 
 .emotionWrapper {
-  width: 357px;
+  max-width: 357px;
   gap: 9px;
 }
 
@@ -28,6 +28,6 @@
     justify-content: center;
   }
   .emotionWrapper {
-    width: 479px;
+    max-width: 479px;
   }
 }

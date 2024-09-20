@@ -1,8 +1,7 @@
-import { useState, useCallback } from 'react';
-import { oneOf } from 'prop-types';
+import { func, oneOf } from 'prop-types';
 
-import styles from './RadioList.module.css';
 import RadioInput from '@/components/RadioInput/RadioInput';
+import styles from './RadioList.module.css';
 
 const RADIO_VALUES = {
   emotion: [
@@ -34,22 +33,17 @@ const RADIO_VALUES = {
 
 RadioList.propTypes = {
   type: oneOf(['gender', 'age', 'emotion', 'experience']).isRequired,
+  onSelect: func,
 };
 
-function RadioList({ type }) {
-  const [, setSelected] = useState('');
-
+function RadioList({ type, onSelect }) {
   const classNames = `${styles.radioList} ${styles[type + 'Wrapper']}`;
-
-  const handleChange = useCallback((value) => {
-    setSelected(value);
-  }, []);
 
   return (
     <ul className={classNames}>
       {RADIO_VALUES[type].map((element) => (
         <li key={element}>
-          <RadioInput type={type} onChange={handleChange}>
+          <RadioInput type={type} onChange={onSelect}>
             {element}
           </RadioInput>
         </li>

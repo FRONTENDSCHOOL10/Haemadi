@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useImmer } from 'use-immer';
 
 // 사용 예시
-// const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}`;
-// const { status, error, data } = useFetch(ENDPOINT, 'replyId');
-/** @type {(url: string, expandFields: string) => { status: 'pending' | 'loading' | 'success' | 'error', error: null | Error, data }} */
-function useFetch(url, expandFields) {
+// const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId,userId`;
+// const { status, error, data } = useFetch(ENDPOINT);
+/** @type {(url: string) => { status: 'pending' | 'loading' | 'success' | 'error', error: null | Error, data }} */
+function useFetch(url) {
   const [state, setState] = useImmer({
     status: 'pending',
     error: null,
@@ -19,8 +19,7 @@ function useFetch(url, expandFields) {
       setState((draft) => {
         draft.status = 'loading';
       });
-
-      const REQUEST_URL = `${url}${expandFields ? `?expand=${expandFields}` : ''}`;
+      const REQUEST_URL = url;
 
       try {
         const response = await fetch(REQUEST_URL, {
@@ -48,7 +47,7 @@ function useFetch(url, expandFields) {
     fetchData();
 
     return () => abortController.abort();
-  }, [url, expandFields, setState]);
+  }, [url, setState]);
 
   return state;
 }
