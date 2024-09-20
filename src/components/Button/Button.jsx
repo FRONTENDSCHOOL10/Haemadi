@@ -8,6 +8,7 @@ Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['normal', 'angled', 'stroke']),
   state: oneOf(['default', 'primary', 'disabled']),
+  role: oneOf(['button', 'submit', 'reset']),
   onClick: func,
 };
 
@@ -16,6 +17,7 @@ function Button({
   children,
   type = 'normal',
   state = 'default',
+  role = 'button',
   onClick,
   ...restProps
 }) {
@@ -35,7 +37,7 @@ function Button({
 
   return (
     <button
-      type="button"
+      type={role}
       className={classNames}
       aria-disabled={state === 'disabled'}
       onClick={handleClick}

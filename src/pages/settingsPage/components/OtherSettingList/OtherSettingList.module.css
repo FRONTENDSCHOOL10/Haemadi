@@ -1,0 +1,26 @@
+.otherSettingWrapper {
+  border-radius: 26px;
+  background-color: var(--white, #fff);
+  padding: 29px;
+  height: 342px;
+
+  h2 {
+    color: var(--black, #2e2e2e);
+    font-size: var(--text-s, 16px);
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 640px) {
+  .otherSettingWrapper {
+    width: 606px;
+  }
+}

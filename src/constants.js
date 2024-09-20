@@ -42,3 +42,12 @@ export const INTERESTS_KEYWORDS = [
   '😴 수면',
   '😮‍💨 자존감',
 ];
+
+export const OtherSetting_PAGES = [
+  'announcement',
+  'headset',
+  'question',
+  'list',
+  'information',
+  'version',
+];

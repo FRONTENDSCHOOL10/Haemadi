@@ -1,0 +1,45 @@
+.musicButton {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+
+  width: 370px;
+  padding: 10px;
+  background-color: transparent;
+  img {
+    width: 51px;
+    height: 51px;
+    border-radius: 999px;
+  }
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    height: auto;
+    gap: 7px;
+
+    line-height: normal;
+    .musicTitle {
+      font-size: var(--text-s, 16px);
+      font-weight: 700;
+      color: var(--black, #2e2e2e);
+
+      width: 265px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .musicArtist {
+      font-size: var(--text-xxs, 12px);
+      font-weight: 400;
+      color: var(--text_gray, #565656);
+
+      width: 265px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

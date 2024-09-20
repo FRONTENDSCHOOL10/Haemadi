@@ -49,7 +49,7 @@ const routes = [
         element: <UserInfoInputPage />,
       },
       {
-        path: 'my/calender',
+        path: 'my/calendar',
         element: <CalenderPage />,
       },
       {
