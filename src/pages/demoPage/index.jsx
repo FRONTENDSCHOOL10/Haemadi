@@ -1,5 +1,6 @@
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
+import { setStorage } from '@/utils/storage';
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './DemoPage.module.css';
@@ -8,7 +9,6 @@ import Step2Content from './components/StepContents/Step2Content';
 import Step2to2Content from './components/StepContents/Step2to2Content';
 import Step3Content from './components/StepContents/Step3Content';
 import StepIndicator from './components/StepIndicator/StepIndicator';
-import { setStorage } from '@/utils/storage';
 
 function DemoPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -28,22 +28,19 @@ function DemoPage() {
     if (step === '2') setSelectedEmotion(null);
   }, [step]);
 
-  let content;
-  switch (step) {
-    default:
-    case '1':
-      content = <Step1Content />;
-      break;
-    case '2':
-      content = <Step2Content handleSelect={handleChange} />;
-      break;
-    case '2-2':
-      content = <Step2to2Content selectedEmotion={selectedEmotion} />;
-      break;
-    case '3':
-      content = <Step3Content />;
-      break;
-  }
+  const renderContent = () => {
+    switch (step) {
+      default:
+      case '1':
+        return <Step1Content />;
+      case '2':
+        return <Step2Content handleSelect={handleChange} />;
+      case '2-2':
+        return <Step2to2Content selectedEmotion={selectedEmotion} />;
+      case '3':
+        return <Step3Content />;
+    }
+  };
 
   const handleNextClick = useCallback(() => {
     switch (step) {
@@ -72,7 +69,7 @@ function DemoPage() {
         backgroundPositionX: !desktop && step.slice(0, 1) === '2' ? '80%' : '',
       }}
     >
-      {content}
+      {renderContent()}
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
           다음으로
