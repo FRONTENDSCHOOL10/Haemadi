@@ -39,7 +39,7 @@
 .default {
   background-color: var(--white, #ffffff);
   color: var(--tertiay);
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .disabled {

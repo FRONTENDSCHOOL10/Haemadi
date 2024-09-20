@@ -2,21 +2,64 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: column nowrap;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  position: relative;
 }
 
-.shellList {
-  display: none;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  max-width: 1000px;
+.buttonWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 9px;
+  position: absolute;
+  bottom: 15vh;
+  right: 50vw;
+  translate: 50% 50%;
 
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap;
+  .plusButtonLabel {
+    color: #56483b;
+    text-align: center;
+    font-size: var(--text-l, 20px);
+    font-weight: 700;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .buttonWrapper {
+    bottom: calc(7.5vh - 32px);
+    translate: 50% 0;
+  }
+}
+
+/* 유리병 버튼 디자인 */
+.bottleLinkLeft {
+  position: absolute;
+  left: 5.4vw;
+  bottom: 37.5vh;
+}
+.bottleLinkRight {
+  position: absolute;
+  right: 6vw;
+  bottom: 21vh;
+}
+
+@media (min-width: 640px) {
+  .bottleLinkLeft {
+    left: calc(50vw - 300px);
+  }
+  .bottleLinkRight {
+    right: calc(50vw - 300px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottleLinkLeft {
+    left: calc(50vw - 380px);
+  }
+  .bottleLinkRight {
+    right: calc(50vw - 380px);
   }
 }

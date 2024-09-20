@@ -62,7 +62,7 @@ const routes = [
         element: <StatisticsPage />,
       },
       {
-        path: 'write-diary',
+        path: 'write-diary/:emotion',
         element: <WriteDiaryPage />,
       },
       {
