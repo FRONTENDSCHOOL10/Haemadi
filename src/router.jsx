@@ -12,7 +12,7 @@ const MusicPage = lazy(() => import('./pages/musicPage'));
 const MyPage = lazy(() => import('./pages/myPage'));
 const PickUpBottlePage = lazy(() => import('./pages/pickUpBottlePage'));
 const SelectReplyPage = lazy(() => import('./pages/selectReplyPage'));
-const SendLetterpage = lazy(() => import('./pages/sendLetterPage'));
+const SendLetterPage = lazy(() => import('./pages/sendLetterPage'));
 const SettingsPage = lazy(() => import('./pages/settingsPage'));
 const SignInPage = lazy(() => import('./pages/signInPage'));
 const SignUpPage = lazy(() => import('./pages/signUpPage'));
@@ -22,6 +22,7 @@ const ViewDiaryPage = lazy(() => import('./pages/viewDiaryPage'));
 const ViewLetterPage = lazy(() => import('./pages/viewLetterpage'));
 const ViewReplyPage = lazy(() => import('./pages/viewReply'));
 const WriteDiaryPage = lazy(() => import('./pages/writeDiaryPage'));
+const WriteReplyPage = lazy(() => import('./pages/writeReplyPage'));
 
 const routes = [
   {
@@ -70,11 +71,15 @@ const routes = [
       },
       {
         path: 'write-diary/send-letter',
-        element: <SendLetterpage />,
+        element: <SendLetterPage />,
       },
       {
         path: 'pick-up-bottle',
         element: <PickUpBottlePage />,
+      },
+      {
+        path: 'pick-up-bottle/write-reply/:diaryId',
+        element: <WriteReplyPage />,
       },
       {
         path: 'pick-up-bottle/view-letter/:diaryId',

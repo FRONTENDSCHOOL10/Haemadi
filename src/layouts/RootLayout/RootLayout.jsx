@@ -1,13 +1,30 @@
+import { useAuthStore } from '@/stores/authStore';
 import { useMediaStore } from '@/stores/mediaStore';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useSunStore } from '@/stores/sunStore';
+import { getStorage } from '@/utils';
+import { memo, useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import GlobalNav from '../GlobalNav/GlobalNav';
 import style from './RootLayout.module.css';
-import { useSunStore } from '@/stores/sunStore';
 
 function RootLayout() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const desktop = useMediaStore((store) => store.desktop);
   const sunset = useSunStore((store) => store.sunset);
+  const { checkSignIn, fetchUserInfo } = useAuthStore((store) => ({
+    checkSignIn: store.checkSignIn,
+    fetchUserInfo: store.fetchUserInfo,
+  }));
+
+  useEffect(() => {
+    // 로그인 되어있지 않으면 (토큰 유효성 검사 포함) demo | auth 페이지로 이동
+    if (!checkSignIn()) {
+      if (!getStorage('completeDemo')) navigate('/demo/1');
+      else navigate('/auth');
+    }
+    fetchUserInfo();
+  }, [navigate, checkSignIn, fetchUserInfo]);
 
   const renderMobileNav = pathname === '/' || pathname === '/my';
 
@@ -26,4 +43,4 @@ function RootLayout() {
   );
 }
 
-export default RootLayout;
+export default memo(RootLayout);
