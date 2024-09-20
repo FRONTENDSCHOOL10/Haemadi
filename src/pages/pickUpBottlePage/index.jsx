@@ -1,12 +1,37 @@
+import { BASE_URL } from '@/api/pbconfig';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
+import useFetch from '@/hooks/useFetch';
+import { useAuthStore } from '@/stores/authStore';
 import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styles from './PickUpBottlePage.module.css';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
+import { getRandomNumbers } from '@/utils';
 
 function PickUpBottlePage() {
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
+  const userInfo = useAuthStore((store) => store.userInfo);
+
+  const filterQuery = userInfo.interest
+    .map((interest) => `userId.interest~"${interest}"`)
+    .join(' || ');
+
+  const params = new URLSearchParams({
+    filter: `replyId="" && userId != "${userInfo.id}" && (${filterQuery})`,
+    expand: 'userId',
+  });
+
+  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
+  const { status, error, data } = useFetch(ENDPOINT);
+
+  if (status === 'loading') return <div>로딩중...</div>;
+  if (status === 'error') return <div>{error.message}</div>;
+  if (status !== 'success') return null;
+
+  console.log(data.items);
+  console.log(getRandomNumbers(data.items.length, 5));
+
   return (
     <div className={styles.page}>
       <div className={styles.pageContainer}>
