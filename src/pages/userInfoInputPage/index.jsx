@@ -8,6 +8,7 @@ import StepIndicator from './components/StepIndicator/StepIndicator';
 import SetNickName from './components/ProgressContents/SetNickName';
 import SetGender from './components/ProgressContents/SetGender';
 import SetAge from './components/ProgressContents/SetAge';
+import SetExperience from './components/ProgressContents/SetExperience';
 
 function UserInfoInputPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -37,7 +38,7 @@ function UserInfoInputPage() {
       case '3':
         return <SetAge nickName={'고된 하루를 보낸 토끼'} />;
       case '4':
-        return <>4</>;
+        return <SetExperience nickName={'고된 하루를 보낸 토끼'} />;
     }
   };
 
