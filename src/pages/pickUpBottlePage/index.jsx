@@ -66,6 +66,10 @@ function PickUpBottlePage() {
     navigate(`view-letter/${letterId}`);
   };
 
+  /* -------------------------------------------------------------------------- */
+  /*                     오늘 이미 답장을 했다면 홈 화면으로 redirect 처리 필요                    */
+  /* -------------------------------------------------------------------------- */
+
   if (status === 'error') return <div>{error.message}</div>;
 
   return (
