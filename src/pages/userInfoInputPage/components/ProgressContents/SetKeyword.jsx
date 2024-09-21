@@ -5,7 +5,7 @@ import KeywordList from '../KeywordList/KeywordList';
 
 function SetKeyword() {
   return (
-    <div className={styles.SetGender}>
+    <div className={styles.container}>
       <p className={styles.title}>
         거의 다 왔어요!
         <br />

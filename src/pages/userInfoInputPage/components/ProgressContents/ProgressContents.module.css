@@ -30,17 +30,25 @@
   margin-top: 100px;
 }
 
-.setNickName {
+.container {
   padding: 35px 40px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 87px;
 }
 
-.SetGender {
+.SetFinish {
+  p {
+    color: var(--white, #fff);
+  }
+  position: absolute;
+  top: 0;
   padding: 35px 40px;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url('/bgImages/userInfoInput_final.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
 }
 
 @media (min-width: 640px) {
@@ -52,11 +60,28 @@
   }
   .subTitle {
     color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
     text-align: center;
   }
   .description {
     color: var(--white, #fff);
     font-size: var(--text-s, 16px);
     text-align: center;
+  }
+
+  .SetFinish {
+    padding-top: 154px;
+  }
+
+  .SetFinish::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 12, 33, 0.3);
+    backdrop-filter: blur(13px);
+    z-index: -1; /* 블러 레이어가 콘텐츠 뒤에 위치하도록 설정 */
   }
 }

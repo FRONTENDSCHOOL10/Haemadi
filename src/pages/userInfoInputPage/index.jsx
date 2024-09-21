@@ -10,16 +10,16 @@ import SetGender from './components/ProgressContents/SetGender';
 import SetAge from './components/ProgressContents/SetAge';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
+import SetFinish from './components/ProgressContents/SetFinish';
 
 function UserInfoInputPage() {
-  const desktop = useMediaStore((store) => store.desktop);
   const navigate = useNavigate();
   const { progress } = useParams();
   const [buttonState, setButtonState] = useState('disabled');
-  const [selectedEmotion, setSelectedEmotion] = useState(null);
+  const [nickName, setnickName] = useState(null);
 
   const handleChange = useCallback((value) => {
-    setSelectedEmotion(value);
+    setnickName(value);
   }, []);
 
   /*   useEffect(() => {
@@ -43,7 +43,7 @@ function UserInfoInputPage() {
       case '5':
         return <SetKeyword />;
       case '6':
-        return <SetExperience />;
+        return <SetFinish />;
     }
   };
 
@@ -66,7 +66,7 @@ function UserInfoInputPage() {
         navigate('/my/settings/userInfoInput/6');
         break;
       case '6':
-        navigate('/auth');
+        navigate('/');
         break;
     }
   }, [navigate, progress]);
@@ -77,7 +77,7 @@ function UserInfoInputPage() {
       <StepIndicator />
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
-          다음으로
+          {progress != 6 ? '다음으로' : '섬으로 바로가기'}
         </Button>
       </div>
     </div>

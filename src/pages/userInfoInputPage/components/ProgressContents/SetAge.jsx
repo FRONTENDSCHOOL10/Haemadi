@@ -5,7 +5,7 @@ import RadioList from '@/components/RadioList/RadioList';
 
 function SetAge({ nickName }) {
   return (
-    <div className={styles.SetGender}>
+    <div className={styles.container}>
       <p className={styles.title}>
         {nickName} 님의
         <br />
