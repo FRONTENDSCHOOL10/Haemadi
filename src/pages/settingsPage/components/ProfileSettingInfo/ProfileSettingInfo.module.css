@@ -18,6 +18,10 @@
   text-align: center;
 }
 
+.imageWrapper {
+  position: relative;
+}
+
 .profileImg {
   width: 113px;
   height: 113px;
@@ -25,6 +29,15 @@
   object-fit: cover;
   cursor: pointer;
   filter: brightness(0.4) saturate(100%) hue-rotate(0deg);
+}
+
+.svgCamera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 19px;
+  height: 16px;
 }
 
 .profileDetails {

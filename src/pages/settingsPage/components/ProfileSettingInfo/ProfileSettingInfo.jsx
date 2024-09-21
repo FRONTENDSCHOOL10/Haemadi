@@ -1,4 +1,4 @@
-import { getUserProfileImg } from '@/api/users';
+import { getUserProfileImg, updateUserProfileImage } from '@/api/users';
 import defaultProfile from '@/assets/default_profile.png';
 import { useAuthStore } from '@/stores/authStore';
 import { memo, useEffect, useState, useRef } from 'react';
@@ -13,9 +13,9 @@ function ProfileSettingInfo() {
   const [userData, setUserData] = useState(null);
   const [image, setImage] = useState(defaultProfile); // 프로필 이미지 상태
   const fileInput = useRef(null); // input을 위한 ref
-
   const fetchUserInfo = useAuthStore((state) => state.fetchUserInfo);
-  
+  const token = useAuthStore((state) => state.token); // 토큰 가져오기
+
   useEffect(() => {
     const loadUserData = async () => {
       try {
@@ -35,15 +35,25 @@ function ProfileSettingInfo() {
     loadUserData();
   }, [fetchUserInfo]);
 
-  const onChange = (e) => {
+  const onChange = async (e) => {
     if (e.target.files[0]) {
+      const selectedImage = e.target.files[0];
       const reader = new FileReader();
-      reader.onload = () => {
+  
+      reader.onload = async () => {
         if (reader.readyState === 2) {
           setImage(reader.result); // 선택한 이미지로 업데이트
+  
+          try {
+            const userId = userData.id; // 사용자 ID
+            await updateUserProfileImage(token, userId, selectedImage);
+            await fetchUserInfo(); // 사용자 정보 새로 고침
+          } catch (error) {
+            console.error('Failed to update profile image:', error);
+          }
         }
       };
-      reader.readAsDataURL(e.target.files[0]);
+      reader.readAsDataURL(selectedImage);
     } else {
       setImage(defaultProfile); // 업로드 취소 시 기본 이미지로 설정
     }
@@ -61,16 +71,17 @@ function ProfileSettingInfo() {
     <div className={styles.profileContainer}>
       <h2>프로필 설정</h2>
       <div className={styles.profileInfo}>
-        {/* 프로필 이미지 클릭 시 파일 업로더 열기 */}
-        <img
-          className={styles.profileImg}
-          src={image}
-          alt="유저 프로필"
-          onClick={() => fileInput.current.click()} // 클릭 시 파일 업로더 열기
-        />
+        <div className={styles.imageWrapper} onClick={() => fileInput.current.click()}>
+          <img
+            className={styles.profileImg}
+            src={image}
+            alt="유저 프로필"
+          />
+          <SVGIcon className={styles.svgCamera} {...icons.camera} />
+        </div>
         <input
           type="file"
-          style={{ display: 'none' }} // 기본 디자인 숨기기
+          style={{ display: 'none' }}
           accept="image/jpg,image/png,image/jpeg"
           name="profile_img"
           onChange={onChange}
