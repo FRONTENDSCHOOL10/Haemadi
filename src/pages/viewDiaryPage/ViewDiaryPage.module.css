@@ -25,7 +25,7 @@
   flex-flow: column nowrap;
   width: 100vw;
   height: 67vh;
-  background-image: url('/diaryBg.png');
+  background-image: url('/bgImages/diaryBg.webp');
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
