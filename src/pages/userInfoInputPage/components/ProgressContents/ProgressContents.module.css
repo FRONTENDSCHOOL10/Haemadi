@@ -13,3 +13,12 @@
   align-items: start;
   gap: 87px;
 }
+
+@media (min-width: 640px) {
+  .title {
+    color: var(--white, #fff);
+    font-size: var(--text-xxl, 55px);
+    font-weight: 800;
+    text-align: center;
+  }
+}

@@ -5,6 +5,7 @@ import styles from './UserInfoInputPage.module.css';
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
 import StepIndicator from './components/StepIndicator/StepIndicator';
+import SetNickName from './components/ProgressContents/SetNickName';
 
 function UserInfoInputPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -28,7 +29,7 @@ function UserInfoInputPage() {
     switch (progress) {
       default:
       case '1':
-        return <>1</>;
+        return <SetNickName />;
       case '2':
         return <>2</>;
       case '3':
@@ -59,11 +60,11 @@ function UserInfoInputPage() {
   return (
     <div className={styles.userInfoInputPage}>
       {renderContent()}
-      <div>
+      <StepIndicator />
+      <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
           다음으로
         </Button>
-        <StepIndicator />
       </div>
     </div>
   );
