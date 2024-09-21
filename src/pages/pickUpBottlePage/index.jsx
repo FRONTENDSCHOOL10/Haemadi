@@ -6,10 +6,13 @@ import { useAuthStore } from '@/stores/authStore';
 import { getRandomNumbers } from '@/utils';
 import { memo, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
+import { SyncLoader } from 'react-spinners';
 import styles from './PickUpBottlePage.module.css';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
 
 function PickUpBottlePage() {
+  const navigate = useNavigate();
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
   const userInfo = useAuthStore((store) => store.userInfo);
 
@@ -38,8 +41,13 @@ function PickUpBottlePage() {
     [userInfo.interest]
   );
   const params = new URLSearchParams({
+    // 일기 5개만 가져옴
+    page: 1,
+    perPage: 5,
     // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
     filter: `replyId="" && userId != "${userInfo.id}" && (${filterQuery})`,
+    // 모든 사용자가 답장을 최대한 빨리 받게 하기위해, 작성한지 오래된 일기부터 가져옴
+    sort: 'created',
     expand: 'userId',
   });
 
@@ -47,14 +55,18 @@ function PickUpBottlePage() {
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
   const { status, error, data } = useFetch(ENDPOINT);
 
-  if (status === 'loading') return <div>로딩중...</div>;
+  const letterIndexList = getRandomNumbers(data?.items.length, 5);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const bottleIndex = formData.get('bottle');
+    const letterIndex = letterIndexList[bottleIndex];
+    const letterId = data?.items[letterIndex].id;
+    navigate(`view-letter/${letterId}`);
+  };
+
   if (status === 'error') return <div>{error.message}</div>;
-  if (status !== 'success') return null;
-
-  /* --------------------------- 서버 요청 응답 성공 시에만 실행 --------------------------- */
-
-  console.log(data.items);
-  console.log(getRandomNumbers(data.items.length, 5));
 
   return (
     <div className={styles.page}>
@@ -64,14 +76,22 @@ function PickUpBottlePage() {
           <h1>마디 유리병 편지함</h1>
         </header>
 
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <h2>{'5개의 유리병 중 하나를 골라\n편지에 답장을 할 수 있어요'}</h2>
           <BottleRadioGroup desktop={desktop} />
           <p>
             {'편지는 익명의 사용자에게 받게 되며\n한번의 답장을 할 수 있어요'}
           </p>
-          <Button role="submit" style={buttonStyle}>
-            이걸로 선택할게요
+          <Button
+            role="submit"
+            state={status === 'success' ? 'default' : 'disabled'}
+            style={buttonStyle}
+          >
+            {status === 'success' ? (
+              '이걸로 선택할게요'
+            ) : (
+              <SyncLoader color="#2E7FB9" size={12} />
+            )}
           </Button>
         </form>
       </div>
