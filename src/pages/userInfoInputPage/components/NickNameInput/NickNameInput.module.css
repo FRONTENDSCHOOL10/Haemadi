@@ -4,6 +4,7 @@
   flex-direction: column;
   width: calc(100% - 64px);
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .input {
