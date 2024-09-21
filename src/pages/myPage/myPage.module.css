@@ -1,0 +1,82 @@
+.myPage {
+  background-image: url('../../assets/background/background01.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+
+  .setting {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+  }
+
+  .userProfile {
+    width: 100%;
+    height: 50%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .menu {
+    width: 100%;
+    height: 50%;
+    background-color: var(--white, #fff);
+    border-radius: 58px 58px 0px 0px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .LinkWrapper {
+    display: flex;
+    align-items: center;
+    gap: 74px;
+    padding: 50px;
+
+    hr {
+      background-color: var(--button_gray);
+      width: 1px;
+      height: 94px;
+    }
+  }
+
+  .interestWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+
+    h2 {
+      color: var(--black, #2e2e2e);
+      font-size: var(--text-s, 16px);
+      font-weight: 800;
+      line-height: normal;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .myPage {
+    .userProfile {
+      gap: 28px;
+    }
+
+    .menu {
+      justify-content: center;
+      .interestWrapper {
+        h2 {
+          font-size: var(--text-l, 20px);
+        }
+      }
+    }
+  }
+}
