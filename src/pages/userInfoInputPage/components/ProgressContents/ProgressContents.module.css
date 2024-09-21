@@ -1,0 +1,15 @@
+.title {
+  color: var(--tertiay, #1f6496);
+  font-size: var(--text-xl, 24px);
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.setNickName {
+  padding: 35px 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 87px;
+}
