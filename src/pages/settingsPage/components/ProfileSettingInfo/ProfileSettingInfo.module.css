@@ -16,7 +16,8 @@
 
 .imageWrapper {
   position: relative;
-  text-align: center;
+  width: 113px;
+  margin: 0 auto;
 }
 
 .profileImg {
@@ -72,6 +73,10 @@
   margin: 0 auto;
   margin-top: 16px;
   display: block;
+}
+
+.editButton:focus {
+  outline: 2px solid var(--focus, #66d6ea);
 }
 
 @media (min-width: 640px) {
