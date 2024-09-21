@@ -1,0 +1,29 @@
+.settingsPage {
+  background-image: url('../../assets/background/background01.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  padding-top: 68px; 
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--white, #fff);
+    font-size: var(--text-l, 20px);
+    font-weight: bold;
+  }
+
+  /* 모바일 기종마다의 height background 잘림으로 별도 지정 */
+  @media (max-width: 400px) {
+    .settingsPage {
+      height: 100vh;
+      padding-top: 30px;
+    }
+  }
+  /* 모바일 기종마다의 height background 잘림으로 별도 지정 */
+  @media (max-width: 380px) {
+    .settingsPage {
+      height: 100%;
+    }
+  }

@@ -1,17 +1,19 @@
 .profileContainer {
-  background-color: aquamarine;
+  background-color: var(--white, #fff);
   border-radius: 21px;
   padding: 23px;
   margin: 0 auto;
   max-width: calc(100% - 66px);
   font-weight: bold;
+  margin-top: 68px;
 }
 
 .profileContainer h2 {
   position: relative;
-  margin-left: 50px;
-  font-size: var(--text-m, 18px);
+  margin-left: 5px;
+  font-size: var(--text-s, 16px);
   font-weight: bold;
+  color: var(--title_gray, #2e2e2e);
 }
 
 .imageWrapper {
@@ -44,6 +46,7 @@
   width: 240px;
   margin: 0 auto;
   padding-top: 17px;
+  font-size: var(--text-xs, 14px);
 }
 
 .profileDetails li {
@@ -55,12 +58,12 @@
 .infolabel {
   color: #6c6c6c;
   margin-right: 22px;
-  flex: 1.1;
+  flex: 1;
 }
 
 .infoValue {
   color: var(--title_gray, #2e2e2e);
-  flex: 2.9;
+  flex: 3;
 }
 
 .editButton {
@@ -83,8 +86,32 @@
   .profileContainer {
     width: 606px;
   }
+
+  .profileContainer h2 {
+    margin-left: 6px;
+    font-size: 22px;
+  }
+
+  .imageWrapper {
+    width: 221px;
+  }
+
+  .profileImg {
+    width: 221px;
+    height: 221px;
+  }
+
+  .svgCamera {
+    width: 37px;
+    height: 30px;
+  }
+
+  .profileDetails {
+    font-size: var(--text-m, 18px);
+  }
 }
 
+/*줄이는 과정에서 640px 기준이 어색한 요소 개별 처리했습니다*/
 @media (max-width: 440px) {
   .editButton {
     width: calc(100% - 10px);
@@ -92,6 +119,13 @@
 
   .profileContainer h2 {
     margin-left: 0;
+  }
+}
+
+/* 400px 이하 모바일에서 컨텐츠 잘림으로 여백 줄이는 용도로 처리했습니다 */
+@media (max-width: 400px) {
+  .profileContainer {
+    margin-top: 10px;
   }
 }
 
