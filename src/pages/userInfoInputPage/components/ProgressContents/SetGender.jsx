@@ -15,7 +15,7 @@ function SetGender({ nickName }) {
         *입력한 개인정보는 외부에 공개되지 않아요
       </span>
       <div className={styles.inputWrapper}>
-        <RadioList type={'age'} />
+        <RadioList type={'gender'} />
       </div>
     </div>
   );
