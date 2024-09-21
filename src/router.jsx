@@ -88,6 +88,10 @@ const routes = [
         path: 'letter-box',
         element: <LetterBoxPage />,
       },
+      {
+        path: 'letter-box/view-diary/:diaryId',
+        element: <ViewDiaryPage />,
+      },
     ],
   },
   {
