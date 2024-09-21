@@ -45,7 +45,7 @@ const routes = [
         element: <SettingsPage />,
       },
       {
-        path: 'my/settings/userInfoInput/:grogress',
+        path: 'my/settings/userInfoInput/:progress',
         element: <UserInfoInputPage />,
       },
       {
