@@ -17,11 +17,10 @@
   /* 모바일 기종마다의 height background 잘림으로 별도 지정 */
   @media (max-width: 400px) {
     .settingsPage {
-      height: 100vh;
       padding-top: 30px;
     }
   }
-  /* 모바일 기종마다의 height background 잘림으로 별도 지정 */
+
   @media (max-width: 380px) {
     .settingsPage {
       height: 100%;
