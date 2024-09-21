@@ -90,7 +90,12 @@ function PickUpBottlePage() {
             {status === 'success' ? (
               '이걸로 선택할게요'
             ) : (
-              <SyncLoader color="#2E7FB9" size={12} />
+              <>
+                <SyncLoader color="#2E7FB9" size={12} aria-hidden="true" />
+                <span className="sr-only">
+                  서버에서 데이터를 불러온 후에 버튼이 활성화됩니다.
+                </span>
+              </>
             )}
           </Button>
         </form>
