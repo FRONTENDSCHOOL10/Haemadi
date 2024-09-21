@@ -13,7 +13,7 @@ function SetExperience({ nickName }) {
         <br />
         어느정도인가요?
       </p>
-      <p className={styles.description}>
+      <p className={styles.subTitle}>
         나와 비슷한 타 사용자와의 소통을 위해
         <br />
         해마디에게 당신의 일기경험을 알려주세요!

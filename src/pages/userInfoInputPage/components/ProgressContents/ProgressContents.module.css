@@ -6,6 +6,15 @@
   letter-spacing: -0.72px;
 }
 
+.subTitle {
+  color: #8f8f8f;
+  font-size: var(--text-xs, 14px);
+  font-weight: 700;
+  line-height: 165%;
+
+  margin-top: 13px;
+}
+
 .description {
   display: block;
   color: #b6b6b6;
@@ -39,6 +48,10 @@
     color: var(--white, #fff);
     font-size: var(--text-xxl, 55px);
     font-weight: 800;
+    text-align: center;
+  }
+  .subTitle {
+    color: var(--white, #fff);
     text-align: center;
   }
   .description {

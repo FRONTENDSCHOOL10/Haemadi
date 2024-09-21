@@ -9,6 +9,7 @@ import SetNickName from './components/ProgressContents/SetNickName';
 import SetGender from './components/ProgressContents/SetGender';
 import SetAge from './components/ProgressContents/SetAge';
 import SetExperience from './components/ProgressContents/SetExperience';
+import SetKeyword from './components/ProgressContents/SetKeyword';
 
 function UserInfoInputPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -39,6 +40,10 @@ function UserInfoInputPage() {
         return <SetAge nickName={'고된 하루를 보낸 토끼'} />;
       case '4':
         return <SetExperience nickName={'고된 하루를 보낸 토끼'} />;
+      case '5':
+        return <SetKeyword />;
+      case '6':
+        return <SetExperience />;
     }
   };
 
@@ -55,6 +60,12 @@ function UserInfoInputPage() {
         navigate('/my/settings/userInfoInput/4');
         break;
       case '4':
+        navigate('/my/settings/userInfoInput/5');
+        break;
+      case '5':
+        navigate('/my/settings/userInfoInput/6');
+        break;
+      case '6':
         navigate('/auth');
         break;
     }
