@@ -1,5 +1,7 @@
-import NickNameInput from '../NickNameInput/NickNameInput';
+import { memo } from 'react';
+
 import styles from './ProgressContents.module.css';
+import NickNameInput from '../NickNameInput/NickNameInput';
 
 function SetNickName() {
   return (
@@ -16,4 +18,4 @@ function SetNickName() {
   );
 }
 
-export default SetNickName;
+export default memo(SetNickName);

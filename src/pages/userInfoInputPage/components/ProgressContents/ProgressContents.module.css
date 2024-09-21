@@ -3,6 +3,22 @@
   font-size: var(--text-xl, 24px);
   font-weight: 700;
   line-height: 150%;
+  letter-spacing: -0.72px;
+}
+
+.description {
+  display: block;
+  color: #b6b6b6;
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+  letter-spacing: -0.36px;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 }
 
 .setNickName {
@@ -14,11 +30,20 @@
   gap: 87px;
 }
 
+.SetGender {
+  padding: 35px 40px;
+}
+
 @media (min-width: 640px) {
   .title {
     color: var(--white, #fff);
     font-size: var(--text-xxl, 55px);
     font-weight: 800;
+    text-align: center;
+  }
+  .description {
+    color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
     text-align: center;
   }
 }
