@@ -12,10 +12,12 @@ function ProfileSettingInfo() {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
   const [image, setImage] = useState(defaultProfile); // 프로필 이미지 상태
-  const fileInput = useRef(null); // input을 위한 ref
+  const fileInput = useRef(null); // 프로필 이미지 변경 input을 위한 ref
   const fetchUserInfo = useAuthStore((state) => state.fetchUserInfo);
   const token = useAuthStore((state) => state.token); // 토큰 가져오기
-
+  const removeEmojis = (text) => {
+    return text.replace(/([\u2700-\u27BF]|[\u1F300-\u1F5FF]|[\u1F600-\u1F64F]|[\u1F680-\u1F6FF]|[\u1F700-\u1F77F]|[\u1F780-\u1F7FF]|[\u1F800-\u1F8FF]|[\u1F900-\u1F9FF]|[\u1FA00-\u1FA6F]|[\u1FB00-\u1FBFF]|[\u2600-\u26FF]|[\u2700-\u27BF])/g, '');
+  };
   useEffect(() => {
     const loadUserData = async () => {
       try {
@@ -45,7 +47,7 @@ function ProfileSettingInfo() {
           setImage(reader.result); // 선택한 이미지로 업데이트
   
           try {
-            const userId = userData.id; // 사용자 ID
+            const userId = userData.id;
             await updateUserProfileImage(token, userId, selectedImage);
             await fetchUserInfo(); // 사용자 정보 새로 고침
           } catch (error) {
@@ -95,7 +97,7 @@ function ProfileSettingInfo() {
           </li>
           <li>
             <span className={styles.infolabel}>관심사</span>
-            <span className={styles.infoValue}>{userData.interests || '관심사 없음'}</span>
+            <span className={styles.infoValue}>{userData.interest || '관심사 없음'}</span>
           </li>
           <li>
             <span className={styles.infolabel}>나이</span>
