@@ -45,10 +45,6 @@ const routes = [
         element: <SettingsPage />,
       },
       {
-        path: 'my/settings/userInfoInput/:progress',
-        element: <UserInfoInputPage />,
-      },
-      {
         path: 'my/calendar',
         element: <CalenderPage />,
       },
@@ -105,6 +101,10 @@ const routes = [
   {
     path: '/auth/sign-in',
     element: <SignInPage />,
+  },
+  {
+    path: 'my/settings/userInfoInput/:progress',
+    element: <UserInfoInputPage />,
   },
 ];
 
