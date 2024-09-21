@@ -28,15 +28,7 @@
 .radioInput:focus {
   outline: none;
 }
-.radioInput:focus + .radioCard {
+.radioInput:focus-visible + .radioCard {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }
-
-/* 
-브라우저 호환성 이슈로 사용하지 않고 useEffect에서 처리
-.radioCard:has(input[type='radio']:checked) {
-  background-color: #2d7eb9;
-  color: #ffffff;
-}
-*/
