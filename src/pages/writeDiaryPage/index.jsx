@@ -2,6 +2,8 @@ import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
+import { useAuthStore } from '@/stores/authStore';
+import { useDiaryStore } from '@/stores/diaryStore';
 import { useMediaStore } from '@/stores/mediaStore';
 import { formatDate } from '@/utils';
 import { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
@@ -15,7 +17,9 @@ function WriteDiaryPage() {
   const { emotion } = useParams();
   const formId = useId();
   const textAreaRef = useRef(null);
-  const [openedModal, setOpenedModal] = useState(null);
+  const [currentModal, setCurrentModal] = useState('');
+  const setDiary = useDiaryStore((store) => store.setDiary);
+  const userInfo = useAuthStore((store) => store.userInfo);
 
   const today = new Date();
   const formattedDate1 = formatDate(today, 1); // 2024-09-18 형식
@@ -27,18 +31,20 @@ function WriteDiaryPage() {
   };
 
   const openModal = useCallback(
-    (modalName) => () => setOpenedModal(modalName),
+    (modalName) => () => setCurrentModal(modalName),
     []
   );
-  const closeModal = useCallback(() => setOpenedModal(null), []);
+  const closeModal = useCallback(() => setCurrentModal(null), []);
   const confirmModal = useCallback(() => {
-    if (openedModal === 'back') {
+    if (currentModal === 'back') {
       navigate(-1);
     }
-    if (openedModal === 'save') {
+    if (currentModal === 'save') {
+      const message = textAreaRef.current.value;
+      setDiary({ message, emotion, userId: userInfo.id });
       navigate('/write-diary/select-reply/1');
     }
-  }, [navigate, openedModal]);
+  }, [currentModal, navigate, setDiary, emotion, userInfo.id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,9 +59,9 @@ function WriteDiaryPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
-          <BackButton onClick={openModal('back')} />
+          <BackButton onClick={openModal('back')} tabIndex={1} />
           <h1>일기 작성하기</h1>
-          <SaveButton form={formId} />
+          <SaveButton form={formId} tabIndex={3} />
         </div>
         {desktop && <time dateTime={formattedDate1}>{formattedDate2}</time>}
       </header>
@@ -76,25 +82,27 @@ function WriteDiaryPage() {
             onChange={handleResizeHeight}
             rows={10}
             required
+            tabIndex={2}
           ></textarea>
         </form>
       </main>
 
       <ModalDialog
-        isOpen={openedModal === 'back' || openedModal === 'save'}
+        isOpen={currentModal === 'back' || currentModal === 'save'}
         closeModal={closeModal}
         confirmModal={confirmModal}
       >
-        <h2>
-          {openedModal === 'back'
-            ? '정말 돌아가시나요?'
-            : '일기 작성을 마무리하시나요?'}
-        </h2>
-        <p>
-          {openedModal === 'back'
-            ? '저장하지 않은 일기의 내용은\n저장되지 않습니다.'
-            : '작성한 일기에 받을 답장 선택 후,\n최종 저장됩니다.'}
-        </p>
+        {currentModal === 'back' ? (
+          <>
+            <h2>정말 돌아가시나요?</h2>
+            <p>{'저장하지 않은 일기의 내용은\n저장되지 않습니다.'}</p>
+          </>
+        ) : (
+          <>
+            <h2>일기 작성을 마무리하시나요?</h2>
+            <p>{'작성한 일기에 받을 답장 선택 후,\n최종 저장됩니다.'}</p>
+          </>
+        )}
       </ModalDialog>
     </div>
   );
