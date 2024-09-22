@@ -48,7 +48,7 @@ function NickNameInput({ initialNickname, onChange }) {
       >
         <SVGIcon
           {...icons.remove}
-          color={desktop ? '#000' : icons.remove.color} // 사용 시 #fff로 변경해주세요!
+          color={desktop ? '#fff' : icons.remove.color} // 사용 시 #fff로 변경해주세요!
         />
       </button>
     </div>
