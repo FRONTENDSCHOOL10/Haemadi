@@ -41,26 +41,25 @@ function ProfileSettingInfo() {
     <div className={styles.profileContainer}>
       <h2>프로필 설정</h2>
       
-      <label htmlFor="profileImgInput" className={styles.imageLabel}>
-        <img
-          className={styles.profileImg}
-          src={image}
-          alt={`${userInfo.nickName}의 프로필 이미지`}
-        />
-        <SVGIcon className={styles.svgCamera} {...icons.camera} />
-        <span className="sr-only">프로필 이미지 변경하기</span>
-      </label>
-
       <input
         id="profileImgInput"
-        className="sr-only"
+        className={`sr-only ${styles.profileImgInput}`}
         type="file"
         accept="image/jpg,image/png,image/jpeg,image/webp"
         name="profile_img"
         onChange={onChange}
         ref={fileInput}
       />
-      
+      <label htmlFor="profileImgInput" className={styles.imageLabel}>
+        <img
+          className={styles.profileImg}
+          src={image}
+          alt={`${userInfo.nickName}의 프로필 이미지`}
+        />
+        <SVGIcon className={styles.svgCamera} {...icons.camera}  width={19} height={16}/>
+        <span className="sr-only">프로필 이미지 변경하기</span>
+      </label>
+
       <ul className={styles.profileDetails}>
         <li>
           <span className={styles.infolabel}>닉네임</span>

@@ -3,8 +3,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
-  padding-top: 68px; 
+  min-height: 100vh;
+  width: 100vw;
   }
 
   h1 {
@@ -12,25 +12,26 @@
     color: var(--white, #fff);
     font-size: var(--text-l, 20px);
     font-weight: bold;
+    padding-top: 30px;
   }
 
   .backButton {
     background: none;
     position: absolute;
     left: 7vw;
-    top: 68px;
+    top: 29px;
   }
   
   .desktopBackButton {
     left: 43vw;
   }
 
-  @media (max-width: 440px) {
-    .settingsPage {
-      padding-top: 30px;
+  @media (min-width: 640px) {
+    h1 {
+      padding-top: 69px;
     }
 
     .backButton {
-      top: 29px;
+      top: 68px;
     }
   }

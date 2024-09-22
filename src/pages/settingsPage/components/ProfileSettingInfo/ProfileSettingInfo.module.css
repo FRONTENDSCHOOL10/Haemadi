@@ -20,15 +20,14 @@
   position: relative;
   display: flex;
   width: 113px;
+  height: 113px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .profileImg {
-  width: 113px;
-  height: 113px;
   border-radius: 50%;
   object-fit: cover;
-  cursor: pointer;
   filter: brightness(0.4) saturate(100%) hue-rotate(0deg);
 }
 
@@ -37,8 +36,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 19px;
-  height: 16px;
+}
+
+.profileImgInput:focus {
+  outline: none;
+}
+
+.profileImgInput:focus-visible + .imageLabel {
+  outline: auto; outline-color: var(--focus, #66d6ea);
 }
 
 .profileDetails {
@@ -96,6 +101,7 @@
 
   .imageLabel {
     width: 221px;
+    height: 221px;
   }
 
   .profileImg {
