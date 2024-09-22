@@ -11,7 +11,6 @@ function ProfileSettingInfo() {
   const navigate = useNavigate();
   const fileInput = useRef(null);
   const userInfo = useAuthStore((store) => store.userInfo);
-  const token = useAuthStore((state) => state.token);
 
   const [image, setImage] = useState(userInfo.profileImage ? getUserProfileImg(userInfo) : defaultProfile);
 
@@ -26,8 +25,7 @@ function ProfileSettingInfo() {
 
           try {
             const userId = userInfo.id;
-            await updateUserProfileImage(token, userId, selectedImage);
-            useAuthStore.getState().updateUserInfo({ ...userInfo, profileImage: reader.result });
+            await updateUserProfileImage(userId, selectedImage);
           } catch (error) {
             console.error('이미지 업로드에 실패했습니다', error);
           }
