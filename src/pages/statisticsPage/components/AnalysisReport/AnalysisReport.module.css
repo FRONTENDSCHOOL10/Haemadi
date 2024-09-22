@@ -17,6 +17,7 @@
 
 .dataWrapper {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 17px;
   margin: 42px auto 0;

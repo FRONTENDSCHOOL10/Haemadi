@@ -40,10 +40,6 @@ function AnalysisReport({ diariesData = [], repliesData = [] }) {
           <strong>{positiveIndex}%</strong>
           <span>긍정 지수</span>
         </li>
-        <li style={{ backgroundColor: '#B7DAF033' }}>
-          <strong>78</strong>
-          <span>방문 누적 횟수</span>
-        </li>
       </ul>
     </div>
   );
