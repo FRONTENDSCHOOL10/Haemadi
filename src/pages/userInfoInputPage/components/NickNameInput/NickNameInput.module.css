@@ -45,7 +45,7 @@
   .input {
     font-size: var(--text-l, 20px);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
-    color: var(--black, #2e2e2e);
+    color: var(--white, #fff);
     text-align: center;
   }
 
