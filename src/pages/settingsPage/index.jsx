@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import OtherSettingList from './components/OtherSettingList/OtherSettingList';
 import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingInfo';
-import styles from './settingsPage.module.css';
+import styles from './SettingsPage.module.css';
 
 function SettingsPage() {
   const desktop = useMediaStore((store) => store.desktop);
