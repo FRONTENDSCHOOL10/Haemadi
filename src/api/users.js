@@ -1,6 +1,5 @@
 import { useAuthStore } from '@/stores/authStore';
 import { BASE_URL } from './pbconfig';
-import { func } from 'prop-types';
 
 const REQUEST_OPTIONS = {
   headers: {

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="1nSync" />
-    <!-- 웹폰트 -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css" />
     <!-- favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
@@ -21,7 +19,11 @@
   <body>
     <noscript>이 앱을 사용하려면 JavaScript 활성화가 필요합니다.</noscript>
 
+    <div id="splash-screen"></div>
+
     <div id="root"></div>
-    <div id="portal"></div>
+
+    <div id="loading-start" aria-live="assertive"></div>
+    <div id="loading-end" aria-live="assertive"></div>
   </body>
 </html>

@@ -1,4 +1,4 @@
-.signupPage {
+.signinPage {
   position: relative;
   padding-top: 40px;
 
@@ -13,7 +13,7 @@
   gap: 115px;
 
   width: 345px;
-  margin-bottom: 18px;
+  margin-bottom: 60px;
 
   h1 {
     color: var(--black, #2e2e2e);
@@ -28,43 +28,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  label {
-    display: block;
-    color: var(--black, #2e2e2e);
-    font-size: var(----text-l, 20px);
-    font-weight: 700;
-    line-height: 150%;
-    letter-spacing: -0.6px;
-
-    margin-bottom: 12px;
-  }
 }
 
-.idWrapper,
-.passwordWrapper {
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
   width: 345px;
+  margin-bottom: 70px;
 }
 
-.passwordWrapper {
-  margin-top: 53px;
-  margin-bottom: 86px;
-  input[name='password'] {
-    margin-bottom: 9px;
-  }
+.registerButton {
+  margin-top: 13px;
+  color: var(--date_gray, #6d6d6d);
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.36px;
+  z-index: 2; /* 블러 레이어 위에 콘텐츠가 오도록 설정 */
+  text-decoration: underline;
 }
 
 @media (min-width: 640px) {
-  .signupPage {
+  .signinPage {
     padding-top: 154px;
 
-    background-image: url('../../assets/background/background02.webp');
+    background-image: url('../../assets/background/background02.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
 
-  .signupPage::before {
+  .signinPage::before {
     content: '';
     position: absolute;
     top: 0;
@@ -88,12 +83,13 @@
       color: var(--white, #fff);
     }
   }
-  .formWrapper label {
-    color: var(--white, #fff);
+
+  .inputWrapper {
+    width: 552px;
   }
 
-  .idWrapper,
-  .passwordWrapper {
-    width: 552px;
+  .registerButton {
+    color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
   }
 }

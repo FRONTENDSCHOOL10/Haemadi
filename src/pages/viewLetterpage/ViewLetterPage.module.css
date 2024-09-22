@@ -1,6 +1,9 @@
 .page {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .header {
@@ -9,7 +12,8 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  padding-block: 25px 65px;
+  width: 100%;
+  padding-block: 25px 72px;
 
   h1 {
     color: var(--black, #2e2e2e);
@@ -18,26 +22,27 @@
     font-weight: 700;
     line-height: 23px; /* 153.333% */
   }
+
+  time {
+    color: #6d6d6d;
+    margin: 8px auto;
+    font-size: var(--text-xxs, 12px);
+    font-weight: 700;
+  }
 }
 
 .main {
   display: flex;
   flex-flow: column nowrap;
   width: 100vw;
-  height: 67vh;
+  height: 63.6vh;
   background-image: url('/bgImages/diaryBg.webp');
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
   overflow-y: scroll;
+  margin-bottom: 35px;
   padding: 40px 15vw 40px 12vw;
-
-  time {
-    margin: 0 auto;
-    font-size: var(--text-xxs, 12px);
-    font-weight: 700;
-    margin-bottom: 40px;
-  }
 }
 
 .diary {
@@ -46,34 +51,16 @@
 
   h2 {
     font-size: var(--text-s, 16px);
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 20px;
   }
 
   p {
-    color: #505050;
+    color: #565656;
     font-size: var(--text-xs, 14px);
     line-height: 26px; /* 187.726% */
     letter-spacing: -0.277px;
     word-break: keep-all;
-  }
-}
-
-.reply {
-  max-width: 633px;
-
-  h2 {
-    font-size: var(--text-s, 16px);
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  p {
-    color: #505050;
-    font-size: var(--text-xs, 14px);
-    line-height: 26px; /* 187.726% */
-    letter-spacing: -0.277px;
-    margin-bottom: 20px;
   }
 }
 
@@ -94,7 +81,6 @@
   }
 
   .main {
-    position: relative;
     padding: 40px 20vw 40px 15.625vw;
   }
 
@@ -102,20 +88,6 @@
     h2 {
       font-size: var(--text-xl, 24px);
       margin-bottom: 30px;
-    }
-
-    p {
-      color: #4c4c4c;
-      font-size: var(--text-m, 18px);
-      line-height: 26.5px; /* 147.222% */
-      letter-spacing: -0.36px;
-    }
-  }
-
-  .reply {
-    h2 {
-      font-size: var(--text-xl, 24px);
-      margin-bottom: 20px;
     }
 
     p {

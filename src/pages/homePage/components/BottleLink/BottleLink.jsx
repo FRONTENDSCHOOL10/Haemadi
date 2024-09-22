@@ -1,8 +1,8 @@
 import { bool, oneOf, string } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import styles from './BottleLink.module.css';
-import bottleLink_letterBox from '/homePage/bottleLink_letterBox.png';
-import bottleLink_pickUp from '/homePage/bottleLink_pickUp.png';
+import bottleLink_letterBox from '/homePage/bottleLink_letterBox.webp';
+import bottleLink_pickUp from '/homePage/bottleLink_pickUp.webp';
 
 BottleLink.propTypes = {
   type: oneOf(['pickUpBottle', 'letterBox']).isRequired,
