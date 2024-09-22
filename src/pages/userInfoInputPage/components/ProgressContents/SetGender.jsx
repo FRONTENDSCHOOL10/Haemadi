@@ -1,9 +1,15 @@
 import { memo } from 'react';
+import { string, func } from 'prop-types';
 
 import styles from './ProgressContents.module.css';
 import RadioList from '@/components/RadioList/RadioList';
 
-function SetGender({ nickName }) {
+SetGender.propTypes = {
+  nickName: string,
+  handle: func,
+};
+
+function SetGender({ nickName, handle }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
@@ -15,7 +21,7 @@ function SetGender({ nickName }) {
         *입력한 개인정보는 외부에 공개되지 않아요
       </span>
       <div className={styles.inputWrapper}>
-        <RadioList type={'gender'} />
+        <RadioList type={'gender'} onSelect={handle} />
       </div>
     </div>
   );

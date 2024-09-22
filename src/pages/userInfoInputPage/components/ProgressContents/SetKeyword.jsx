@@ -1,9 +1,15 @@
 import { memo } from 'react';
+import { arrayOf, string, func } from 'prop-types';
 
 import styles from './ProgressContents.module.css';
 import KeywordList from '../KeywordList/KeywordList';
 
-function SetKeyword() {
+SetKeyword.propTypes = {
+  selectedKeywords: arrayOf(string).isRequired, // 배열 내 문자열 요소
+  setSelectedKeywords: func.isRequired, // 함수 타입
+};
+
+function SetKeyword({ selectedKeywords, setSelectedKeywords }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
@@ -22,7 +28,10 @@ function SetKeyword() {
         *키워드는 최대 3개까지 선택할 수 있어요
       </span>
       <div className={styles.inputWrapper}>
-        <KeywordList />
+        <KeywordList
+          selectedKeywords={selectedKeywords}
+          setSelectedKeywords={setSelectedKeywords}
+        />
       </div>
     </div>
   );

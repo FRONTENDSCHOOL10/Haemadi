@@ -1,9 +1,15 @@
 import { memo } from 'react';
+import { string, func } from 'prop-types';
 
 import styles from './ProgressContents.module.css';
 import RadioList from '@/components/RadioList/RadioList';
 
-function SetExperience({ nickName }) {
+SetExperience.propTypes = {
+  nickName: string,
+  handle: func,
+};
+
+function SetExperience({ nickName, handle }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
@@ -19,7 +25,7 @@ function SetExperience({ nickName }) {
         해마디에게 당신의 일기경험을 알려주세요!
       </p>
       <div className={styles.inputWrapper}>
-        <RadioList type={'experience'} />
+        <RadioList type={'experience'} onSelect={handle} />
       </div>
     </div>
   );

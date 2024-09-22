@@ -1,9 +1,15 @@
 import { memo } from 'react';
+import { string, func } from 'prop-types';
 
 import styles from './ProgressContents.module.css';
 import RadioList from '@/components/RadioList/RadioList';
 
-function SetAge({ nickName }) {
+SetAge.propTypes = {
+  nickName: string,
+  handle: func,
+};
+
+function SetAge({ nickName, handle }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
@@ -15,7 +21,7 @@ function SetAge({ nickName }) {
         *입력한 개인정보는 외부에 공개되지 않아요
       </span>
       <div className={styles.inputWrapper}>
-        <RadioList type={'age'} />
+        <RadioList type={'age'} onSelect={handle} />
       </div>
     </div>
   );

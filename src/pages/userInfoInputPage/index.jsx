@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './UserInfoInputPage.module.css';
@@ -18,6 +18,9 @@ function UserInfoInputPage() {
   const { progress } = useParams();
   const [nickName, setNickName] = useState(null);
   const [gender, setGender] = useState(null);
+  const [age, setAge] = useState(null);
+  const [experience, setExperience] = useState(null);
+  const [keyword, setKeyword] = useState([]);
 
   // 닉네임 유효성 검사 함수
   const validateNickname = useMemo(
@@ -37,10 +40,18 @@ function UserInfoInputPage() {
         return nickName ? 'primary' : 'disabled';
       case 2:
         return gender ? 'primary' : 'disabled';
+      case 3:
+        return age ? 'primary' : 'disabled';
+      case 4:
+        return experience ? 'primary' : 'disabled';
+      case 5:
+        return keyword.length > 0 ? 'primary' : 'disabled';
+      case 6:
+        return 'primary';
       default:
         return 'disabled';
     }
-  }, [progress, nickName, gender]);
+  }, [progress, nickName, gender, age, experience, keyword]);
 
   const renderContent = () => {
     switch (progress) {
@@ -48,13 +59,25 @@ function UserInfoInputPage() {
       case '1':
         return <SetNickName handle={handleNickname} />;
       case '2':
-        return <SetGender nickName={nickName} />;
+        return (
+          <SetGender handle={(value) => setGender(value)} nickName={nickName} />
+        );
       case '3':
-        return <SetAge nickName={nickName} />;
+        return <SetAge handle={(value) => setAge(value)} nickName={nickName} />;
       case '4':
-        return <SetExperience nickName={nickName} />;
+        return (
+          <SetExperience
+            handle={(value) => setExperience(value)}
+            nickName={nickName}
+          />
+        );
       case '5':
-        return <SetKeyword />;
+        return (
+          <SetKeyword
+            selectedKeywords={keyword}
+            setSelectedKeywords={setKeyword}
+          />
+        );
       case '6':
         return <SetFinish />;
     }
@@ -64,8 +87,6 @@ function UserInfoInputPage() {
     switch (progress) {
       default:
       case '1':
-        console.log(nickName);
-        console.log(validateNickname(nickName));
         if (validateNickname(nickName)) {
           navigate('/my/settings/userInfoInput/2');
         } else {
@@ -88,7 +109,7 @@ function UserInfoInputPage() {
         navigate('/');
         break;
     }
-  }, [navigate, progress, toast, nickName]);
+  }, [validateNickname, navigate, progress, toast, nickName]);
 
   return (
     <div className={styles.userInfoInputPage}>
