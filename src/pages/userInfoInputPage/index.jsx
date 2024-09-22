@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './UserInfoInputPage.module.css';
@@ -93,14 +93,23 @@ function UserInfoInputPage() {
         );
       case '2':
         return (
-          <SetGender handle={(value) => handleInputChange('gender', value)} />
+          <SetGender
+            handle={(value) => handleInputChange('gender', value)}
+            nickName={formData.nickName}
+          />
         );
       case '3':
-        return <SetAge handle={(value) => handleInputChange('age', value)} />;
+        return (
+          <SetAge
+            handle={(value) => handleInputChange('age', value)}
+            nickName={formData.nickName}
+          />
+        );
       case '4':
         return (
           <SetExperience
             handle={(value) => handleInputChange('experience', value)}
+            nickName={formData.nickName}
           />
         );
       case '5':
@@ -118,27 +127,25 @@ function UserInfoInputPage() {
   const handleNextClick = useCallback(async () => {
     const nextProgress = parseInt(progress) + 1;
 
-    if (progress === '1') {
-      if (!validateNickname(formData.nickName)) {
-        toast('warn', '닉네임을 다시 확인해주세요.');
-        return;
-      }
-      navigate('/my/settings/user-info-input/2');
+    if (progress === '1' && !validateNickname(formData.nickName)) {
+      toast('warn', '닉네임을 다시 확인해주세요.');
+      return;
     } else if (progress === '5') {
       try {
         await setUserData(userInfo.id, {
           ...formData,
           experience: ExperienceToNumber(formData.experience),
         });
-        navigate('/my/settings/user-info-input/6');
       } catch {
         toast('warn', '다시 한번 시도해주세요.');
+        return;
       }
     } else if (progress === '6') {
       navigate('/');
-    } else {
-      navigate(`/my/settings/user-info-input/${nextProgress}`);
+      return;
     }
+
+    navigate(`/my/settings/user-info-input/${nextProgress}`);
   }, [progress, formData, navigate, validateNickname, userInfo.id, toast]);
 
   return (
