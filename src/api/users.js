@@ -89,9 +89,6 @@ export async function updateUserProfileImage(token, userId, imageFile) {
 
   const response = await fetch(REQUEST_URL, {
     method: 'PATCH',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
     body: formData,
   });
 
