@@ -11,10 +11,10 @@ import SetAge from './components/ProgressContents/SetAge';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
-import { getStorage } from '@/utils';
 import { setUserData } from '@/api/users';
 import BackButton from '@/components/BackButton/BackButton';
 import { useMediaStore } from '@/stores/mediaStore';
+import { useAuthStore } from '@/stores/authStore';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
@@ -32,6 +32,7 @@ const ExperienceToNumber = (experience) => {
 
 function UserInfoInputPage() {
   const desktop = useMediaStore((store) => store.desktop);
+  const userInfo = useAuthStore((store) => store.userInfo);
   const navigate = useNavigate();
   const toast = useToaster();
   const { progress } = useParams();
@@ -113,35 +114,29 @@ function UserInfoInputPage() {
     }
   };
 
-  const handleNextClick = () => {
-    switch (progress) {
-      default:
-      case '1':
-        if (validateNickname(nickName)) {
-          navigate('/my/settings/userInfoInput/2');
-        } else {
-          toast('warn', '닉네임을 다시 확인해주세요.');
-        }
-        break;
-      case '2':
-        navigate('/my/settings/userInfoInput/3');
-        break;
-      case '3':
-        navigate('/my/settings/userInfoInput/4');
-        break;
-      case '4':
-        navigate('/my/settings/userInfoInput/5');
-        break;
-      case '5':
-        navigate('/my/settings/userInfoInput/6');
-        setUserData(
-          getStorage('authStore').state.userInfo.id,
+  const handleNextClick = async () => {
+    const nextProgress = parseInt(progress) + 1;
+
+    if (progress === '1') {
+      if (!validateNickname(nickName)) {
+        toast('warn', '닉네임을 다시 확인해주세요.');
+        return;
+      }
+      navigate('/my/settings/userInfoInput/2');
+    } else if (progress === '5') {
+      try {
+        await setUserData(
+          userInfo.id,
           saveUserData(nickName, gender, age, experience, keyword)
         );
-        break;
-      case '6':
-        navigate('/');
-        break;
+        navigate('/my/settings/userInfoInput/6');
+      } catch {
+        toast('warn', '다시 한번 시도해주세요.');
+      }
+    } else if (progress === '6') {
+      navigate('/');
+    } else {
+      navigate(`/my/settings/userInfoInput/${nextProgress}`);
     }
   };
 
