@@ -16,7 +16,7 @@ function AuthPage() {
       </div>
       <div className={styles.buttonWrapper}>
         {desktop && (
-          <Button type="stroke" onClick={() => navigate('./sign-up')}>
+          <Button type="stroke" onClick={() => navigate('sign-up')}>
             회원가입
           </Button>
         )}
