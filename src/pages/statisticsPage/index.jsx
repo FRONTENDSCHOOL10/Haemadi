@@ -1,11 +1,44 @@
+import { SyncLoader } from 'react-spinners';
+
 import styles from './statisticsPage.module.css';
 import BackButton from '@/components/BackButton/BackButton';
 import EmotionAverage from './components/EmotionPercentage/EmotionPercentage';
 import ReplyFromPercentage from './components/ReplyFromPercentage/ReplyFromPercentage';
 import AnalysisReport from './components/AnalysisReport/AnalysisReport';
 import AIReplyType from './components/AIReplyType/AIReplyType';
+import { BASE_URL } from '@/api/pbconfig';
+import useFetch from '@/hooks/useFetch';
 
 function StatisticsPage() {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const startDate = `${year}-${month}-01`;
+
+  const filterQuery = `(userId='nxorcbf2dujhxfu' && created>='${startDate}')`;
+  const DIARY_ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
+  const REPLY_ENDPOINT = `${BASE_URL}/api/collections/replies/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
+  const {
+    status: diariesstatus,
+    error: diarieserror,
+    data: diariesData,
+  } = useFetch(DIARY_ENDPOINT);
+  const {
+    status: repliesstatus,
+    error: replieserror,
+    data: repliesData,
+  } = useFetch(REPLY_ENDPOINT);
+
+  if (diariesstatus === 'loading' || repliesstatus === 'loading')
+    return <SyncLoader size={10} color="#2E7FB9" />;
+  if (diariesstatus === 'error' || repliesstatus === 'error')
+    return (
+      <>
+        <div>{diarieserror.message}</div>
+        <div>{replieserror.message}</div>
+      </>
+    );
+
   return (
     <div className={styles.StatisticsPage}>
       <div className={styles.backButton}>
@@ -13,10 +46,10 @@ function StatisticsPage() {
       </div>
       <h1 className={styles.title}>나의 섬 통계 </h1>
       <div className={styles.cardWrapper}>
-        <EmotionAverage />
-        <ReplyFromPercentage />
+        <EmotionAverage diariesData={diariesData} />
+        <ReplyFromPercentage repliesData={repliesData} />
         <AIReplyType />
-        <AnalysisReport />
+        <AnalysisReport diariesData={diariesData} repliesData={repliesData} />
       </div>
     </div>
   );

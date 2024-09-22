@@ -1,28 +1,62 @@
 import { memo } from 'react';
-import { arrayOf, oneOf } from 'prop-types';
+import { object } from 'prop-types';
 
 import styles from './EmotionPercentage.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
+import { EMOTION_LABEL } from '@/constants';
+
+const EMOTIONS = [
+  { emotion: 'angry', color: '#FF9D9D' },
+  { emotion: 'happy', color: '#FFC2DE ' },
+  { emotion: 'glad', color: '#FFD160' },
+  { emotion: 'panic', color: '#A6E076 ' },
+  { emotion: 'anxiety', color: '#A9EBF7' },
+  { emotion: 'sad', color: '#89CAF0' },
+  { emotion: 'normal', color: '#E2CFFF' },
+  { emotion: 'tired', color: '#BAADFE' },
+];
 
 EmotionPercentage.propTypes = {
-  keywordList: arrayOf(oneOf()),
+  diariesData: object,
 };
 
-function EmotionPercentage() {
+function EmotionPercentage({ diariesData }) {
   const radius = 105; // 도넛 반지름
   const strokeWidth = 55; // 도넛 두께
   const circumference = 2 * Math.PI * radius; // 원 둘레
   const halfCircumference = circumference / 2;
 
-  // 각 부분의 비율 (퍼센트 값)
-  const segments = [
-    { value: 6, color: '#b4d8c4' }, // 녹색
-    { value: 21, color: '#c6dce7' }, // 파란색
-    { value: 45, color: '#f7dfa6' }, // 노란색
-    { value: 20, color: '#fcc9d4' }, // 분홍색
-    { value: 8, color: '#cdc1e2' }, // 보라색
-  ];
+  // 데이터가 없을 경우 기본값 설정
+  const diaryItems = diariesData?.items || [];
+
+  // 감정별 카운트
+  const emotionCounts = diaryItems.reduce((acc, item) => {
+    acc[item.emotion] = (acc[item.emotion] || 0) + 1;
+    return acc;
+  }, {});
+
+  // 전체 아이템 수
+  const totalItems = diariesData?.totalItems || 0;
+
+  // 감정별 퍼센테이지 계산 후 상위 5개만 선택
+  const sortedEmotionPercentages = Object.entries(emotionCounts)
+    .map(([emotion, count]) => ({
+      emotion,
+      percentage: (count / totalItems) * 100, // 소수점 유지된 퍼센테이지
+      roundedPercentage: Math.round((count / totalItems) * 100), // 라벨에 표시할 반올림된 값
+    }))
+    .sort((a, b) => b.percentage - a.percentage) // 내림차순 정렬
+    .slice(0, 5); // 상위 5개의 감정 선택
+
+  // 상위 5개 감정에 맞는 색상 매칭
+  const segments = sortedEmotionPercentages.map(({ emotion, percentage }) => {
+    const emotionData = EMOTIONS.find((e) => e.emotion === emotion);
+    return {
+      value: percentage, // 그래프에 소수점 포함된 퍼센티지 사용
+      color: emotionData?.color || '#ccc', // 색상 찾지 못하면 기본 회색
+    };
+  });
 
   // 도넛의 둘레 부분을 그리기 위한 stroke 계산
   let accumulatedOffset = 0;
@@ -31,11 +65,18 @@ function EmotionPercentage() {
       <h2>한 달간 나의 감정 분포를 알아볼까요?</h2>
       <span>감정을 한 눈에 확인할 수 있어요</span>
       <div className={styles.dataWrapper}>
-        <div className={styles.emotionAverage}>
-          평균기분
-          <SVGIcon {...icons.shell_glad} />
-        </div>
-
+        {totalItems !== 0 && (
+          <div
+            className={styles.emotionAverage}
+            title={EMOTION_LABEL[sortedEmotionPercentages[0]?.emotion]}
+            aria-label={EMOTION_LABEL[sortedEmotionPercentages[0]?.emotion]}
+          >
+            평균기분
+            <SVGIcon
+              {...icons[`shell_${sortedEmotionPercentages[0]?.emotion}`]}
+            />
+          </div>
+        )}
         <div className={styles.piechart}>
           <svg width="300" height="150" viewBox="0 0 300 150">
             {segments.map((segment, index) => {
@@ -61,26 +102,17 @@ function EmotionPercentage() {
         </div>
         {/* 상위 5개 감정 가져오기 */}
         <ul className={styles.emotionShellList}>
-          <li title="감정">
-            <SVGIcon {...icons.shell_panic} width={45} />
-            <span>6%</span>
-          </li>
-          <li title="감정">
-            <SVGIcon {...icons.shell_anxiety} width={45} />
-            <span>21%</span>
-          </li>
-          <li title="감정">
-            <SVGIcon {...icons.shell_glad} width={45} />
-            <span>45%</span>
-          </li>
-          <li title="감정">
-            <SVGIcon {...icons.shell_happy} width={45} />
-            <span>20%</span>
-          </li>
-          <li title="감정">
-            <SVGIcon {...icons.shell_tired} width={45} />
-            <span>8%</span>
-          </li>
+          {sortedEmotionPercentages.map((segment, index) => (
+            <li
+              key={index}
+              title={EMOTION_LABEL[segment.emotion]}
+              aria-label={EMOTION_LABEL[segment.emotion]}
+            >
+              <SVGIcon {...icons[`shell_${segment.emotion}`]} width={45} />
+              {/* 반올림된 값으로 라벨에 표시 */}
+              <span>{segment.roundedPercentage}%</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

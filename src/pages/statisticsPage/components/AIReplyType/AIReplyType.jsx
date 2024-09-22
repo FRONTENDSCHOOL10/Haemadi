@@ -2,7 +2,6 @@ import { memo, useState, useEffect } from 'react';
 import { arrayOf, oneOf } from 'prop-types';
 
 import styles from './AIReplyType.module.css';
-import { color } from 'framer-motion';
 
 const calcData = [
   { name: '음악', size: 40, color: '#749DD3' },
