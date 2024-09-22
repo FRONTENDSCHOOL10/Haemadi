@@ -79,8 +79,8 @@ export function getUserProfileImg(data) {
 }
 
 // 사용자의 프로필 이미지를 업데이트하는 API 함수
-/** @type {(token: string, userId: string, imageFile: File) => Promise<any>} */
-export async function updateUserProfileImage(token, userId, imageFile) {
+/** @type {(userId: string, imageFile: File) => Promise<any>} */
+export async function updateUserProfileImage(userId, imageFile) {
   const REQUEST_URL = `${BASE_URL}/api/collections/users/records/${userId}`;
 
   const formData = new FormData();
