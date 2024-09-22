@@ -119,19 +119,16 @@
 
 /*줄이는 과정에서 640px 기준이 어색한 요소 개별 처리했습니다*/
 @media (max-width: 440px) {
-  .editButton {
-    width: calc(100% - 10px);
+  .profileContainer {
+    margin-top: 10px;
   }
 
   .profileContainer h2 {
     margin-left: 0;
   }
-}
 
-/* 400px 이하 모바일에서 컨텐츠 잘림으로 여백 줄이는 용도로 처리했습니다 */
-@media (max-width: 400px) {
-  .profileContainer {
-    margin-top: 10px;
+  .editButton {
+    width: calc(100% - 10px);
   }
 }
 
