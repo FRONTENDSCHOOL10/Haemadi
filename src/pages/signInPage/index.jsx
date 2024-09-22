@@ -34,7 +34,7 @@ function SignInPage() {
     }
   }, [values]);
 
-  const validateInput = useCallback((name, value) => {
+  const validateInput = (name, value) => {
     // 아이디 및 비밀번호 유효성 검사 정규 표현식
     const ID_REGEX = /^[a-zA-Z0-9]{4,20}$/;
     const PW_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
@@ -42,7 +42,7 @@ function SignInPage() {
     if (name === 'username') return ID_REGEX.test(value);
     if (name === 'password') return PW_REGEX.test(value);
     return true;
-  }, []);
+  };
 
   const handleChange = useCallback(
     (e) => {
