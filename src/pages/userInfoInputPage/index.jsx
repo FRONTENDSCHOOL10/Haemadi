@@ -14,6 +14,20 @@ import SetFinish from './components/ProgressContents/SetFinish';
 import { getStorage } from '@/utils';
 import { setUserData } from '@/api/users';
 
+// experience 값을 숫자로 매핑하는 함수 분리
+const ExperienceToNumber = (experience) => {
+  switch (experience) {
+    case '하루도 빠짐 없이 작성한다.':
+      return 1;
+    case '가끔 생각나면 작성한다.':
+      return 2;
+    case '거의 작성하지 않는다':
+      return 3;
+    default:
+      return 4;
+  }
+};
+
 function UserInfoInputPage() {
   const navigate = useNavigate();
   const toast = useToaster();
@@ -24,28 +38,20 @@ function UserInfoInputPage() {
   const [experience, setExperience] = useState(null);
   const [keyword, setKeyword] = useState([]);
 
-  const saveUserData = (nickName, gender, age, experience, keyword) => {
+  // 유저 데이터를 저장하는 함수
+  const saveUserData = useCallback(() => {
     return {
-      nickName: nickName,
+      nickName,
       gender,
       age,
-
-      experience:
-        experience === '하루도 빠짐 없이 작성한다.'
-          ? 1
-          : experience === '가끔 생각나면 작성한다.'
-            ? 2
-            : experience === '거의 작성하지 않는다'
-              ? 3
-              : 4,
-
+      experience: ExperienceToNumber(experience),
       interest: keyword,
     };
-  };
+  }, [nickName, gender, age, experience, keyword]);
 
   // 닉네임 유효성 검사 함수
-  const validateNickname = useMemo(
-    () => (value) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(value),
+  const validateNickname = useCallback(
+    (value) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(value),
     []
   );
 
