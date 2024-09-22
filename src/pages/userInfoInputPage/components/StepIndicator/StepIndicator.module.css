@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  height: 16px;
+  position: absolute;
+  bottom: 0;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--primary, #2e7fb9);
+  transition: width 0.3s ease; /* 애니메이션 효과 */
+}
+
+@media (min-width: 640px) {
+  .container {
+    top: 0;
+  }
+  .progress {
+    background-color: var(--white, #fff);
+  }
+}

@@ -3,6 +3,12 @@
   position: relative;
 }
 
+.backButton {
+  position: absolute;
+  top: 40px;
+  left: 7%;
+}
+
 .buttonWrapper {
   position: absolute;
   bottom: 15vh;

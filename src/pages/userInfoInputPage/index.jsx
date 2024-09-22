@@ -13,6 +13,8 @@ import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
 import { getStorage } from '@/utils';
 import { setUserData } from '@/api/users';
+import BackButton from '@/components/BackButton/BackButton';
+import { useMediaStore } from '@/stores/mediaStore';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
@@ -29,6 +31,7 @@ const ExperienceToNumber = (experience) => {
 };
 
 function UserInfoInputPage() {
+  const desktop = useMediaStore((store) => store.desktop);
   const navigate = useNavigate();
   const toast = useToaster();
   const { progress } = useParams();
@@ -144,8 +147,11 @@ function UserInfoInputPage() {
 
   return (
     <div className={styles.userInfoInputPage}>
+      <div className={styles.backButton}>
+        {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
+      </div>
       {renderContent()}
-      <StepIndicator />
+      <StepIndicator currentStep={parseInt(progress)} />
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
           {progress != 6 ? '다음으로' : '섬으로 바로가기'}
