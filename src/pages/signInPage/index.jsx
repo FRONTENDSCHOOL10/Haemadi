@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { SyncLoader } from 'react-spinners';
@@ -34,7 +34,7 @@ function SignInPage() {
     }
   }, [values]);
 
-  const validateInput = useCallback((name, value) => {
+  const validateInput = (name, value) => {
     // 아이디 및 비밀번호 유효성 검사 정규 표현식
     const ID_REGEX = /^[a-zA-Z0-9]{4,20}$/;
     const PW_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
@@ -42,7 +42,7 @@ function SignInPage() {
     if (name === 'username') return ID_REGEX.test(value);
     if (name === 'password') return PW_REGEX.test(value);
     return true;
-  }, []);
+  };
 
   const handleChange = useCallback(
     (e) => {
@@ -126,7 +126,12 @@ function SignInPage() {
           role="submit"
         >
           {loading ? (
-            <SyncLoader margin={3} size={7} color="#2E7FB9" />
+            <>
+              <SyncLoader margin={3} size={7} color="#2E7FB9" />
+              <p className="sr-only">
+                로딩이 완료되면 로그인 진행이 완료됩니다.
+              </p>
+            </>
           ) : (
             '로그인하기'
           )}
@@ -139,4 +144,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default memo(SignInPage);
