@@ -77,6 +77,13 @@
   textarea::-webkit-scrollbar {
     display: none;
   }
+
+  textarea::placeholder {
+    color: #4c4c4c;
+    font-size: var(--text-m, 18px);
+    line-height: 26.5px;
+    letter-spacing: -0.36px;
+  }
 }
 
 @media (min-width: 640px) {

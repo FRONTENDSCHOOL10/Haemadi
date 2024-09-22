@@ -83,6 +83,7 @@ function WriteDiaryPage() {
             rows={10}
             required
             tabIndex={2}
+            placeholder="당신의 이야기를 작성해주세요."
           ></textarea>
         </form>
       </main>
