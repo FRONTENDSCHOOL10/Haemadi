@@ -24,7 +24,6 @@ function ViewDiaryPage() {
   // 상황별, 조건부 처리
   if (status === 'loading') return <Loading />;
   if (status === 'error') return <div>{error.message}</div>;
-  if (!data) return null;
 
   /* --------------------------- data가 존재할 경우, 코드 실행 -------------------------- */
 

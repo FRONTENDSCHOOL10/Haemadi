@@ -12,10 +12,7 @@ function RootLayout() {
   const navigate = useNavigate();
   const desktop = useMediaStore((store) => store.desktop);
   const sunset = useSunStore((store) => store.sunset);
-  const { checkSignIn, fetchUserInfo } = useAuthStore((store) => ({
-    checkSignIn: store.checkSignIn,
-    fetchUserInfo: store.fetchUserInfo,
-  }));
+  const checkSignIn = useAuthStore((store) => store.checkSignIn);
 
   useEffect(() => {
     // 로그인 되어있지 않으면 (토큰 유효성 검사 포함) demo | auth 페이지로 이동
@@ -23,8 +20,7 @@ function RootLayout() {
       if (!getStorage('completeDemo')) navigate('/demo/1');
       else navigate('/auth');
     }
-    fetchUserInfo();
-  }, [navigate, checkSignIn, fetchUserInfo]);
+  }, [navigate, checkSignIn]);
 
   const renderMobileNav = pathname === '/' || pathname === '/my';
 

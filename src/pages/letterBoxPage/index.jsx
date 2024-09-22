@@ -50,7 +50,6 @@ function LetterBoxPage() {
 
   if (status === 'loading') return <Loading />;
   if (status === 'error') return <div>{error.message}</div>;
-  if (status !== 'success') return null;
 
   const diary = data.items[0];
   const { id: diaryId } = diary;
