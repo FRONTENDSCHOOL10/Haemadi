@@ -1,0 +1,88 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-image: url('/bgImages/pickUpBottlePage_Bg.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .pageContainer {
+    width: 100vw;
+    min-height: 100vh;
+    padding-bottom: 20px;
+  }
+}
+
+.header {
+  position: relative;
+  padding: 20px;
+
+  h1 {
+    color: var(--white, #ffffff);
+    text-align: center;
+    font-size: var(--text-s, 16px);
+    line-height: 33px;
+    letter-spacing: -0.48px;
+  }
+}
+.form {
+  color: var(--white, #ffffff);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  white-space: pre-line;
+  text-align: center;
+  margin-top: 7.5vh;
+
+  h2 {
+    font-size: var(--text-l, 20px);
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    margin-bottom: 8.9vh;
+  }
+  p {
+    font-size: var(--text-xs, 14px);
+    font-weight: 700;
+    line-height: 23.5px;
+    letter-spacing: -0.42px;
+    margin-top: 5.3vh;
+  }
+}
+
+@media (min-width: 960px) {
+  .pageContainer {
+    background-color: rgba(16, 16, 21, 0.7);
+    backdrop-filter: blur(5.15px);
+  }
+
+  .header {
+    padding: 7.8vh 6.2vh;
+
+    h1 {
+      font-size: var(--text-xl, 24px);
+      font-weight: 700;
+      line-height: 33px;
+      letter-spacing: -0.72px;
+    }
+  }
+
+  .form {
+    margin-top: 0;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 50px;
+      letter-spacing: -1.08px;
+      margin-bottom: 13px;
+      order: -2;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 105px;
+      order: -1;
+    }
+  }
+}
