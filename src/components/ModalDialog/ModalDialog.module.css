@@ -24,6 +24,8 @@
   width: 309px;
   padding-block: 21px;
   border-radius: 15px;
+  /* \n으로 줄바꿈 */
+  white-space: pre-line;
 
   /* 제목 */
   h2 {
