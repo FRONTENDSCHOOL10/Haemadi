@@ -52,7 +52,7 @@
 
 @media (min-width: 640px) {
   .authPage {
-    justify-content: start;
+    justify-content: flex-start;
   }
   .authPage::before {
     background: none;
