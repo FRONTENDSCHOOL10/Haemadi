@@ -12,6 +12,8 @@ function AIReplyType({ repliesData }) {
 
   useEffect(() => {
     const calculatePercentages = () => {
+      if (!repliesData || !repliesData.items) return []; // 데이터가 없을 경우 빈 배열 반환
+
       // AI가 작성한 답장만 필터링
       const aiReplies = repliesData.items.filter(
         (reply) => reply.replier === 'ai'
@@ -61,7 +63,7 @@ function AIReplyType({ repliesData }) {
 
     const generateCircles = () => {
       const calcData = calculatePercentages();
-      const numCircles = calcData.length; // 키워드 개수에 따라 원의 개수 결정
+      const numCircles = calcData.length;
       const circleData = [];
       const containerWidth = 290; // 박스 너비
       const containerHeight = 240; // 박스 높이
@@ -69,14 +71,12 @@ function AIReplyType({ repliesData }) {
       const maxAdditionalRadius = 100; // 최대 추가 반지름
 
       for (let i = 0; i < numCircles; i++) {
-        // 퍼센트에 따라 크기를 조정
         const additionalRadius = (calcData[i].size / 100) * maxAdditionalRadius;
-        const radius = minRadius + additionalRadius; // 최소 반지름에 추가 반지름 더함
+        const radius = minRadius + additionalRadius;
 
         let newCircle = null;
         let isValid = false;
 
-        // 겹치지 않도록 새로운 좌표 찾기
         while (!isValid) {
           let x = Math.random() * (containerWidth - 2 * radius) + radius;
           let y = Math.random() * (containerHeight - 2 * radius) + radius;
@@ -92,16 +92,14 @@ function AIReplyType({ repliesData }) {
               </>
             ),
             color: calcData[i].color,
-          }; // 라벨 추가
+          };
           isValid = true;
 
-          // 다른 원들과 겹치지 않는지 확인
           for (let circle of circleData) {
             let dx = circle.x - newCircle.x;
             let dy = circle.y - newCircle.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
             if (distance < circle.radius + newCircle.radius + 5) {
-              // 5px 여유 공간
               isValid = false;
               break;
             }
@@ -114,6 +112,14 @@ function AIReplyType({ repliesData }) {
 
     generateCircles();
   }, [repliesData]);
+
+  if (!repliesData || !repliesData.items) {
+    return (
+      <div className={styles.card}>
+        <h2>AI 답장 데이터가 없습니다.</h2>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.card}>
