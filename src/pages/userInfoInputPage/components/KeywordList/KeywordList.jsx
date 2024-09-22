@@ -1,12 +1,16 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
+import { arrayOf, string, func } from 'prop-types';
 
 import styles from './KeywordList.module.css';
 import { INTERESTS_KEYWORDS } from '@/constants';
 import KeywordInput from '../KeywordInput/KeywordInput';
 
-function KeywordList() {
-  const [selectedKeywords, setSelectedKeywords] = useState([]);
+KeywordList.propTypes = {
+  selectedKeywords: arrayOf(string).isRequired, // 배열 내 문자열 요소
+  setSelectedKeywords: func.isRequired, // 함수 타입
+};
 
+function KeywordList({ selectedKeywords, setSelectedKeywords }) {
   const isChecked = (element) => selectedKeywords.includes(element);
 
   const handleCheckboxChange = (keyword) => {

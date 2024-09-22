@@ -74,6 +74,25 @@ export async function getUserData(token) {
   return responseData.record;
 }
 
+/** @type {(id: string, data: object) => Promise<UserData>} */
+export async function setUserData(id, data) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/users/records/${id}`;
+
+  const body = JSON.stringify({ ...data });
+
+  const response = await fetch(REQUEST_URL, {
+    method: 'PATCH',
+    body,
+    ...REQUEST_OPTIONS,
+  });
+
+  const responseData = await handleResponse(response);
+  // authStore 업데이트
+  useAuthStore.getState().updateUserInfo(responseData);
+
+  return responseData;
+}
+
 export function getUserProfileImg(data) {
   return `${BASE_URL}/api/files/${data.collectionId}/${data.id}/${data.profileImage}`;
 }
