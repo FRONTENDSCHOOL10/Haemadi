@@ -94,7 +94,7 @@ function ProfileSettingInfo() {
           src={image}
           alt={`${userData.nickName}의 프로필 이미지`}
         />
-        <SVGIcon className={styles.svgCamera} {...icons.camera} aria-hidden="true" />
+        <SVGIcon className={styles.svgCamera} {...icons.camera}/>
       </div>
       <input
         type="file"
