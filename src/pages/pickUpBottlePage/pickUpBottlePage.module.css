@@ -54,7 +54,7 @@
 @media (min-width: 960px) {
   .pageContainer {
     background-color: rgba(16, 16, 21, 0.7);
-    backdrop-filter: blur(5.150000095367432px);
+    backdrop-filter: blur(5.15px);
   }
 
   .header {
