@@ -65,7 +65,7 @@ const routes = [
         element: <WriteDiaryPage />,
       },
       {
-        path: 'write-diary/select-reply',
+        path: 'write-diary/select-reply/:step',
         element: <SelectReplyPage />,
       },
       {
@@ -87,6 +87,10 @@ const routes = [
       {
         path: 'letter-box',
         element: <LetterBoxPage />,
+      },
+      {
+        path: 'letter-box/view-diary/:diaryId',
+        element: <ViewDiaryPage />,
       },
     ],
   },

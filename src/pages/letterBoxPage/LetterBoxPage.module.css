@@ -1,9 +1,9 @@
 .page {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background-image: url('/bgImages/pickUpBottlePage_Bg.webp');
+  background-image: url('/pickUpBottlePage_Bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -27,7 +27,7 @@
     letter-spacing: -0.48px;
   }
 }
-.form {
+.main {
   color: var(--white, #ffffff);
   display: flex;
   flex-flow: column nowrap;
@@ -39,6 +39,7 @@
   h2 {
     font-size: var(--text-l, 20px);
     font-weight: 700;
+    line-height: 33px; /* 165% */
     letter-spacing: -0.6px;
     margin-bottom: 8.9vh;
   }
@@ -68,8 +69,9 @@
     }
   }
 
-  .form {
+  .main {
     margin-top: 0;
+    white-space: unset;
 
     h2 {
       font-size: 36px;
@@ -78,6 +80,9 @@
       letter-spacing: -1.08px;
       margin-bottom: 13px;
       order: -2;
+    }
+    .glassBottle {
+      filter: drop-shadow(-11px -1px 24.1px rgba(255, 255, 255, 0.3));
     }
     p {
       margin-top: 0;

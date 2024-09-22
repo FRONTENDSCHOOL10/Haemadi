@@ -1,18 +1,30 @@
+.groupWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
 .radioCard {
   background-color: var(--white, #ffffff);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 127px;
-  height: 127px;
+  gap: 23px;
+  width: 100%;
+  max-width: 325px;
+  padding: 23px 62px 22px 62px;
   border-radius: 18px;
-  box-shadow: 1.881px 2.822px 10.348px 1.881px rgba(0, 0, 0, 0.03);
   cursor: pointer;
 
-  span {
-    margin-top: 10px;
+  strong {
+    font-size: var(--text-s, 16px);
+    font-weight: 700;
+  }
+  p {
+    text-align: center;
     font-size: var(--text-xs, 14px);
+    line-height: 21px; /* 151.625% */
   }
 }
 
@@ -21,7 +33,7 @@
   position: absolute;
 }
 .radioInput:checked + .radioCard {
-  background-color: var(--primary, #2e7fb9);
+  background-color: #2e7eb9;
   color: #ffffff;
 }
 

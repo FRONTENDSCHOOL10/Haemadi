@@ -41,13 +41,9 @@ function PickUpBottlePage() {
     [userInfo.interest]
   );
   const params = new URLSearchParams({
-    // 일기 5개만 가져옴
-    page: 1,
-    perPage: 5,
+    // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
     // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
-    filter: `replyId="" && userId != "${userInfo.id}" && (${filterQuery})`,
-    // 모든 사용자가 답장을 최대한 빨리 받게 하기위해, 작성한지 오래된 일기부터 가져옴
-    sort: 'created',
+    filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
     expand: 'userId',
   });
 
@@ -55,12 +51,12 @@ function PickUpBottlePage() {
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
   const { status, error, data } = useFetch(ENDPOINT);
 
-  const letterIndexList = getRandomNumbers(data?.items.length, 5);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const bottleIndex = formData.get('bottle');
+
+    const letterIndexList = getRandomNumbers(data?.items.length, 5);
     const letterIndex = letterIndexList[bottleIndex];
     const letterId = data?.items[letterIndex].id;
     navigate(`view-letter/${letterId}`);
