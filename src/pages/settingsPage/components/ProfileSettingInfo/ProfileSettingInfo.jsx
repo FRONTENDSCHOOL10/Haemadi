@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './ProfileSettingInfo.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
+import { SyncLoader } from 'react-spinners';
 
 function ProfileSettingInfo() {
   const navigate = useNavigate();
@@ -66,7 +67,11 @@ function ProfileSettingInfo() {
   };
 
   if (loading) {
-    return <p>로딩 중...</p>;
+    return (
+      <div className={styles.loaderContainer}>
+        <SyncLoader color="#fff" size={12} />
+      </div>
+    );
   }
 
   if (!userData) {

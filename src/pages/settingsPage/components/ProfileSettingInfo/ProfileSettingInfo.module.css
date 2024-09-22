@@ -16,6 +16,11 @@
   color: var(--title_gray, #2e2e2e);
 }
 
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .imageWrapper {
   position: relative;
   width: 113px;
