@@ -4,10 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styles from './UserInfoInputPage.module.css';
 import { useToaster } from '@/stores/ToasterStore';
 import Button from '@/components/Button/Button';
-import StepIndicator from './components/StepIndicator/StepIndicator';
 import SetNickName from './components/ProgressContents/SetNickName';
 import SetGender from './components/ProgressContents/SetGender';
 import SetAge from './components/ProgressContents/SetAge';
+import ProgressBar from './components/ProgressBar/ProgressBar';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
@@ -147,7 +147,7 @@ function UserInfoInputPage() {
         {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
       </div>
       {renderContent()}
-      <StepIndicator currentStep={parseInt(progress)} />
+      <ProgressBar progress={parseInt(progress)} />
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
           {progress != 6 ? '다음으로' : '섬으로 바로가기'}
