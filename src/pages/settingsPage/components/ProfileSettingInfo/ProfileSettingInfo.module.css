@@ -1,0 +1,142 @@
+.profileContainer {
+  background-color: var(--white, #fff);
+  border-radius: 21px;
+  padding: 23px;
+  margin: 0 auto;
+  max-width: calc(100% - 66px);
+  font-weight: bold;
+  margin-top: 68px;
+}
+
+.profileContainer h2 {
+  position: relative;
+  margin-left: 5px;
+  font-size: var(--text-s, 16px);
+  font-weight: bold;
+  color: var(--title_gray, #2e2e2e);
+}
+
+.imageLabel {
+  position: relative;
+  display: flex;
+  width: 113px;
+  height: 113px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.profileImg {
+  border-radius: 50%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(100%) hue-rotate(0deg);
+}
+
+.svgCamera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profileImgInput:focus {
+  outline: none;
+}
+
+.profileImgInput:focus-visible + .imageLabel {
+  outline: auto; outline-color: var(--focus, #66d6ea);
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  margin: 0 auto;
+  padding-top: 17px;
+  font-size: var(--text-xs, 14px);
+}
+
+.profileDetails li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 7px;
+}
+
+.infolabel {
+  color: #6c6c6c;
+  margin-right: 22px;
+  flex: 1;
+}
+
+.infoValue {
+  color: var(--title_gray, #2e2e2e);
+  flex: 3;
+}
+
+.editButton {
+  width: 316px;
+  height: 44px;
+  background-color: #365575;
+  color: var(--white, #fff);
+  font-size: var(--text-s, 16px);
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 16px;
+  display: block;
+}
+
+.editButton:focus {
+  outline: 2px solid var(--focus, #66d6ea);
+}
+
+@media (min-width: 640px) {
+  .profileContainer {
+    width: 606px;
+  }
+
+  .profileContainer h2 {
+    margin-left: 6px;
+    font-size: 22px;
+  }
+
+  .imageLabel {
+    width: 221px;
+    height: 221px;
+  }
+
+  .profileImg {
+    width: 221px;
+    height: 221px;
+  }
+
+  .svgCamera {
+    width: 37px;
+    height: 30px;
+  }
+
+  .profileDetails {
+    font-size: var(--text-m, 18px);
+  }
+}
+
+/*줄이는 과정에서 640px 기준이 어색한 요소 개별 처리했습니다*/
+@media (max-width: 440px) {
+  .profileContainer {
+    margin-top: 10px;
+  }
+
+  .profileContainer h2 {
+    margin-left: 0;
+  }
+
+  .editButton {
+    width: calc(100% - 10px);
+  }
+}
+
+@media (max-width: 360px) {
+  .profileContainer {
+    max-width: 294px;
+    width: 294px;
+  }
+}

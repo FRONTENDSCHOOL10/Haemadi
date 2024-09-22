@@ -96,3 +96,22 @@ export async function setUserData(id, data) {
 export function getUserProfileImg(data) {
   return `${BASE_URL}/api/files/${data.collectionId}/${data.id}/${data.profileImage}`;
 }
+
+// 사용자의 프로필 이미지를 업데이트하는 API 함수
+/** @type {(userId: string, imageFile: File) => Promise<any>} */
+export async function updateUserProfileImage(userId, imageFile) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/users/records/${userId}`;
+
+  const formData = new FormData();
+  formData.append('profileImage', imageFile);
+
+  const response = await fetch(REQUEST_URL, {
+    method: 'PATCH',
+    body: formData,
+  });
+
+  const responseData = await handleResponse(response);
+  useAuthStore.getState().updateUserInfo(responseData);
+
+  return responseData;
+}
