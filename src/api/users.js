@@ -87,6 +87,8 @@ export async function setUserData(id, data) {
   });
 
   const responseData = await handleResponse(response);
+  // authStore 업데이트
+  useAuthStore.getState().updateUserInfo(responseData);
 
   return responseData;
 }
