@@ -95,5 +95,8 @@ export async function updateUserProfileImage(token, userId, imageFile) {
     body: formData,
   });
 
-  return handleResponse(response);
+  const responseData = await handleResponse(response);
+  useAuthStore.getState().updateUserInfo(responseData);
+
+  return responseData;
 }
