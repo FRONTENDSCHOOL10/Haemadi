@@ -4,10 +4,10 @@ import { useImmer } from 'use-immer';
 // 사용 예시
 // const ENDPOINT = `${BASE_URL}/api/collections/diaries/records/${diaryId}?expand=replyId,userId`;
 // const { status, error, data } = useFetch(ENDPOINT);
-/** @type {(url: string) => { status: 'pending' | 'loading' | 'success' | 'error', error: null | Error, data }} */
+/** @type {(url: string) => { status: 'loading' | 'success' | 'error', error: null | Error, data }} */
 function useFetch(url) {
   const [state, setState] = useImmer({
-    status: 'pending',
+    status: 'loading',
     error: null,
     data: null,
   });

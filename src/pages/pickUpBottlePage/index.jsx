@@ -51,6 +51,8 @@ function PickUpBottlePage() {
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
   const { status, error, data } = useFetch(ENDPOINT);
 
+  if (status === 'error') return <div>{error.message}</div>;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -65,8 +67,6 @@ function PickUpBottlePage() {
   /* -------------------------------------------------------------------------- */
   /*                     오늘 이미 답장을 했다면 홈 화면으로 redirect 처리 필요                    */
   /* -------------------------------------------------------------------------- */
-
-  if (status === 'error') return <div>{error.message}</div>;
 
   return (
     <div className={styles.page}>
@@ -84,18 +84,18 @@ function PickUpBottlePage() {
           </p>
           <Button
             role="submit"
-            state={status === 'success' ? 'default' : 'disabled'}
+            state={status === 'loading' ? 'disabled' : 'default'}
             style={buttonStyle}
           >
-            {status === 'success' ? (
-              '이걸로 선택할게요'
-            ) : (
+            {status === 'loading' ? (
               <>
                 <SyncLoader color="#2E7FB9" size={12} aria-hidden="true" />
                 <span className="sr-only">
                   서버에서 데이터를 불러온 후에 버튼이 활성화됩니다.
                 </span>
               </>
+            ) : (
+              '이걸로 선택할게요'
             )}
           </Button>
         </form>

@@ -1,5 +1,6 @@
 import { BASE_URL } from '@/api/pbconfig';
 import BackButton from '@/components/BackButton/BackButton';
+import Loading from '@/components/Loading/Loading';
 import useFetch from '@/hooks/useFetch';
 import { isSameDay } from 'date-fns';
 import { useCallback, useState } from 'react';
@@ -7,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
 import styles from './CalendarPage.module.css';
-import Loading from '@/components/Loading/Loading';
 
 function CalendarPage() {
   const navigate = useNavigate();
@@ -54,22 +54,20 @@ function CalendarPage() {
         <BackButton style={{ position: 'absolute', left: 0 }} />
         <h1>나의 기록</h1>
       </header>
-      {status === 'success' && (
-        <main className={styles.main}>
-          <Calendar
-            diaries={diaries}
-            selectedDate={selectedDate}
-            onShellClick={handleShellClick}
-          />
+      <main className={styles.main}>
+        <Calendar
+          diaries={diaries}
+          selectedDate={selectedDate}
+          onShellClick={handleShellClick}
+        />
 
-          <CalendarModal
-            diaryData={selectedDiary}
-            modalOpen={modalOpen}
-            closeModal={closeModal}
-            confirmModal={confirmModal}
-          />
-        </main>
-      )}
+        <CalendarModal
+          diaryData={selectedDiary}
+          modalOpen={modalOpen}
+          closeModal={closeModal}
+          confirmModal={confirmModal}
+        />
+      </main>
     </>
   );
 }
