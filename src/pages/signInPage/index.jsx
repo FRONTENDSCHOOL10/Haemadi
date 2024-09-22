@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { memo, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { SyncLoader } from 'react-spinners';
@@ -139,4 +139,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default memo(SignInPage);
