@@ -11,6 +11,8 @@ import SetAge from './components/ProgressContents/SetAge';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
+import { getStorage } from '@/utils';
+import { setUserData } from '@/api/users';
 
 function UserInfoInputPage() {
   const navigate = useNavigate();
@@ -21,6 +23,25 @@ function UserInfoInputPage() {
   const [age, setAge] = useState(null);
   const [experience, setExperience] = useState(null);
   const [keyword, setKeyword] = useState([]);
+
+  const saveUserData = (nickName, gender, age, experience, keyword) => {
+    return {
+      nickName: nickName,
+      gender,
+      age,
+
+      experience:
+        experience === '하루도 빠짐 없이 작성한다.'
+          ? 1
+          : experience === '가끔 생각나면 작성한다.'
+            ? 2
+            : experience === '거의 작성하지 않는다'
+              ? 3
+              : 4,
+
+      interest: keyword,
+    };
+  };
 
   // 닉네임 유효성 검사 함수
   const validateNickname = useMemo(
@@ -47,7 +68,7 @@ function UserInfoInputPage() {
       case 5:
         return keyword.length > 0 ? 'primary' : 'disabled';
       case 6:
-        return 'primary';
+        return 'default';
       default:
         return 'disabled';
     }
@@ -83,7 +104,7 @@ function UserInfoInputPage() {
     }
   };
 
-  const handleNextClick = useCallback(() => {
+  const handleNextClick = () => {
     switch (progress) {
       default:
       case '1':
@@ -104,12 +125,16 @@ function UserInfoInputPage() {
         break;
       case '5':
         navigate('/my/settings/userInfoInput/6');
+        setUserData(
+          getStorage('authStore').state.userInfo.id,
+          saveUserData(nickName, gender, age, experience, keyword)
+        );
         break;
       case '6':
         navigate('/');
         break;
     }
-  }, [validateNickname, navigate, progress, toast, nickName]);
+  };
 
   return (
     <div className={styles.userInfoInputPage}>
