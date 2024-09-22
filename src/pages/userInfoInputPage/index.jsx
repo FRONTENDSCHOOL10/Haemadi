@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './UserInfoInputPage.module.css';
+import { useToaster } from '@/stores/ToasterStore';
 import Button from '@/components/Button/Button';
-import { useMediaStore } from '@/stores/mediaStore';
 import StepIndicator from './components/StepIndicator/StepIndicator';
 import SetNickName from './components/ProgressContents/SetNickName';
 import SetGender from './components/ProgressContents/SetGender';
@@ -14,32 +14,45 @@ import SetFinish from './components/ProgressContents/SetFinish';
 
 function UserInfoInputPage() {
   const navigate = useNavigate();
+  const toast = useToaster();
   const { progress } = useParams();
-  const [buttonState, setButtonState] = useState('disabled');
-  const [nickName, setnickName] = useState(null);
+  const [nickName, setNickName] = useState(null);
+  const [gender, setGender] = useState(null);
 
-  const handleChange = useCallback((value) => {
-    setnickName(value);
+  // 닉네임 유효성 검사 함수
+  const validateNickname = useMemo(
+    () => (value) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(value),
+    []
+  );
+
+  const handleNickname = useCallback((e) => {
+    const { value } = e.target;
+    setNickName(value);
   }, []);
 
-  /*   useEffect(() => {
-    setButtonState(step !== '2' || selectedEmotion ? 'default' : 'disabled');
-  }, [step, selectedEmotion]);
-  useEffect(() => {
-    if (step === '2') setSelectedEmotion(null);
-  }, [step]); */
+  // 버튼 상태를 동적으로 설정
+  const buttonState = useMemo(() => {
+    switch (parseInt(progress)) {
+      case 1:
+        return nickName ? 'primary' : 'disabled';
+      case 2:
+        return gender ? 'primary' : 'disabled';
+      default:
+        return 'disabled';
+    }
+  }, [progress, nickName, gender]);
 
   const renderContent = () => {
     switch (progress) {
       default:
       case '1':
-        return <SetNickName />;
+        return <SetNickName handle={handleNickname} />;
       case '2':
-        return <SetGender nickName={'고된 하루를 보낸 토끼'} />;
+        return <SetGender nickName={nickName} />;
       case '3':
-        return <SetAge nickName={'고된 하루를 보낸 토끼'} />;
+        return <SetAge nickName={nickName} />;
       case '4':
-        return <SetExperience nickName={'고된 하루를 보낸 토끼'} />;
+        return <SetExperience nickName={nickName} />;
       case '5':
         return <SetKeyword />;
       case '6':
@@ -51,7 +64,13 @@ function UserInfoInputPage() {
     switch (progress) {
       default:
       case '1':
-        navigate('/my/settings/userInfoInput/2');
+        console.log(nickName);
+        console.log(validateNickname(nickName));
+        if (validateNickname(nickName)) {
+          navigate('/my/settings/userInfoInput/2');
+        } else {
+          toast('warn', '닉네임을 다시 확인해주세요.');
+        }
         break;
       case '2':
         navigate('/my/settings/userInfoInput/3');
@@ -69,7 +88,7 @@ function UserInfoInputPage() {
         navigate('/');
         break;
     }
-  }, [navigate, progress]);
+  }, [navigate, progress, toast, nickName]);
 
   return (
     <div className={styles.userInfoInputPage}>

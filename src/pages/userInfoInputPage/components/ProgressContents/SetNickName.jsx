@@ -1,8 +1,14 @@
 import { memo } from 'react';
+import { func } from 'prop-types';
+
 import styles from './ProgressContents.module.css';
 import NickNameInput from '../NickNameInput/NickNameInput';
 
-function SetNickName() {
+SetNickName.propTypes = {
+  handle: func,
+};
+
+function SetNickName({ handle }) {
   return (
     <div className={styles.container}>
       <p className={styles.title} style={{ marginBottom: '90px' }}>
@@ -12,7 +18,7 @@ function SetNickName() {
         <br />
         닉네임을 알려주세요!
       </p>
-      <NickNameInput />
+      <NickNameInput onChange={handle} />
     </div>
   );
 }

@@ -1,22 +1,20 @@
+import { memo, useId, useRef } from 'react';
+import { string, func } from 'prop-types';
+
+import styles from './NickNameInput.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { useMediaStore } from '@/stores/mediaStore';
-import PropTypes from 'prop-types';
-import { memo, useId, useRef } from 'react';
-import styles from './NickNameInput.module.css';
 
-function NickNameInput({ initialNickname }) {
+NickNameInput.propTypes = {
+  initialNickname: string,
+  onChange: func,
+};
+
+function NickNameInput({ initialNickname, onChange }) {
   const desktop = useMediaStore((store) => store.desktop);
   const id = useId();
   const inputRef = useRef(null);
-
-  // 닉네임 유효성 검사
-  const validateNickname = (name) => /^[가-힣a-zA-Z0-9 ]{4,9}$/.test(name);
-
-  const handleChange = (event) => {
-    const { value } = event.target;
-    validateNickname(value); // 유효성 검사 수행
-  };
 
   // 닉네임 초기화
   const handleReset = () => {
@@ -38,7 +36,7 @@ function NickNameInput({ initialNickname }) {
         defaultValue={initialNickname || ''}
         placeholder="닉네임을 작성해주세요"
         className={styles.input}
-        onChange={handleChange}
+        onChange={onChange}
         maxLength={9}
         aria-required="true"
       />
@@ -56,9 +54,5 @@ function NickNameInput({ initialNickname }) {
     </div>
   );
 }
-
-NickNameInput.propTypes = {
-  initialNickname: PropTypes.string,
-};
 
 export default memo(NickNameInput);
