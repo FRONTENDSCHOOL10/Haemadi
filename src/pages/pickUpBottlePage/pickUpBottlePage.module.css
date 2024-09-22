@@ -23,7 +23,7 @@
     color: var(--white, #ffffff);
     text-align: center;
     font-size: var(--text-s, 16px);
-    line-height: 33px; /* 206.25% */
+    line-height: 33px;
     letter-spacing: -0.48px;
   }
 }
@@ -45,7 +45,7 @@
   p {
     font-size: var(--text-xs, 14px);
     font-weight: 700;
-    line-height: 23.5px; /* 167.857% */
+    line-height: 23.5px;
     letter-spacing: -0.42px;
     margin-top: 5.3vh;
   }
@@ -63,7 +63,7 @@
     h1 {
       font-size: var(--text-xl, 24px);
       font-weight: 700;
-      line-height: 33px; /* 137.5% */
+      line-height: 33px;
       letter-spacing: -0.72px;
     }
   }
@@ -74,7 +74,7 @@
     h2 {
       font-size: 36px;
       font-weight: 700;
-      line-height: 50px; /* 138.889% */
+      line-height: 50px;
       letter-spacing: -1.08px;
       margin-bottom: 13px;
       order: -2;
