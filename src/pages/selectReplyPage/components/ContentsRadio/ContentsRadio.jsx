@@ -9,15 +9,15 @@ import style from './ContentsRadio.module.css';
 ContentsRadio.propTypes = {
   content: contentType.isRequired,
   selected: bool.isRequired,
-  onSelect: func,
+  onChange: func,
 };
 
-function ContentsRadio({ content, selected, onSelect }) {
+function ContentsRadio({ content, selected, onChange }) {
   const icon = icons[`${content}${selected ? '_selected' : ''}`];
   const radioInputId = useId();
 
-  const onChange = () => {
-    onSelect(content);
+  const handleChange = () => {
+    onChange?.(content);
   };
 
   return (
@@ -26,9 +26,10 @@ function ContentsRadio({ content, selected, onSelect }) {
         className={style.radioInput}
         id={radioInputId}
         type="radio"
-        name="content-type"
+        name="typeOfContent"
         value={content}
-        onChange={onChange}
+        onChange={handleChange}
+        checked={selected}
       />
       <label className={style.radioCard} htmlFor={radioInputId}>
         <SVGIcon {...icon} />

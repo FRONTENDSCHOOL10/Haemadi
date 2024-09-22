@@ -39,7 +39,6 @@
   h2 {
     font-size: var(--text-l, 20px);
     font-weight: 700;
-    line-height: 33px; /* 165% */
     letter-spacing: -0.6px;
     margin-bottom: 8.9vh;
   }
@@ -55,7 +54,7 @@
 @media (min-width: 960px) {
   .pageContainer {
     background-color: rgba(16, 16, 21, 0.7);
-    backdrop-filter: blur(5.150000095367432px);
+    backdrop-filter: blur(5.15px);
   }
 
   .header {

@@ -1,26 +1,34 @@
 import { CONTENTS } from '@/constants';
-import { useCallback, useState } from 'react';
+import { func, oneOf } from 'prop-types';
+import { useCallback } from 'react';
 import ContentsRadio from '../ContentsRadio/ContentsRadio';
 import style from './ContentsRadioGroup.module.css';
 
-function ContentsRadioGroup() {
-  const [selectedType, setSelectedType] = useState(null);
+ContentsRadioGroup.propTypes = {
+  selectedValue: oneOf(['music', 'quotes', 'book', 'video']),
+  onSelect: func,
+};
 
-  const handleSelect = useCallback((contentType) => {
-    setSelectedType(contentType);
-  }, []);
+function ContentsRadioGroup({ selectedValue, onSelect }) {
+  const handleChange = useCallback(
+    (contentType) => {
+      onSelect?.(contentType);
+    },
+    [onSelect]
+  );
 
   return (
-    <div className={style.groupWrapper}>
+    <fieldset className={style.groupWrapper}>
+      <legend className="sr-only">Ai 답장 컨텐츠 선택</legend>
       {CONTENTS.map((content, index) => (
         <ContentsRadio
           key={index}
           content={content}
-          selected={selectedType === content}
-          onSelect={handleSelect}
+          selected={selectedValue === content}
+          onChange={handleChange}
         />
       ))}
-    </div>
+    </fieldset>
   );
 }
 
