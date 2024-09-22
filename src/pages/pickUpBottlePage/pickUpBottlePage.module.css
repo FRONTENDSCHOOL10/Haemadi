@@ -1,9 +1,9 @@
 .page {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background-image: url('/pickUpBottlePage_Bg.png');
+  background-image: url('/bgImages/pickUpBottlePage_Bg.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

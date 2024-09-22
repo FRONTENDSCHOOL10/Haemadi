@@ -92,6 +92,7 @@ function BottleRadioGroup({ desktop }) {
       <button
         type="button"
         className={`${styles.swiperButton} ${styles.swiperButtonPrev}`}
+        aria-label="스와이퍼 왼쪽으로 넘기기"
       >
         <SVGIcon {...icons.leftArrow} />
       </button>
@@ -99,6 +100,7 @@ function BottleRadioGroup({ desktop }) {
       <button
         type="button"
         className={`${styles.swiperButton} ${styles.swiperButtonNext}`}
+        aria-label="스와이퍼 오른쪽으로 넘기기"
       >
         <SVGIcon {...icons.rightArrow} />
       </button>

@@ -1,5 +1,6 @@
 import { BASE_URL } from '@/api/pbconfig';
 import BackButton from '@/components/BackButton/BackButton';
+import Loading from '@/components/Loading/Loading';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import useFetch from '@/hooks/useFetch';
 import icons from '@/icons';
@@ -21,7 +22,7 @@ function ViewDiaryPage() {
   const { status, error, data } = useFetch(ENDPOINT);
 
   // 상황별, 조건부 처리
-  if (status === 'loading') return <div>로딩중...</div>;
+  if (status === 'loading') return <Loading />;
   if (status === 'error') return <div>{error.message}</div>;
   if (!data) return null;
 
