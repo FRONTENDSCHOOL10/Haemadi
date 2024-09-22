@@ -103,7 +103,7 @@ const routes = [
     element: <SignInPage />,
   },
   {
-    path: 'my/settings/userInfoInput/:progress',
+    path: 'my/settings/user-info-input/:progress',
     element: <UserInfoInputPage />,
   },
 ];

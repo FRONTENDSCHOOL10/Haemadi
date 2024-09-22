@@ -11,6 +11,7 @@ import SetAge from './components/ProgressContents/SetAge';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
+
 import { setUserData } from '@/api/users';
 import BackButton from '@/components/BackButton/BackButton';
 import { useMediaStore } from '@/stores/mediaStore';
@@ -122,21 +123,21 @@ function UserInfoInputPage() {
         toast('warn', '닉네임을 다시 확인해주세요.');
         return;
       }
-      navigate('/my/settings/userInfoInput/2');
+      navigate('/my/settings/user-info-input/2');
     } else if (progress === '5') {
       try {
         await setUserData(
           userInfo.id,
           saveUserData(nickName, gender, age, experience, keyword)
         );
-        navigate('/my/settings/userInfoInput/6');
+        navigate('/my/settings/user-info-input/6');
       } catch {
         toast('warn', '다시 한번 시도해주세요.');
       }
     } else if (progress === '6') {
       navigate('/');
     } else {
-      navigate(`/my/settings/userInfoInput/${nextProgress}`);
+      navigate(`/my/settings/user-info-input/${nextProgress}`);
     }
   };
 
