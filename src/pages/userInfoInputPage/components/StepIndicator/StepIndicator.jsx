@@ -9,7 +9,7 @@ StepIndicator.propTypes = {
 
 function StepIndicator({ currentStep }) {
   const steps = 5; // 총 단계 수
-  const progressPercentage = ((currentStep - 1) / steps) * 100; // 현재 단계에 따른 비율 계산
+  const progressPercentage = (currentStep / steps) * 100; // 현재 단계에 따른 비율 계산
 
   return (
     <div className={styles.container}>
