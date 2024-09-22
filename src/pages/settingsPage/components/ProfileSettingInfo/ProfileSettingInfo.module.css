@@ -16,13 +16,9 @@
   color: var(--title_gray, #2e2e2e);
 }
 
-.loaderContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.imageWrapper {
+.imageLabel {
   position: relative;
+  display: flex;
   width: 113px;
   margin: 0 auto;
 }
@@ -48,7 +44,7 @@
 .profileDetails {
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: 260px;
   margin: 0 auto;
   padding-top: 17px;
   font-size: var(--text-xs, 14px);
@@ -98,7 +94,7 @@
     font-size: 22px;
   }
 
-  .imageWrapper {
+  .imageLabel {
     width: 221px;
   }
 

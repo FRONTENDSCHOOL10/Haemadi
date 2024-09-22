@@ -37,39 +37,30 @@ function ProfileSettingInfo() {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      fileInput.current.click();
-    }
-  };
-
   return (
     <div className={styles.profileContainer}>
       <h2>프로필 설정</h2>
-      <div
-        className={styles.imageWrapper}
-        onClick={() => fileInput.current.click()}
-        onKeyDown={handleKeyDown}
-        role="button"
-        tabIndex="0"
-        aria-label="프로필 이미지 변경하기"
-      >
+      
+      <label htmlFor="profileImgInput" className={styles.imageLabel}>
         <img
           className={styles.profileImg}
           src={image}
           alt={`${userInfo.nickName}의 프로필 이미지`}
         />
-        <SVGIcon className={styles.svgCamera} {...icons.camera}/>
-      </div>
+        <SVGIcon className={styles.svgCamera} {...icons.camera} />
+        <span className="sr-only">프로필 이미지 변경하기</span>
+      </label>
+
       <input
+        id="profileImgInput"
+        className="sr-only"
         type="file"
-        style={{ display: 'none' }}
         accept="image/jpg,image/png,image/jpeg,image/webp"
         name="profile_img"
         onChange={onChange}
         ref={fileInput}
       />
+      
       <ul className={styles.profileDetails}>
         <li>
           <span className={styles.infolabel}>닉네임</span>
@@ -88,11 +79,11 @@ function ProfileSettingInfo() {
           <span className={styles.infoValue}>{userInfo.gender || '성별 정보 없음'}</span>
         </li>
       </ul>
+      
       <button
         className={styles.editButton}
         onClick={() => navigate('./settings/userInfoInput/:progress')}
         aria-label="수정하기"
-        onKeyDown={(e) => e.key === 'Enter' && navigate('./settings/userInfoInput/:progress')}
       >
         수정하기
       </button>
