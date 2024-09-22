@@ -11,6 +11,7 @@ const icons = {
   music: { name: 'music', width: 17, height: 25, color: '#2D7EB9' },
   music_selected: { name: 'music', width: 17, height: 25, color: '#FFFFFF' },
   bottle_horizental: { name: 'bottle_horizental', width: 122, height: 41, color: '#4651B4' },
+  bottle_horizental_pc: { name: 'bottle_horizental', width: 190, height: 64, color: '#4651B4' },
   question: { name: 'question', width: 19, height: null, color: '#062648' },
   headset: { name: 'headset', width: 19, height: null, color: '#062648' },
   announcement: { name: 'announcement', width: 19, height: 17, color: '#062648' },

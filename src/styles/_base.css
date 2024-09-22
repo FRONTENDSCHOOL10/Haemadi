@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareL.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareR.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareB.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareEB.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
 html {
   overflow-x: hidden;
   overscroll-behavior: none;
@@ -93,6 +118,7 @@ textarea {
 }
 [type='search'] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 [type='search']::-webkit-search-decoration {
@@ -115,6 +141,7 @@ input {
 [type='submit'],
 button {
   -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 [type='button']:-moz-focusring,
