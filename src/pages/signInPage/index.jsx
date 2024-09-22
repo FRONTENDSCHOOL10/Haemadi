@@ -126,7 +126,12 @@ function SignInPage() {
           role="submit"
         >
           {loading ? (
-            <SyncLoader margin={3} size={7} color="#2E7FB9" />
+            <>
+              <SyncLoader margin={3} size={7} color="#2E7FB9" />
+              <p className="sr-only">
+                로딩이 완료되면 로그인 진행이 완료됩니다.
+              </p>
+            </>
           ) : (
             '로그인하기'
           )}
