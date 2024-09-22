@@ -1,6 +1,5 @@
-import { SyncLoader } from 'react-spinners';
-
 import styles from './statisticsPage.module.css';
+import Loading from '@/components/Loading/Loading';
 import BackButton from '@/components/BackButton/BackButton';
 import EmotionAverage from './components/EmotionPercentage/EmotionPercentage';
 import ReplyFromPercentage from './components/ReplyFromPercentage/ReplyFromPercentage';
@@ -15,6 +14,7 @@ function StatisticsPage() {
   const month = String(currentDate.getMonth() + 1).padStart(2, '0');
   const startDate = `${year}-${month}-01`;
 
+  /* 이번달 작성한 일기, 답장 가져옴 */
   const filterQuery = `(userId='nxorcbf2dujhxfu' && created>='${startDate}')`;
   const DIARY_ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
   const REPLY_ENDPOINT = `${BASE_URL}/api/collections/replies/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
@@ -30,12 +30,12 @@ function StatisticsPage() {
   } = useFetch(REPLY_ENDPOINT);
 
   if (diariesstatus === 'loading' || repliesstatus === 'loading')
-    return <SyncLoader size={10} color="#2E7FB9" />;
+    return <Loading />;
   if (diariesstatus === 'error' || repliesstatus === 'error')
     return (
       <>
-        <div>{diarieserror.message}</div>
-        <div>{replieserror.message}</div>
+        <div>{diarieserror?.message}</div>
+        <div>{replieserror?.message}</div>
       </>
     );
 
@@ -48,7 +48,7 @@ function StatisticsPage() {
       <div className={styles.cardWrapper}>
         <EmotionAverage diariesData={diariesData} />
         <ReplyFromPercentage repliesData={repliesData} />
-        <AIReplyType />
+        <AIReplyType repliesData={repliesData} />
         <AnalysisReport diariesData={diariesData} repliesData={repliesData} />
       </div>
     </div>

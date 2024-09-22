@@ -11,7 +11,7 @@ AnalysisReport.propTypes = {
 function AnalysisReport({ diariesData = [], repliesData = [] }) {
   // 전체 일기 수
   const totalDiaries = diariesData?.totalItems || 0;
-
+  // 전체 답장 수
   const totalReplies = repliesData?.totalItems || 0;
 
   // 긍정적인 감정 (happy, glad 등) 비율 계산

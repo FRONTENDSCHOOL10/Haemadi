@@ -9,6 +9,7 @@ ProgressBar.propTypes = {
   color: string,
 };
 
+// 가로 막대 그래프
 function ProgressBar({ label, percentage, color }) {
   return (
     <div className={styles.progress_bar_container}>
