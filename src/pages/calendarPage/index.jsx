@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
 import styles from './CalendarPage.module.css';
+import Loading from '@/components/Loading/Loading';
 
 function CalendarPage() {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ function CalendarPage() {
     navigate(`/my/view-diary/${selectedDiary?.id}`);
   }, [navigate, selectedDiary]);
 
+  if (status === 'loading') return <Loading />;
   if (status === 'error') return <div>{error.message}</div>;
 
   return (
@@ -52,7 +54,6 @@ function CalendarPage() {
         <BackButton style={{ position: 'absolute', left: 0 }} />
         <h1>나의 기록</h1>
       </header>
-      {status === 'loading' && <div>loading...</div>}
       {status === 'success' && (
         <main className={styles.main}>
           <Calendar

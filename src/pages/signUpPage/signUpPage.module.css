@@ -1,6 +1,6 @@
 .signupPage {
   position: relative;
-  padding-top: 10px;
+  padding-top: 40px;
 
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@
   .signupPage {
     padding-top: 154px;
 
-    background-image: url('../../assets/background/background02.png');
+    background-image: url('../../assets/background/background02.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

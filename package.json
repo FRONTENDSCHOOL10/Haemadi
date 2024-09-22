@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "rm -rf dist && vite build",
-    "preview": "vite build && vite preview --host",
+    "preview": "vite preview --host",
     "lint": "eslint \"./src/**\" --report-unused-disable-directives --ignore-pattern .gitignore"
   },
   "devDependencies": {
