@@ -1,0 +1,87 @@
+.title {
+  color: var(--tertiay, #1f6496);
+  font-size: var(--text-xl, 24px);
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.72px;
+}
+
+.subTitle {
+  color: #8f8f8f;
+  font-size: var(--text-xs, 14px);
+  font-weight: 700;
+  line-height: 165%;
+
+  margin-top: 13px;
+}
+
+.description {
+  display: block;
+  color: #b6b6b6;
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+  letter-spacing: -0.36px;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.container {
+  padding: 85px 40px;
+}
+
+.SetFinish {
+  p {
+    color: var(--white, #fff);
+  }
+  position: absolute;
+  top: 0;
+  padding: 35px 40px;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url('/bgImages/userInfoInput_final.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .title {
+    color: var(--white, #fff);
+    font-size: var(--text-xxl, 55px);
+    font-weight: 800;
+    text-align: center;
+  }
+  .subTitle {
+    color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
+    text-align: center;
+  }
+  .description {
+    color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
+    text-align: center;
+  }
+
+  .SetFinish {
+    padding-top: 154px;
+  }
+
+  .SetFinish::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 12, 33, 0.3);
+    backdrop-filter: blur(13px);
+    z-index: -1; /* 블러 레이어가 콘텐츠 뒤에 위치하도록 설정 */
+  }
+}

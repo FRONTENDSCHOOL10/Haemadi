@@ -1,0 +1,45 @@
+.userInfoInputPage {
+  height: 100vh;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  top: 40px;
+  left: 7%;
+}
+
+.buttonWrapper {
+  position: absolute;
+  bottom: 10vh;
+  right: 50vw;
+  translate: 50% 0;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .userInfoInputPage {
+    padding-top: 154px;
+
+    background-image: url('/bgImages/demoPage_step2Bg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .userInfoInputPage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 12, 33, 0.3);
+    backdrop-filter: blur(13px);
+    z-index: -1; /* 블러 레이어가 콘텐츠 뒤에 위치하도록 설정 */
+  }
+}
