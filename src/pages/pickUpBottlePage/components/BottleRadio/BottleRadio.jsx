@@ -1,8 +1,10 @@
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import icons from '@/icons';
 import { bool, func, oneOf, string } from 'prop-types';
 import { memo, useId } from 'react';
 import styles from './BottleRadio.module.css';
+import glassBottle from '/glassBottle/glassBottle.webp';
+import glassBottleSelected from '/glassBottle/glassBottle_selected.webp';
+import glassBottleCenter from '/glassBottle/glassBottle_center.webp';
+import glassBottleEdge from '/glassBottle/glassBottle_edge.webp';
 
 BottleRadio.propTypes = {
   index: oneOf([0, 1, 2, 3, 4]).isRequired,
@@ -10,7 +12,7 @@ BottleRadio.propTypes = {
   onSelect: func,
   labelText: string.isRequired,
   desktop: bool,
-  bottleColor: string,
+  location: oneOf(['center', 'side', 'edge']),
 };
 
 function BottleRadio({
@@ -19,11 +21,25 @@ function BottleRadio({
   onSelect,
   labelText,
   desktop = false,
-  bottleColor = '#2A348E',
+  location,
 }) {
-  const icon =
-    icons[`glassBottle${desktop ? (selected ? '_selected' : '') : '_mobile'}`]; // desktop, desktop(선택됨), mobile 세가지 크기의 아이콘
   const radioInputId = useId();
+
+  const bottleImgSrc = () => {
+    if (desktop) {
+      return selected ? glassBottleSelected : glassBottle;
+    } else {
+      switch (location) {
+        default:
+        case 'center':
+          return glassBottleCenter;
+        case 'side':
+          return glassBottle;
+        case 'edge':
+          return glassBottleEdge;
+      }
+    }
+  };
 
   const handleClick = (e) => {
     !desktop && e.preventDefault();
@@ -46,10 +62,10 @@ function BottleRadio({
         htmlFor={radioInputId}
         onClick={handleClick}
       >
-        <SVGIcon
-          {...icon}
-          className={styles.radioIcon} // desktop일 때, 유리병 이미지에 filter 스타일 적용
-          color={desktop ? icon.color : bottleColor} // mobile에서 swiper에서의 유리병 위치에 따라 색상 변경
+        <img
+          src={bottleImgSrc()}
+          alt="" // label에서 span으로 정보를 제공하고 alt 속성 일부러 비워둠
+          className={styles.radioIcon}
         />
         {/* desktop에서만 "n 번째 유리병" 텍스트 보여줌 */}
         <span className={desktop ? '' : 'sr-only'}>{labelText}</span>

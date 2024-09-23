@@ -37,9 +37,9 @@ function BottleRadioGroup({ desktop }) {
   // 스와이퍼에서 가운데와 몇 칸 떨어져있는 지에 따라 적용할 스타일
   const getDiff = (index) => {
     const diff = Math.abs(currentIndex - index);
-    if (diff === 0) return { scale: 1, color: '#2A348E' }; // currentIndex
-    if (diff === 1) return { scale: 0.8, color: '#4651B4B3' }; // currentIndex와 1 차이
-    if (diff >= 2) return { scale: 0.6, color: '#737DD480' }; // currentIndex와 2이상 차이
+    if (diff === 0) return { scale: 1, location: 'center' }; // currentIndex
+    if (diff === 1) return { scale: 0.8, location: 'side' }; // currentIndex와 1 차이
+    if (diff >= 2) return { scale: 0.6, location: 'edge' }; // currentIndex와 2이상 차이
   };
 
   const renderDesktopView = () => (
@@ -84,7 +84,7 @@ function BottleRadioGroup({ desktop }) {
             onSelect={handleSelect}
             labelText={labelText}
             desktop={desktop}
-            bottleColor={getDiff(index).color}
+            location={getDiff(index).location}
           />
         </SwiperSlide>
       ))}
