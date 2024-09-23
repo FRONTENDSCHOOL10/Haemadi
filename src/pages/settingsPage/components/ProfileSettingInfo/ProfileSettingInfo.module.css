@@ -43,7 +43,8 @@
 }
 
 .profileImgInput:focus-visible + .imageLabel {
-  outline: auto; outline-color: var(--focus, #66d6ea);
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
 }
 
 .profileDetails {

@@ -38,6 +38,9 @@ importers:
       swiper:
         specifier: ^11.1.12
         version: 11.1.12
+      upload-images-converter:
+        specifier: ^2.0.2
+        version: 2.0.2
       use-immer:
         specifier: ^0.10.0
         version: 0.10.0(immer@10.1.1)(react@18.3.1)
@@ -1401,6 +1404,9 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  upload-images-converter@2.0.2:
+    resolution: {integrity: sha512-cltVwZ+RU70Qx8heZrSj8OpQhR9mFHZ6CXudosKkFlM91Iiznl8Oluw/x+9DTnSKkvipvkf1oCvyVw5UPIpZ1Q==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -2934,6 +2940,8 @@ snapshots:
       browserslist: 4.23.3
       escalade: 3.1.2
       picocolors: 1.0.1
+
+  upload-images-converter@2.0.2: {}
 
   uri-js@4.4.1:
     dependencies:
