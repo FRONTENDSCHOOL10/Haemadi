@@ -95,7 +95,7 @@ function ReplyFromPercentage({ diariesData, userInfo }) {
             />
           </>
         ) : (
-          <span>데이터가 없습니다.</span>
+          <span>데이터가 없습니다. </span>
         )}
       </div>
     </section>
