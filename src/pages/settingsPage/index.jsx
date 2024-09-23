@@ -1,28 +1,37 @@
 import { memo } from 'react';
 
-import styles from './SettingsPage.module.css';
 import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
-import OtherSettingList from './components/OtherSettingList/OtherSettingList';
-import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingInfo';
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 import { useAuthStore } from '@/stores/authStore';
 import { useMediaStore } from '@/stores/mediaStore';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import OtherSettingList from './components/OtherSettingList/OtherSettingList';
+import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingInfo';
+import styles from './SettingsPage.module.css';
 
 function SettingsPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const navigate = useNavigate();
   const logoutUser = useAuthStore((store) => store.logoutUser);
   const [modalOpen, setModalOpen] = useState(false);
+  const { lockScroll, openScroll } = useBodyScrollLock();
 
-  const openModal = useCallback(() => setModalOpen(true), []);
-  const closeModal = useCallback(() => setModalOpen(false), []);
+  const openModal = useCallback(() => {
+    setModalOpen(true);
+    lockScroll();
+  }, [lockScroll]);
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
+    openScroll();
+  }, [openScroll]);
   const confirmModal = useCallback(() => {
     setModalOpen(false);
+    openScroll();
     navigate('/auth');
     logoutUser();
-  }, [logoutUser, navigate]);
+  }, [logoutUser, navigate, openScroll]);
 
   return (
     <div className={styles.settingsPage}>
