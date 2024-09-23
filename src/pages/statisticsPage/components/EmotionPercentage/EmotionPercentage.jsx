@@ -66,16 +66,16 @@ function EmotionPercentage({ diariesData }) {
       <p>감정을 한 눈에 확인할 수 있어요</p>
       <div className={styles.dataWrapper}>
         {totalItems !== 0 && (
-          <div
+          <figure
             className={styles.emotionAverage}
             title={EMOTION_LABEL[sortedEmotionPercentages[0]?.emotion]}
             aria-label={EMOTION_LABEL[sortedEmotionPercentages[0]?.emotion]}
           >
-            평균기분
+            <figcaption>평균기분</figcaption>
             <SVGIcon
               {...icons[`shell_${sortedEmotionPercentages[0]?.emotion}`]}
             />
-          </div>
+          </figure>
         )}
         <div className={styles.piechart}>
           <svg width="300" height="150" viewBox="0 0 300 150">
