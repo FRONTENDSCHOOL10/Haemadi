@@ -1,10 +1,14 @@
 import { memo, useCallback, useEffect, useId, useState } from 'react';
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { SyncLoader } from 'react-spinners';
 
 import styles from './SelectReplyPage.module.css';
-import { createDiary } from '@/api/diaries';
+import generateAIReply from '@/api/gemini';
+import { createDiary, updateDiary } from '@/api/diaries';
+import { createReply } from '@/api/replies';
 import { useDiaryStore } from '@/stores/diaryStore';
+import { useToaster } from '@/stores/ToasterStore';
 import SendingCompleteScreen from '@/components/SendingCompleteScreen/SendingCompleteScreen';
 import SendingScreen from '@/components/SendingScreen/SendingScreen';
 import Button from '@/components/Button/Button';
@@ -13,7 +17,9 @@ import ReplierRadioGroup from './components/ReplierRadioGroup/ReplierRadioGroup'
 
 function SelectReplyPage() {
   const navigate = useNavigate();
+  const toast = useToaster();
   const { step } = useParams();
+  const [loading, setLoading] = useState(false);
   const { diary, resetDiary } = useDiaryStore();
   const formId = useId();
   const [status, setStatus] = useState(null);
@@ -51,35 +57,86 @@ function SelectReplyPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    let AIData = null;
     if (step === '1') {
       if (selectedValue === 'ai') {
         setSelectedValue(null);
         navigate('/write-diary/select-reply/2');
         return;
+      } else {
+        createDiary(diary).then(
+          (data) => {
+            if (AIData) {
+              createReply({
+                ...AIData,
+                ...{ diaryId: data.id },
+                ...{ typeOfContent: selectedValue },
+              });
+            }
+            setStatus('success');
+            resetDiary();
+          },
+          (error) => {
+            setStatus('error');
+            throw new Error(error);
+          }
+        );
       }
     }
     if (step === '2') {
-      /* -------------------------------------------------------------------------- */
-      /*                                Ai 답장 만들기 로직                                */
-      /* -------------------------------------------------------------------------- */
+      /* Ai 답장 */
+      setLoading(true);
+      generateAIReply(
+        `${selectedValue}으로 답장해줘. 내 일기: ` + diary.message
+      )
+        .then((result) => {
+          const AIData = {
+            ...JSON.parse(result.response.text()),
+            replier: 'ai',
+          };
+
+          return createDiary(diary).then((diaryData) => {
+            console.log({
+              ...AIData,
+              diaryId: diaryData.id,
+              typeOfContent: selectedValue,
+            });
+            return createReply({
+              ...AIData,
+              diaryId: diaryData.id,
+              typeOfContent: selectedValue,
+            }).then((replyData) => {
+              updateDiary({
+                ...{ id: diaryData.id },
+                ...{ message: diaryData.message },
+                ...{ emotion: diaryData.emotion },
+                ...{ userId: diaryData.userId },
+                ...{ replyId: replyData.id },
+              });
+            });
+          });
+        })
+        .then(() => {
+          setStatus('success');
+          resetDiary();
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoading(false);
+          toast('warn', '잠시 후 다시 시도해주세요.');
+          setStatus('error');
+        });
     }
 
     setStatus('loading');
-
-    createDiary(diary).then(
-      () => {
-        setStatus('success');
-        resetDiary();
-      },
-      (error) => {
-        setStatus('error');
-        throw new Error(error);
-      }
-    );
   };
 
-  const onComplete = (value) => setShowComplete(value);
+  const onComplete = (value) => {
+    if (value !== showComplete) {
+      // 무한 루프 방지
+      setShowComplete(value);
+    }
+  };
 
   // 서버 요청 중 유리병 보내는 화면
   if (status === 'loading') return <SendingScreen onComplete={onComplete} />;
@@ -114,10 +171,19 @@ function SelectReplyPage() {
 
         <Button
           role="submit"
-          state={selectedValue ? 'default' : 'disabled'}
+          state={selectedValue && !loading ? 'default' : 'disabled'}
           form={formId}
         >
-          다음으로
+          {loading ? (
+            <>
+              <SyncLoader margin={3} size={7} color="#2E7FB9" />
+              <p className="sr-only">
+                로딩이 완료되면 다음 화면으로 진행됩니다.
+              </p>
+            </>
+          ) : (
+            '다음으로'
+          )}
         </Button>
       </div>
     </div>
