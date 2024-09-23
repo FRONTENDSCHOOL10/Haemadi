@@ -111,6 +111,7 @@ function UserInfoInputPage() {
           <SetExperience
             handle={(value) => handleInputChange('experience', value)}
             nickName={formData.nickName}
+            desktop={desktop}
           />
         );
       case '5':
@@ -169,7 +170,7 @@ function UserInfoInputPage() {
         />
       </Helmet>
       <div className={styles.backButton}>
-        {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
+        <BackButton color={desktop ? 'white' : 'blue'} />
       </div>
       {renderContent()}
       <ProgressBar progress={parseInt(progress)} />

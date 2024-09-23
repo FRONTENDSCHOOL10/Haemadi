@@ -19,8 +19,6 @@
 
 @media (min-width: 640px) {
   .userInfoInputPage {
-    padding-top: 154px;
-
     background-image: url('/bgImages/demoPage_step2Bg.webp');
     background-size: cover;
     background-repeat: no-repeat;
