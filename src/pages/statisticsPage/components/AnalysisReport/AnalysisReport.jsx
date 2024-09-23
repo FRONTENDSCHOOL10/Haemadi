@@ -24,7 +24,7 @@ function AnalysisReport({ diariesData = [], repliesData = [] }) {
     totalDiaries > 0 ? Math.round((totalPositive / totalDiaries) * 100) : 0;
 
   return (
-    <div className={styles.card}>
+    <section className={styles.card}>
       <h2>종합 분석 보고서</h2>
       <p>이 달의 해마디와 함께한 당신의 기록을 모두 모았어요</p>
       <ul className={styles.dataWrapper}>
@@ -41,7 +41,7 @@ function AnalysisReport({ diariesData = [], repliesData = [] }) {
           <span>긍정 지수</span>
         </li>
       </ul>
-    </div>
+    </section>
   );
 }
 

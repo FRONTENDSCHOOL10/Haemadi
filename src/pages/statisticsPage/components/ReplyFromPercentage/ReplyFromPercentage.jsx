@@ -58,7 +58,7 @@ function ReplyFromPercentage({ repliesData }) {
   const userPercentage = 100 - aiPercentage;
 
   return (
-    <div className={styles.card}>
+    <section className={styles.card}>
       <h2>주로 누구에게 답장을 받았을까요?</h2>
       <p>답장을 받은 빈도수를 알 수 있어요</p>
       <div className={styles.dataWrapper}>
@@ -69,7 +69,7 @@ function ReplyFromPercentage({ repliesData }) {
           color="#205191"
         />
       </div>
-    </div>
+    </section>
   );
 }
 

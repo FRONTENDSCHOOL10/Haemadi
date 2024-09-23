@@ -111,7 +111,7 @@ function AIReplyType({ repliesData }) {
   }, [calcData]);
 
   return (
-    <div className={styles.card}>
+    <section className={styles.card}>
       <h2>AI에게 어떤 종류의 답장을 많이 받았을까요?</h2>
       <p>어떤 추천을 받았는지 알아보아요</p>
       <div
@@ -150,7 +150,7 @@ function AIReplyType({ repliesData }) {
           <span>데이터가 없습니다.</span>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 
