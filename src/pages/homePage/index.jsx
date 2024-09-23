@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 import styles from './HomePage.module.css';
@@ -37,6 +38,23 @@ function HomePage() {
         backgroundImage: `url(/bgImages/homePage_${sunset ? 'dark' : ''}Bg.webp)`,
       }}
     >
+      <Helmet>
+        <title>해마디</title>
+        <meta
+          name="description"
+          content="감정관리를 위한 일기 서비스, 해마디"
+        />
+        <meta property="og:title" content="해마디" />
+        <meta
+          property="og:description"
+          content="감정관리를 위한 일기 서비스, 해마디"
+        />
+        <meta name="twitter:title" content="해마디" />
+        <meta
+          name="twitter:description"
+          content="감정관리를 위한 일기 서비스, 해마디"
+        />
+      </Helmet>
       <h1 className="sr-only">홈 페이지</h1>
 
       <Greeting

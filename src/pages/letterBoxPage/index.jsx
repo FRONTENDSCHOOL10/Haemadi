@@ -1,6 +1,7 @@
 import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './LetterBoxPage.module.css';
 import { useAuthStore } from '@/stores/authStore';
@@ -69,6 +70,14 @@ function LetterBoxPage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>편지함 - 해마디</title>
+        <meta name="description" content="받은 편지를 확인해 보세요" />
+        <meta property="og:title" content="편지함 - 해마디" />
+        <meta property="og:description" content="받은 편지를 확인해 보세요" />
+        <meta name="twitter:title" content="편지함 - 해마디" />
+        <meta name="twitter:description" content="받은 편지를 확인해 보세요" />
+      </Helmet>
       <div className={styles.pageContainer}>
         <header className={styles.header}>
           <BackButton color="white" style={backButtonStyle} />

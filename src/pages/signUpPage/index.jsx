@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useImmer } from 'use-immer';
 
 import styles from './SignUpPage.module.css';
@@ -93,6 +94,23 @@ function SignUpPage() {
 
   return (
     <div className={styles.signupPage}>
+      <Helmet>
+        <title>회원가입 - 해마디</title>
+        <meta
+          name="description"
+          content="회원가입하여 해마디 서비스를 이용해 보세요"
+        />
+        <meta property="og:title" content="회원가입 - 해마디" />
+        <meta
+          property="og:description"
+          content="회원가입하여 해마디 서비스를 이용해 보세요"
+        />
+        <meta name="twitter:title" content="회원가입 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="회원가입하여 해마디 서비스를 이용해 보세요"
+        />
+      </Helmet>
       <div className={styles.titleWrapper}>
         <BackButton color={desktop ? 'white' : 'black'} />
         <h1>회원가입</h1>

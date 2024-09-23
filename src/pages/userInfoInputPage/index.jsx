@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useImmer } from 'use-immer';
 
 import styles from './UserInfoInputPage.module.css';
@@ -149,6 +150,23 @@ function UserInfoInputPage() {
 
   return (
     <div className={styles.userInfoInputPage}>
+      <Helmet>
+        <title>사용자 정보 입력 - 해마디</title>
+        <meta
+          name="description"
+          content="사용자 정보를 입력하여 프로필을 완성하세요"
+        />
+        <meta property="og:title" content="사용자 정보 입력 - 해마디" />
+        <meta
+          property="og:description"
+          content="사용자 정보를 입력하여 프로필을 완성하세요"
+        />
+        <meta name="twitter:title" content="사용자 정보 입력 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="사용자 정보를 입력하여 프로필을 완성하세요"
+        />
+      </Helmet>
       <div className={styles.backButton}>
         {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
       </div>

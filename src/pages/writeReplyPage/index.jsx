@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './WriteReplyPage.module.css';
 import { updateDiary } from '@/api/diaries';
@@ -95,6 +96,23 @@ function WriteReplyPage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>답장 쓰기 - 해마디</title>
+        <meta
+          name="description"
+          content="다른 사람의 일기에 답장을 남겨 보세요"
+        />
+        <meta property="og:title" content="답장 쓰기 - 해마디" />
+        <meta
+          property="og:description"
+          content="다른 사람의 일기에 답장을 남겨 보세요"
+        />
+        <meta name="twitter:title" content="답장 쓰기 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="다른 사람의 일기에 답장을 남겨 보세요"
+        />
+      </Helmet>
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
           <BackButton onClick={openModal('back')} tabIndex={1} />

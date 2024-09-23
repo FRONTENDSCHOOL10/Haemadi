@@ -11,6 +11,7 @@ import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
+import { Helmet } from 'react-helmet-async';
 
 function PickUpBottlePage() {
   const navigate = useNavigate();
@@ -71,6 +72,23 @@ function PickUpBottlePage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>유리병 건지기 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에서 감정의 병을 주워 일기를 확인해 보세요"
+        />
+        <meta property="og:title" content="유리병 건지기 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에서 감정의 병을 주워 일기를 확인해 보세요"
+        />
+        <meta name="twitter:title" content="유리병 건지기 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에서 감정의 병을 주워 일기를 확인해 보세요"
+        />
+      </Helmet>
       <div className={styles.pageContainer}>
         <header className={styles.header}>
           <BackButton color="white" style={backButtonStyle} />

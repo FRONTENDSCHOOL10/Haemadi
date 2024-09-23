@@ -1,4 +1,6 @@
-import styles from './statisticsPage.module.css';
+import { Helmet } from 'react-helmet-async';
+
+import styles from './StatisticsPage.module.css';
 import { BASE_URL } from '@/api/pbconfig';
 import { useAuthStore } from '@/stores/authStore';
 import useFetch from '@/hooks/useFetch';
@@ -45,6 +47,20 @@ function StatisticsPage() {
 
   return (
     <div className={styles.StatisticsPage}>
+      <Helmet>
+        <title>통계 - 해마디</title>
+        <meta name="description" content="감정 통계를 확인하고 분석해 보세요" />
+        <meta property="og:title" content="통계 - 해마디" />
+        <meta
+          property="og:description"
+          content="감정 통계를 확인하고 분석해 보세요"
+        />
+        <meta name="twitter:title" content="통계 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="감정 통계를 확인하고 분석해 보세요"
+        />
+      </Helmet>
       <header>
         <div className={styles.backButton}>
           <BackButton />

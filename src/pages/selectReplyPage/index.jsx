@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useId, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './SelectReplyPage.module.css';
 import { createDiary } from '@/api/diaries';
@@ -89,6 +90,23 @@ function SelectReplyPage() {
 
   return (
     <div className={styles.pageBackground}>
+      <Helmet>
+        <title>답장 선택 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에서 다양한 답장 중 선택하세요"
+        />
+        <meta property="og:title" content="답장 선택 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에서 다양한 답장 중 선택하세요"
+        />
+        <meta name="twitter:title" content="답장 선택 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에서 다양한 답장 중 선택하세요"
+        />
+      </Helmet>
       <div className={styles.page}>
         <form id={formId} onSubmit={handleSubmit}>
           {renderContent()}
