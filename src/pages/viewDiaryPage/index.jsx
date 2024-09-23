@@ -112,7 +112,7 @@ function renderReplyContent(content, typeOfContent) {
           />
         </>
       );
-    case 'quotes':
+    case 'quote':
       return (
         <>
           <h2>당신에게 추천하는 명언</h2>

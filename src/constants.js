@@ -20,11 +20,11 @@ export const EMOTION_LABEL = {
   tired: '피곤해요',
 };
 
-export const CONTENTS = ['music', 'quotes', 'book', 'video'];
+export const CONTENTS = ['music', 'quote', 'book', 'video'];
 
 export const CONTENT_LABEL = {
   music: '노래',
-  quotes: '명언',
+  quote: '명언',
   book: '책',
   video: '영상',
 };
