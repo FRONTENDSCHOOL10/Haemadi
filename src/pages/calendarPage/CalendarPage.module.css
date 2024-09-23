@@ -1,11 +1,15 @@
+.page {
+  height: 100%;
+}
+
 .header {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 84vw;
-  margin-block: 7vh 61px;
-  margin-inline: 8vw;
+  width: 100%;
+  padding-block: 7vh 61px;
+  padding-inline: 8vw;
 }
 
 .main {

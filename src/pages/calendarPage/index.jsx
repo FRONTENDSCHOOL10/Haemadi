@@ -51,7 +51,7 @@ function CalendarPage() {
   if (status === 'error') return <div>{error.message}</div>;
 
   return (
-    <>
+    <div className={styles.page}>
       <Helmet>
         <title>캘린더 - 해마디</title>
         <meta
@@ -70,7 +70,7 @@ function CalendarPage() {
         />
       </Helmet>
       <header className={styles.header}>
-        <BackButton style={{ position: 'absolute', left: 0 }} />
+        <BackButton style={{ position: 'absolute', left: '8vw' }} />
         <h1>나의 기록</h1>
       </header>
       <main className={styles.main}>
@@ -87,7 +87,7 @@ function CalendarPage() {
           confirmModal={confirmModal}
         />
       </main>
-    </>
+    </div>
   );
 }
 
