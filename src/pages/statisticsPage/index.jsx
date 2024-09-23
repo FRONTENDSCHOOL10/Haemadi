@@ -45,10 +45,12 @@ function StatisticsPage() {
 
   return (
     <div className={styles.StatisticsPage}>
-      <div className={styles.backButton}>
-        <BackButton />
-      </div>
-      <h1 className={styles.title}>나의 섬 통계 </h1>
+      <header>
+        <div className={styles.backButton}>
+          <BackButton />
+        </div>
+        <h1 className={styles.title}>나의 섬 통계 </h1>
+      </header>
       <div className={styles.cardWrapper}>
         <EmotionAverage diariesData={diariesData} />
         <ReplyFromPercentage repliesData={repliesData} />
