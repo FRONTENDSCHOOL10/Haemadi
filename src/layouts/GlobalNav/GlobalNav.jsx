@@ -30,7 +30,7 @@ function GlobalNav({ darkBg = false }) {
         darkBg && desktop
           ? icons.navBottle_darkBg_selected
           : icons.navBottle_selected,
-      label: '메인 홈',
+      label: '홈 화면',
     },
     {
       to: '/my',
