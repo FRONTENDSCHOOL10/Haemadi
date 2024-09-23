@@ -66,6 +66,7 @@ function BottleRadio({
           src={bottleImgSrc()}
           alt="" // label에서 span으로 정보를 제공하고 alt 속성 일부러 비워둠
           className={styles.radioIcon}
+          loading="lazy"
         />
         {/* desktop에서만 "n 번째 유리병" 텍스트 보여줌 */}
         <span className={desktop ? '' : 'sr-only'}>{labelText}</span>

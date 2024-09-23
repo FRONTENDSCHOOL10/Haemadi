@@ -81,6 +81,7 @@ function LetterBoxPage() {
             src={desktop ? glassBottle : glassBottleMobile}
             alt="유리병"
             className={styles.glassBottle}
+            loading="lazy"
           />
           <p>
             {replier === 'ai'
