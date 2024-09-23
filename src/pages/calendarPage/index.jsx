@@ -5,6 +5,7 @@ import { isSameDay } from 'date-fns';
 
 import styles from './CalendarPage.module.css';
 import { BASE_URL } from '@/api/pbconfig';
+import { useAuthStore } from '@/stores/authStore';
 import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Loading from '@/components/Loading/Loading';
@@ -13,12 +14,13 @@ import CalendarModal from './CalendarModal/CalendarModal';
 
 function CalendarPage() {
   const navigate = useNavigate();
+  const userInfo = useAuthStore((store) => store.userInfo);
   const [selectedDate, setSelectedDate] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   // 로그인 기능 구현 후 userId 변경 필요
   // 현재 로그인한 유저의 일기들을 불러옴
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=(userId='nxorcbf2dujhxfu')`;
+  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=(userId='${userInfo.id}')`;
   const { status, error, data } = useFetch(ENDPOINT);
 
   // 불러온 일기들의 created 값을 Date 형식으로 변환
