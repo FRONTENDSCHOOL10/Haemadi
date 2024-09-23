@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styles from './SelectReplyPage.module.css';
 import { createDiary } from '@/api/diaries';
 import { useDiaryStore } from '@/stores/diaryStore';
+import SendingCompleteScreen from '@/components/SendingCompleteScreen/SendingCompleteScreen';
+import SendingScreen from '@/components/SendingScreen/SendingScreen';
 import Button from '@/components/Button/Button';
 import ContentsRadioGroup from './components/ContentsRadioGroup/ContentsRadioGroup';
 import ReplierRadioGroup from './components/ReplierRadioGroup/ReplierRadioGroup';
@@ -11,10 +13,11 @@ import ReplierRadioGroup from './components/ReplierRadioGroup/ReplierRadioGroup'
 function SelectReplyPage() {
   const navigate = useNavigate();
   const { step } = useParams();
-  const { diary, setDiary, resetDiary } = useDiaryStore();
+  const { diary, resetDiary } = useDiaryStore();
   const formId = useId();
   const [status, setStatus] = useState(null);
   const [selectedValue, setSelectedValue] = useState(null);
+  const [showComplete, setShowComplete] = useState(null);
 
   const handleSelect = useCallback((value) => setSelectedValue(value), []);
 
@@ -67,7 +70,6 @@ function SelectReplyPage() {
       () => {
         setStatus('success');
         resetDiary();
-        navigate('/');
       },
       (error) => {
         setStatus('error');
@@ -76,7 +78,14 @@ function SelectReplyPage() {
     );
   };
 
-  if (status === 'loading') return <div>편지를 유리병에 넣고있어요.</div>;
+  const onComplete = (value) => setShowComplete(value);
+
+  // 서버 요청 중 유리병 보내는 화면
+  if (status === 'loading') return <SendingScreen onComplete={onComplete} />;
+  // 서버 요청 성공 후 잠시동안 완료 화면 보여줌
+  if (status === 'success' && showComplete) return <SendingCompleteScreen />;
+  // 완료 화면 끝나면 홈 화면으로 이동
+  if (status === 'success' && !showComplete) return <Navigate to="/" />;
 
   return (
     <div className={styles.pageBackground}>
