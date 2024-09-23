@@ -1,0 +1,51 @@
+.StatisticsPage {
+  display: grid;
+
+  margin-top: 40px;
+  header {
+    margin: 0 auto;
+  }
+
+  .backButton {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 40px;
+    left: 8%;
+  }
+}
+
+.title {
+  margin: 0 auto;
+
+  color: var(--black, #2e2e2e);
+  font-size: var(--text-l, 20px);
+  font-weight: 800;
+  line-height: 150%;
+  letter-spacing: -0.72px;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: var(--text-xl, 24px);
+  }
+}
+
+@media (min-width: 980px) {
+  .cardWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    align-items: center;
+    justify-content: center;
+    max-width: 500px; /* 원하는 최대 너비로 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+    width: 100%; /* 작은 화면에서는 100% 사용 */
+  }
+
+  .cardWrapper > *:nth-child(1),
+  .cardWrapper > *:nth-child(4) {
+    grid-column: 1 / span 2;
+  }
+}
