@@ -43,6 +43,14 @@
     letter-spacing: -0.6px;
     margin-bottom: 8.9vh;
   }
+
+  .glassBottle {
+    width: 148px;
+    height: 264px;
+    min-width: 148px;
+    min-height: 264px;
+  }
+
   p {
     font-size: var(--text-xs, 14px);
     font-weight: 700;
@@ -81,9 +89,15 @@
       margin-bottom: 13px;
       order: -2;
     }
+
     .glassBottle {
       filter: drop-shadow(-11px -1px 24.1px rgba(255, 255, 255, 0.3));
+      width: 168px;
+      height: 299px;
+      min-width: 168px;
+      min-height: 299px;
     }
+
     p {
       margin-top: 0;
       margin-bottom: 105px;
