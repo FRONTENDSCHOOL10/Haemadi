@@ -1,10 +1,10 @@
 .pageContainer {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   background-repeat: no-repeat;
-  background-position: 50%;
+  background-position: center;
   background-size: cover;
   position: relative;
 }
@@ -14,7 +14,7 @@
   flex-flow: column nowrap;
   gap: 9px;
   position: absolute;
-  bottom: 15vh;
+  bottom: 18vh;
   right: 50vw;
   translate: 50% 50%;
 
@@ -38,12 +38,12 @@
 .bottleLinkLeft {
   position: absolute;
   left: 5.4vw;
-  bottom: 37.5vh;
+  bottom: 40.5vh;
 }
 .bottleLinkRight {
   position: absolute;
   right: 6vw;
-  bottom: 21vh;
+  bottom: 23vh;
 }
 
 @media (min-width: 640px) {

@@ -6,6 +6,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { memo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ProfileSettingInfo.module.css';
+import { convertImageToWebP } from '@/utils';
 
 function ProfileSettingInfo() {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ function ProfileSettingInfo() {
 
   const onChange = async (e) => {
     if (e.target.files[0]) {
-      const selectedImage = e.target.files[0];
+      const selectedImage = await convertImageToWebP(e.target.files[0]);
+      const convertedImage = selectedImage[0];
+
       const reader = new FileReader();
 
       reader.onload = async () => {
@@ -27,13 +30,13 @@ function ProfileSettingInfo() {
 
           try {
             const userId = userInfo.id;
-            await updateUserProfileImage(userId, selectedImage);
+            await updateUserProfileImage(userId, convertedImage);
           } catch (error) {
             console.error('이미지 업로드에 실패했습니다', error);
           }
         }
       };
-      reader.readAsDataURL(selectedImage);
+      reader.readAsDataURL(convertedImage);
     } else {
       setImage(defaultProfile); // 업로드 취소 시 기본 이미지로 설정
     }
@@ -57,6 +60,7 @@ function ProfileSettingInfo() {
           className={styles.profileImg}
           src={image}
           alt={`${userInfo.nickName}의 프로필 이미지`}
+          loading="lazy"
         />
         <SVGIcon
           className={styles.svgCamera}

@@ -6,6 +6,11 @@
     </symbol>
 
 
+    <symbol id="logout" width="19" height="20" fill="none" viewBox="0 0 19 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 19H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h4m6 14 5-5-5-5m5 5H6"/>
+    </symbol>
+
+
     <symbol id="statistics" width="30" height="30" fill="none" viewBox="0 0 30 30">
       <rect width="8.333" height="12.5" y="17.5" fill="currentColor" rx="4" />
       <rect width="8.333" height="20" x="10.834" y="10" fill="currentColor" rx="4" />
@@ -44,25 +49,7 @@
 
 
     <symbol id="bottle_horizental" width="122" height="41" fill="none" viewBox="0 0 122 41">
-      <g filter="url(#filterBottleHorizental)">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M115.695 13.076a3.334 3.334 0 0 0-3.089-2.033l-.916.006a3.327 3.327 0 0 0-3.214 2.549C97.98 13.25 81.43 12.42 80.029 10.613 74.776 3.72 68.994.854 61.482.929 56.88.978 40.548.867 26.932.774l-8.23-.055C13.848.706 6.005 1.855 2.531 8.595l-.183.433c-.753 1.694-1.196 3.487-1.4 5.318-.202 2.355-.32 5.314.003 6.812-.147 1.605-.015 3.998.186 5.962.192 1.807.7 3.62 1.462 5.286l.172.425c3.514 6.7 11.384 7.74 16.245 7.66 4.493-.081 9.834-.181 15.219-.282 11.757-.221 23.728-.446 27.56-.486 7.51-.073 13.251-2.974 18.422-9.953 1.36-1.826 17.832-2.882 28.324-3.374a3.334 3.334 0 0 0 3.272 2.605l.916-.005a3.325 3.325 0 0 0 2.886-1.708l4.198 1.204c.766.23 1.591-.284 1.573-.995l-.043-7.217.039-.015a.936.936 0 0 0-.063-.322l-.042-7.05c-.018-.711-.816-1.243-1.619-1.008l-3.964 1.19Z"
-          clip-rule="evenodd" />
-      </g>
-      <defs>
-        <filter id="filterBottleHorizental" width="124.636" height="43.777" x=".752" y=".719"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="5" dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_285_516" />
-        </filter>
-      </defs>
+      <path fill="currentColor" fill-rule="evenodd" d="M115.576 13.076a3.332 3.332 0 0 0-3.088-2.033l-.916.006a3.33 3.33 0 0 0-3.215 2.549c-10.495-.347-27.046-1.177-28.446-2.985C74.658 3.72 68.876.854 61.364.929 56.76.978 40.43.867 26.814.774l-8.23-.055C13.73.706 5.887 1.855 2.413 8.595l-.184.433c-.752 1.694-1.195 3.487-1.398 5.318-.203 2.355-.321 5.314.002 6.812-.148 1.605-.015 3.998.186 5.962.191 1.807.7 3.62 1.462 5.286l.171.425c3.515 6.7 11.385 7.74 16.246 7.66 4.493-.081 9.833-.181 15.218-.282 11.758-.221 23.729-.446 27.56-.486C69.19 39.65 74.93 36.75 80.1 29.77c1.36-1.826 17.832-2.882 28.323-3.374a3.336 3.336 0 0 0 3.273 2.605l.916-.005a3.325 3.325 0 0 0 2.886-1.708l4.198 1.204c.766.23 1.591-.284 1.573-.995l-.043-7.217.039-.015a.936.936 0 0 0-.063-.322l-.042-7.05c-.018-.711-.816-1.243-1.619-1.008l-3.965 1.19Z" clip-rule="evenodd"/>
     </symbol>
 
 
@@ -196,82 +183,18 @@
 
 
     <symbol id="navBottle" width="32" height="48" fill="none" viewBox="0 0 32 48">
-      <g filter="url(#filterNavBottle)">
-        <path fill="currentColor"
-          d="M28.058 16.535a6.286 6.286 0 0 1 .284-4.61l3.251-6.986-.008-.004c.324-1.008-.999-2.543-3.048-3.497-2.05-.953-4.076-.978-4.64-.08l-.007-.004-3.217 6.913a5.178 5.178 0 0 1-3.511 2.853 11.465 11.465 0 0 0-6.207 3.788c-.503.6-.91 1.276-1.213 1.999l-8.54 20.311c-1.405 3.018 1.173 7.194 5.757 9.328 4.584 2.133 9.439 1.416 10.843-1.601l10.377-20.27c1.267-2.677.579-6.006-.122-8.14h.001Z" />
-      </g>
-      <defs>
-        <filter id="filterNavBottle" width="32.816" height="49.071" x=".818" y=".703"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="2" dy="2" />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_285_615" />
-        </filter>
-      </defs>
+      <path fill="currentColor" d="M28.058 16.535a6.286 6.286 0 0 1 .284-4.61l3.251-6.986-.008-.004c.324-1.008-.999-2.543-3.048-3.497-2.05-.953-4.076-.978-4.64-.08l-.007-.004-3.217 6.913a5.178 5.178 0 0 1-3.511 2.853 11.465 11.465 0 0 0-6.207 3.788c-.503.6-.91 1.276-1.213 1.999l-8.54 20.311c-1.405 3.018 1.173 7.194 5.757 9.328 4.584 2.133 9.439 1.416 10.843-1.601l10.377-20.27c1.267-2.677.579-6.006-.122-8.14h.001Z"/>
     </symbol>
 
 
     <symbol id="navMusic" width="42" height="46" fill="none" viewBox="0 0 42 46">
-      <g filter="url(#filterNavMusic)">
-        <path fill="currentColor"
-          d="M42 1.964a1 1 0 0 0-1.249-.969l-28 7.2a1 1 0 0 0-.751.969v23.848c-1.225-1.267-2.929-2.048-4.876-2.048a7.124 7.124 0 1 0 0 14.248c3.934 0 6.876-3.19 6.876-7.124a9.205 9.205 0 0 0 0-.124V19.539l26-6.685v18.158c-1.225-1.267-2.929-2.048-4.876-2.048a7.124 7.124 0 1 0 0 14.248c3.934 0 6.876-3.19 6.876-7.124 0-.13-.003-.258-.01-.386a1 1 0 0 0 .01-.138v-33.6Z" />
-      </g>
-      <defs>
-        <filter id="filterNavMusic" width="42" height="46.248" x="0" y=".964"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dy="2" />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_285_622" />
-        </filter>
-      </defs>
+      <path fill="currentColor" d="M42 1.964a1 1 0 0 0-1.249-.969l-28 7.2a1 1 0 0 0-.751.969v23.848c-1.225-1.267-2.929-2.048-4.876-2.048a7.124 7.124 0 1 0 0 14.248c3.934 0 6.876-3.19 6.876-7.124a9.205 9.205 0 0 0 0-.124V19.539l26-6.685v18.158c-1.225-1.267-2.929-2.048-4.876-2.048a7.124 7.124 0 1 0 0 14.248c3.934 0 6.876-3.19 6.876-7.124 0-.13-.003-.258-.01-.386a1 1 0 0 0 .01-.138v-33.6Z"/>
     </symbol>
 
 
-    <symbol id="glassBottle" width="168" height="299" fill="none" viewBox="0 0 168 299">
-      <g filter="url(#filterGlassBottle)">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M126.544 13.51a8.488 8.488 0 0 0-7.744 5.353l-.859 2.167c-1.467 3.697-.149 7.808 2.952 10.02-10.826 24.444-28.565 62.721-34.168 64.303-21.278 5.829-33.557 16.745-40.544 34.55-4.272 10.91-20.104 49.351-33.304 81.402l-.002.004-.001.004a60683.74 60683.74 0 0 0-7.978 19.376c-4.658 11.445-9.421 31.051 3.176 45.677l.847.847c3.281 3.392 7.092 6.147 11.22 8.373 5.365 2.723 12.239 5.824 16.082 6.49 3.648 1.878 9.425 3.847 14.251 5.244 4.448 1.272 9.214 1.802 13.874 1.59h1.165c19.17-1.908 29.125-19.496 33.573-31.045 4.092-10.683 8.947-23.385 13.842-36.193 10.689-27.965 21.572-56.438 25.131-65.522 6.99-17.8 5.614-34.117-5.93-52.976-3.013-4.951 10.199-44.844 19.041-70.079 3.856.64 7.77-1.463 9.269-5.24l.86-2.168a8.464 8.464 0 0 0-1.28-8.441l6.845-8.762c1.273-1.589.849-4.026-.848-4.661l-17.076-6.78v-.107a2.367 2.367 0 0 0-.821-.157L131.437.156c-1.697-.636-3.712.742-3.924 2.86l-.969 10.494Z"
-          clip-rule="evenodd" />
-      </g>
-      <defs>
-        <filter id="filterGlassBottle" width="171.602" height="302.955" x="0" y="0"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="5" dy="4" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_285_712" />
-        </filter>
-      </defs>
-    </symbol>
-
-
-    <symbol id="setting" width="46" height="44" fill="none" viewBox="0 0 46 44">
-      <mask id="maskSetting" width="46" height="44" x="0" y="0" maskUnits="userSpaceOnUse"
-        style="mask-type:luminance">
-        <path fill="#ffffff"
-          d="M16.181 43.554a22.65 22.65 0 0 1-9.85-6.008A6.797 6.797 0 0 0 .46 26.4 22.758 22.758 0 0 1 0 21.837c0-2.367.363-4.651 1.038-6.797h.095a6.796 6.796 0 0 0 6.1-9.798A22.62 22.62 0 0 1 16.598 0a6.797 6.797 0 0 0 9.611 2.71A6.797 6.797 0 0 0 28.715 0a22.62 22.62 0 0 1 9.365 5.242 6.797 6.797 0 0 0 6.195 9.798c.69 2.2 1.04 4.492 1.038 6.797 0 1.564-.16 3.09-.46 4.566a6.797 6.797 0 0 0-5.87 11.144 22.65 22.65 0 0 1-9.852 6.007 6.8 6.8 0 0 0-12.95 0Z" />
-        <path fill="#000000" d="M22.656 29.768a7.93 7.93 0 1 0 0-15.86 7.93 7.93 0 0 0 0 15.86Z" />
-      </mask>
-      <g mask="url(#maskSetting)">
-        <path fill="#062648" d="M-4.537-5.347H49.84v54.375H-4.538V-5.347Z" />
-      </g>
+    <symbol id="navPerson" width="39" height="41" fill="none" viewBox="0 0 39 41">
+      <path fill="currentColor" fill-rule="evenodd" d="M38.504 41c.032-.404.048-.812.048-1.224 0-9.463-8.63-17.134-19.276-17.134C8.63 22.642 0 30.313 0 39.776c0 .412.016.82.048 1.224h38.456Z" clip-rule="evenodd"/>
+      <circle cx="19.276" cy="10.25" r="10.25" fill="currentColor"/>
     </symbol>
 
 
@@ -285,44 +208,6 @@
       <path fill="currentColor"
         d="M15.699 2.952c.64-.526.64-1.378 0-1.904s-1.678-.526-2.318 0l2.318 1.904Zm-13.484 7.27-1.159.952 2.318 1.904 1.16-.952-2.319-1.905Zm11.166-9.174L2.215 10.22l2.318 1.905L15.7 2.952l-2.318-1.904Z" />
       <path stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M14.18 22.31 2 12.303" />
-    </symbol>
-
-
-    <symbol id="navPerson" width="39" height="41" fill="none" viewBox="0 0 39 41">
-      <g filter="url(#filterNavPersonHead)">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M38.504 41c.032-.404.048-.812.048-1.224 0-9.463-8.63-17.134-19.276-17.134C8.63 22.642 0 30.313 0 39.776c0 .412.016.82.048 1.224h38.456Z"
-          clip-rule="evenodd" />
-      </g>
-      <g filter="url(#filterNavPersonBody)">
-        <circle cx="19.276" cy="10.25" r="10.25" fill="currentColor" />
-      </g>
-      <defs>
-        <filter id="filterNavPersonHead" width="40.552" height="20.358" x="0" y="22.642"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="2" dy="2" />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.13 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_363_824" />
-        </filter>
-        <filter id="filterNavPersonBody" width="22.5" height="22.5" x="9.025" y="0"
-          color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feColorMatrix in="SourceAlpha" result="hardAlpha"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-          <feOffset dx="2" dy="2" />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.13 0" />
-          <feBlend in2="shape" result="effect1_innerShadow_363_824" />
-        </filter>
-      </defs>
     </symbol>
 
 

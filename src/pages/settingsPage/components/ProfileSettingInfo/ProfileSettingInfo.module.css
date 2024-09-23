@@ -5,7 +5,7 @@
   margin: 0 auto;
   max-width: calc(100% - 66px);
   font-weight: bold;
-  margin-top: 68px;
+  margin-top: 36px;
 }
 
 .profileContainer h2 {
@@ -43,7 +43,8 @@
 }
 
 .profileImgInput:focus-visible + .imageLabel {
-  outline: auto; outline-color: var(--focus, #66d6ea);
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
 }
 
 .profileDetails {
@@ -121,10 +122,6 @@
 
 /*줄이는 과정에서 640px 기준이 어색한 요소 개별 처리했습니다*/
 @media (max-width: 440px) {
-  .profileContainer {
-    margin-top: 10px;
-  }
-
   .profileContainer h2 {
     margin-left: 0;
   }

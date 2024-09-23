@@ -21,6 +21,7 @@ function UserProfile() {
           userInfo?.profileImage ? getUserProfileImg(userInfo) : defaultProfile
         } // 프로필 이미지가 없을 경우 기본 이미지 표시
         alt="유저 프로필"
+        loading="lazy"
       />
       <span className={styles.profileName}>
         {userInfo.nickName || '닉네임 없음'}

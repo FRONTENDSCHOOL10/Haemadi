@@ -22,7 +22,7 @@ function MusicReply({
   return (
     <div className={styles.musicReply}>
       <div className={styles.songInfo}>
-        <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} />
+        <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} loading="lazy" />
 
         <div className={styles.textWrapper}>
           <span className={styles.musicTitle}>{musicTitle}</span>

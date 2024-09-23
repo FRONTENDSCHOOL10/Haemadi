@@ -11,7 +11,7 @@ BookReply.propTypes = {
 function BookReply({ imgSrc, bookTitle, author, publisher }) {
   return (
     <figure className={styles.component}>
-      <img src={imgSrc} alt={`${bookTitle} 책 표지`} />
+      <img src={imgSrc} alt={`${bookTitle} 책 표지`} loading="lazy" />
       <figcaption>
         <strong>{bookTitle}</strong>
         <br />

@@ -35,20 +35,21 @@
 }
 
 .SetFinish {
-  p {
-    color: var(--white, #fff);
-  }
   position: absolute;
   top: 0;
   padding: 35px 40px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   background-image: url('/bgImages/userInfoInput_final.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 1;
+
+  p {
+    color: var(--white, #fff);
+  }
 }
 
 @media (min-width: 640px) {

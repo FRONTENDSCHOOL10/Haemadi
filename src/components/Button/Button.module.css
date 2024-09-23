@@ -58,7 +58,7 @@
   cursor: not-allowed;
 }
 
-button {
+.button {
   position: relative; /* ::after 가상 요소를 버튼 위에 배치하기 위해 필요 */
   overflow: hidden; /* ::after 요소가 버튼 밖으로 나가지 않도록 설정 */
 }
@@ -77,11 +77,11 @@ button {
   pointer-events: none; /* ::after가 클릭 이벤트를 방해하지 않도록 설정 */
 }
 
-button:hover::after {
+.button:hover::after {
   opacity: 1; /* 호버 시 오버레이가 보이도록 설정 */
 }
 
-button span {
+.button span {
   position: relative; /* 텍스트가 오버레이 위에 위치하게 하기 위해 설정 */
   z-index: 1; /* 텍스트를 오버레이 위로 배치 */
   color: inherit; /* 부모 요소의 색상을 상속 */
