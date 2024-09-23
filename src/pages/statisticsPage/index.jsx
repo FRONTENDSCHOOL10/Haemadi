@@ -23,23 +23,23 @@ function StatisticsPage() {
   const DIARY_ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=${filterQuery}`;
   const REPLY_ENDPOINT = `${BASE_URL}/api/collections/replies/records?sort=created&filter=${filterQuery}`;
   const {
-    status: diariesstatus,
-    error: diarieserror,
+    status: diariesStatus,
+    error: diariesError,
     data: diariesData,
   } = useFetch(DIARY_ENDPOINT);
   const {
-    status: repliesstatus,
-    error: replieserror,
+    status: repliesStatus,
+    error: repliesError,
     data: repliesData,
   } = useFetch(REPLY_ENDPOINT);
 
-  if (diariesstatus === 'loading' || repliesstatus === 'loading')
+  if (diariesStatus === 'loading' || repliesStatus === 'loading')
     return <Loading />;
-  if (diariesstatus === 'error' || repliesstatus === 'error')
+  if (diariesStatus === 'error' || repliesStatus === 'error')
     return (
       <>
-        <div>{diarieserror?.message}</div>
-        <div>{replieserror?.message}</div>
+        <div>{diariesError?.message}</div>
+        <div>{repliesError?.message}</div>
       </>
     );
 
