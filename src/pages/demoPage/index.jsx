@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
 import { setStorage } from '@/utils/storage';
@@ -69,6 +71,17 @@ function DemoPage() {
         backgroundPositionX: !desktop && step.slice(0, 1) === '2' ? '80%' : '',
       }}
     >
+      <Helmet>
+        <title>데모 - 해마디</title>
+        <meta name="description" content="해마디 기능을 체험해 보세요" />
+        <meta property="og:title" content="데모 - 해마디" />
+        <meta property="og:description" content="해마디 기능을 체험해 보세요" />
+        <meta name="twitter:title" content="데모 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디 기능을 체험해 보세요"
+        />
+      </Helmet>
       {renderContent()}
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>

@@ -13,6 +13,7 @@ import MusicReply from './components/MusicReply/MusicReply';
 import QuotesReply from './components/QuotesReply/QuotesReply';
 import VideoReply from './components/VideoReply/VideoReply';
 import styles from './ViewDiaryPage.module.css';
+import { Helmet } from 'react-helmet-async';
 
 function ViewDiaryPage() {
   const { diaryId } = useParams();
@@ -41,6 +42,20 @@ function ViewDiaryPage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>일기 보기 - 해마디</title>
+        <meta name="description" content="내 일기를 자세히 확인해 보세요" />
+        <meta property="og:title" content="일기 보기 - 해마디" />
+        <meta
+          property="og:description"
+          content="내 일기를 자세히 확인해 보세요"
+        />
+        <meta name="twitter:title" content="일기 보기 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="내 일기를 자세히 확인해 보세요"
+        />
+      </Helmet>
       <header className={styles.header}>
         <BackButton
           style={{

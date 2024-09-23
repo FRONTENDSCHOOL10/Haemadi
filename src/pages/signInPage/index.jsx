@@ -11,6 +11,7 @@ import { useMediaStore } from '@/stores/mediaStore';
 import { userSignIn } from '@/api/users';
 import { useToaster } from '@/stores/ToasterStore';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function SignInPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -87,6 +88,23 @@ function SignInPage() {
 
   return (
     <div className={styles.signinPage}>
+      <Helmet>
+        <title>로그인 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에 로그인하여 일기 서비스를 이용해 보세요"
+        />
+        <meta property="og:title" content="로그인 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에 로그인하여 일기 서비스를 이용해 보세요"
+        />
+        <meta name="twitter:title" content="로그인 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에 로그인하여 일기 서비스를 이용해 보세요"
+        />
+      </Helmet>
       <div className={styles.titleWrapper}>
         <BackButton color={desktop ? 'white' : 'black'} />
         <h1>로그인</h1>
