@@ -171,7 +171,7 @@ function UserInfoInputPage() {
         {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
       </div>
       {renderContent()}
-      <ProgressBar progress={parseInt(progress)} />
+      {progress !== '6' && <ProgressBar progress={parseInt(progress)} />}
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
           {progress != 6 ? '다음으로' : '섬으로 바로가기'}
