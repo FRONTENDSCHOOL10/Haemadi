@@ -162,7 +162,7 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
               }}
               style={{
                 position: 'absolute',
-                bottom: '15vh',
+                bottom: '18vh',
                 right: '50vw',
                 translate: '50% 50%',
                 zIndex: 1,
