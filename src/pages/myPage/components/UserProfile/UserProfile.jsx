@@ -2,7 +2,7 @@ import { memo, useState, useEffect } from 'react';
 import { SyncLoader } from 'react-spinners';
 
 import styles from './UserProfile.module.css';
-import defaultProfile from '@/assets/default_Profile.png';
+import defaultProfile from '/default_Profile.webp';
 import { getStorage } from '@/utils';
 import { getUserProfileImg } from '@/api/users';
 
