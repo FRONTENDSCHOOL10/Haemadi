@@ -12,7 +12,13 @@ ProgressBar.propTypes = {
 // 가로 막대 그래프
 function ProgressBar({ label, percentage, color }) {
   return (
-    <div className={styles.progress_bar_container}>
+    <div
+      className={styles.progress_bar_container}
+      role="progressbar"
+      aria-valuenow={percentage}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
       <div className={styles.progress_bar}>
         <span className={styles.label}>{label}</span>
         <div
