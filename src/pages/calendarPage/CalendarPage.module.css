@@ -9,7 +9,6 @@
   align-items: center;
   width: 100%;
   padding-block: 7vh 61px;
-  padding-inline: 8vw;
 }
 
 .main {
@@ -25,8 +24,7 @@
 
 @media (min-width: 640px) {
   .header {
-    width: 70vw;
-    margin-block: 10vh 90px;
-    margin-inline: 15vw;
+    width: 100%;
+    padding-block: 10vh 90px;
   }
 }
