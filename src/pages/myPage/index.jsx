@@ -1,23 +1,17 @@
 import { Link } from 'react-router-dom';
-
 import styles from './MyPage.module.css';
-import { useMediaStore } from '@/stores/mediaStore';
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import icons from '@/icons';
-import UserProfile from './components/UserProfile/UserProfile';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';
+import UserProfile from './components/UserProfile/UserProfile';
 
 function MyPage() {
-  const desktop = useMediaStore((store) => store.desktop);
-  const iconSize = !desktop ? { width: 35, height: 35 } : {};
-
   return (
     <div className={styles.myPage}>
       <h1 className="sr-only">마이페이지</h1>
       <div className={styles.userProfile}>
         <Link className={styles.setting} to="./settings" aria-label="설정">
-          <SVGIcon {...icons.setting} {...iconSize} />
+          {/* Link에서 텍스트 정보를 제공하므로 alt 일부러 비워둠 */}
+          <img src="/setting.svg" alt="" className={styles.settingIcon} />
         </Link>
         <UserProfile />
       </div>

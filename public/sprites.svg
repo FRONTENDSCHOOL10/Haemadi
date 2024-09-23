@@ -193,19 +193,6 @@
     </symbol>
 
 
-    <symbol id="setting" width="46" height="44" fill="none" viewBox="0 0 46 44">
-      <mask id="maskSetting" width="46" height="44" x="0" y="0" maskUnits="userSpaceOnUse"
-        style="mask-type:luminance">
-        <path fill="#ffffff"
-          d="M16.181 43.554a22.65 22.65 0 0 1-9.85-6.008A6.797 6.797 0 0 0 .46 26.4 22.758 22.758 0 0 1 0 21.837c0-2.367.363-4.651 1.038-6.797h.095a6.796 6.796 0 0 0 6.1-9.798A22.62 22.62 0 0 1 16.598 0a6.797 6.797 0 0 0 9.611 2.71A6.797 6.797 0 0 0 28.715 0a22.62 22.62 0 0 1 9.365 5.242 6.797 6.797 0 0 0 6.195 9.798c.69 2.2 1.04 4.492 1.038 6.797 0 1.564-.16 3.09-.46 4.566a6.797 6.797 0 0 0-5.87 11.144 22.65 22.65 0 0 1-9.852 6.007 6.8 6.8 0 0 0-12.95 0Z" />
-        <path fill="#000000" d="M22.656 29.768a7.93 7.93 0 1 0 0-15.86 7.93 7.93 0 0 0 0 15.86Z" />
-      </mask>
-      <g mask="url(#maskSetting)">
-        <path fill="#062648" d="M-4.537-5.347H49.84v54.375H-4.538V-5.347Z" />
-      </g>
-    </symbol>
-
-
     <symbol id="check" width="27" height="20" fill="none" viewBox="0 0 27 20">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
         d="M2 10.274 9.49 18 25 2" />

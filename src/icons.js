@@ -39,7 +39,6 @@ const icons = {
   navPerson_selected: { name: 'navPerson', width: 39, height: 41, color: '#56483B' },
   navPerson_darkBg: { name: 'navPerson', width: 39, height: 41, color: '#fff' },
   navPerson_darkBg_selected: { name: 'navPerson', width: 39, height: 41, color: '#FBE517'},
-  setting: { name: 'setting', width: 45, height: 45, color: '#062648' },
   check: { name: 'check', width: 27, height: 20, color: '#2D7EB8' },
   leftArrow: { name: 'leftArrow', width: 25, height: 42, color: '#ffffff' },
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
