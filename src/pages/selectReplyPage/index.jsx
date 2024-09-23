@@ -19,7 +19,6 @@ function SelectReplyPage() {
   const navigate = useNavigate();
   const toast = useToaster();
   const { step } = useParams();
-  const [loading, setLoading] = useState(false);
   const { diary, resetDiary } = useDiaryStore();
   const formId = useId();
   const [status, setStatus] = useState(null);
@@ -57,7 +56,7 @@ function SelectReplyPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let AIData = null;
+
     if (step === '1') {
       if (selectedValue === 'ai') {
         setSelectedValue(null);
@@ -65,14 +64,7 @@ function SelectReplyPage() {
         return;
       } else {
         createDiary(diary).then(
-          (data) => {
-            if (AIData) {
-              createReply({
-                ...AIData,
-                ...{ diaryId: data.id },
-                ...{ typeOfContent: selectedValue },
-              });
-            }
+          () => {
             setStatus('success');
             resetDiary();
           },
@@ -85,7 +77,6 @@ function SelectReplyPage() {
     }
     if (step === '2') {
       /* Ai 답장 */
-      setLoading(true);
       generateAIReply(
         `${selectedValue}으로 답장해줘. 내 일기: ` + diary.message
       )
@@ -96,22 +87,14 @@ function SelectReplyPage() {
           };
 
           return createDiary(diary).then((diaryData) => {
-            console.log({
-              ...AIData,
-              diaryId: diaryData.id,
-              typeOfContent: selectedValue,
-            });
             return createReply({
               ...AIData,
               diaryId: diaryData.id,
               typeOfContent: selectedValue,
             }).then((replyData) => {
               updateDiary({
-                ...{ id: diaryData.id },
-                ...{ message: diaryData.message },
-                ...{ emotion: diaryData.emotion },
-                ...{ userId: diaryData.userId },
-                ...{ replyId: replyData.id },
+                id: replyData.diaryId,
+                replyId: replyData.id,
               });
             });
           });
@@ -122,7 +105,6 @@ function SelectReplyPage() {
         })
         .catch((error) => {
           console.error(error);
-          setLoading(false);
           toast('warn', '잠시 후 다시 시도해주세요.');
           setStatus('error');
         });
@@ -171,19 +153,10 @@ function SelectReplyPage() {
 
         <Button
           role="submit"
-          state={selectedValue && !loading ? 'default' : 'disabled'}
+          state={selectedValue ? 'default' : 'disabled'}
           form={formId}
         >
-          {loading ? (
-            <>
-              <SyncLoader margin={3} size={7} color="#2E7FB9" />
-              <p className="sr-only">
-                로딩이 완료되면 다음 화면으로 진행됩니다.
-              </p>
-            </>
-          ) : (
-            '다음으로'
-          )}
+          다음으로
         </Button>
       </div>
     </div>
