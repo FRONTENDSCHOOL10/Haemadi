@@ -116,11 +116,15 @@ function AIReplyType({ repliesData }) {
       <p>어떤 추천을 받았는지 알아보아요</p>
       <div
         className={styles.dataWrapper}
-        style={{
-          display: circles.length === 0 ? 'flex' : 'block',
-          alignItems: circles.length === 0 ? 'center' : 'initial',
-          justifyContent: circles.length === 0 ? 'center' : 'initial',
-        }}
+        style={
+          circles.length === 0
+            ? {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }
+            : {}
+        }
       >
         {circles.length !== 0 ? (
           circles.map((circle, index) => (
