@@ -17,9 +17,11 @@ function StatisticsPage() {
   const startDate = `${year}-${month}-01`;
 
   /* 이번달 작성한 일기, 답장 가져옴 */
-  const filterQuery = `(userId='${userInfo.id}' && created>='${startDate}')`;
-  const DIARY_ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
-  const REPLY_ENDPOINT = `${BASE_URL}/api/collections/replies/records?sort=created&filter=${encodeURIComponent(filterQuery)}`;
+  const filterQuery = encodeURIComponent(
+    `(userId='${userInfo.id}' && created>='${startDate}')`
+  );
+  const DIARY_ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=${filterQuery}`;
+  const REPLY_ENDPOINT = `${BASE_URL}/api/collections/replies/records?sort=created&filter=${filterQuery}`;
   const {
     status: diariesstatus,
     error: diarieserror,
