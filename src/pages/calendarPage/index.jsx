@@ -1,13 +1,14 @@
-import { BASE_URL } from '@/api/pbconfig';
-import BackButton from '@/components/BackButton/BackButton';
-import Loading from '@/components/Loading/Loading';
-import useFetch from '@/hooks/useFetch';
-import { isSameDay } from 'date-fns';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isSameDay } from 'date-fns';
+
+import styles from './CalendarPage.module.css';
+import { BASE_URL } from '@/api/pbconfig';
+import useFetch from '@/hooks/useFetch';
+import BackButton from '@/components/BackButton/BackButton';
+import Loading from '@/components/Loading/Loading';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
-import styles from './CalendarPage.module.css';
 
 function CalendarPage() {
   const navigate = useNavigate();

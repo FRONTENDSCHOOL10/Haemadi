@@ -1,14 +1,15 @@
-import { BASE_URL } from '@/api/pbconfig';
-import BackButton from '@/components/BackButton/BackButton';
-import Button from '@/components/Button/Button';
-import useFetch from '@/hooks/useFetch';
-import { useAuthStore } from '@/stores/authStore';
-import { getRandomNumbers } from '@/utils';
 import { memo, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
+
 import styles from './PickUpBottlePage.module.css';
+import { BASE_URL } from '@/api/pbconfig';
+import { useAuthStore } from '@/stores/authStore';
+import { getRandomNumbers } from '@/utils';
+import useFetch from '@/hooks/useFetch';
+import BackButton from '@/components/BackButton/BackButton';
+import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
 
 function PickUpBottlePage() {
