@@ -1,18 +1,19 @@
-import { BASE_URL } from '@/api/pbconfig';
-import BackButton from '@/components/BackButton/BackButton';
-import Loading from '@/components/Loading/Loading';
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import useFetch from '@/hooks/useFetch';
-import icons from '@/icons';
-import { useMediaStore } from '@/stores/mediaStore';
-import { formatDate } from '@/utils/formatDate';
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
+
+import styles from './ViewDiaryPage.module.css';
+import { BASE_URL } from '@/api/pbconfig';
+import { useMediaStore } from '@/stores/mediaStore';
+import { formatDate } from '@/utils/formatDate';
+import useFetch from '@/hooks/useFetch';
+import icons from '@/icons';
+import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import BackButton from '@/components/BackButton/BackButton';
+import Loading from '@/components/Loading/Loading';
 import BookReply from './components/BookReply/BookReply';
 import MusicReply from './components/MusicReply/MusicReply';
 import QuotesReply from './components/QuotesReply/QuotesReply';
 import VideoReply from './components/VideoReply/VideoReply';
-import styles from './ViewDiaryPage.module.css';
 
 function ViewDiaryPage() {
   const { diaryId } = useParams();

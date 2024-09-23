@@ -1,15 +1,16 @@
+import { memo, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+
+import styles from './LetterBoxPage.module.css';
+import { useAuthStore } from '@/stores/authStore';
 import { BASE_URL } from '@/api/pbconfig';
+import useFetch from '@/hooks/useFetch';
+import icons from '@/icons';
+import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import Loading from '@/components/Loading/Loading';
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import useFetch from '@/hooks/useFetch';
-import icons from '@/icons';
-import { useAuthStore } from '@/stores/authStore';
-import { memo, useMemo } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { useNavigate } from 'react-router-dom';
-import styles from './LetterBoxPage.module.css';
 
 function LetterBoxPage() {
   const navigate = useNavigate();
