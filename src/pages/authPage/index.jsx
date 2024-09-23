@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-import styles from './authPage.module.css';
+import styles from './AuthPage.module.css';
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
 

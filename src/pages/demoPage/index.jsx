@@ -1,11 +1,11 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
+import styles from './DemoPage.module.css';
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
 import { setStorage } from '@/utils/storage';
-import { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import styles from './DemoPage.module.css';
 import Step1Content from './components/StepContents/Step1Content';
 import Step2Content from './components/StepContents/Step2Content';
 import Step2to2Content from './components/StepContents/Step2to2Content';

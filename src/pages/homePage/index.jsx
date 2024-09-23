@@ -1,14 +1,15 @@
-import useBodyScrollLock from '@/hooks/useBodyScrollLock';
-import { useSunsetDetector, useSunStore } from '@/stores/sunStore';
-import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
+
+import styles from './HomePage.module.css';
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
+import { useSunsetDetector, useSunStore } from '@/stores/sunStore';
 import BottleLink from './components/BottleLink/BottleLink';
 import Greeting from './components/Greeting/Greeting';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
-import styles from './HomePage.module.css';
-import { Helmet } from 'react-helmet-async';
 
 function HomePage() {
   useSunsetDetector(); // 홈 화면을 열 때마다 sunset 상태 변경

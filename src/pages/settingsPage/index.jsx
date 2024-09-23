@@ -1,10 +1,11 @@
-import BackButton from '@/components/BackButton/BackButton';
-import { useMediaStore } from '@/stores/mediaStore';
 import { memo } from 'react';
+import { Helmet } from 'react-helmet-async';
+
+import styles from './SettingsPage.module.css';
+import { useMediaStore } from '@/stores/mediaStore';
+import BackButton from '@/components/BackButton/BackButton';
 import OtherSettingList from './components/OtherSettingList/OtherSettingList';
 import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingInfo';
-import styles from './SettingsPage.module.css';
-import { Helmet } from 'react-helmet-async';
 
 function SettingsPage() {
   const desktop = useMediaStore((store) => store.desktop);

@@ -58,7 +58,7 @@
   .signupPage {
     padding-top: 154px;
 
-    background-image: url('../../assets/background/background02.webp');
+    background-image: url('/bgImages/demoPage_step1Bg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

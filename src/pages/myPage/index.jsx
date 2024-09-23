@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import styles from './myPage.module.css';
+import styles from './MyPage.module.css';
+import { useMediaStore } from '@/stores/mediaStore';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
-import { useMediaStore } from '@/stores/mediaStore';
 import UserProfile from './components/UserProfile/UserProfile';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';

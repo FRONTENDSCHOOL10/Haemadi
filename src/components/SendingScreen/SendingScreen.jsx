@@ -11,7 +11,7 @@ const loadingEndElement = document.getElementById('loading-end');
 // 로딩 시작 설정 함수
 const setLoadingStart = () => {
   loadingStartElement.innerHTML =
-    '<p class="sr-only">콘텐츠 로딩 시작됩니다.</p>';
+    '<p class="sr-only">편지를 유리병에 넣고 있어요</p>';
   loadingStartElement.setAttribute('role', 'alert');
 };
 
@@ -24,7 +24,7 @@ const resetLoadingStart = () => {
 // 로딩 끝 설정 함수
 const setLoadingEnd = () => {
   loadingEndElement.innerHTML =
-    '<p class="sr-only">콘텐츠 로딩이 마무리되었습니다.</p>';
+    '<p class="sr-only">편지를 보내는데 성공했어요</p>';
   loadingEndElement.setAttribute('role', 'alert');
 };
 

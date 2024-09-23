@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useImmer } from 'use-immer';
 
-import styles from './signUpPage.module.css';
+import styles from './SignUpPage.module.css';
+import { userSignIn, userSignUp } from '@/api/users';
+import { useMediaStore } from '@/stores/mediaStore';
+import { useToaster } from '@/stores/ToasterStore';
 import BackButton from '@/components/BackButton/BackButton';
 import AuthInput from '@/components/AuthInput/AuthInput';
 import Button from '@/components/Button/Button';
-import { useMediaStore } from '@/stores/mediaStore';
-import { userSignIn, userSignUp } from '@/api/users';
-import { useToaster } from '@/stores/ToasterStore';
-import { Helmet } from 'react-helmet-async';
 
 function SignUpPage() {
   const desktop = useMediaStore((store) => store.desktop);

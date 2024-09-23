@@ -1,16 +1,18 @@
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+
+import styles from './WriteReplyPage.module.css';
 import { updateDiary } from '@/api/diaries';
 import { createReply } from '@/api/replies';
-import BackButton from '@/components/BackButton/BackButton';
-import ModalDialog from '@/components/ModalDialog/ModalDialog';
-import SendingScreen from '@/components/SendingScreen/SendingScreen';
 import { useAuthStore } from '@/stores/authStore';
 import { useMediaStore } from '@/stores/mediaStore';
 import { formatDate } from '@/utils';
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import SendingCompleteScreen from '@/components/SendingCompleteScreen/SendingCompleteScreen';
+import BackButton from '@/components/BackButton/BackButton';
+import ModalDialog from '@/components/ModalDialog/ModalDialog';
+import SendingScreen from '@/components/SendingScreen/SendingScreen';
 import SaveButton from '../writeDiaryPage/components/SaveButton/SaveButton';
-import styles from './WriteReplyPage.module.css';
-import { Helmet } from 'react-helmet-async';
 
 function WriteReplyPage() {
   const { diaryId } = useParams();
@@ -88,12 +90,7 @@ function WriteReplyPage() {
   // 서버 요청 중 유리병 보내는 화면
   if (status === 'loading') return <SendingScreen onComplete={onComplete} />;
   // 서버 요청 성공 후 잠시동안 완료 화면 보여줌
-  if (status === 'success' && showComplete)
-    return (
-      <div className={styles.completeScreen}>
-        <p>{'유리병을 바다에 띄울게요\n행운이 함께하기를!'}</p>
-      </div>
-    );
+  if (status === 'success' && showComplete) return <SendingCompleteScreen />;
   // 완료 화면 끝나면 홈 화면으로 이동
   if (status === 'success' && !showComplete) return <Navigate to="/" />;
 

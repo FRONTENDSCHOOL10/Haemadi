@@ -1,8 +1,14 @@
 import { useCallback, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { useImmer } from 'use-immer';
 
 import styles from './UserInfoInputPage.module.css';
+import { setUserData } from '@/api/users';
 import { useToaster } from '@/stores/ToasterStore';
+import { useMediaStore } from '@/stores/mediaStore';
+import { useAuthStore } from '@/stores/authStore';
+import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import SetNickName from './components/ProgressContents/SetNickName';
 import SetGender from './components/ProgressContents/SetGender';
@@ -11,13 +17,6 @@ import ProgressBar from './components/ProgressBar/ProgressBar';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
-
-import { setUserData } from '@/api/users';
-import BackButton from '@/components/BackButton/BackButton';
-import { useMediaStore } from '@/stores/mediaStore';
-import { useAuthStore } from '@/stores/authStore';
-import { useImmer } from 'use-immer';
-import { Helmet } from 'react-helmet-async';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
