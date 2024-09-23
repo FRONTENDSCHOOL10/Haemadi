@@ -20,7 +20,7 @@ function RadioInput({ children, type = 'emotion', onChange }) {
   return (
     <>
       <input
-        className={styles['appearance-none']}
+        className={`${styles.input} ${styles['appearance-none']}`}
         type="radio"
         name={type}
         value={children}
