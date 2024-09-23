@@ -15,11 +15,13 @@ function AuthPage() {
         <strong>해마디</strong>
       </div>
       <div className={styles.buttonWrapper}>
-        {desktop && (
-          <Button type="stroke" onClick={() => navigate('sign-up')}>
-            회원가입
-          </Button>
-        )}
+        <Button
+          type="stroke"
+          state={!desktop ? 'primary' : 'default'}
+          onClick={() => navigate('sign-up')}
+        >
+          회원가입
+        </Button>
         <Button
           type="stroke"
           state={!desktop ? 'primary' : 'default'}

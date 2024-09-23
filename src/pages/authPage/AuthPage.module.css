@@ -47,7 +47,14 @@
     font-family: 'KoreanHBRG';
   }
 
-  margin-bottom: 50vh;
+  margin-bottom: 54vh;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 @media (min-width: 640px) {
@@ -70,9 +77,6 @@
   }
 
   .buttonWrapper {
-    display: flex;
     gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }
