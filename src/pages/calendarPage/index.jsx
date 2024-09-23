@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { isSameDay } from 'date-fns';
 
 import styles from './CalendarPage.module.css';
@@ -51,6 +52,23 @@ function CalendarPage() {
 
   return (
     <>
+      <Helmet>
+        <title>캘린더 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에서 일기를 관리하고 캘린더를 확인하세요"
+        />
+        <meta property="og:title" content="캘린더 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에서 일기를 관리하고 캘린더를 확인하세요"
+        />
+        <meta name="twitter:title" content="캘린더 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에서 일기를 관리하고 캘린더를 확인하세요"
+        />
+      </Helmet>
       <header className={styles.header}>
         <BackButton style={{ position: 'absolute', left: 0 }} />
         <h1>나의 기록</h1>

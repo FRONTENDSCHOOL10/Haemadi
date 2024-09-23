@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './MyPage.module.css';
 import { useMediaStore } from '@/stores/mediaStore';
@@ -14,6 +15,23 @@ function MyPage() {
 
   return (
     <div className={styles.myPage}>
+      <Helmet>
+        <title>마이페이지 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에서 사용 중인 내 정보를 확인하세요"
+        />
+        <meta property="og:title" content="마이페이지 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에서 사용 중인 내 정보를 확인하세요"
+        />
+        <meta name="twitter:title" content="마이페이지 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에서 사용 중인 내 정보를 확인하세요"
+        />
+      </Helmet>
       <h1 className="sr-only">마이페이지</h1>
       <div className={styles.userProfile}>
         <Link className={styles.setting} to="./settings" aria-label="설정">

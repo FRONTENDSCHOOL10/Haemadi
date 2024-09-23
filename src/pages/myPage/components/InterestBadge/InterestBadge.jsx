@@ -1,19 +1,15 @@
 import { memo } from 'react';
-import { arrayOf, oneOf } from 'prop-types';
 
 import styles from './InterestBadge.module.css';
-import { INTERESTS_KEYWORDS } from '@/constants';
+import { useAuthStore } from '@/stores/authStore';
 
-InterestBadge.propTypes = {
-  keywordList: arrayOf(oneOf(INTERESTS_KEYWORDS)),
-};
-
-function InterestBadge({ keywordList = [] }) {
+function InterestBadge() {
+  const userInfo = useAuthStore((store) => store.userInfo);
   return (
     <>
-      {keywordList.length > 0 ? (
+      {userInfo.interest.length > 0 ? (
         <ul className={styles.keywordList}>
-          {keywordList.map((element) => (
+          {userInfo.interest.map((element) => (
             <li className={styles.keyword} key={element}>
               {element}
             </li>

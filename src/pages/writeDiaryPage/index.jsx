@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './WriteDiaryPage.module.css';
 import { useAuthStore } from '@/stores/authStore';
@@ -58,6 +59,23 @@ function WriteDiaryPage() {
 
   return (
     <div className={styles.page}>
+      <Helmet>
+        <title>일기 쓰기 - 해마디</title>
+        <meta
+          name="description"
+          content="감정을 기록하며 일기를 작성해 보세요"
+        />
+        <meta property="og:title" content="일기 쓰기 - 해마디" />
+        <meta
+          property="og:description"
+          content="감정을 기록하며 일기를 작성해 보세요"
+        />
+        <meta name="twitter:title" content="일기 쓰기 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="감정을 기록하며 일기를 작성해 보세요"
+        />
+      </Helmet>
       <header className={styles.header}>
         <div className={styles.headerWrapper}>
           <BackButton onClick={openModal('back')} tabIndex={1} />

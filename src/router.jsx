@@ -12,7 +12,6 @@ const MusicPage = lazy(() => import('./pages/musicPage'));
 const MyPage = lazy(() => import('./pages/myPage'));
 const PickUpBottlePage = lazy(() => import('./pages/pickUpBottlePage'));
 const SelectReplyPage = lazy(() => import('./pages/selectReplyPage'));
-const SendLetterPage = lazy(() => import('./pages/sendLetterPage'));
 const SettingsPage = lazy(() => import('./pages/settingsPage'));
 const SignInPage = lazy(() => import('./pages/signInPage'));
 const SignUpPage = lazy(() => import('./pages/signUpPage'));
@@ -63,10 +62,6 @@ const routes = [
       {
         path: 'write-diary/select-reply/:step',
         element: <SelectReplyPage />,
-      },
-      {
-        path: 'write-diary/send-letter',
-        element: <SendLetterPage />,
       },
       {
         path: 'pick-up-bottle',

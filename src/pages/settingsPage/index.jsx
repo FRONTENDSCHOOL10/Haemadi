@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 import styles from './SettingsPage.module.css';
 import { useMediaStore } from '@/stores/mediaStore';
@@ -11,6 +12,23 @@ function SettingsPage() {
 
   return (
     <div className={styles.settingsPage}>
+      <Helmet>
+        <title>설정 - 해마디</title>
+        <meta
+          name="description"
+          content="해마디에서 사용자 설정을 관리하세요"
+        />
+        <meta property="og:title" content="설정 - 해마디" />
+        <meta
+          property="og:description"
+          content="해마디에서 사용자 설정을 관리하세요"
+        />
+        <meta name="twitter:title" content="설정 - 해마디" />
+        <meta
+          name="twitter:description"
+          content="해마디에서 사용자 설정을 관리하세요"
+        />
+      </Helmet>
       <h1>설정</h1>
       <BackButton
         color="white"
