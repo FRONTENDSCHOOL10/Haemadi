@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 import styles from './UserProfile.module.css';
 import defaultProfile from '/default_Profile.webp';
