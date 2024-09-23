@@ -113,7 +113,7 @@ function AIReplyType({ repliesData }) {
   return (
     <div className={styles.card}>
       <h2>AI에게 어떤 종류의 답장을 많이 받았을까요?</h2>
-      <span>어떤 추천을 받았는지 알아보아요</span>
+      <p>어떤 추천을 받았는지 알아보아요</p>
       <div
         className={styles.dataWrapper}
         style={{

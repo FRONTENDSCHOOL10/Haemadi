@@ -63,7 +63,7 @@ function EmotionPercentage({ diariesData }) {
   return (
     <div className={styles.card}>
       <h2>한 달간 나의 감정 분포를 알아볼까요?</h2>
-      <span>감정을 한 눈에 확인할 수 있어요</span>
+      <p>감정을 한 눈에 확인할 수 있어요</p>
       <div className={styles.dataWrapper}>
         {totalItems !== 0 && (
           <div

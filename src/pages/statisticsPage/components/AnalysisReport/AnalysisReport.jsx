@@ -26,7 +26,7 @@ function AnalysisReport({ diariesData = [], repliesData = [] }) {
   return (
     <div className={styles.card}>
       <h2>종합 분석 보고서</h2>
-      <span>이 달의 해마디와 함께한 당신의 기록을 모두 모았어요</span>
+      <p>이 달의 해마디와 함께한 당신의 기록을 모두 모았어요</p>
       <ul className={styles.dataWrapper}>
         <li style={{ backgroundColor: '#B7DAF0B2' }}>
           <strong>{totalDiaries}</strong>

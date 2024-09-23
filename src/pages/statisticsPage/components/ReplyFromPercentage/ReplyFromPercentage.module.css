@@ -7,7 +7,7 @@
     font-weight: 700;
     line-height: 145%;
   }
-  span {
+  p {
     color: var(--date_gray, #6d6d6d);
     font-size: var(--text-xs, 14px);
     font-weight: 400;
