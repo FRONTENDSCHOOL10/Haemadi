@@ -28,6 +28,26 @@ const viteConfig = defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          'react-router-dom': ['react-router-dom'],
+          'react-ecosystem': [
+            'use-immer',
+            'framer-motion',
+            'react-helmet-async',
+            'zustand',
+            'swiper',
+            'react-responsive',
+            'react-spinners',
+            'react-modal',
+          ],
+        },
+      },
+    },
+  },
 });
 
 export default viteConfig;
