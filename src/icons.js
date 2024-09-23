@@ -2,8 +2,8 @@
 const icons = {
   bottles: { name: 'bottles', width: 24, height: 29, color: '#062648' },
   statistics: { name: 'statistics', width: 30, height: null, color: '#062648' },
-  quotes: { name: 'quotes', width: 25, height: null, color: '#2D7EB9' },
-  quotes_selected: { name: 'quotes',width: 25,height: null,color: '#FFFFFF' },
+  quote: { name: 'quotes', width: 25, height: null, color: '#2D7EB9' },
+  quote_selected: { name: 'quotes',width: 25,height: null,color: '#FFFFFF' },
   video: { name: 'video', width: 26, height: 17, color: '#2D7EB9' },
   video_selected: { name: 'video', width: 26, height: 17, color: '#FFFFFF' },
   book: { name: 'book', width: 26, height: 24, color: '#2D7EB9' },

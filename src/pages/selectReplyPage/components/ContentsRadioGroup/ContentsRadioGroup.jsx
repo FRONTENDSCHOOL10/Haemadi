@@ -5,7 +5,7 @@ import ContentsRadio from '../ContentsRadio/ContentsRadio';
 import style from './ContentsRadioGroup.module.css';
 
 ContentsRadioGroup.propTypes = {
-  selectedValue: oneOf(['music', 'quotes', 'book', 'video']),
+  selectedValue: oneOf(['music', 'quote', 'book', 'video']),
   onSelect: func,
 };
 
