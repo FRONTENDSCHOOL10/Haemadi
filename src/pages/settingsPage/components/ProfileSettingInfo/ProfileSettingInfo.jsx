@@ -57,6 +57,7 @@ function ProfileSettingInfo() {
           className={styles.profileImg}
           src={image}
           alt={`${userInfo.nickName}의 프로필 이미지`}
+          loading="lazy"
         />
         <SVGIcon
           className={styles.svgCamera}

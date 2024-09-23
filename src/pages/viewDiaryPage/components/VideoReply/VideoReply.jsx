@@ -10,7 +10,7 @@ VideoReply.propTypes = {
 function VideoReply({ imgSrc, videoTitle, hashTags }) {
   return (
     <figure className={styles.component}>
-      <img src={imgSrc} alt={`${videoTitle} 썸네일`} />
+      <img src={imgSrc} alt={`${videoTitle} 썸네일`} loading="lazy" />
       <figcaption>
         <strong>{videoTitle}</strong>
         <ul>

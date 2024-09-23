@@ -26,7 +26,7 @@ function MusicButton({
       onClick={onClick}
       {...restProps}
     >
-      <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} />
+      <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} loading="lazy" />
 
       <div className={styles.textWrapper}>
         <span className={styles.musicTitle}>{musicTitle}</span>

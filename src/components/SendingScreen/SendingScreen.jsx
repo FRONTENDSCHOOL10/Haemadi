@@ -60,7 +60,7 @@ function SendingScreen({ onComplete }) {
   return (
     <div className={styles.sendingScreen}>
       <p>편지를 유리병에 넣고 있어요</p>
-      <img src={letterBottle} alt="편지가 담긴 유리병" />
+      <img src={letterBottle} alt="편지가 담긴 유리병" loading="lazy" />
     </div>
   );
 }

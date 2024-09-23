@@ -58,7 +58,7 @@ function BottleLink({ type, disabled = false, className }) {
         disabled={disabled}
       >
         {/* 스크린 리더가 이미지를 무시하도록 alt 속성 일부러 비워둠. Link 태그의 aria-label 속성으로 설명함. */}
-        <img src={bottleImg} alt="" style={cssText} />
+        <img src={bottleImg} alt="" style={cssText} loading="lazy" />
       </button>
     </div>
   );
