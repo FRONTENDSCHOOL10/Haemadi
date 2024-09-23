@@ -1,5 +1,6 @@
 import { oneOf } from 'prop-types';
 import styles from './StepContents.module.css';
+import { memo } from 'react';
 
 const labelForEmotion = {
   행복해요: '오늘 하루는 행복하시군요!\n다행이에요.',
@@ -41,4 +42,4 @@ function Step2to2Content({ selectedEmotion }) {
   );
 }
 
-export default Step2to2Content;
+export default memo(Step2to2Content);

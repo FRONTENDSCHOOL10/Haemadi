@@ -11,6 +11,7 @@ import Step2Content from './components/StepContents/Step2Content';
 import Step2to2Content from './components/StepContents/Step2to2Content';
 import Step3Content from './components/StepContents/Step3Content';
 import StepIndicator from './components/StepIndicator/StepIndicator';
+import { memo } from 'react';
 
 function DemoPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -93,4 +94,4 @@ function DemoPage() {
   );
 }
 
-export default DemoPage;
+export default memo(DemoPage);

@@ -17,6 +17,7 @@ import ProgressBar from './components/ProgressBar/ProgressBar';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
+import { memo } from 'react';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
@@ -181,4 +182,4 @@ function UserInfoInputPage() {
   );
 }
 
-export default UserInfoInputPage;
+export default memo(UserInfoInputPage);

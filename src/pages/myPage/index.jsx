@@ -5,6 +5,7 @@ import styles from './MyPage.module.css';
 import InterestBadge from './components/InterestBadge/InterestBadge';
 import LinkButton from './components/LinkButton/LinkButton';
 import UserProfile from './components/UserProfile/UserProfile';
+import { memo } from 'react';
 
 function MyPage() {
   return (
@@ -50,4 +51,4 @@ function MyPage() {
   );
 }
 
-export default MyPage;
+export default memo(MyPage);

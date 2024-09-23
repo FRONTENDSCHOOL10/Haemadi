@@ -5,6 +5,7 @@ import { ToasterStore } from '@/stores/ToasterStore';
 import useIsMounted from '@/hooks/useIsMounted';
 import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import { memo } from 'react';
 
 const ICONS = {
   info: icons.check,
@@ -64,4 +65,4 @@ function ToasterProvider({ children }) {
   );
 }
 
-export default ToasterProvider;
+export default memo(ToasterProvider);

@@ -1,5 +1,6 @@
 import { string, arrayOf } from 'prop-types';
 import styles from './VideoReply.module.css';
+import { memo } from 'react';
 
 VideoReply.propTypes = {
   imgSrc: string.isRequired,
@@ -23,4 +24,4 @@ function VideoReply({ imgSrc, videoTitle, hashTags }) {
   );
 }
 
-export default VideoReply;
+export default memo(VideoReply);

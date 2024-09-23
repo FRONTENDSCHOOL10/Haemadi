@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import styles from './AuthPage.module.css';
 import Button from '@/components/Button/Button';
 import { useMediaStore } from '@/stores/mediaStore';
+import { memo } from 'react';
 
 function AuthPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -52,4 +53,4 @@ function AuthPage() {
   );
 }
 
-export default AuthPage;
+export default memo(AuthPage);

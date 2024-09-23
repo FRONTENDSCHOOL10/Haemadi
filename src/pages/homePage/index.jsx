@@ -10,6 +10,7 @@ import BottleLink from './components/BottleLink/BottleLink';
 import Greeting from './components/Greeting/Greeting';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
+import { memo } from 'react';
 
 function HomePage() {
   useSunsetDetector(); // 홈 화면을 열 때마다 sunset 상태 변경
@@ -96,4 +97,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default memo(HomePage);

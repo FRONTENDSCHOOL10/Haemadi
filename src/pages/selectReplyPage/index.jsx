@@ -1,19 +1,18 @@
 import { memo, useCallback, useEffect, useId, useState } from 'react';
-import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { SyncLoader } from 'react-spinners';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import styles from './SelectReplyPage.module.css';
-import generateAIReply from '@/api/gemini';
 import { createDiary, updateDiary } from '@/api/diaries';
+import generateAIReply from '@/api/gemini';
 import { createReply } from '@/api/replies';
-import { useDiaryStore } from '@/stores/diaryStore';
-import { useToaster } from '@/stores/ToasterStore';
+import Button from '@/components/Button/Button';
 import SendingCompleteScreen from '@/components/SendingCompleteScreen/SendingCompleteScreen';
 import SendingScreen from '@/components/SendingScreen/SendingScreen';
-import Button from '@/components/Button/Button';
+import { useDiaryStore } from '@/stores/diaryStore';
+import { useToaster } from '@/stores/ToasterStore';
 import ContentsRadioGroup from './components/ContentsRadioGroup/ContentsRadioGroup';
 import ReplierRadioGroup from './components/ReplierRadioGroup/ReplierRadioGroup';
+import styles from './SelectReplyPage.module.css';
 
 function SelectReplyPage() {
   const navigate = useNavigate();

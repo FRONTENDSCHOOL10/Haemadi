@@ -10,6 +10,7 @@ import BackButton from '@/components/BackButton/BackButton';
 import Loading from '@/components/Loading/Loading';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
+import { memo } from 'react';
 
 function CalendarPage() {
   const navigate = useNavigate();
@@ -91,4 +92,4 @@ function CalendarPage() {
   );
 }
 
-export default CalendarPage;
+export default memo(CalendarPage);
