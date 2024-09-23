@@ -21,7 +21,7 @@ function Button({
   onClick,
   ...restProps
 }) {
-  const classNames = `${styles[type]} ${styles[state]}`;
+  const classNames = `${styles.button} ${styles[type]} ${styles[state]}`;
 
   const handleClick = (event) => {
     if (state === 'disabled') {

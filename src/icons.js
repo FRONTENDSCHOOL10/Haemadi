@@ -15,6 +15,7 @@ const icons = {
   question: { name: 'question', width: 19, height: null, color: '#062648' },
   headset: { name: 'headset', width: 19, height: null, color: '#062648' },
   announcement: { name: 'announcement', width: 19, height: 17, color: '#062648' },
+  logout: { name: 'logout', width: 19, height: null, color: '#062648' },
   list: { name: 'list', width: 17, height: null, color: '#062648' },
   information: { name: 'information', width: 18, height: 22, color: '#062648' },
   version: { name: 'version', width: 22, height: 17, color: '#062648' },
@@ -44,7 +45,7 @@ const icons = {
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
   musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
   go: { name: 'go', width: 13, height: 15, color: '#1771B2' },
-
+  
   remove: { name: 'remove', width: 18, height: 18, color: '#1F6496' },
   step_forward: { name: 'step_forward', width: 15, height: 21, color: '#2E2E2E' },
   step_backward: { name: 'step_backward', width: 15, height: 21, color: '#2E2E2E' },

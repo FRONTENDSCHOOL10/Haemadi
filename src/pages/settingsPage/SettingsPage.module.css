@@ -1,4 +1,5 @@
 .settingsPage {
+  position: relative;
   background-image: url('/bgImages/myPage_Bg.webp');
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,7 +13,7 @@ h1 {
   color: var(--white, #fff);
   font-size: var(--text-l, 20px);
   font-weight: bold;
-  padding-top: 30px;
+  padding-top: 25px;
 }
 
 .backButton {

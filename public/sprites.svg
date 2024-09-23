@@ -6,6 +6,11 @@
     </symbol>
 
 
+    <symbol id="logout" width="19" height="20" fill="none" viewBox="0 0 19 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 19H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h4m6 14 5-5-5-5m5 5H6"/>
+    </symbol>
+
+
     <symbol id="statistics" width="30" height="30" fill="none" viewBox="0 0 30 30">
       <rect width="8.333" height="12.5" y="17.5" fill="currentColor" rx="4" />
       <rect width="8.333" height="20" x="10.834" y="10" fill="currentColor" rx="4" />

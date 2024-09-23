@@ -1,5 +1,6 @@
 .settingButton {
-  width: 308px;
+  width: 100%;
+  max-width: 308px;
   height: 22px;
 
   background-color: transparent;

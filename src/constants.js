@@ -50,4 +50,5 @@ export const OtherSetting_PAGES = [
   'list',
   'information',
   'version',
+  'logout',
 ];
