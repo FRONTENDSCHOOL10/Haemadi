@@ -11,6 +11,7 @@ import Greeting from './components/Greeting/Greeting';
 import PlusButton from './components/PlusButton/PlusButton';
 import SelectEmotionModal from './components/SelectEmotionModal/SelectEmotionModal';
 import { memo } from 'react';
+import { useMemo } from 'react';
 
 function HomePage() {
   useSunsetDetector(); // 홈 화면을 열 때마다 sunset 상태 변경
@@ -20,8 +21,12 @@ function HomePage() {
   const { lockScroll, openScroll } = useBodyScrollLock(); // 모달창 열었을 때 외부 스크롤 방지
   const [greetingOpen, setGreetingOpen] = useState(true);
 
-  const handleGreetingButtonClick = () =>
-    setGreetingOpen((prevValue) => !prevValue);
+  const handleGreetingButtonClick = useCallback(
+    () => setGreetingOpen((prevValue) => !prevValue),
+    []
+  );
+
+  const greetingStyle = useMemo(() => ({ margin: '4.5vh 0 0 4.4vw' }), []);
 
   const openModal = useCallback(() => {
     setModalOpen(true);
@@ -61,7 +66,7 @@ function HomePage() {
       <Greeting
         greetingOpen={greetingOpen}
         onButtonClick={handleGreetingButtonClick}
-        style={{ margin: '4.5vh 0 0 4.4vw' }}
+        style={greetingStyle}
       />
 
       <BottleLink type={'pickUpBottle'} className={styles.bottleLinkLeft} />
