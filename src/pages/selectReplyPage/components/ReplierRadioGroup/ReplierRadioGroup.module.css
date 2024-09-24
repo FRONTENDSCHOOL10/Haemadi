@@ -1,0 +1,46 @@
+.groupWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
+.radioCard {
+  background-color: var(--white, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 23px;
+  width: 100%;
+  max-width: 325px;
+  padding: 23px 62px 22px 62px;
+  border-radius: 18px;
+  cursor: pointer;
+
+  strong {
+    font-size: var(--text-s, 16px);
+    font-weight: 700;
+  }
+  p {
+    text-align: center;
+    font-size: var(--text-xs, 14px);
+    line-height: 21px; /* 151.625% */
+  }
+}
+
+.radioInput {
+  appearance: none;
+  position: absolute;
+}
+.radioInput:checked + .radioCard {
+  background-color: #2e7eb9;
+  color: #ffffff;
+}
+
+.radioInput:focus {
+  outline: none;
+}
+.radioInput:focus-visible + .radioCard {
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
+}

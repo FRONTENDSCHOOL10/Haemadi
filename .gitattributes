@@ -1,0 +1,13 @@
+# 텍스트 파일 자동 탐지 및 LF 정규화 수행
+*        text=auto
+
+*.html   text diff=html
+*.css    text merge=union eol=lf
+*.js     text merge=union eol=lf
+*.ts     text merge=union eol=lf
+
+# 절대 경로 및 glob 문법 사용 가능
+/**/postinst* text eol-lf
+
+# .git 속성 폴더의 경우, `/`로 시작하지 않는 경로 처리
+relative/path/*.txt text eol-lf

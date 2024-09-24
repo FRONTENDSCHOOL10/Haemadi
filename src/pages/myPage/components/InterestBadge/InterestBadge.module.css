@@ -1,0 +1,27 @@
+.keywordList {
+  display: flex;
+  gap: 7px;
+}
+
+.keyword {
+  display: block;
+  width: 96px;
+  height: 40px;
+  padding: 9px 12px;
+
+  background-color: var(--white, #fff);
+  border: 1px solid var(--secondary, #1771b2);
+  border-radius: 37px;
+
+  color: var(--secondary, #1771b2);
+  font-size: var(--text-xs, 14px);
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  align-content: center;
+}
+
+.nothing {
+  color: var(--skipText_gray, #787878);
+  font-size: var(--text-s, 16px);
+}

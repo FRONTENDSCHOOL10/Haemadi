@@ -1,0 +1,65 @@
+.pageContainer {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 9px;
+  position: absolute;
+  bottom: 18vh;
+  right: 50vw;
+  translate: 50% 50%;
+
+  .plusButtonLabel {
+    color: #56483b;
+    text-align: center;
+    font-size: var(--text-l, 20px);
+    font-weight: 700;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .buttonWrapper {
+    bottom: calc(7.5vh - 32px);
+    translate: 50% 0;
+  }
+}
+
+/* 유리병 버튼 디자인 */
+.bottleLinkLeft {
+  position: absolute;
+  left: 5.4vw;
+  bottom: 40.5vh;
+}
+.bottleLinkRight {
+  position: absolute;
+  right: 6vw;
+  bottom: 23vh;
+}
+
+@media (min-width: 640px) {
+  .bottleLinkLeft {
+    left: calc(50vw - 300px);
+  }
+  .bottleLinkRight {
+    right: calc(50vw - 300px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottleLinkLeft {
+    left: calc(50vw - 380px);
+  }
+  .bottleLinkRight {
+    right: calc(50vw - 380px);
+  }
+}

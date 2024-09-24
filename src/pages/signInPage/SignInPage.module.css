@@ -1,0 +1,95 @@
+.signinPage {
+  position: relative;
+  padding-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.titleWrapper {
+  display: flex;
+  gap: 115px;
+
+  width: 345px;
+  margin-bottom: 60px;
+
+  h1 {
+    color: var(--black, #2e2e2e);
+    font-size: var(--text-xl, 24px);
+    font-weight: 800;
+    line-height: 150%;
+    letter-spacing: -0.72px;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 345px;
+  margin-bottom: 70px;
+}
+
+.registerButton {
+  margin-top: 13px;
+  color: var(--date_gray, #6d6d6d);
+  font-size: var(--text-xxs, 12px);
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.36px;
+  z-index: 2; /* 블러 레이어 위에 콘텐츠가 오도록 설정 */
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .signinPage {
+    padding-top: 154px;
+
+    background-image: url('/bgImages/demoPage_step1Bg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .signinPage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 12, 33, 0.3);
+    backdrop-filter: blur(13px);
+    z-index: 1; /* 블러 레이어가 콘텐츠 뒤에 위치하도록 설정 */
+  }
+
+  .titleWrapper,
+  .formWrapper {
+    z-index: 2; /* 블러 레이어 위에 콘텐츠가 오도록 설정 */
+  }
+
+  .titleWrapper {
+    width: 552px;
+    gap: 220px;
+    h1 {
+      color: var(--white, #fff);
+    }
+  }
+
+  .inputWrapper {
+    width: 552px;
+  }
+
+  .registerButton {
+    color: var(--white, #fff);
+    font-size: var(--text-s, 16px);
+  }
+}

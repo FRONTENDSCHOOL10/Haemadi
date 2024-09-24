@@ -1,0 +1,84 @@
+/* 모달 뒷배경 */
+.modalOverlay {
+  background-color: rgba(16, 16, 21, 0.7);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContent {
+  background-color: var(--white, #ffffff);
+  /* 화면 가운데 배치 */
+  position: fixed;
+  top: 103px;
+  left: 50%;
+  translate: -50% 0;
+  /* 중앙 정렬 */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* 창 크기 */
+  width: 309px;
+  padding-block: 21px;
+  border-radius: 15px;
+  white-space: pre-line;
+
+  /* 제목 */
+  h2 {
+    font-size: var(--text-m, 18px);
+    font-weight: 700;
+    line-height: 37px;
+  }
+  /* 내용 */
+  p {
+    color: var(--text_gray, #565656);
+    font-size: var(--text-xs, 14px);
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+/* 버튼 그룹 */
+.buttonWrapper {
+  margin-top: 13px;
+  display: flex;
+  gap: 12px;
+
+  button {
+    background-color: var(--white, #ffffff);
+    width: 69px;
+    height: 34px;
+    border: 0.5px solid var(--placeholder_gray, #cccbcf);
+    border-radius: 6px;
+    font-size: var(--text-xxs, 12px);
+  }
+
+  button:last-child {
+    background-color: var(--secondary, #1771b2);
+    color: var(--white, #ffffff);
+  }
+}
+
+/* pc 스타일 */
+@media (min-width: 640px) {
+  .modalContent {
+    top: 174px;
+    padding-block: 28px 29px;
+    width: 514px;
+
+    h2 {
+      font-size: var(--text-xl, 24px);
+    }
+    p {
+      margin-top: 6px;
+      font-size: var(--text-l, 20px);
+      line-height: 30px;
+    }
+  }
+  .buttonWrapper {
+    margin-top: 27px;
+  }
+}

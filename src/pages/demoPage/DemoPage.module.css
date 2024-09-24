@@ -1,0 +1,27 @@
+.pageContainer {
+  width: 100vw;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  overflow: auto;
+  position: relative;
+}
+
+.buttonWrapper {
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 8vh;
+  bottom: 5.4vh;
+  right: 50vw;
+  translate: 50% 0;
+}
+
+@media (min-width: 640px) {
+  .buttonWrapper {
+    gap: 2.3vh;
+    bottom: 16vh;
+  }
+}

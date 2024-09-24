@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: transparent;
+  width: 100%;
+  height: 12px;
+  position: absolute;
+  bottom: 0;
+}
+
+.progressBar {
+  background-color: var(--primary, #2e7fb9);
+  width: 0;
+  height: 100%;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    height: 14px;
+    top: 0;
+  }
+  .progressBar {
+    background-color: var(--white, #ffffff);
+  }
+}

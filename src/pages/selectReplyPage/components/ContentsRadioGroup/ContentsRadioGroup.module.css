@@ -1,0 +1,7 @@
+.groupWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 267px;
+  height: 267px;
+  gap: 13px;
+}

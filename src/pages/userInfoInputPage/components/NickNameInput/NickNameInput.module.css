@@ -1,0 +1,66 @@
+.nickWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 64px);
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.input {
+  padding: 8px;
+  width: 100%;
+  color: var(--tertiay, #1f6496);
+  font-size: var(--text-s, 16px);
+  font-weight: bold;
+  border-bottom: 1.5px solid rgba(126, 153, 189, 0.5);
+  text-align: left;
+  background-color: transparent;
+}
+
+.input::placeholder {
+  color: var(--placeholder_gray, #cccbcf);
+  font-weight: 400;
+}
+
+.clearButton {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: none;
+  z-index: 1;
+  left: calc(100% - 19px);
+  top: 25%;
+}
+
+.clearButton svg {
+  color: inherit;
+}
+
+@media (min-width: 640px) {
+  .nickWrap {
+    width: 522px;
+  }
+
+  .input {
+    font-size: var(--text-l, 20px);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
+    color: var(--white, #fff);
+    text-align: center;
+  }
+
+  .clearButton {
+    left: 504px;
+    top: 30%;
+  }
+}
+
+@media (max-width: 320px) {
+  .nickWrap {
+    width: 280px;
+  }
+
+  .clearButton {
+    left: 261px;
+  }
+}

@@ -1,0 +1,38 @@
+.settingsPage {
+  position: relative;
+  background-image: url('/bgImages/myPage_Bg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100%;
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+  color: var(--white, #fff);
+  font-size: var(--text-l, 20px);
+  font-weight: bold;
+  padding-top: 25px;
+}
+
+.backButton {
+  background: none;
+  position: absolute;
+  left: 7vw;
+  top: 29px;
+}
+
+.desktopBackButton {
+  left: 43vw;
+}
+
+@media (min-width: 640px) {
+  h1 {
+    padding-top: 69px;
+  }
+
+  .backButton {
+    top: 68px;
+  }
+}

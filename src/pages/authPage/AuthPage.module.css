@@ -1,0 +1,82 @@
+.authPage {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  background-image: url('/bgImages/demoPage_step1Bg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.authPage::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.7) 80%,
+    #fff 100%
+  );
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  span {
+    color: var(--white, #fff);
+    font-size: var(--text-m, 18px);
+    font-weight: 400;
+  }
+
+  strong {
+    font-size: var(--text-xxl, 55px);
+    color: #fff;
+    font-weight: 400;
+    font-family: 'KoreanHBRG';
+  }
+
+  margin-bottom: 54vh;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .authPage {
+    justify-content: flex-start;
+  }
+  .authPage::before {
+    background: none;
+  }
+
+  .textWrapper {
+    span {
+      font-size: var(--text-xl, 24px);
+    }
+    strong {
+      font-size: 66px;
+    }
+    margin-top: 15vh;
+    margin-bottom: 4vh;
+  }
+
+  .buttonWrapper {
+    gap: 40px;
+  }
+}

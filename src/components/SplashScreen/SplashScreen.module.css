@@ -1,0 +1,31 @@
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.splashScreen {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: #303b90;
+  background-image: url('/bgImages/splash.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  animation: fadeOut 0.8s ease-in forwards;
+  animation-delay: 1.2s;
+  opacity: 1;
+
+  z-index: 9999;
+}
+
+@media (aspect-ratio > 1) {
+  .splashScreen {
+    background-image: url('/bgImages/splash_desktop.webp');
+  }
+}

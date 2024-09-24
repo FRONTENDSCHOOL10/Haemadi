@@ -1,0 +1,66 @@
+.gnbContainer {
+  width: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 10;
+}
+
+.iconList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  li {
+    display: flex;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconText {
+  display: block;
+  font-size: var(--text-xxs);
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+@media (max-width: 639px) {
+  .gnbContainer {
+    bottom: 55px;
+    left: 50%;
+    translate: -50%;
+  }
+}
+
+@media (min-width: 640px) {
+  .gnbContainer {
+    width: 66px;
+    height: 271px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 38%;
+    right: 59px;
+    translate: 0 -50%;
+  }
+
+  .iconList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .iconList li {
+    margin-top: 4px;
+  }
+}

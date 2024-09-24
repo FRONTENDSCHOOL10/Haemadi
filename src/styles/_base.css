@@ -1,0 +1,193 @@
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareL.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareR.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareB.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/fonts/NanumSquareEB.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoreanHBRG'; /* 원하는 폰트 이름 */
+  src: url('/fonts/a해바라기.woff2') format('woff2'); /* TTF 폰트 경로 */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overflow-x: inherit;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+
+  font-family: 'NanumSquare', sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+nav ol,
+nav ul {
+  margin-block: 0;
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+b,
+strong {
+  font-weight: 700;
+}
+code,
+kbd,
+pre,
+samp {
+  font-size: 1rem;
+}
+small {
+  font-size: 0.75rem;
+}
+sub,
+sup {
+  position: relative;
+  vertical-align: baseline;
+  font-size: 0.625rem;
+  line-height: 0;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+canvas,
+img,
+svg,
+video {
+  max-width: 100%;
+}
+img {
+  vertical-align: middle;
+}
+abbr[title] {
+  cursor: help;
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+[type='search'] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  outline-offset: -2px;
+}
+[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+input {
+  text-transform: none;
+}
+[type='button'],
+[type='reset'],
+[type='submit'],
+button {
+  -webkit-appearance: button;
+  appearance: button;
+  cursor: pointer;
+}
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring,
+button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+legend {
+  box-sizing: inherit;
+  display: table;
+  color: inherit;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+progress {
+  vertical-align: baseline;
+}
+details {
+  display: block;
+}
+summary {
+  display: list-item;
+}
+[hidden] {
+  display: none !important;
+}
+:disabled {
+  cursor: not-allowed;
+}
+:focus {
+  outline: 0;
+}
+:focus-visible {
+  outline: 2.5px solid var(--focus, #66d6ea);
+  outline-offset: 0.5px;
+  border-radius: 2px;
+}

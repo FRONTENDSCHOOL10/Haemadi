@@ -1,0 +1,11 @@
+@import './_reset.css';
+@import './_theme.css';
+@import './_base.css';
+@import './_utils.css';
+
+#root {
+  height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+#root > div {
+  height: 100%;
+}

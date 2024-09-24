@@ -1,0 +1,33 @@
+.radioList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.emotionWrapper {
+  max-width: 357px;
+  gap: 9px;
+}
+
+.ageWrapper {
+  width: 356px;
+  gap: 14px;
+}
+
+.genderWrapper {
+  width: 253px;
+  gap: 16px;
+}
+
+.experienceWrapper {
+  width: 253px;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .radioList {
+    justify-content: center;
+  }
+  .emotionWrapper {
+    max-width: 479px;
+  }
+}

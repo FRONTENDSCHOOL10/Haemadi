@@ -1,0 +1,42 @@
+.radioCard {
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: visible;
+  cursor: pointer;
+
+  span {
+    margin-top: 15px;
+    color: var(--white, #fff);
+    font-size: var(--text-l, 20px);
+  }
+}
+
+.radioInput {
+  appearance: none;
+  position: absolute;
+}
+
+.radioInput:focus {
+  outline: none;
+}
+.radioInput:focus + .radioCard {
+  outline: auto;
+  outline-color: var(--focus, #66d6ea);
+}
+
+.radioIcon {
+  width: 148px;
+  height: 264px;
+  min-width: 148px;
+  min-height: 264px;
+}
+
+@media (min-width: 960px) {
+  .radioIcon {
+    filter: drop-shadow(-11px -1px 24.1px rgba(255, 255, 255, 0.3));
+    width: 168px;
+    height: 299px;
+    min-width: 168px;
+    min-height: 299px;
+  }
+}

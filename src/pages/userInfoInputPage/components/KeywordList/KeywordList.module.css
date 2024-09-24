@@ -1,0 +1,18 @@
+.keywordList {
+  width: 297px;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 9px;
+}
+
+li {
+  grid-column: span 2; /* 가로로 2개의 열을 차지 */
+}
+
+@media (min-width: 640px) {
+  li:nth-child(10) {
+    grid-column: 2 / span 2;
+  }
+}
