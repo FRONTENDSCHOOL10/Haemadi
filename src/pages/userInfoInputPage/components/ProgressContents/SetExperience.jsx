@@ -16,7 +16,7 @@ function SetExperience({ desktop = false, nickName, handle }) {
       <p className={styles.title}>
         {desktop ? (
           <>
-            ${nickName} 님<br />
+            {nickName} 님<br />
           </>
         ) : (
           ''
