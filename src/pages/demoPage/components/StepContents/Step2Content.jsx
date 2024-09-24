@@ -1,6 +1,7 @@
 import RadioList from '@/components/RadioList/RadioList';
 import { func } from 'prop-types';
 import styles from './StepContents.module.css';
+import { memo } from 'react';
 
 Step2Content.propTypes = {
   handleSelect: func,
@@ -15,4 +16,4 @@ function Step2Content({ handleSelect }) {
   );
 }
 
-export default Step2Content;
+export default memo(Step2Content);

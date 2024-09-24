@@ -55,16 +55,16 @@
   line-height: normal;
 }
 
-input[type='radio']:checked + label {
+.input[type='radio']:checked + .radioStyles {
   background-color: var(--secondary, #1771b2);
   color: var(--white, #fff);
 }
 
-input:focus-visible + label {
+.input:focus-visible + .radioStyles {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }
 
-input:focus {
+.input:focus {
   outline: none;
 }

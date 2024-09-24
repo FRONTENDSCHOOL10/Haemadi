@@ -53,6 +53,13 @@
 }
 
 @media (min-width: 640px) {
+  .container {
+    padding-top: 16vh;
+  }
+  .inputWrapper {
+    margin-top: 5.5vh;
+  }
+
   .title {
     color: var(--white, #fff);
     font-size: var(--text-xxl, 55px);

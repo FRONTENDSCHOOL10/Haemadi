@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './MusicPage.module.css';
@@ -7,6 +8,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import BackButton from '@/components/BackButton/BackButton';
 import MusicPlayer from './components/MusicPLayer/MusicPLayer';
 import MusicButton from './components/MusicButton/MusicButton';
+
 
 function MusicPage() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -63,4 +65,4 @@ function MusicPage() {
   );
 }
 
-export default MusicPage;
+export default memo(MusicPage);

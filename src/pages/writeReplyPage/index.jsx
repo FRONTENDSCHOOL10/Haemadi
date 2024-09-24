@@ -13,6 +13,7 @@ import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import SendingScreen from '@/components/SendingScreen/SendingScreen';
 import SaveButton from '../writeDiaryPage/components/SaveButton/SaveButton';
+import { memo } from 'react';
 
 function WriteReplyPage() {
   const { diaryId } = useParams();
@@ -159,4 +160,4 @@ function WriteReplyPage() {
   );
 }
 
-export default WriteReplyPage;
+export default memo(WriteReplyPage);

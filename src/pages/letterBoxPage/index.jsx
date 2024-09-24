@@ -7,8 +7,6 @@ import styles from './LetterBoxPage.module.css';
 import { useAuthStore } from '@/stores/authStore';
 import { BASE_URL } from '@/api/pbconfig';
 import useFetch from '@/hooks/useFetch';
-import icons from '@/icons';
-import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import Loading from '@/components/Loading/Loading';
