@@ -11,12 +11,15 @@ import BackButton from '@/components/BackButton/BackButton';
 import Loading from '@/components/Loading/Loading';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
+import { memo } from 'react';
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
 function CalendarPage() {
   const navigate = useNavigate();
   const userInfo = useAuthStore((store) => store.userInfo);
   const [selectedDate, setSelectedDate] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const { lockScroll, openScroll } = useBodyScrollLock();
 
   // 로그인 기능 구현 후 userId 변경 필요
   // 현재 로그인한 유저의 일기들을 불러옴
@@ -35,25 +38,31 @@ function CalendarPage() {
   );
 
   // 조개 버튼 클릭 (날짜 선택 + 모달창 열림)
-  const handleShellClick = useCallback((date) => {
-    setSelectedDate(date);
-    setModalOpen(true);
-  }, []);
+  const handleShellClick = useCallback(
+    (date) => {
+      setSelectedDate(date);
+      setModalOpen(true);
+      lockScroll();
+    },
+    [lockScroll]
+  );
   // 모달창 닫기 (날짜 선택 해제 + 모달창 닫힘)
   const closeModal = useCallback(() => {
     setSelectedDate(null);
     setModalOpen(false);
-  }, []);
+    openScroll();
+  }, [openScroll]);
   // 모달창에서 go버튼 누름 (해당 일기의 viewDiaryPage로 이동)
   const confirmModal = useCallback(() => {
+    openScroll();
     navigate(`/my/view-diary/${selectedDiary?.id}`);
-  }, [navigate, selectedDiary]);
+  }, [navigate, openScroll, selectedDiary]);
 
   if (status === 'loading') return <Loading />;
   if (status === 'error') return <div>{error.message}</div>;
 
   return (
-    <>
+    <div className={styles.page}>
       <Helmet>
         <title>캘린더 - 해마디</title>
         <meta
@@ -72,7 +81,7 @@ function CalendarPage() {
         />
       </Helmet>
       <header className={styles.header}>
-        <BackButton style={{ position: 'absolute', left: 0 }} />
+        <BackButton style={{ position: 'absolute', left: '8vw' }} />
         <h1>나의 기록</h1>
       </header>
       <main className={styles.main}>
@@ -89,8 +98,8 @@ function CalendarPage() {
           confirmModal={confirmModal}
         />
       </main>
-    </>
+    </div>
   );
 }
 
-export default CalendarPage;
+export default memo(CalendarPage);

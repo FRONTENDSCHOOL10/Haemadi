@@ -1,10 +1,10 @@
 import { bool, func, oneOf, string } from 'prop-types';
-import { memo, useId } from 'react';
+import { memo, useId, useMemo } from 'react';
 import styles from './BottleRadio.module.css';
 import glassBottle from '/glassBottle/glassBottle.webp';
-import glassBottleSelected from '/glassBottle/glassBottle_selected.webp';
 import glassBottleCenter from '/glassBottle/glassBottle_center.webp';
 import glassBottleEdge from '/glassBottle/glassBottle_edge.webp';
+import glassBottleSelected from '/glassBottle/glassBottle_selected.webp';
 
 BottleRadio.propTypes = {
   index: oneOf([0, 1, 2, 3, 4]).isRequired,
@@ -25,7 +25,7 @@ function BottleRadio({
 }) {
   const radioInputId = useId();
 
-  const bottleImgSrc = () => {
+  const bottleImgSrc = useMemo(() => {
     if (desktop) {
       return selected ? glassBottleSelected : glassBottle;
     } else {
@@ -39,7 +39,7 @@ function BottleRadio({
           return glassBottleEdge;
       }
     }
-  };
+  }, [desktop, location, selected]);
 
   const handleClick = (e) => {
     !desktop && e.preventDefault();
@@ -63,7 +63,7 @@ function BottleRadio({
         onClick={handleClick}
       >
         <img
-          src={bottleImgSrc()}
+          src={bottleImgSrc}
           alt="" // label에서 span으로 정보를 제공하고 alt 속성 일부러 비워둠
           className={styles.radioIcon}
           loading="lazy"

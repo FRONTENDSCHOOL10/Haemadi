@@ -1,6 +1,7 @@
 import { func, oneOf } from 'prop-types';
 import { useId } from 'react';
 import styles from './ReplierRadioGroup.module.css';
+import { memo } from 'react';
 
 ReplierRadioGroup.propTypes = {
   onSelect: func,
@@ -49,4 +50,4 @@ function ReplierRadioGroup({ selectedValue, onSelect }) {
   );
 }
 
-export default ReplierRadioGroup;
+export default memo(ReplierRadioGroup);

@@ -17,6 +17,7 @@ import ProgressBar from './components/ProgressBar/ProgressBar';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
+import { memo } from 'react';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
@@ -110,6 +111,7 @@ function UserInfoInputPage() {
           <SetExperience
             handle={(value) => handleInputChange('experience', value)}
             nickName={formData.nickName}
+            desktop={desktop}
           />
         );
       case '5':
@@ -168,7 +170,7 @@ function UserInfoInputPage() {
         />
       </Helmet>
       <div className={styles.backButton}>
-        {progress !== '1' && <BackButton color={desktop ? 'white' : 'blue'} />}
+        <BackButton color={desktop ? 'white' : 'blue'} />
       </div>
       {renderContent()}
       {progress !== '6' && <ProgressBar progress={parseInt(progress)} />}
@@ -181,4 +183,4 @@ function UserInfoInputPage() {
   );
 }
 
-export default UserInfoInputPage;
+export default memo(UserInfoInputPage);

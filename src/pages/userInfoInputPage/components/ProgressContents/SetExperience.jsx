@@ -1,20 +1,26 @@
 import { memo } from 'react';
-import { string, func } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 
 import styles from './ProgressContents.module.css';
 import RadioList from '@/components/RadioList/RadioList';
 
 SetExperience.propTypes = {
+  desktop: bool,
   nickName: string,
   handle: func,
 };
 
-function SetExperience({ nickName, handle }) {
+function SetExperience({ desktop = false, nickName, handle }) {
   return (
     <div className={styles.container}>
       <p className={styles.title}>
-        {nickName} 님
-        <br />
+        {desktop ? (
+          <>
+            ${nickName} 님<br />
+          </>
+        ) : (
+          ''
+        )}
         일기에 대한 경험이
         <br />
         어느정도인가요?

@@ -1,5 +1,6 @@
 import { string } from 'prop-types';
 import styles from './BookReply.module.css';
+import { memo } from 'react';
 
 BookReply.propTypes = {
   imgSrc: string.isRequired,
@@ -23,4 +24,4 @@ function BookReply({ imgSrc, bookTitle, author, publisher }) {
   );
 }
 
-export default BookReply;
+export default memo(BookReply);

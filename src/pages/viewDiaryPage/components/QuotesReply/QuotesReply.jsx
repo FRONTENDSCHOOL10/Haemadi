@@ -1,5 +1,6 @@
 import { string } from 'prop-types';
 import styles from './QuotesReply.module.css';
+import { memo } from 'react';
 
 QuotesReply.propTypes = {
   quotes: string.isRequired,
@@ -17,4 +18,4 @@ function QuotesReply({ quotes, author }) {
   );
 }
 
-export default QuotesReply;
+export default memo(QuotesReply);
