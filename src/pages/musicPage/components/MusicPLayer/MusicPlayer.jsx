@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState, memo, useCallback } from 'react';
+import { array } from 'prop-types';
 
 import styles from './MusicPlayer.module.css';
 import musicRecord from '/musicrecord.webp';
 import PlayTime from '../PlayTime/PlayTime';
 import RemoteButton from '../RemoteButton/RemoteButton';
+
+MusicPlayer.propTypes = {
+  videoIds: array,
+};
 
 const MusicPlayer = ({ videoIds = [] }) => {
   const playerRef = useRef(null); // YouTube 플레이어를 참조하기 위한 ref
@@ -30,7 +35,7 @@ const MusicPlayer = ({ videoIds = [] }) => {
         controls: 0, // 유튜브 기본 컨트롤러 비활성화
       },
     });
-  }, [videoIds, currentTrackIndex]);
+  }, [videoIds, currentTrackIndex, onPlayerReady]);
 
   useEffect(() => {
     // YouTube IFrame API 로드
