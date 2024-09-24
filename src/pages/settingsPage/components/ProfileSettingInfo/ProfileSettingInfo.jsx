@@ -100,7 +100,7 @@ function ProfileSettingInfo() {
 
       <button
         className={styles.editButton}
-        onClick={() => navigate('./settings/userInfoInput/:progress')}
+        onClick={() => navigate('./user-info-input/1')}
         aria-label="수정하기"
       >
         수정하기

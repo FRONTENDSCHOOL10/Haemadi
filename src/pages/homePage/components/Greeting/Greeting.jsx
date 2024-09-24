@@ -2,6 +2,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { bool, func } from 'prop-types';
 import styles from './Greeting.module.css';
+import { memo } from 'react';
 
 Greeting.propTypes = {
   greetingOpen: bool,
@@ -30,4 +31,4 @@ function Greeting({ greetingOpen = true, onButtonClick, ...restProps }) {
   );
 }
 
-export default Greeting;
+export default memo(Greeting);

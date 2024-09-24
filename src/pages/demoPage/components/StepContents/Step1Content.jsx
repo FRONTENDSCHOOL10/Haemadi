@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './StepContents.module.css';
 
 function Step1Content() {
@@ -8,4 +9,4 @@ function Step1Content() {
   );
 }
 
-export default Step1Content;
+export default memo(Step1Content);

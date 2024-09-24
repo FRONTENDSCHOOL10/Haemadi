@@ -1,5 +1,6 @@
 import { useMediaStore } from '@/stores/mediaStore';
 import styles from './StepContents.module.css';
+import { memo } from 'react';
 
 function Step3Content() {
   const desktop = useMediaStore((store) => store.desktop);
@@ -16,4 +17,4 @@ function Step3Content() {
   );
 }
 
-export default Step3Content;
+export default memo(Step3Content);

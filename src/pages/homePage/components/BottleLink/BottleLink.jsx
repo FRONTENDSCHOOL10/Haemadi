@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './BottleLink.module.css';
 import bottleLink_letterBox from '/homePage/bottleLink_letterBox.webp';
 import bottleLink_pickUp from '/homePage/bottleLink_pickUp.webp';
+import { memo } from 'react';
 
 BottleLink.propTypes = {
   type: oneOf(['pickUpBottle', 'letterBox']).isRequired,
@@ -64,4 +65,4 @@ function BottleLink({ type, disabled = false, className }) {
   );
 }
 
-export default BottleLink;
+export default memo(BottleLink);

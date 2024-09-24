@@ -2,6 +2,7 @@ import { func, oneOf } from 'prop-types';
 
 import RadioInput from '@/components/RadioInput/RadioInput';
 import styles from './RadioList.module.css';
+import { memo } from 'react';
 
 const RADIO_VALUES = {
   emotion: [
@@ -52,4 +53,4 @@ function RadioList({ type, onSelect }) {
   );
 }
 
-export default RadioList;
+export default memo(RadioList);

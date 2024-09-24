@@ -69,8 +69,8 @@ function StatisticsPage() {
       </header>
       <div className={styles.cardWrapper}>
         <EmotionAverage diariesData={diariesData} />
-        <ReplyFromPercentage repliesData={repliesData} />
-        <AIReplyType repliesData={repliesData} />
+        <ReplyFromPercentage diariesData={diariesData} userInfo={userInfo} />
+        <AIReplyType diariesData={diariesData} userInfo={userInfo} />
         <AnalysisReport diariesData={diariesData} repliesData={repliesData} />
       </div>
     </div>

@@ -1,5 +1,6 @@
-import styles from './AuthInput.module.css';
 import { oneOf, string } from 'prop-types';
+import { memo } from 'react';
+import styles from './AuthInput.module.css';
 
 AuthInput.propTypes = {
   name: oneOf(['username', 'password', 'passwordConfirm']),
@@ -23,4 +24,4 @@ function AuthInput({ name = 'username', placeholder, ...restProps }) {
   );
 }
 
-export default AuthInput;
+export default memo(AuthInput);

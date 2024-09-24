@@ -2,21 +2,46 @@ import { memo, useState, useEffect, useMemo } from 'react';
 import { object } from 'prop-types';
 
 import styles from './AIReplyType.module.css';
+import { getReply } from '@/api/replies';
 
 AIReplyType.propTypes = {
-  repliesData: object,
+  diariesData: object,
+  userInfo: object,
 };
 
-function AIReplyType({ repliesData }) {
+function AIReplyType({ diariesData, userInfo }) {
   const [circles, setCircles] = useState([]);
+  const [repliesData, setRepliesData] = useState([]);
+
+  useEffect(() => {
+    // 사용자의 일기 중에 답장이 있는 일기 리스트 반환
+    const hasReplyDiaries = diariesData.items.filter((diary) => {
+      return diary.userId === userInfo.id && diary.replyId !== '';
+    });
+
+    // 답장 데이터 요청 배열 반환
+    const fetchReplies = async () => {
+      try {
+        const repliesPromises = hasReplyDiaries.map((element) =>
+          getReply(element.replyId)
+        );
+        const replies = await Promise.all(repliesPromises);
+        setRepliesData(replies);
+      } catch (error) {
+        console.error('답장 데이터를 가져오는 중 오류 발생:', error);
+      }
+    };
+
+    if (hasReplyDiaries.length > 0) {
+      fetchReplies();
+    }
+  }, [diariesData, userInfo]);
 
   const calcData = useMemo(() => {
-    if (!repliesData || !repliesData.items) return []; // 데이터가 없을 경우 빈 배열 반환
+    if (!repliesData) return []; // 데이터가 없을 경우 빈 배열 반환
 
     // AI가 작성한 답장만 필터링
-    const aiReplies = repliesData.items.filter(
-      (reply) => reply.replier === 'ai'
-    );
+    const aiReplies = repliesData.filter((reply) => reply.replier === 'ai');
     const totalAIReplies = aiReplies.length;
 
     if (totalAIReplies === 0) return []; // AI 답장이 없을 경우 빈 배열 반환

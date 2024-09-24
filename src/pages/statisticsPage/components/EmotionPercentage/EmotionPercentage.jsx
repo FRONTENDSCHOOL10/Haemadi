@@ -78,27 +78,31 @@ function EmotionPercentage({ diariesData }) {
           </figure>
         )}
         <div className={styles.piechart}>
-          <svg width="300" height="150" viewBox="0 0 300 150">
-            {segments.map((segment, index) => {
-              const strokeValue = (halfCircumference * segment.value) / 100;
-              const strokeDasharray = `${strokeValue} ${halfCircumference - strokeValue}`;
-              const strokeDashoffset = accumulatedOffset;
-              accumulatedOffset -= strokeValue; // 다음 섹션을 위한 offset 업데이트
-              return (
-                <circle
-                  key={index}
-                  cx="150"
-                  cy="150"
-                  r={radius}
-                  fill="transparent"
-                  stroke={segment.color}
-                  strokeWidth={strokeWidth}
-                  strokeDasharray={strokeDasharray}
-                  strokeDashoffset={strokeDashoffset}
-                />
-              );
-            })}
-          </svg>
+          {totalItems !== 0 ? (
+            <svg width="300" height="150" viewBox="0 0 300 150">
+              {segments.map((segment, index) => {
+                const strokeValue = (halfCircumference * segment.value) / 100;
+                const strokeDasharray = `${strokeValue} ${halfCircumference - strokeValue}`;
+                const strokeDashoffset = accumulatedOffset;
+                accumulatedOffset -= strokeValue; // 다음 섹션을 위한 offset 업데이트
+                return (
+                  <circle
+                    key={index}
+                    cx="150"
+                    cy="150"
+                    r={radius}
+                    fill="transparent"
+                    stroke={segment.color}
+                    strokeWidth={strokeWidth}
+                    strokeDasharray={strokeDasharray}
+                    strokeDashoffset={strokeDashoffset}
+                  />
+                );
+              })}
+            </svg>
+          ) : (
+            <span>데이터가 없습니다.</span>
+          )}
         </div>
         {/* 상위 5개 감정 가져오기 */}
         <ul className={styles.emotionShellList}>
