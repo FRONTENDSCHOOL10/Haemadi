@@ -1,4 +1,5 @@
 .PlayerWrapper {
+  width: 100%;
   img {
     display: block;
     margin: 13px auto;
@@ -26,7 +27,7 @@
   margin-bottom: 10px;
 
   button {
-    padding: 5px 5px;
+    padding: 0px 5px;
   }
 }
 
@@ -35,7 +36,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 10vw;
+  margin: 0 20px;
 
   input[type='range'] {
     width: 100%;
