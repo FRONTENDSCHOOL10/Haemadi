@@ -86,7 +86,7 @@ function SignUpPage() {
       await userSignIn(username, password);
 
       // 사용자 정보를 입력하는 페이지로 이동
-      navigate('/my/settings/userInfoInput/1');
+      navigate('/my/settings/user-info-input/1');
     } catch (error) {
       console.error('회원가입 또는 로그인 실패:', error);
     }
