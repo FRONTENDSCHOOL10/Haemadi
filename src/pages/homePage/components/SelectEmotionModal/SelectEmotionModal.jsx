@@ -32,7 +32,7 @@ const MotionPlusButton = motion(PlusButton);
 function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
   const navigate = useNavigate();
   const sunset = useSunStore((store) => store.sunset);
-  const modalRef = useRef(null);
+  const dialogRef = useRef(null);
   const lastFocusedElement = useRef(null);
   const modalLabelId = useId();
 
@@ -42,18 +42,18 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
       // 모달이 열릴 때 포커스가 있던 요소 기억
       lastFocusedElement.current = document.activeElement;
 
-      const modalElement = modalRef.current;
+      const dialogElement = dialogRef.current;
 
       // focusable HTML 요소 수집
       // use 태그에서 href를 사용하고 있기 때문에 문제가 생겨서 [href]에 not(use)를 붙여서 use는 수집하지 않음
-      const focusableElements = modalElement.querySelectorAll(
+      const focusableElements = dialogElement.querySelectorAll(
         'button, [href]:not(use), input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
 
       // 모달 창 안의 첫 focusable 요소로 focus 이동
-      firstElement.focus();
+      dialogElement.focus();
 
       const handleKeyPress = (event) => {
         // tab(또는 shift + tab)키 눌렀을 때 모달 창을 벗어나지 않도록 설정
@@ -76,11 +76,11 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
       };
 
       // 모달 창에 tab, esc 키 이벤트 구독 추가
-      modalElement.addEventListener('keydown', handleKeyPress);
+      dialogElement.addEventListener('keydown', handleKeyPress);
 
       return () => {
         // 이벤트 구독 제거
-        modalElement.removeEventListener('keydown', handleKeyPress);
+        dialogElement.removeEventListener('keydown', handleKeyPress);
       };
     } else if (lastFocusedElement.current) {
       // 모달이 닫힐 때 포커스를 이전에 있었던 요소로 이동
@@ -123,7 +123,6 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
     <AnimatePresence>
       {modalOpen && (
         <div
-          ref={modalRef}
           className={styles.modalOverlay}
           onClick={handleOverlayClick}
           style={{
@@ -133,9 +132,11 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
           }}
         >
           <div
+            ref={dialogRef}
             role="dialog"
             aria-labelledby={modalLabelId}
             aria-modal="true"
+            tabIndex={-1}
             className={styles.modalContent}
           >
             <h2
@@ -146,30 +147,6 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
             >
               오늘은 어떤 하루였나요?
             </h2>
-            {/* Plus 버튼 */}
-            <MotionPlusButton
-              desktop={desktop}
-              onClick={closeModal}
-              activated={modalOpen}
-              initial={{ rotate: 0, translateY: 0 }}
-              animate={{
-                rotate: 45,
-                translateY: desktop ? '-17.5vh' : '-7vh',
-              }}
-              transition={{ duration: 0.3 }}
-              exit={{
-                rotate: 0,
-                translateY: 0,
-                transition: { duration: 0.3, delay: 0.7 },
-              }}
-              style={{
-                position: 'absolute',
-                bottom: '18vh',
-                right: '50vw',
-                translate: '50% 50%',
-                zIndex: 1,
-              }}
-            />
             {/* 8개의 조개버튼 리스트 */}
             <ul className={styles.shellList}>
               {EMOTIONS.map((emotion, index) => (
@@ -200,6 +177,30 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
                 </motion.li>
               ))}
             </ul>
+            {/* Plus 버튼 */}
+            <MotionPlusButton
+              desktop={desktop}
+              onClick={closeModal}
+              activated={modalOpen}
+              initial={{ rotate: 0, translateY: 0 }}
+              animate={{
+                rotate: 45,
+                translateY: desktop ? '-17.5vh' : '-7vh',
+              }}
+              transition={{ duration: 0.3 }}
+              exit={{
+                rotate: 0,
+                translateY: 0,
+                transition: { duration: 0.3, delay: 0.7 },
+              }}
+              style={{
+                position: 'absolute',
+                bottom: '18vh',
+                right: '50vw',
+                translate: '50% 50%',
+                zIndex: 1,
+              }}
+            />
           </div>
         </div>
       )}
