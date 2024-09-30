@@ -152,7 +152,7 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
               initial={{ rotate: 0, translateY: 0 }}
               animate={{
                 rotate: 45,
-                translateY: desktop ? '-17.5vh' : '-10vh',
+                translateY: desktop ? '-17.5vh' : '-7vh',
               }}
               transition={{ duration: 0.3 }}
               exit={{
