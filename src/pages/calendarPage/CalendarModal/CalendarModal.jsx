@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { bool, func, shape, string } from 'prop-types';
 import { memo, useEffect, useRef } from 'react';
 import styles from './CalendarModal.module.css';
+import { useId } from 'react';
 
 CalendarModal.propTypes = {
   diaryData: shape({ emotion: string, message: string }),
@@ -20,6 +21,8 @@ function CalendarModal({
 }) {
   const modalRef = useRef(null);
   const lastFocusedElement = useRef(null);
+  const modalLabelId = useId();
+  const modalDescriptionId = useId();
 
   // Focus Trapping (포커스가 모달창 밖으로 벗어나지 않게 함)
   useEffect(() => {
@@ -88,9 +91,6 @@ function CalendarModal({
         // 모달 창 외부를 감싸는 요소
         <motion.div
           ref={modalRef}
-          role="dialog"
-          aria-labelledby="calendarModal_label"
-          aria-modal="true"
           className={styles.modalOverlay}
           onClick={handleOverlayClick}
           // 애니메이션 속성
@@ -100,7 +100,13 @@ function CalendarModal({
           transition={{ duration: 0.3 }}
         >
           {/* 모달 창 */}
-          <div className={styles.modalContent}>
+          <div
+            role="dialog"
+            aria-labelledby={modalLabelId}
+            aria-describedby={modalDescriptionId}
+            aria-modal="true"
+            className={styles.modalContent}
+          >
             <SVGIcon
               {...icons[`shell_${diaryData.emotion}`]}
               width={58}
@@ -109,8 +115,8 @@ function CalendarModal({
             />
 
             <div className={styles.textWrapper}>
-              <h2 id="calendarModal_label">이 날의 내 기분은...</h2>
-              <p>{diaryData.message}</p>
+              <h2 id={modalLabelId}>이 날의 내 기분은...</h2>
+              <p id={modalDescriptionId}>{diaryData.message}</p>
             </div>
 
             <button onClick={confirmModal}>

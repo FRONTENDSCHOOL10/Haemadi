@@ -34,7 +34,7 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
   const sunset = useSunStore((store) => store.sunset);
   const modalRef = useRef(null);
   const lastFocusedElement = useRef(null);
-  const headingId = useId();
+  const modalLabelId = useId();
 
   // Focus Trapping (포커스가 모달창 밖으로 벗어나지 않게 함)
   useEffect(() => {
@@ -124,9 +124,6 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
       {modalOpen && (
         <div
           ref={modalRef}
-          role="dialog"
-          aria-labelledby={headingId}
-          aria-modal="true"
           className={styles.modalOverlay}
           onClick={handleOverlayClick}
           style={{
@@ -135,9 +132,14 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
               : 'rgba(151, 151, 151, 0.6)',
           }}
         >
-          <section className={styles.modalContent}>
+          <div
+            role="dialog"
+            aria-labelledby={modalLabelId}
+            aria-modal="true"
+            className={styles.modalContent}
+          >
             <h2
-              id={headingId}
+              id={modalLabelId}
               style={{
                 color: sunset ? 'var(--white, #ffffff)' : '#333',
               }}
@@ -198,7 +200,7 @@ function SelectEmotionModal({ modalOpen, desktop, closeModal }) {
                 </motion.li>
               ))}
             </ul>
-          </section>
+          </div>
         </div>
       )}
     </AnimatePresence>
