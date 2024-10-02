@@ -44,7 +44,7 @@ function UserInfoInputPage() {
     gender: null,
     age: null,
     experience: null,
-    keyword: [],
+    interest: [],
   });
 
   // 닉네임 유효성 검사 함수
@@ -75,7 +75,7 @@ function UserInfoInputPage() {
       case 4:
         return formData.experience ? 'primary' : 'disabled';
       case 5:
-        return formData.keyword.length > 0 ? 'primary' : 'disabled';
+        return formData.interest.length > 0 ? 'primary' : 'disabled';
       case 6:
         return 'default';
       default:
@@ -117,8 +117,10 @@ function UserInfoInputPage() {
       case '5':
         return (
           <SetKeyword
-            selectedKeywords={formData.keyword}
-            setSelectedKeywords={(value) => handleInputChange('keyword', value)}
+            selectedKeywords={formData.interest}
+            setSelectedKeywords={(value) =>
+              handleInputChange('interest', value)
+            }
           />
         );
       case '6':
@@ -134,6 +136,7 @@ function UserInfoInputPage() {
       return;
     } else if (progress === '5') {
       try {
+        console.log(formData);
         await setUserData(userInfo.id, {
           ...formData,
           experience: ExperienceToNumber(formData.experience),
