@@ -5,7 +5,6 @@ import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 import { useAuthStore } from '@/stores/authStore';
-import { useMediaStore } from '@/stores/mediaStore';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OtherSettingList from './components/OtherSettingList/OtherSettingList';
@@ -13,7 +12,6 @@ import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingIn
 import styles from './SettingsPage.module.css';
 
 function SettingsPage() {
-  const desktop = useMediaStore((store) => store.desktop);
   const navigate = useNavigate();
   const logoutUser = useAuthStore((store) => store.logoutUser);
   const [modalOpen, setModalOpen] = useState(false);
@@ -57,7 +55,7 @@ function SettingsPage() {
       <BackButton
         color="white"
         aria-label="뒤로가기"
-        className={`${styles.backButton} ${desktop ? styles.desktopBackButton : styles.mobileBackButton}`}
+        className={styles.backButton}
       />
       <ProfileSettingInfo />
       <OtherSettingList openModal={openModal} />
