@@ -10,18 +10,20 @@ import { useToaster } from '@/stores/ToasterStore';
 import BackButton from '@/components/BackButton/BackButton';
 import AuthInput from '@/components/AuthInput/AuthInput';
 import Button from '@/components/Button/Button';
+import { SyncLoader } from 'react-spinners';
 
 function SignUpPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const toast = useToaster();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [values, setValues] = useImmer({
     username: '',
     password: '',
     passwordConfirm: '',
   });
 
-  const [buttonState, setButtonState] = useState(false);
+  const [buttonsDisabled, setbuttonsDisabled] = useState(false);
 
   useEffect(() => {
     const { username, password, passwordConfirm } = values;
@@ -29,13 +31,14 @@ function SignUpPage() {
     if (
       username.length > 0 &&
       password.length > 0 &&
-      passwordConfirm.length > 0
+      passwordConfirm.length > 0 &&
+      !loading
     ) {
-      setButtonState(true);
+      setbuttonsDisabled(true);
     } else {
-      setButtonState(false);
+      setbuttonsDisabled(false);
     }
-  }, [values]);
+  }, [values, loading]);
 
   const validateInput = useCallback((name, value) => {
     // 아이디 및 비밀번호 유효성 검사 정규 표현식
@@ -80,6 +83,8 @@ function SignUpPage() {
       return;
     }
 
+    setLoading(true);
+
     // 서버에 정보 저장 및 로그인 처리
     try {
       await userSignUp(username, password, passwordConfirm);
@@ -89,6 +94,8 @@ function SignUpPage() {
       navigate('/my/settings/user-info-input/1');
     } catch (error) {
       console.error('회원가입 또는 로그인 실패:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -148,10 +155,21 @@ function SignUpPage() {
         </div>
         <Button
           type="stroke"
-          state={!buttonState ? 'disabled' : desktop ? 'default' : 'primary'}
+          state={
+            !buttonsDisabled ? 'disabled' : desktop ? 'default' : 'primary'
+          }
           role="submit"
         >
-          가입하기
+          {loading ? (
+            <>
+              <SyncLoader color="#2E7FB9" size={10} aria-hidden="true" />
+              <p className="sr-only">
+                회원 가입이 완료된 후 버튼이 활성화됩니다.
+              </p>
+            </>
+          ) : (
+            '가입하기'
+          )}
         </Button>
       </form>
     </div>

@@ -18,6 +18,8 @@ import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
 import { memo } from 'react';
+import { useState } from 'react';
+import { SyncLoader } from 'react-spinners';
 
 // experience 값을 숫자로 매핑하는 함수 분리
 const ExperienceToNumber = (experience) => {
@@ -39,6 +41,7 @@ function UserInfoInputPage() {
   const navigate = useNavigate();
   const toast = useToaster();
   const { progress } = useParams();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useImmer({
     nickName: null,
     gender: null,
@@ -75,13 +78,15 @@ function UserInfoInputPage() {
       case 4:
         return formData.experience ? 'primary' : 'disabled';
       case 5:
-        return formData.interest.length > 0 ? 'primary' : 'disabled';
+        return formData.interest.length > 0 && !loading
+          ? 'primary'
+          : 'disabled';
       case 6:
         return 'default';
       default:
         return 'disabled';
     }
-  }, [progress, formData]);
+  }, [progress, formData, loading]);
 
   const renderContent = () => {
     switch (progress) {
@@ -136,6 +141,7 @@ function UserInfoInputPage() {
       return;
     } else if (progress === '5') {
       try {
+        setLoading(true);
         await setUserData(userInfo.id, {
           ...formData,
           experience: ExperienceToNumber(formData.experience),
@@ -143,6 +149,8 @@ function UserInfoInputPage() {
       } catch {
         toast('warn', '다시 한번 시도해주세요.');
         return;
+      } finally {
+        setLoading(false);
       }
     } else if (progress === '6') {
       navigate('/');
@@ -178,7 +186,20 @@ function UserInfoInputPage() {
       {progress !== '6' && <ProgressBar progress={parseInt(progress)} />}
       <div className={styles.buttonWrapper}>
         <Button type="normal" state={buttonState} onClick={handleNextClick}>
-          {progress != 6 ? '다음으로' : '섬으로 바로가기'}
+          {progress != 6 ? (
+            loading ? (
+              <>
+                <SyncLoader color="#2E7FB9" size={10} aria-hidden="true" />
+                <p className="sr-only">
+                  정보 수정이 완료된 후 버튼이 활성화됩니다.
+                </p>
+              </>
+            ) : (
+              '다음으로'
+            )
+          ) : (
+            '섬으로 바로가기'
+          )}
         </Button>
       </div>
     </div>
