@@ -2,7 +2,7 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 import { AnimatePresence, motion } from 'framer-motion';
 import { bool, func, shape, string } from 'prop-types';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useId, useRef } from 'react';
 import styles from './CalendarModal.module.css';
 
 CalendarModal.propTypes = {
@@ -18,8 +18,10 @@ function CalendarModal({
   closeModal,
   confirmModal,
 }) {
-  const modalRef = useRef(null);
+  const dialogRef = useRef(null);
   const lastFocusedElement = useRef(null);
+  const modalLabelId = useId();
+  const modalDescriptionId = useId();
 
   // Focus Trapping (포커스가 모달창 밖으로 벗어나지 않게 함)
   useEffect(() => {
@@ -27,18 +29,18 @@ function CalendarModal({
       // 모달이 열릴 때 포커스가 있던 요소 기억
       lastFocusedElement.current = document.activeElement;
 
-      const modalElement = modalRef.current;
+      const dialogElement = dialogRef.current;
 
       // focusable HTML 요소 수집
       // use 태그에서 href를 사용하고 있기 때문에 문제가 생겨서 [href]에 not(use)를 붙여서 use는 수집하지 않음
-      const focusableElements = modalElement.querySelectorAll(
+      const focusableElements = dialogElement.querySelectorAll(
         'button, [href]:not(use), input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
 
       // 모달 창 안의 첫 focusable 요소로 focus 이동
-      firstElement.focus();
+      dialogElement.focus();
 
       const handleKeyPress = (event) => {
         // tab(또는 shift + tab)키 눌렀을 때 모달 창을 벗어나지 않도록 설정
@@ -61,11 +63,11 @@ function CalendarModal({
       };
 
       // 모달 창에 tab, esc 키 이벤트 구독 추가
-      modalElement.addEventListener('keydown', handleKeyPress);
+      dialogElement.addEventListener('keydown', handleKeyPress);
 
       return () => {
         // 이벤트 구독 제거
-        modalElement.removeEventListener('keydown', handleKeyPress);
+        dialogElement.removeEventListener('keydown', handleKeyPress);
       };
     } else if (lastFocusedElement.current) {
       // 모달이 닫힐 때 포커스를 이전에 있었던 요소로 이동
@@ -87,10 +89,6 @@ function CalendarModal({
       {modalOpen && (
         // 모달 창 외부를 감싸는 요소
         <motion.div
-          ref={modalRef}
-          role="dialog"
-          aria-labelledby="calendarModal_label"
-          aria-modal="true"
           className={styles.modalOverlay}
           onClick={handleOverlayClick}
           // 애니메이션 속성
@@ -100,7 +98,15 @@ function CalendarModal({
           transition={{ duration: 0.3 }}
         >
           {/* 모달 창 */}
-          <div className={styles.modalContent}>
+          <div
+            ref={dialogRef}
+            role="dialog"
+            aria-labelledby={modalLabelId}
+            aria-describedby={modalDescriptionId}
+            aria-modal="true"
+            tabIndex={-1}
+            className={styles.modalContent}
+          >
             <SVGIcon
               {...icons[`shell_${diaryData.emotion}`]}
               width={58}
@@ -109,8 +115,8 @@ function CalendarModal({
             />
 
             <div className={styles.textWrapper}>
-              <h2 id="calendarModal_label">이 날의 내 기분은...</h2>
-              <p>{diaryData.message}</p>
+              <h2 id={modalLabelId}>이 날의 내 기분은...</h2>
+              <p id={modalDescriptionId}>{diaryData.message}</p>
             </div>
 
             <button onClick={confirmModal}>

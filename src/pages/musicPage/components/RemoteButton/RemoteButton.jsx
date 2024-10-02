@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { func, oneOf } from 'prop-types';
 
-import styles from './RemoteIcon.module.css';
+import styles from './RemoteButton.module.css';
 import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 
@@ -10,8 +10,8 @@ const TYPE_LIST = {
   step_forward: '다음 곡',
   step_backward: '이전 곡',
   heart: '음악 좋아요',
-  play: '음악 멈추기',
-  pause: '음악 재생하기',
+  pause: '음악 멈추기',
+  play: '음악 재생하기',
 };
 
 RemoteButton.propTypes = {

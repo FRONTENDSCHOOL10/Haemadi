@@ -6,7 +6,7 @@ import styles from './PlayTime.module.css';
 function formatTime(seconds) {
   // 분과 초 계산
   const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
+  const remainingSeconds = Math.floor(seconds % 60);
 
   return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }

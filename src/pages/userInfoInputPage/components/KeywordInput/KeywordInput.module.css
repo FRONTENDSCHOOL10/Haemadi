@@ -1,6 +1,6 @@
 .keyword {
   display: inline-block;
-  width: 100%;
+  min-width: 90px;
   height: 40px;
   padding: 9px 12px;
 

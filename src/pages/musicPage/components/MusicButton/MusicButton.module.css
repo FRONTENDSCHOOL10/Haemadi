@@ -43,3 +43,16 @@
     }
   }
 }
+
+@media (min-width: 640px) {
+  .musicButton {
+    .textWrapper {
+      .musicTitle {
+        color: var(--white, #fff);
+      }
+      .musicArtist {
+        color: var(--placeholder_gray, #cccbcf);
+      }
+    }
+  }
+}
