@@ -81,7 +81,7 @@ function ProfileSettingInfo() {
         <li>
           <span className={styles.infolabel}>관심사</span>
           <span className={styles.infoValue}>
-            {userInfo.interest || '관심사 없음'}
+            {userInfo.interest.join(',') || '관심사 없음'}
           </span>
         </li>
         <li>
