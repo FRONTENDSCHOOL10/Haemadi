@@ -23,13 +23,13 @@ import { memo } from 'react';
 const ExperienceToNumber = (experience) => {
   switch (experience) {
     case '하루도 빠짐 없이 작성한다.':
-      return 1;
+      return 3;
     case '가끔 생각나면 작성한다.':
       return 2;
     case '거의 작성하지 않는다':
-      return 3;
+      return 1;
     default:
-      return 4;
+      return 0;
   }
 };
 
@@ -136,7 +136,6 @@ function UserInfoInputPage() {
       return;
     } else if (progress === '5') {
       try {
-        console.log(formData);
         await setUserData(userInfo.id, {
           ...formData,
           experience: ExperienceToNumber(formData.experience),
