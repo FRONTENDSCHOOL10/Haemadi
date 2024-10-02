@@ -5,17 +5,17 @@ import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 import { useAuthStore } from '@/stores/authStore';
-import { useMediaStore } from '@/stores/mediaStore';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OtherSettingList from './components/OtherSettingList/OtherSettingList';
 import ProfileSettingInfo from './components/ProfileSettingInfo/ProfileSettingInfo';
 import styles from './SettingsPage.module.css';
+import { useMediaStore } from '@/stores/mediaStore';
 
 function SettingsPage() {
-  const desktop = useMediaStore((store) => store.desktop);
   const navigate = useNavigate();
   const logoutUser = useAuthStore((store) => store.logoutUser);
+  const desktop = useMediaStore((store) => store.desktop);
   const [modalOpen, setModalOpen] = useState(false);
   const { lockScroll, openScroll } = useBodyScrollLock();
 
@@ -56,8 +56,11 @@ function SettingsPage() {
       <h1>설정</h1>
       <BackButton
         color="white"
-        aria-label="뒤로가기"
-        className={`${styles.backButton} ${desktop ? styles.desktopBackButton : styles.mobileBackButton}`}
+        style={
+          desktop
+            ? { position: 'absolute', left: '43vw', top: '25px' }
+            : { position: 'absolute', left: '7vw', top: '29px' }
+        }
       />
       <ProfileSettingInfo />
       <OtherSettingList openModal={openModal} />

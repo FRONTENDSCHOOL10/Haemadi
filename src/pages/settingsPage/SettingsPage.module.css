@@ -16,23 +16,8 @@
   }
 }
 
-.backButton {
-  background: none;
-  position: absolute;
-  left: 7vw;
-  top: 29px;
-}
-
-.desktopBackButton {
-  left: 43vw;
-}
-
 @media (min-width: 640px) {
   h1 {
     padding-top: 69px;
-  }
-
-  .backButton {
-    top: 68px;
   }
 }
