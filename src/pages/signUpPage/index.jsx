@@ -16,7 +16,7 @@ function SignUpPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const toast = useToaster();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [values, setValues] = useImmer({
     username: '',
     password: '',
