@@ -47,3 +47,8 @@
   color: #ffffff;
   background-color: #ff5733;
 }
+
+.Toast.default {
+  color: var(--black);
+  background-color: #fff;
+}

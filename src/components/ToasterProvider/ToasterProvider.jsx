@@ -10,10 +10,11 @@ import { memo } from 'react';
 const ICONS = {
   info: icons.check,
   warn: null,
+  default: null
 };
 
 Toast.propTypes = {
-  type: oneOf(['info', 'warn']),
+  type: oneOf(['info', 'warn', 'default']),
   message: string.isRequired,
   onClick: func,
 };
