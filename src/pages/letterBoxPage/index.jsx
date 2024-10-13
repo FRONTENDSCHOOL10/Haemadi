@@ -2,11 +2,12 @@ import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './LetterBoxPage.module.css';
+import { readDiaries } from '@/api/diaries';
 import { useAuthStore } from '@/stores/authStore';
 import { BASE_URL } from '@/api/pbconfig';
-import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import Loading from '@/components/Loading/Loading';
@@ -49,10 +50,13 @@ function LetterBoxPage() {
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
-  const { status, error, data } = useFetch(ENDPOINT);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['diaries', ENDPOINT],
+    queryFn: () => readDiaries(ENDPOINT),
+  });
 
-  if (status === 'loading') return <Loading />;
-  if (status === 'error') return <div>{error.message}</div>;
+  if (isLoading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
 
   const diary = data.items[0];
   const { id: diaryId } = diary;

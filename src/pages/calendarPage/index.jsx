@@ -2,11 +2,12 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { isSameDay } from 'date-fns';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './CalendarPage.module.css';
+import { readDiaries } from '@/api/diaries';
 import { BASE_URL } from '@/api/pbconfig';
 import { useAuthStore } from '@/stores/authStore';
-import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Loading from '@/components/Loading/Loading';
 import Calendar from './Calendar/Calendar';
@@ -24,7 +25,10 @@ function CalendarPage() {
   // 로그인 기능 구현 후 userId 변경 필요
   // 현재 로그인한 유저의 일기들을 불러옴
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?sort=created&filter=(userId='${userInfo.id}')`;
-  const { status, error, data } = useFetch(ENDPOINT);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['diaries', ENDPOINT],
+    queryFn: () => readDiaries(ENDPOINT),
+  });
 
   // 불러온 일기들의 created 값을 Date 형식으로 변환
   const diaries = data?.items.map((diary) => ({
@@ -58,8 +62,8 @@ function CalendarPage() {
     navigate(`/my/view-diary/${selectedDiary?.id}`);
   }, [navigate, openScroll, selectedDiary]);
 
-  if (status === 'loading') return <Loading />;
-  if (status === 'error') return <div>{error.message}</div>;
+  if (isLoading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
 
   return (
     <div className={styles.page}>

@@ -2,16 +2,17 @@ import { memo, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
+import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './PickUpBottlePage.module.css';
+import { readDiaries } from '@/api/diaries';
 import { BASE_URL } from '@/api/pbconfig';
 import { useAuthStore } from '@/stores/authStore';
 import { getRandomNumbers } from '@/utils';
-import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
-import { Helmet } from 'react-helmet-async';
 
 function PickUpBottlePage() {
   const navigate = useNavigate();
@@ -51,9 +52,12 @@ function PickUpBottlePage() {
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
   const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
-  const { status, error, data } = useFetch(ENDPOINT);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['diaries', ENDPOINT],
+    queryFn: () => readDiaries(ENDPOINT),
+  });
 
-  if (status === 'error') return <div>{error.message}</div>;
+  if (error) return <div>{error.message}</div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,6 +93,7 @@ function PickUpBottlePage() {
           content="해마디에서 감정의 병을 주워 일기를 확인해 보세요"
         />
       </Helmet>
+
       <div className={styles.pageContainer}>
         <header className={styles.header}>
           <BackButton color="white" style={backButtonStyle} />
@@ -103,10 +108,10 @@ function PickUpBottlePage() {
           </p>
           <Button
             role="submit"
-            state={status === 'loading' ? 'disabled' : 'default'}
+            state={isLoading ? 'disabled' : 'default'}
             style={buttonStyle}
           >
-            {status === 'loading' ? (
+            {isLoading ? (
               <>
                 <SyncLoader color="#2E7FB9" size={12} aria-hidden="true" />
                 <span className="sr-only">
