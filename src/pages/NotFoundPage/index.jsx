@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './NotFoundPage.module.css';
+import wave1 from '/logoItems/wave1.webp';
+import wave2 from '/logoItems/wave2.webp';
+import wave3 from '/logoItems/wave3.webp';
+import wave4 from '/logoItems/wave4.webp';
+import boat from '/logoItems/boat.webp';
 
 function NotFoundPage() {
   return (
@@ -31,6 +36,13 @@ function NotFoundPage() {
       <Link className={styles.goHome} to={'/'}>
         홈으로
       </Link>
+      <div className={styles.bgWrapper}>
+        <img className={styles.wave4} src={wave4} alt="" />
+        <img className={styles.wave2} src={wave2} alt="" />
+        <img className={styles.boat} src={boat} alt="" />
+        <img className={styles.wave1} src={wave1} alt="" />
+        <img className={styles.wave3} src={wave3} alt="" />
+      </div>
     </div>
   );
 }
