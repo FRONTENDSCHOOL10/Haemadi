@@ -17,7 +17,9 @@
 }
 
 @media (min-width: 640px) {
-  h1 {
-    padding-top: 69px;
+  .settingsPage {
+    h1 {
+      padding-top: 69px;
+    }
   }
 }
