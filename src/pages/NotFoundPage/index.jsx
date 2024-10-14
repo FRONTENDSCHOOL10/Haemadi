@@ -36,7 +36,7 @@ function NotFoundPage() {
       <Link className={styles.goHome} to={'/'}>
         홈으로
       </Link>
-      <div className={styles.bgWrapper}>
+      <div aria-hidden="true">
         <img className={styles.wave4} src={wave4} alt="" />
         <img className={styles.wave2} src={wave2} alt="" />
         <img className={styles.boat} src={boat} alt="" />
