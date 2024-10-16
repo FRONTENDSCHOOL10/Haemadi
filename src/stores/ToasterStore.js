@@ -10,13 +10,8 @@ export const ToasterStore = create((set) => ({
     };
 
     set((state) => {
-      // 토스트 최대 개수를 3으로 제한
-      let updatedToasts = [...state.toasts, newToast];
-
-      if (updatedToasts.length > 3) {
-        updatedToasts.shift(); // 가장 오래된 토스트 제거
-      }
-
+      // 토스트 최대 개수를 3으로 제한, 최신 토스트 3개만 출력됨
+      const updatedToasts = [...state.toasts, newToast].slice(-3);
       return {
         toasts: updatedToasts,
       };
