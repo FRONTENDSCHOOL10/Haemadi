@@ -45,7 +45,7 @@ export async function createReply(newReply) {
 
 /** @type {(replyId: string) => Promise<any>} */
 export async function getReply(replyId) {
-  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records/${replyId}`;
+  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records/${replyId ? replyId : ''}`;
 
   const response = await fetch(REQUEST_URL);
 
