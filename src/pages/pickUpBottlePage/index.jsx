@@ -12,11 +12,17 @@ import { getRandomNumbers } from '@/utils';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
+import { useRef } from 'react';
+import { useEffect } from 'react';
+import { isSameDay } from 'date-fns';
+import { readReplies } from '@/api/replies';
+import { useToaster } from '@/stores/ToasterStore';
 
 function PickUpBottlePage() {
   const navigate = useNavigate();
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
   const userInfo = useAuthStore((store) => store.userInfo);
+  const toast = useToaster();
 
   /* --------------------------------- 스타일 객체 --------------------------------- */
   const backButtonStyle = useMemo(
@@ -34,7 +40,7 @@ function PickUpBottlePage() {
     [desktop]
   );
 
-  /* ----------------------------- REQUEST URL의 params 작성 ----------------------------- */
+  /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
   const filterQuery = useMemo(
     () =>
       userInfo.interest
@@ -49,22 +55,61 @@ function PickUpBottlePage() {
     expand: 'userId',
   });
 
-  /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
-  const { data, error, isLoading } = useQuery({
+  const {
+    data: diariesData,
+    error: diariesError,
+    isLoading: diariesLoading,
+  } = useQuery({
     queryKey: ['diaries', diariesParams],
     queryFn: () => readDiaries(diariesParams),
   });
 
-  if (error) return <div>{error.message}</div>;
+  /* ------------------------------ 서버에 답장 목록 요청 ------------------------------ */
+  const repliesParams = new URLSearchParams({
+    page: 1,
+    perPage: 1,
+    sort: '-created',
+    filter: `userId="${userInfo.id}"`,
+  });
+  const {
+    data: repliesData,
+    error: repliesError,
+    isLoading: repliesLoading,
+  } = useQuery({
+    queryKey: ['replies', repliesParams],
+    queryFn: () => readReplies(repliesParams),
+  });
+
+  /* ------------------------------ 조건부 redirect ------------------------------ */
+  const firstRun = useRef(true);
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+
+    // 자신이 작성한 가장 최근 답장과 오늘 날짜가 같으면 홈 페이지로 돌아감
+    if (isSameDay(new Date(repliesData?.items[0]?.created), new Date())) {
+      toast('warn', '오늘은 이미 답장을 작성했어요.');
+      navigate('/');
+    }
+    // 답장할 일기가 없으면 홈 페이지로 돌아감
+    else if (diariesData?.items.length === 0) {
+      toast('warn', '답장할 편지가 없어요.');
+      navigate('/');
+    }
+  }, [diariesData?.items, navigate, repliesData?.items, toast]);
+
+  if (diariesError || repliesError) return <div>{diariesError.message}</div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const bottleIndex = formData.get('bottle');
 
-    const letterIndexList = getRandomNumbers(data?.items.length, 5);
+    const letterIndexList = getRandomNumbers(diariesData?.items.length, 5);
     const letterIndex = letterIndexList[bottleIndex];
-    const letterId = data?.items[letterIndex].id;
+    const letterId = diariesData?.items[letterIndex].id;
     navigate(`view-letter/${letterId}`);
   };
 
@@ -106,10 +151,10 @@ function PickUpBottlePage() {
           </p>
           <Button
             role="submit"
-            state={isLoading ? 'disabled' : 'default'}
+            state={diariesLoading || repliesLoading ? 'disabled' : 'default'}
             style={buttonStyle}
           >
-            {isLoading ? (
+            {diariesLoading || repliesLoading ? (
               <>
                 <SyncLoader color="#2E7FB9" size={12} aria-hidden="true" />
                 <span className="sr-only">
