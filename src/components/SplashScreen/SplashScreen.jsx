@@ -36,12 +36,14 @@ function SplashScreen({ fadeOutTime = 2000 }) {
         <p>감정 관리를 위한 일기 서비스</p>
         <h1>해마디</h1>
       </div>
-      <img className={styles.wave1} src={wave1} alt="" />
-      <img className={styles.wave2} src={wave2} alt="" />
-      <img className={styles.boat} src={boat} alt="" />
-      <img className={styles.wave3} src={wave3} alt="" />
-      <img className={styles.wave4} src={wave4} alt="" />
-      <img className={styles.phoneMockUp} src={phoneMockUp} alt="" />
+      <div aria-hidden="true">
+        <img className={styles.wave1} src={wave1} alt="" />
+        <img className={styles.wave2} src={wave2} alt="" />
+        <img className={styles.boat} src={boat} alt="" />
+        <img className={styles.wave3} src={wave3} alt="" />
+        <img className={styles.wave4} src={wave4} alt="" />
+        <img className={styles.phoneMockUp} src={phoneMockUp} alt="" />
+      </div>
     </div>,
     splashScreenElement
   );

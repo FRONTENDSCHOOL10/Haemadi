@@ -80,9 +80,11 @@
   }
 
   .wave1 {
+    left: 0;
     width: 100vw;
   }
   .wave3 {
+    left: 0;
     width: 39.2vw;
   }
   .wave4 {
