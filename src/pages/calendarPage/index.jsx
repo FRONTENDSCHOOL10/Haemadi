@@ -13,6 +13,7 @@ import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
 import { memo } from 'react';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
+import { useMemo } from 'react';
 
 function CalendarPage() {
   const navigate = useNavigate();
@@ -21,10 +22,14 @@ function CalendarPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const { lockScroll, openScroll } = useBodyScrollLock();
 
-  const diariesParams = new URLSearchParams({
-    sort: 'created',
-    filter: `userId="${userInfo.id}"`,
-  });
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        sort: 'created',
+        filter: `userId="${userInfo.id}"`,
+      }).toString(),
+    [userInfo.id]
+  );
 
   // 현재 로그인한 유저의 일기들을 불러옴
   const { data, error, isLoading } = useQuery({

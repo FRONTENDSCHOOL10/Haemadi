@@ -40,16 +40,20 @@ function LetterBoxPage() {
   );
 
   /* ----------------------------- REQUEST URL의 params 작성 ----------------------------- */
-  const diariesParams = new URLSearchParams({
-    // 일기 1개만 가져옴
-    page: 1,
-    perPage: 1,
-    // 답장이 왔고 && 자신이 쓴 일기
-    filter: `replyId!="" && userId="${userInfo.id}"`,
-    // 가장 최근에 답장을 받은 일기
-    sort: '-created',
-    expand: 'replyId',
-  });
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        // 일기 1개만 가져옴
+        page: 1,
+        perPage: 1,
+        // 답장이 왔고 && 자신이 쓴 일기
+        filter: `replyId!="" && userId="${userInfo.id}"`,
+        // 가장 최근에 답장을 받은 일기
+        sort: '-created',
+        expand: 'replyId',
+      }).toString(),
+    [userInfo.id]
+  );
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
   const { data, error, isLoading } = useQuery({
@@ -79,10 +83,6 @@ function LetterBoxPage() {
   const handleButtonClick = () => {
     navigate(`view-diary/${diaryId}`);
   };
-
-  /* -------------------------------------------------------------------------- */
-  /*                             답장이 없을 때의 로직 처리 필요                             */
-  /* -------------------------------------------------------------------------- */
 
   return (
     <div className={styles.page}>

@@ -17,6 +17,7 @@ import { readDiaries } from '@/api/diaries';
 import { isSameDay } from 'date-fns';
 import { useToaster } from '@/stores/ToasterStore';
 import Loading from '@/components/Loading/Loading';
+import { useMemo } from 'react';
 
 function WriteDiaryPage() {
   const navigate = useNavigate();
@@ -59,12 +60,16 @@ function WriteDiaryPage() {
     openModal('save')();
   };
 
-  const diariesParams = new URLSearchParams({
-    page: 1,
-    perPage: 1,
-    sort: '-created',
-    filter: `userId="${userInfo.id}"`,
-  });
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        page: 1,
+        perPage: 1,
+        sort: '-created',
+        filter: `userId="${userInfo.id}"`,
+      }).toString(),
+    [userInfo.id]
+  );
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['diaries', diariesParams],

@@ -48,12 +48,17 @@ function PickUpBottlePage() {
         .join(' || '),
     [userInfo.interest]
   );
-  const diariesParams = new URLSearchParams({
-    // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
-    // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
-    filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
-    expand: 'userId',
-  });
+
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
+        // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
+        filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
+        expand: 'userId',
+      }).toString(),
+    [filterQuery, userInfo.id]
+  );
 
   const {
     data: diariesData,
@@ -65,12 +70,17 @@ function PickUpBottlePage() {
   });
 
   /* ------------------------------ 서버에 답장 목록 요청 ------------------------------ */
-  const repliesParams = new URLSearchParams({
-    page: 1,
-    perPage: 1,
-    sort: '-created',
-    filter: `userId="${userInfo.id}"`,
-  });
+  const repliesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        page: 1,
+        perPage: 1,
+        sort: '-created',
+        filter: `userId="${userInfo.id}"`,
+      }).toString(),
+    [userInfo.id]
+  );
+
   const {
     data: repliesData,
     error: repliesError,
