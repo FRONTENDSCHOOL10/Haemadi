@@ -157,6 +157,11 @@
         clip-rule="evenodd" />
     </symbol>
 
+    <symbol id="music_note" width="25" height="36" fill="none" viewBox="0 0 25 36">
+      <path
+        d="M12.5 0V21.1C11.2708 20.42 9.85417 20 8.33333 20C3.72917 20 0 23.58 0 28C0 32.42 3.72917 36 8.33333 36C12.9375 36 16.6667 32.42 16.6667 28V8H25V0H12.5Z"
+        fill="currentColor" />
+    </symbol>
 
     <symbol id="camera" width="39" height="33" fill="none" viewBox="0 0 39 33">
       <path fill="currentColor" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"

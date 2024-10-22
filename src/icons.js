@@ -45,6 +45,15 @@ const icons = {
   rightArrow: { name: 'rightArrow', width: 25, height: 42, color: '#ffffff' },
   musicPlay: { name: 'musicPlay', width: 50, height: 50, color: '#1771B2' },
   go: { name: 'go', width: 13, height: 15, color: '#1771B2' },
+
+  musicNote_pink: { name: 'music_note', width: 25, height: 36, color: '#FFC2DE' },
+  musicNote_red: { name: 'music_note', width: 25, height: 36, color: '#FFA1A1' },
+  musicNote_yellow: { name: 'music_note', width: 25, height: 36, color: '#FFD160' },
+  musicNote_green: { name: 'music_note', width: 25, height: 36, color: '#A6E076' },
+  musicNote_lightBlue: { name: 'music_note', width: 25, height: 36, color: '#A9EBF7' },
+  musicNote_Blue: { name: 'music_note', width: 25, height: 36, color: '#89CAF0' },
+  musicNote_purple: { name: 'music_note', width: 25, height: 36, color: '#E2CFFF' },
+
   
   remove: { name: 'remove', width: 18, height: 18, color: '#1F6496' },
   step_forward: { name: 'step_forward', width: 15, height: 21, color: '#2E2E2E' },
