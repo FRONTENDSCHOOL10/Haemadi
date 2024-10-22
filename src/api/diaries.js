@@ -30,10 +30,11 @@ export async function createDiary(newDiary) {
   return responseData;
 }
 
-// 사용예시) readDiaries(`${BASE_URL}/api/collections/diaries/records`);
+// 사용예시) readDiaries(`sort=created`);
 /** @type {(url: string) => Promise<any>} */
-export async function readDiaries(url) {
-  const response = await fetch(url);
+export async function readDiaries(params) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/diaries/records?${params}`;
+  const response = await fetch(REQUEST_URL);
 
   if (!response.ok) {
     throw new Response(

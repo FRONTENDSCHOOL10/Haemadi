@@ -13,7 +13,6 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import SaveButton from './components/SaveButton/SaveButton';
-import { BASE_URL } from '@/api/pbconfig';
 import { readDiaries } from '@/api/diaries';
 import { isSameDay } from 'date-fns';
 import { useToaster } from '@/stores/ToasterStore';
@@ -60,16 +59,16 @@ function WriteDiaryPage() {
     openModal('save')();
   };
 
-  const params = new URLSearchParams({
+  const diariesParams = new URLSearchParams({
     page: 1,
     perPage: 1,
     sort: '-created',
     filter: `userId="${userInfo.id}"`,
   });
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
+
   const { data, error, isLoading } = useQuery({
-    queryKey: ['diaries', ENDPOINT],
-    queryFn: () => readDiaries(ENDPOINT),
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
   });
 
   const firstRun = useRef(true); // 알림창을 하나만 띄우기 위함

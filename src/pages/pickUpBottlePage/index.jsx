@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query';
 
 import styles from './PickUpBottlePage.module.css';
 import { readDiaries } from '@/api/diaries';
-import { BASE_URL } from '@/api/pbconfig';
 import { useAuthStore } from '@/stores/authStore';
 import { getRandomNumbers } from '@/utils';
 import BackButton from '@/components/BackButton/BackButton';
@@ -35,7 +34,7 @@ function PickUpBottlePage() {
     [desktop]
   );
 
-  /* ----------------------------- REQUEST URL 작성 ----------------------------- */
+  /* ----------------------------- REQUEST URL의 params 작성 ----------------------------- */
   const filterQuery = useMemo(
     () =>
       userInfo.interest
@@ -43,7 +42,7 @@ function PickUpBottlePage() {
         .join(' || '),
     [userInfo.interest]
   );
-  const params = new URLSearchParams({
+  const diariesParams = new URLSearchParams({
     // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
     // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
     filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
@@ -51,10 +50,9 @@ function PickUpBottlePage() {
   });
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
   const { data, error, isLoading } = useQuery({
-    queryKey: ['diaries', ENDPOINT],
-    queryFn: () => readDiaries(ENDPOINT),
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
   });
 
   if (error) return <div>{error.message}</div>;

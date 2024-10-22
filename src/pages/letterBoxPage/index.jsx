@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './LetterBoxPage.module.css';
 import { readDiaries } from '@/api/diaries';
 import { useAuthStore } from '@/stores/authStore';
-import { BASE_URL } from '@/api/pbconfig';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import Loading from '@/components/Loading/Loading';
@@ -36,8 +35,8 @@ function LetterBoxPage() {
     [desktop]
   );
 
-  /* ----------------------------- REQUEST URL 작성 ----------------------------- */
-  const params = new URLSearchParams({
+  /* ----------------------------- REQUEST URL의 params 작성 ----------------------------- */
+  const diariesParams = new URLSearchParams({
     // 일기 1개만 가져옴
     page: 1,
     perPage: 1,
@@ -49,18 +48,16 @@ function LetterBoxPage() {
   });
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
   const { data, error, isLoading } = useQuery({
-    queryKey: ['diaries', ENDPOINT],
-    queryFn: () => readDiaries(ENDPOINT),
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
   });
 
   if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
-  const diary = data.items[0];
-  const { id: diaryId } = diary;
-  const { replier } = diary.expand.replyId;
+  const diaryId = data.items[0].id;
+  const replier = data.items[0].expand.replyId?.replier;
 
   const handleButtonClick = () => {
     navigate(`view-diary/${diaryId}`);
