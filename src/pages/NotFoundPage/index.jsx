@@ -37,11 +37,11 @@ function NotFoundPage() {
         홈으로
       </Link>
       <div aria-hidden="true">
-        <img className={styles.wave4} src={wave4} alt="" />
+        <img className={styles.wave1} src={wave1} alt="" />
         <img className={styles.wave2} src={wave2} alt="" />
         <img className={styles.boat} src={boat} alt="" />
-        <img className={styles.wave1} src={wave1} alt="" />
         <img className={styles.wave3} src={wave3} alt="" />
+        <img className={styles.wave4} src={wave4} alt="" />
       </div>
     </div>
   );
