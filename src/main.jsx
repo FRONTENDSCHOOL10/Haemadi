@@ -4,6 +4,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import ReactModal from 'react-modal';
 import App from './App';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 ReactModal.setAppElement('#root');
 
@@ -22,6 +23,8 @@ if (container) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <App />
+        {/* react-query가 관리하는 데이터 볼 수 있는 도구 */}
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </StrictMode>
   );
