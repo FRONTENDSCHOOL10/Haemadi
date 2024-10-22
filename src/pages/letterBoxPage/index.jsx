@@ -13,11 +13,15 @@ import Loading from '@/components/Loading/Loading';
 
 import glassBottle from '/glassBottle/glassBottle_selected.webp';
 import glassBottleMobile from '/glassBottle/glassBottle_center.webp';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useToaster } from '@/stores/ToasterStore';
 
 function LetterBoxPage() {
   const navigate = useNavigate();
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
   const userInfo = useAuthStore((store) => store.userInfo);
+  const toast = useToaster();
 
   /* --------------------------------- 스타일 객체 --------------------------------- */
   const backButtonStyle = useMemo(
@@ -53,11 +57,24 @@ function LetterBoxPage() {
     queryFn: () => readDiaries(diariesParams),
   });
 
+  const firstRun = useRef(true);
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+
+    if (data?.items.length === 0) {
+      toast('warn', '아직 받은 답장이 없어요.');
+      navigate('/');
+    }
+  }, [data?.items.length, navigate, toast]);
+
   if (isLoading) return <Loading />;
   if (error) return <div>{error.message}</div>;
 
-  const diaryId = data.items[0].id;
-  const replier = data.items[0].expand.replyId?.replier;
+  const diaryId = data.items[0]?.id;
+  const replier = data.items[0]?.expand.replyId?.replier;
 
   const handleButtonClick = () => {
     navigate(`view-diary/${diaryId}`);
