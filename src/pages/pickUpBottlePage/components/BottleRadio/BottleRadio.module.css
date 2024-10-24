@@ -19,7 +19,7 @@
 .radioInput:focus {
   outline: none;
 }
-.radioInput:focus + .radioCard {
+.radioInput:focus-visible + .radioCard {
   outline: auto;
   outline-color: var(--focus, #66d6ea);
 }
