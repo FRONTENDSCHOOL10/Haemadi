@@ -51,41 +51,51 @@
 .wave4,
 .boat {
   position: absolute;
-  z-index: 0;
   bottom: 0;
 }
 
-.wave1 {
-  display: none;
-  width: 40%;
-  max-width: 675px;
-  left: 0;
-}
-
 .wave2 {
-  display: none;
-  left: calc(1% * 10);
+  left: 0;
+  width: 100vw;
 }
-
-.wave3 {
-  width: 60%;
-  max-width: 910px;
+.wave4 {
   right: 0;
 }
 
-.wave4 {
-  width: 90%;
-  max-width: 675px;
-  left: 0;
+@media (aspect-ratio < 0.8) {
+  .wave1,
+  .wave3 {
+    display: none;
+  }
+  .boat {
+    left: 50vw;
+    translate: -50%;
+    width: 81vw;
+  }
 }
+@media (aspect-ratio >= 0.8) {
+  .wave2 {
+    display: none;
+  }
 
-.boat {
-  width: 70%;
-  max-width: 630px;
-  left: 10vw;
-}
+  .wave1 {
+    left: 0;
+    width: 100vw;
+  }
+  .wave3 {
+    left: 0;
+    width: 39.2vw;
+  }
+  .wave4 {
+    width: 53.9vw;
+  }
+  .boat {
+    rotate: 20deg;
+    width: 28vw;
+    left: 4.5vw;
+    bottom: -2.5vh;
+  }
 
-@media (min-width: 750px) {
   .NotFoundPage {
     padding-top: 20vh;
     h1 {
@@ -103,17 +113,5 @@
       line-height: 167%;
       letter-spacing: -0.54px;
     }
-  }
-
-  .wave1,
-  .wave2 {
-    display: block;
-  }
-  .wave4 {
-    display: none;
-  }
-  .boat {
-    transform: rotate(20deg);
-    left: calc(1% * 15);
   }
 }
