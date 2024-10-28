@@ -43,7 +43,7 @@ function MusicPlayer({ musicList = [] }) {
     playerRef.current = new window.YT.Player('player', {
       height: '0',
       width: '0',
-      videoId: musicList[currentTrackIndex].videoId,
+      videoId: musicList[currentTrackIndex].content.musicId,
       events: {
         onReady: onPlayerReady,
         onStateChange: onPlayerStateChange,

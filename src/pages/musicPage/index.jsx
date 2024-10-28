@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet-async';
 import styles from './MusicPage.module.css';
 import { useMediaStore } from '@/stores/mediaStore';
 import { useAuthStore } from '@/stores/authStore';
-import { searchVideo } from '@/api/youtube';
-import { getReply } from '@/api/replies';
 import { readDiaries } from '@/api/diaries';
 import BackButton from '@/components/BackButton/BackButton';
 import MusicPlayer from './components/MusicPlayer/MusicPlayer';
@@ -17,33 +15,12 @@ function MusicPage() {
 
   const getOwnMusicList = useCallback(async () => {
     try {
-      const replyContents = await getReply(null, `typeOfContent='music'`);
-      const diaryContents = await readDiaries(userInfo.id);
-
-      // 답장이 없는 일기 제외
-      const playerDiaries = diaryContents.items.filter(
-        (element) => element.replyId !== ''
+      const diaryContents = await readDiaries(
+        `&expand=replyId&filter=(replyId.typeOfContent='music'%26%26userId='${userInfo.id}')&sort=created`
       );
 
-      // 두 배열 비교 (replyID가 같으면 반환)
-      const musicList = replyContents.items.filter((replies) =>
-        playerDiaries.some((item) => item.replyId === replies.id)
-      );
-
-      // videoId 추가
-      const updatedMusicList = await Promise.all(
-        musicList.map(async (element) => {
-          const videoResult = await searchVideo(
-            `${element.content.musicArtist} ${element.content.musicTitle}`
-          );
-          return {
-            ...element,
-            videoId: videoResult.items[0]?.id.videoId || null,
-          };
-        })
-      );
-
-      setMusics(updatedMusicList); // musics 상태 업데이트
+      const replyArray = diaryContents.items.map((item) => item.expand.replyId);
+      setMusics(replyArray);
     } catch (error) {
       console.error('뮤직 리스트 에러: ', error);
     }
