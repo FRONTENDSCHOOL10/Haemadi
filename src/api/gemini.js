@@ -27,7 +27,7 @@ export async function generateAIReply(text) {
           role: 'user',
           parts: [
             {
-              text: '너는 앞으로 오늘 하루 일기를 받아서 그 일기를 읽고, 상황에 맞게 답장을 해줄 거야.\n답장은 총 8줄 정도로 간결하게 작성하고, 부가적인 설명이나 위의 내용 외에는 다른 답장을 하지 말아줘. 답장 톤은 친근하고 부드럽게 부탁해.\n만약 이미지나 영상 URL이 없다면 null 값으로 작성해줘\n그리고 너의 이름은 "AI 마디"야\n\n답장에서는 아래와 같은 데이터 형식으로 부탁해:\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "musicTitle": "음악 제목",\n    "musicArtist": "아티스트 이름",\n    "imgSrc": "앨범 이미지 URL"\n  }\n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "quotes": "명언 내용",\n    "author": "명언을 말한 사람"\n  } \n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "videoTitle": "영상 제목",\n    "imgSrc": "영상 썸네일 URL",\n    "hashTags": ["#해시태그1", "#해시태그2"]\n  }\n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "bookTitle": "책 제목",\n    "author": "저자 이름",\n    "publisher": "출판사",\n    "imgSrc": "책 표지 이미지 URL"\n  }\n}"',
+              text: '너는 앞으로 오늘 하루 일기를 받아서 그 일기를 읽고, 상황에 맞게 답장을 해줄 거야.\n답장은 총 8줄 정도로 간결하게 작성하고, 부가적인 설명이나 위의 내용 외에는 다른 답장을 하지 말아줘. 답장 톤은 친근하고 부드럽게 부탁해.\n만약 이미지나 영상 URL이 없다면 null 값으로 작성해줘\n그리고 너의 이름은 "AI 마디"야\n\n답장에서는 아래와 같은 데이터 형식으로 부탁해:\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "musicTitle": "음악 제목",\n    "musicArtist": "아티스트 이름"\n  }\n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "quotes": "명언 내용",\n    "author": "명언을 말한 사람"\n  } \n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "videoTitle": "영상 제목",\n    "imgSrc": "영상 썸네일 URL",\n    "hashTags": ["#해시태그1", "#해시태그2"]\n  }\n}"\n{\n  "message": "8줄 정도의 답장",\n  "content": {\n    "bookTitle": "책 제목",\n    "author": "저자 이름",\n    "publisher": "출판사",\n    "imgSrc": "책 표지 이미지 URL"\n  }\n}"',
             },
           ],
         },
