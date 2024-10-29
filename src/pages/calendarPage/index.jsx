@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { isSameDay } from 'date-fns';
@@ -11,9 +11,7 @@ import BackButton from '@/components/BackButton/BackButton';
 import Loading from '@/components/Loading/Loading';
 import Calendar from './Calendar/Calendar';
 import CalendarModal from './CalendarModal/CalendarModal';
-import { memo } from 'react';
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
-import { useMemo } from 'react';
 
 function CalendarPage() {
   const navigate = useNavigate();

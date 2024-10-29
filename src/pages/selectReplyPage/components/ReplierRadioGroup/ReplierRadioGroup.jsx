@@ -1,7 +1,6 @@
 import { func, oneOf } from 'prop-types';
-import { useId } from 'react';
+import { useId, memo } from 'react';
 import styles from './ReplierRadioGroup.module.css';
-import { memo } from 'react';
 
 ReplierRadioGroup.propTypes = {
   onSelect: func,

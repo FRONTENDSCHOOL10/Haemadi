@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Helmet } from 'react-helmet-async';
@@ -13,8 +13,6 @@ import Loading from '@/components/Loading/Loading';
 
 import glassBottle from '/glassBottle/glassBottle_selected.webp';
 import glassBottleMobile from '/glassBottle/glassBottle_center.webp';
-import { useEffect } from 'react';
-import { useRef } from 'react';
 import { useToaster } from '@/stores/ToasterStore';
 
 function LetterBoxPage() {

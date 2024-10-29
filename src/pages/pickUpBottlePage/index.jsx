@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
@@ -12,8 +12,6 @@ import { getRandomNumbers } from '@/utils';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
-import { useRef } from 'react';
-import { useEffect } from 'react';
 import { isSameDay } from 'date-fns';
 import { readReplies } from '@/api/replies';
 import { useToaster } from '@/stores/ToasterStore';

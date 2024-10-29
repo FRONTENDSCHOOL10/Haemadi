@@ -1,9 +1,8 @@
 import { CONTENTS } from '@/constants';
 import { func, oneOf } from 'prop-types';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import ContentsRadio from '../ContentsRadio/ContentsRadio';
 import style from './ContentsRadioGroup.module.css';
-import { memo } from 'react';
 
 ContentsRadioGroup.propTypes = {
   selectedValue: oneOf(['music', 'quote', 'book', 'video']),
