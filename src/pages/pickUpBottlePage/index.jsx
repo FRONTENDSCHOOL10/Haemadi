@@ -1,22 +1,26 @@
-import { memo, useMemo } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { SyncLoader } from 'react-spinners';
+import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './PickUpBottlePage.module.css';
-import { BASE_URL } from '@/api/pbconfig';
+import { readDiaries } from '@/api/diaries';
 import { useAuthStore } from '@/stores/authStore';
 import { getRandomNumbers } from '@/utils';
-import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import BottleRadioGroup from './components/BottleRadioGroup/BottleRadioGroup';
-import { Helmet } from 'react-helmet-async';
+import { isSameDay } from 'date-fns';
+import { readReplies } from '@/api/replies';
+import { useToaster } from '@/stores/ToasterStore';
 
 function PickUpBottlePage() {
   const navigate = useNavigate();
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
   const userInfo = useAuthStore((store) => store.userInfo);
+  const toast = useToaster();
 
   /* --------------------------------- 스타일 객체 --------------------------------- */
   const backButtonStyle = useMemo(
@@ -34,7 +38,7 @@ function PickUpBottlePage() {
     [desktop]
   );
 
-  /* ----------------------------- REQUEST URL 작성 ----------------------------- */
+  /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
   const filterQuery = useMemo(
     () =>
       userInfo.interest
@@ -42,27 +46,78 @@ function PickUpBottlePage() {
         .join(' || '),
     [userInfo.interest]
   );
-  const params = new URLSearchParams({
-    // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
-    // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
-    filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
-    expand: 'userId',
+
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        // 일기 5개만 가저오려 했는데 다른 사람이랑 겹칠 확률이 높을 듯
+        // 답장이 없고 && 자신이 쓴 일기가 아니고 && 관심사가 하나 이상 겹치는 사람의 일기
+        filter: `replyId="" && userId!="${userInfo.id}" && (${filterQuery})`,
+        expand: 'userId',
+      }).toString(),
+    [filterQuery, userInfo.id]
+  );
+
+  const {
+    data: diariesData,
+    error: diariesError,
+    isLoading: diariesLoading,
+  } = useQuery({
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
   });
 
-  /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
-  const { status, error, data } = useFetch(ENDPOINT);
+  /* ------------------------------ 서버에 답장 목록 요청 ------------------------------ */
+  const repliesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        page: 1,
+        perPage: 1,
+        sort: '-created',
+        filter: `userId="${userInfo.id}"`,
+      }).toString(),
+    [userInfo.id]
+  );
 
-  if (status === 'error') return <div>{error.message}</div>;
+  const {
+    data: repliesData,
+    error: repliesError,
+    isLoading: repliesLoading,
+  } = useQuery({
+    queryKey: ['replies', repliesParams],
+    queryFn: () => readReplies(repliesParams),
+  });
+
+  /* ------------------------------ 조건부 redirect ------------------------------ */
+  const firstRun = useRef(true);
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+
+    // 자신이 작성한 가장 최근 답장과 오늘 날짜가 같으면 홈 페이지로 돌아감
+    if (isSameDay(new Date(repliesData?.items[0]?.created), new Date())) {
+      toast('warn', '오늘은 이미 답장을 작성했어요.');
+      navigate('/');
+    }
+    // 답장할 일기가 없으면 홈 페이지로 돌아감
+    else if (diariesData?.items.length === 0) {
+      toast('warn', '답장할 편지가 없어요.');
+      navigate('/');
+    }
+  }, [diariesData?.items, navigate, repliesData?.items, toast]);
+
+  if (diariesError || repliesError) return <div>{diariesError.message}</div>;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const bottleIndex = formData.get('bottle');
 
-    const letterIndexList = getRandomNumbers(data?.items.length, 5);
+    const letterIndexList = getRandomNumbers(diariesData?.items.length, 5);
     const letterIndex = letterIndexList[bottleIndex];
-    const letterId = data?.items[letterIndex].id;
+    const letterId = diariesData?.items[letterIndex].id;
     navigate(`view-letter/${letterId}`);
   };
 
@@ -89,6 +144,7 @@ function PickUpBottlePage() {
           content="해마디에서 감정의 병을 주워 일기를 확인해 보세요"
         />
       </Helmet>
+
       <div className={styles.pageContainer}>
         <header className={styles.header}>
           <BackButton color="white" style={backButtonStyle} />
@@ -103,10 +159,10 @@ function PickUpBottlePage() {
           </p>
           <Button
             role="submit"
-            state={status === 'loading' ? 'disabled' : 'default'}
+            state={diariesLoading || repliesLoading ? 'disabled' : 'default'}
             style={buttonStyle}
           >
-            {status === 'loading' ? (
+            {diariesLoading || repliesLoading ? (
               <>
                 <SyncLoader color="#2E7FB9" size={12} aria-hidden="true" />
                 <span className="sr-only">

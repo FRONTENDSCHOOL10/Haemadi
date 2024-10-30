@@ -1,6 +1,15 @@
-import { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useMemo,
+} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './WriteDiaryPage.module.css';
 import { useAuthStore } from '@/stores/authStore';
@@ -12,6 +21,10 @@ import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import BackButton from '@/components/BackButton/BackButton';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import SaveButton from './components/SaveButton/SaveButton';
+import { readDiaries } from '@/api/diaries';
+import { isSameDay } from 'date-fns';
+import { useToaster } from '@/stores/ToasterStore';
+import Loading from '@/components/Loading/Loading';
 
 function WriteDiaryPage() {
   const navigate = useNavigate();
@@ -22,6 +35,7 @@ function WriteDiaryPage() {
   const [currentModal, setCurrentModal] = useState('');
   const setDiary = useDiaryStore((store) => store.setDiary);
   const userInfo = useAuthStore((store) => store.userInfo);
+  const toast = useToaster();
 
   const today = new Date();
   const formattedDate1 = formatDate(today, 1); // 2024-09-18 형식
@@ -53,9 +67,42 @@ function WriteDiaryPage() {
     openModal('save')();
   };
 
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        page: 1,
+        perPage: 1,
+        sort: '-created',
+        filter: `userId="${userInfo.id}"`,
+      }).toString(),
+    [userInfo.id]
+  );
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
+  });
+
+  const firstRun = useRef(true); // 알림창을 하나만 띄우기 위함
   useEffect(() => {
-    textAreaRef.current.focus();
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
+
+    // 자신이 작성한 가장 최근 일기와 오늘 날짜가 같으면 홈 페이지로 돌아감
+    if (isSameDay(new Date(data?.items[0]?.created), new Date())) {
+      toast('warn', '오늘은 이미 일기를 작성했어요.');
+      navigate('/');
+    }
+  }, [data?.items, toast, navigate]);
+
+  useEffect(() => {
+    textAreaRef.current?.focus();
   }, []);
+
+  if (isLoading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
 
   return (
     <div className={styles.page}>

@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useState, memo, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useImmer } from 'use-immer';
@@ -17,8 +17,6 @@ import ProgressBar from './components/ProgressBar/ProgressBar';
 import SetExperience from './components/ProgressContents/SetExperience';
 import SetKeyword from './components/ProgressContents/SetKeyword';
 import SetFinish from './components/ProgressContents/SetFinish';
-import { memo } from 'react';
-import { useState } from 'react';
 import { SyncLoader } from 'react-spinners';
 
 // experience 값을 숫자로 매핑하는 함수 분리
