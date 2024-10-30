@@ -1,19 +1,19 @@
 import { memo } from 'react';
-import { func, string } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 
 import styles from './MusicReply.module.css';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
 import icons from '@/icons';
 
 MusicReply.propTypes = {
-  imgSrc: string.isRequired,
+  desktop: bool.isRequired,
   musicTitle: string.isRequired,
   musicArtist: string.isRequired,
   onClick: func,
 };
 
 function MusicReply({
-  imgSrc,
+  desktop,
   musicTitle,
   musicArtist,
   onClick,
@@ -22,7 +22,11 @@ function MusicReply({
   return (
     <div className={styles.musicReply}>
       <div className={styles.songInfo}>
-        <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} loading="lazy" />
+        <SVGIcon
+          {...icons.music}
+          width={desktop ? 30 : 25}
+          height={desktop ? 44 : 36}
+        />
 
         <div className={styles.textWrapper}>
           <span className={styles.musicTitle}>{musicTitle}</span>

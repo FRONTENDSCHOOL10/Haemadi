@@ -1,18 +1,24 @@
-import { string } from 'prop-types';
+import { bool, string } from 'prop-types';
 import styles from './BookReply.module.css';
 import { memo } from 'react';
+import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
 
 BookReply.propTypes = {
-  imgSrc: string.isRequired,
+  desktop: bool.isRequired,
   bookTitle: string.isRequired,
   author: string.isRequired,
   publisher: string.isRequired,
 };
 
-function BookReply({ imgSrc, bookTitle, author, publisher }) {
+function BookReply({ desktop, bookTitle, author, publisher }) {
   return (
     <figure className={styles.component}>
-      <img src={imgSrc} alt={`${bookTitle} 책 표지`} loading="lazy" />
+      <SVGIcon
+        {...icons.book}
+        width={desktop ? 52 : 39}
+        height={desktop ? 48 : 36}
+      />
       <figcaption>
         <strong>{bookTitle}</strong>
         <br />

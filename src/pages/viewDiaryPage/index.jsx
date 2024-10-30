@@ -88,7 +88,7 @@ function ViewDiaryPage() {
             <h2>언제나 멋진 존재인 당신에게</h2>
             <p>{reply.message}</p>
             {reply.replier === 'ai' &&
-              renderReplyContent(reply.content, reply.typeOfContent)}
+              renderReplyContent(desktop, reply.content, reply.typeOfContent)}
           </section>
         )}
       </main>
@@ -99,14 +99,14 @@ function ViewDiaryPage() {
 export default memo(ViewDiaryPage);
 
 // ai 답장일 경우 typeOfContent에 따라 4가지 중 알맞은 컨텐츠 렌더링
-function renderReplyContent(content, typeOfContent) {
+function renderReplyContent(desktop, content, typeOfContent) {
   switch (typeOfContent) {
     case 'music':
       return (
         <>
           <h2>당신에게 추천하는 노래</h2>
           <MusicReply
-            imgSrc={content.imgSrc}
+            desktop={desktop}
             musicTitle={content.musicTitle}
             musicArtist={content.musicArtist}
           />
@@ -124,7 +124,7 @@ function renderReplyContent(content, typeOfContent) {
         <>
           <h2>당신에게 추천하는 책</h2>
           <BookReply
-            imgSrc={content.imgSrc}
+            desktop={desktop}
             bookTitle={content.bookTitle}
             author={content.author}
             publisher={content.publisher}
@@ -136,7 +136,7 @@ function renderReplyContent(content, typeOfContent) {
         <>
           <h2>당신에게 추천하는 영상</h2>
           <VideoReply
-            imgSrc={content.imgSrc}
+            desktop={desktop}
             videoTitle={content.videoTitle}
             hashTags={content.hashTags}
           />
