@@ -5,6 +5,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { createDiary, updateDiary } from '@/api/diaries';
 import generateAIReply from '@/api/gemini';
 import { createReply } from '@/api/replies';
+import { searchVideo } from '@/api/youtube';
 import Button from '@/components/Button/Button';
 import SendingCompleteScreen from '@/components/SendingCompleteScreen/SendingCompleteScreen';
 import SendingScreen from '@/components/SendingScreen/SendingScreen';
@@ -56,46 +57,61 @@ function SelectReplyPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let AIData; // AIData 변수를 상위 범위에서 정의
+
     if (step === '1') {
       if (selectedValue === 'ai') {
         setSelectedValue(null);
         navigate('/write-diary/select-reply/2');
         return;
       } else {
-        createDiary(diary).then(
-          () => {
+        createDiary(diary)
+          .then(() => {
             setStatus('success');
             resetDiary();
-          },
-          (error) => {
+          })
+          .catch((error) => {
             setStatus('error');
             throw new Error(error);
-          }
-        );
+          });
       }
     }
+
     if (step === '2') {
       /* Ai 답장 */
       generateAIReply(
         `${selectedValue}으로 답장해줘. 내 일기: ` + diary.message
       )
         .then((result) => {
-          const AIData = {
+          AIData = {
             ...JSON.parse(result.response.text()),
             replier: 'ai',
           };
 
-          return createDiary(diary).then((diaryData) => {
-            return createReply({
-              ...AIData,
-              diaryId: diaryData.id,
-              typeOfContent: selectedValue,
-            }).then((replyData) => {
-              updateDiary({
-                id: replyData.diaryId,
-                replyId: replyData.id,
-              });
+          // selectedValue가 'music'인 경우 유튜브 영상 ID 추가
+          if (selectedValue === 'music') {
+            return searchVideo(
+              `${AIData.content.musicArtist} ${AIData.content.musicTitle}`
+            ).then((videoId) => {
+              AIData.content = {
+                ...AIData.content,
+                musicId: videoId.items[0]?.id?.videoId || null,
+              };
             });
+          }
+        })
+        .then(() => createDiary(diary))
+        .then((diaryData) => {
+          return createReply({
+            ...AIData, // 이제 AIData가 정의됨
+            diaryId: diaryData.id,
+            typeOfContent: selectedValue,
+          });
+        })
+        .then((replyData) => {
+          return updateDiary({
+            id: replyData.diaryId,
+            replyId: replyData.id,
           });
         })
         .then(() => {
@@ -109,7 +125,7 @@ function SelectReplyPage() {
         });
     }
 
-    setStatus('loading');
+    setStatus('loading'); // 상태를 맨 아래로 이동
   };
 
   const onComplete = (value) => {

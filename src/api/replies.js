@@ -43,9 +43,9 @@ export async function createReply(newReply) {
   return responseData;
 }
 
-/** @type {(replyId: string) => Promise<any>} */
-export async function getReply(replyId) {
-  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records/${replyId}`;
+/** @type {(replyId: string, filters: string) => Promise<any>} */
+export async function getReply(replyId, filters) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records${replyId ? `/${replyId}` : ''}${filters ? `?filter=(${filters})` : ''}`;
 
   const response = await fetch(REQUEST_URL);
 

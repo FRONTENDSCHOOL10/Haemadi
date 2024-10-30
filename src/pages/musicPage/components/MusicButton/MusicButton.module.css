@@ -6,10 +6,9 @@
   width: 370px;
   padding: 10px;
   background-color: transparent;
-  img {
-    width: 51px;
-    height: 51px;
-    border-radius: 999px;
+  .icons {
+    width: 45px;
+    height: 45px;
   }
 
   .textWrapper {
