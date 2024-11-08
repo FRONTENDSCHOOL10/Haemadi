@@ -34,7 +34,12 @@ const routes = [
       },
       {
         path: 'music',
-        element: <MusicPage />,
+        element: (
+          <Loading musicPage />
+          // <Suspense fallback={<Loading musicPage />}>
+          //   <MusicPage />
+          // </Suspense>
+        ),
       },
       {
         path: 'my',
