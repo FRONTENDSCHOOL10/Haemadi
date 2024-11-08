@@ -1,4 +1,4 @@
-import { memo, useState, useCallback, useEffect } from 'react';
+import { memo } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './MusicPage.module.css';
@@ -7,29 +7,36 @@ import { useAuthStore } from '@/stores/authStore';
 import { readDiaries } from '@/api/diaries';
 import BackButton from '@/components/BackButton/BackButton';
 import MusicPlayer from './components/MusicPlayer/MusicPlayer';
+import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Loading from '@/components/Loading/Loading';
 
 function MusicPage() {
   const desktop = useMediaStore((store) => store.desktop);
   const userInfo = useAuthStore((store) => store.userInfo);
-  const [musics, setMusics] = useState([]);
+  const [queryLoading, setQueryLoading] = useState(true); // Suspense의 Loading에서 넘어올 때 깜빡임을 방지하기 위해 상태로 관리
 
-  const getOwnMusicList = useCallback(async () => {
-    try {
-      const diaryContents = await readDiaries(
-        `&expand=replyId&filter=(replyId.typeOfContent='music'%26%26userId='${userInfo.id}')&sort=created`
-      );
+  const params = useMemo(
+    () =>
+      `&expand=replyId&filter=(replyId.typeOfContent='music'%26%26userId='${userInfo.id}')&sort=created`,
+    [userInfo.id]
+  );
 
-      const replyArray = diaryContents.items.map((item) => item.expand.replyId);
-      setMusics(replyArray);
-    } catch (error) {
-      console.error('뮤직 리스트 에러: ', error);
-    }
-  }, [userInfo.id]);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['musicList', params],
+    queryFn: () => readDiaries(params),
+  });
 
-  // 컴포넌트가 처음 렌더링될 때 음악 목록 가져오기
   useEffect(() => {
-    getOwnMusicList();
-  }, [getOwnMusicList]);
+    if (!isLoading) setQueryLoading(false);
+  }, [isLoading]);
+
+  if (queryLoading) return <Loading musicPage />;
+  if (error) return <div>{error.message}</div>;
+
+  const musics = data.items.map((item) => item.expand.replyId);
 
   return (
     <div className={styles.MusicPage}>
