@@ -35,10 +35,9 @@ const routes = [
       {
         path: 'music',
         element: (
-          <Loading musicPage />
-          // <Suspense fallback={<Loading musicPage />}>
-          //   <MusicPage />
-          // </Suspense>
+          <Suspense fallback={<Loading musicPage />}>
+            <MusicPage />
+          </Suspense>
         ),
       },
       {
