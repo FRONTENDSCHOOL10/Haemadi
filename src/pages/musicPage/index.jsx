@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './MusicPage.module.css';
@@ -8,9 +8,6 @@ import { readDiaries } from '@/api/diaries';
 import BackButton from '@/components/BackButton/BackButton';
 import MusicPlayer from './components/MusicPlayer/MusicPlayer';
 import { useQuery } from '@tanstack/react-query';
-import { useMemo } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import Loading from '@/components/Loading/Loading';
 
 function MusicPage() {
