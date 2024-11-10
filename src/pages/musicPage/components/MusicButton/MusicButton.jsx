@@ -1,20 +1,32 @@
 import { memo } from 'react';
-import { func, string } from 'prop-types';
+import { func, number, string } from 'prop-types';
 
 import styles from './MusicButton.module.css';
+import SVGIcon from '@/components/SVGIcon/SVGIcon';
+import icons from '@/icons';
+
+const musicNoteIcons = [
+  'musicNote_pink',
+  'musicNote_red',
+  'musicNote_yellow',
+  'musicNote_green',
+  'musicNote_lightBlue',
+  'musicNote_Blue',
+  'musicNote_purple',
+];
 
 MusicButton.propTypes = {
-  imgSrc: string.isRequired,
   musicTitle: string.isRequired,
   musicArtist: string.isRequired,
+  index: number,
   onClick: func,
 };
 
 function MusicButton({
-  imgSrc,
   musicTitle,
   musicArtist,
   onClick,
+  index,
   ...restProps
 }) {
   return (
@@ -26,7 +38,7 @@ function MusicButton({
       onClick={onClick}
       {...restProps}
     >
-      <img src={imgSrc} alt={`${musicTitle} 앨범 커버`} loading="lazy" />
+      <SVGIcon className={styles.icons} {...icons[musicNoteIcons[index % 7]]} />
 
       <div className={styles.textWrapper}>
         <span className={styles.musicTitle}>{musicTitle}</span>

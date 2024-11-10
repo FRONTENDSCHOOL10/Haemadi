@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Loading from './components/Loading/Loading';
+import NotFoundPage from './pages/NotFoundPage';
 
 const RootLayout = lazy(() => import('./layouts/RootLayout/RootLayout'));
 const AuthPage = lazy(() => import('./pages/authPage'));
@@ -33,7 +34,11 @@ const routes = [
       },
       {
         path: 'music',
-        element: <MusicPage />,
+        element: (
+          <Suspense fallback={<Loading musicPage />}>
+            <MusicPage />
+          </Suspense>
+        ),
       },
       {
         path: 'my',
@@ -104,6 +109,10 @@ const routes = [
   {
     path: '/auth/sign-in',
     element: <SignInPage />,
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ];
 

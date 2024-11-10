@@ -1,23 +1,25 @@
-import { memo, useMemo } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 import styles from './LetterBoxPage.module.css';
+import { readDiaries } from '@/api/diaries';
 import { useAuthStore } from '@/stores/authStore';
-import { BASE_URL } from '@/api/pbconfig';
-import useFetch from '@/hooks/useFetch';
 import BackButton from '@/components/BackButton/BackButton';
 import Button from '@/components/Button/Button';
 import Loading from '@/components/Loading/Loading';
 
 import glassBottle from '/glassBottle/glassBottle_selected.webp';
 import glassBottleMobile from '/glassBottle/glassBottle_center.webp';
+import { useToaster } from '@/stores/ToasterStore';
 
 function LetterBoxPage() {
   const navigate = useNavigate();
   const desktop = useMediaQuery({ query: '(min-width: 960px)' });
   const userInfo = useAuthStore((store) => store.userInfo);
+  const toast = useToaster();
 
   /* --------------------------------- 스타일 객체 --------------------------------- */
   const backButtonStyle = useMemo(
@@ -35,36 +37,50 @@ function LetterBoxPage() {
     [desktop]
   );
 
-  /* ----------------------------- REQUEST URL 작성 ----------------------------- */
-  const params = new URLSearchParams({
-    // 일기 1개만 가져옴
-    page: 1,
-    perPage: 1,
-    // 답장이 왔고 && 자신이 쓴 일기
-    filter: `replyId!="" && userId="${userInfo.id}"`,
-    // 가장 최근에 답장을 받은 일기
-    sort: '-created',
-    expand: 'replyId',
-  });
+  /* ----------------------------- REQUEST URL의 params 작성 ----------------------------- */
+  const diariesParams = useMemo(
+    () =>
+      new URLSearchParams({
+        // 일기 1개만 가져옴
+        page: 1,
+        perPage: 1,
+        // 답장이 왔고 && 자신이 쓴 일기
+        filter: `replyId!="" && userId="${userInfo.id}"`,
+        // 가장 최근에 답장을 받은 일기
+        sort: '-created',
+        expand: 'replyId',
+      }).toString(),
+    [userInfo.id]
+  );
 
   /* ------------------------------ 서버에 일기 목록 요청 ------------------------------ */
-  const ENDPOINT = `${BASE_URL}/api/collections/diaries/records?${params}`;
-  const { status, error, data } = useFetch(ENDPOINT);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['diaries', diariesParams],
+    queryFn: () => readDiaries(diariesParams),
+  });
 
-  if (status === 'loading') return <Loading />;
-  if (status === 'error') return <div>{error.message}</div>;
+  const firstRun = useRef(true);
+  useEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false;
+      return;
+    }
 
-  const diary = data.items[0];
-  const { id: diaryId } = diary;
-  const { replier } = diary.expand.replyId;
+    if (data?.items.length === 0) {
+      toast('warn', '아직 받은 답장이 없어요.');
+      navigate('/');
+    }
+  }, [data?.items.length, navigate, toast]);
+
+  if (isLoading) return <Loading />;
+  if (error) return <div>{error.message}</div>;
+
+  const diaryId = data.items[0]?.id;
+  const replier = data.items[0]?.expand.replyId?.replier;
 
   const handleButtonClick = () => {
     navigate(`view-diary/${diaryId}`);
   };
-
-  /* -------------------------------------------------------------------------- */
-  /*                             답장이 없을 때의 로직 처리 필요                             */
-  /* -------------------------------------------------------------------------- */
 
   return (
     <div className={styles.page}>

@@ -24,7 +24,6 @@
     h1 {
       font-size: var(--text-l, 20px);
       font-weight: 700;
-      line-height: 37px; /* 194.737% */
       margin-bottom: 10.7vh;
       word-break: keep-all;
     }

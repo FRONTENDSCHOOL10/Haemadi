@@ -29,16 +29,6 @@
   z-index: 1;
 }
 
-.MusicList {
-  border-top: 1px solid #f2f2f2;
-  padding-top: 35px;
-  span {
-    color: var(--black, #2e2e2e);
-    font-size: var(--text-s, 16px);
-    font-weight: 700;
-  }
-}
-
 @media (min-width: 640px) {
   .MusicPage {
     background-image: url('/bgImages/sending_Bg.webp');
@@ -50,11 +40,6 @@
     .title {
       color: var(--white, #fff);
       font-size: var(--text-xl, 24px);
-    }
-    .MusicList {
-      span {
-        color: var(--white, #fff);
-      }
     }
   }
 

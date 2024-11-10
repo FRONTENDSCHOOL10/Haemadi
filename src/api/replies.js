@@ -43,10 +43,28 @@ export async function createReply(newReply) {
   return responseData;
 }
 
-/** @type {(replyId: string) => Promise<any>} */
-export async function getReply(replyId) {
-  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records/${replyId}`;
+/** @type {(replyId: string, filters: string) => Promise<any>} */
+export async function getReply(replyId, filters) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records${replyId ? `/${replyId}` : ''}${filters ? `?filter=(${filters})` : ''}`;
 
+  const response = await fetch(REQUEST_URL);
+
+  if (!response.ok) {
+    throw new Response(
+      JSON.stringify({ message: '서버에서 요청에 응답하지 않습니다.' }),
+      { status: 500 }
+    );
+  }
+
+  const responseData = await response.json();
+
+  return responseData;
+}
+
+// 사용예시) readReplies(`sort=created`);
+/** @type {(url: string) => Promise<any>} */
+export async function readReplies(params) {
+  const REQUEST_URL = `${BASE_URL}/api/collections/replies/records?${params}`;
   const response = await fetch(REQUEST_URL);
 
   if (!response.ok) {

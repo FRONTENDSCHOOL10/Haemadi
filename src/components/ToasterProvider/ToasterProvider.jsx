@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { oneOf, string, func, node } from 'prop-types';
 
 import styles from './ToasterProvider.module.css';
@@ -5,15 +6,15 @@ import { ToasterStore } from '@/stores/ToasterStore';
 import useIsMounted from '@/hooks/useIsMounted';
 import icons from '@/icons';
 import SVGIcon from '@/components/SVGIcon/SVGIcon';
-import { memo } from 'react';
 
 const ICONS = {
   info: icons.check,
   warn: null,
+  default: null,
 };
 
 Toast.propTypes = {
-  type: oneOf(['info', 'warn']),
+  type: oneOf(['info', 'warn', 'default']),
   message: string.isRequired,
   onClick: func,
 };
@@ -40,9 +41,17 @@ function Toast({ type, message, onClick }) {
 
 ToasterProvider.propTypes = {
   children: node,
+  position: oneOf([
+    'top-left',
+    'top-center',
+    'top-right',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right',
+  ]),
 };
 
-function ToasterProvider({ children }) {
+function ToasterProvider({ children, position = 'top-center' }) {
   const { toasts, removeToast } = ToasterStore((state) => ({
     toasts: state.toasts,
     removeToast: state.removeToast,
@@ -51,7 +60,7 @@ function ToasterProvider({ children }) {
   return (
     <div>
       {children}
-      <div className={styles.ToastContainer}>
+      <div className={`${styles.ToastContainer} ${styles[position]}`}>
         {toasts.map((toast) => (
           <Toast
             key={toast.id}

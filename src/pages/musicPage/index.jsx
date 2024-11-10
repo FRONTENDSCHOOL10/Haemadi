@@ -1,15 +1,40 @@
-import { memo } from 'react';
+import { memo, useMemo, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './MusicPage.module.css';
 import { useMediaStore } from '@/stores/mediaStore';
+import { useAuthStore } from '@/stores/authStore';
+import { readDiaries } from '@/api/diaries';
 import BackButton from '@/components/BackButton/BackButton';
 import MusicPlayer from './components/MusicPlayer/MusicPlayer';
-import MusicButton from './components/MusicButton/MusicButton';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '@/components/Loading/Loading';
 
 function MusicPage() {
   const desktop = useMediaStore((store) => store.desktop);
-  const videoIds = ['fZqSGS1mRnw', 'jdzKPUhXa-o', 'zASBUGhofHk'];
+  const userInfo = useAuthStore((store) => store.userInfo);
+  const [queryLoading, setQueryLoading] = useState(true); // Suspense의 Loading에서 넘어올 때 깜빡임을 방지하기 위해 상태로 관리
+
+  const params = useMemo(
+    () =>
+      `&expand=replyId&filter=(replyId.typeOfContent='music'%26%26userId='${userInfo.id}')&sort=created`,
+    [userInfo.id]
+  );
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['musicList', params],
+    queryFn: () => readDiaries(params),
+  });
+
+  useEffect(() => {
+    if (!isLoading) setQueryLoading(false);
+  }, [isLoading]);
+
+  if (queryLoading) return <Loading musicPage />;
+  if (error) return <div>{error.message}</div>;
+
+  const musics = data.items.map((item) => item.expand.replyId);
+
   return (
     <div className={styles.MusicPage}>
       <Helmet>
@@ -37,25 +62,7 @@ function MusicPage() {
           <h1 className={styles.title}>나의 플레이리스트</h1>
         </header>
         <div className={styles.MusicWrapper}>
-          <MusicPlayer videoIds={videoIds} />
-          <div className={styles.MusicList}>
-            <span>재생목록</span>
-            <MusicButton
-              musicTitle="내가 S면 넌 나의 N이 되어줘"
-              musicArtist="TWS"
-              imgSrc="https://lh3.googleusercontent.com/TC0ZKg4DA_aotpITr0p59Ax7zP0XP4jbusQlqg1N3m6tKLJ6CvcBUzFrlCgY7zYiSMvs4nQYtV8Pr--g=w544-h544-l90-rj"
-            />
-            <MusicButton
-              musicTitle="GODS"
-              musicArtist="League of Legends 및 NewJeans"
-              imgSrc="https://lh3.googleusercontent.com/T7zV1U9DY4QyX1-LRMh82bdLy4vzWszPdjassPk-gCJ5WaUFekhqCvOllR2txyn-LKyuUEj8t607PeI=w544-h544-l90-rj"
-            />
-            <MusicButton
-              musicTitle="Rockstar"
-              musicArtist="Lisa"
-              imgSrc="https://lh3.googleusercontent.com/yFwY0HYOduDt6fbR8ZQHa85T0sJhjbMYQMsd_v9dyZIGJqHNeEIkteWpwMPs5y7jzo_JIxaAyealuhpS=w544-h544-l90-rj"
-            />
-          </div>
+          <MusicPlayer musicList={musics} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { number } from 'prop-types';
+import { bool, number } from 'prop-types';
 import { useLayoutEffect } from 'react';
 import styles from './Loading.module.css';
 import { SyncLoader } from 'react-spinners';
@@ -35,10 +35,10 @@ const resetLoadingEnd = () => {
 };
 
 // 컴포넌트 속성 타입 검사
-Loading.propTypes = { size: number };
+Loading.propTypes = { size: number, musicPage: bool };
 
 // Loading 컴포넌트
-function Loading({ size = 24 }) {
+function Loading({ size = 24, musicPage = false }) {
   // 레이아웃 이펙트
   useLayoutEffect(() => {
     // 로딩 시작 설정
@@ -54,6 +54,14 @@ function Loading({ size = 24 }) {
     };
   }, []);
 
+  if (musicPage)
+    return (
+      <div className={styles.loadingMusic}>
+        <div className={styles.loadingText}></div>
+        <img src="/bgImages/island.webp" alt="" />
+      </div>
+    );
+
   // 화면에 표시할 스피너(spinner) 마크업
   // CSS 모듈 스타일 클래스 이름으로 연결
   return (
@@ -61,7 +69,7 @@ function Loading({ size = 24 }) {
       margin={6}
       size={size}
       color="#2E7FB9"
-      className={styles.component}
+      className={styles.spinner}
     />
   );
 }

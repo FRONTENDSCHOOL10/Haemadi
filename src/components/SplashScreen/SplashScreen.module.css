@@ -11,11 +11,10 @@
   position: fixed;
   width: 100vw;
   height: 100%;
-  background-color: #303b90;
-  background-image: url('/bgImages/splash.webp');
-  background-repeat: no-repeat;
+  background-image: url('/bgImages/splashBg.webp');
   background-position: center;
-  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   animation: fadeOut 0.8s ease-in forwards;
   animation-delay: 1.2s;
@@ -24,8 +23,98 @@
   z-index: 9999;
 }
 
-@media (aspect-ratio > 1) {
-  .splashScreen {
-    background-image: url('/bgImages/splash_desktop.webp');
+.wave1,
+.wave2,
+.wave3,
+.wave4,
+.boat,
+.phoneMockUp {
+  position: absolute;
+  bottom: 0;
+}
+
+.wave2 {
+  left: 0;
+  width: 100vw;
+}
+.wave4 {
+  right: 0;
+}
+
+.textBox {
+  color: var(--white, #ffffff);
+  margin-top: 37vh;
+
+  h1 {
+    font-family: 'KoreanHBRG';
+  }
+}
+
+@media (aspect-ratio < 0.8) {
+  .wave1,
+  .wave3,
+  .phoneMockUp {
+    display: none;
+  }
+  .boat {
+    left: 50vw;
+    translate: -50%;
+    width: 81vw;
+  }
+
+  .textBox {
+    text-align: center;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 55px;
+    }
+  }
+}
+@media (aspect-ratio >= 0.8) {
+  .wave2 {
+    display: none;
+  }
+
+  .wave1 {
+    left: 0;
+    width: 100vw;
+  }
+  .wave3 {
+    left: 0;
+    width: 39.2vw;
+  }
+  .wave4 {
+    width: 53.9vw;
+  }
+  .boat {
+    rotate: 20deg;
+    width: 28vw;
+    left: 4.5vw;
+    bottom: -2.5vh;
+  }
+  .phoneMockUp {
+    width: 42.3vw;
+    bottom: 11vh;
+    right: 3.8vw;
+  }
+
+  .textBox {
+    margin-top: 37vh;
+    margin-left: 8.1vw;
+
+    p {
+      font-size: 25px;
+      margin-bottom: 33px;
+    }
+    h1 {
+      padding-left: 30px;
+      font-size: 66px;
+      line-height: 40.5px; /* 61.364% */
+      letter-spacing: 0.5px;
+    }
   }
 }
