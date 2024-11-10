@@ -171,7 +171,13 @@ function MusicPlayer({ musicList = [] }) {
 
   // 비디오가 없을 경우 처리
   if (musicList.length === 0) {
-    return <div>No Audios available</div>;
+    return (
+      <div>
+        Ai 마디에게 추천받은 노래가 없습니다.
+        <br />
+        일기를 작성하고 Ai 마디에게 답장을 받아보세요!
+      </div>
+    );
   }
 
   return (
